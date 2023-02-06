@@ -1,0 +1,9 @@
+appname: "Bibliotheque"
+
+errors:
+  networkError: "Network Error"
+  networkErrorTryAgain: "Network Error, Try again"
+  tryAgain: "Try again"
+
+widgets:
+  phoneNumber: "Phone number"

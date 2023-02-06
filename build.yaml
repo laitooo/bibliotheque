@@ -1,0 +1,44 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          explicit_to_json: true
+      fast_i18n:
+        options:
+          base_locale: ar
+          fallback_strategy: base_locale
+          input_directory: assets/i18n
+          input_file_pattern: .i18n.yaml
+          output_directory: lib/i18n
+          output_file_pattern: .g.dart # deprecated, use output_file_name
+          output_file_name: translations.g.dart
+          namespaces: false
+          translate_var: t
+          enum_name: AppLocale
+          translation_class_visibility: private
+          string_interpolation: braces
+          flat_map: false
+          maps:
+            - error.codes
+            - category
+            - iconNames
+          pluralization:
+            auto: cardinal
+          contexts:
+            gender_context:
+              enum:
+                - male
+                - female
+              auto: false
+              paths:
+                - my.path.to.greet
+          interfaces:
+            PageData: onboarding.pages
+            PageData2:
+              paths:
+                - my.path
+                - cool.path
+              attributes:
+                - String title
+                - String? content

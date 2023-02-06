@@ -1,0 +1,9 @@
+appname: "مكتبة"
+
+errors:
+  networkError: "خطأ في الاتصال"
+  networkErrorTryAgain: "خطأ في الاتصال , الرجاء المحاولة مجددا"
+  tryAgain: "حاول مجددا"
+
+widgets:
+  phoneNumber: "رقم الهاتف"
