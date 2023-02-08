@@ -1,6 +1,9 @@
+// ignore_for_file: unused_element
+
 import 'dart:math';
 
 import 'package:bibliotheque/models/book.dart';
+import 'package:bibliotheque/models/category.dart';
 import 'package:flutter/material.dart';
 
 final generator = Generator();
@@ -8,7 +11,7 @@ final generator = Generator();
 class Generator {
   final _rand = Random();
 
-  String id() {
+  String _id() {
     return List.generate(
         10, (i) => String.fromCharCode(_rand.nextInt(127 - 33) + 33)).join();
   }
@@ -19,15 +22,15 @@ class Generator {
     return _rand.nextInt(max - min) + min;
   }
 
-  bool boolean() {
+  bool _boolean() {
     return _rand.nextBool();
   }
 
-  T oneOf<T>(List<T> choices) {
+  T _oneOf<T>(List<T> choices) {
     return choices[_rand.nextInt(choices.length)];
   }
 
-  List<T> sample<T>(List<T> population, {int? size}) {
+  List<T> _sample<T>(List<T> population, {int? size}) {
     size ??= count(population.length);
     size = size > population.length ? population.length : size;
     return List.generate(
@@ -38,7 +41,7 @@ class Generator {
     '+249',
   ];
 
-  String phoneNumber() {
+  String _phoneNumber() {
     return _countryCodes.random(_rand) + '123456789';
   }
 
@@ -48,7 +51,7 @@ class Generator {
   /// and the year before it.
   /// if before isn't specified, the returned dateTime is between `after` and the
   /// year after it.
-  DateTime dateTime({DateTime? after, DateTime? before}) {
+  DateTime _dateTime({DateTime? after, DateTime? before}) {
     after ??= before != null
         ? before.subtract(const Duration(days: 365))
         : DateTime.now();
@@ -61,7 +64,7 @@ class Generator {
         _rand.nextInt(millisecondsRange & ((1 << 32) - 1)) + afterMilliseconds);
   }
 
-  DateTime time({DateTime? after, DateTime? before}) {
+  DateTime _time({DateTime? after, DateTime? before}) {
     // // we don't use the year, month, and day fields, but they are required
     // defaults to 00:00 begining of day
     after = DateTime(
@@ -76,16 +79,16 @@ class Generator {
         _rand.nextInt(millisecondsRange & ((1 << 32) - 1)) + afterMilliseconds);
   }
 
-  TimeOfDay timeOfDay({TimeOfDay? after}) {
+  TimeOfDay _timeOfDay({TimeOfDay? after}) {
     DateTime? afterTime;
     if (after != null) {
       afterTime = DateTime(2000, 1, 1, after.hour, after.minute, 0);
     }
-    final time = generator.time(after: afterTime);
+    final time = generator._time(after: afterTime);
     return TimeOfDay(hour: time.hour, minute: time.minute);
   }
 
-  double rate() {
+  double _rate() {
     return _rand.nextInt(50) / 10;
   }
 
@@ -108,24 +111,33 @@ class Generator {
   final String _cover =
       "https://static.wikia.nocookie.net/iceandfire/images/b/b6/Game_of_thrones.jpeg/revision/latest?cb=20130302001049";
 
-  String name() {
+  final String _categoryCover =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7geJofAX7-2aS4LjFnuR2xibj-Hxcbm3WKg&usqp=CAU";
+
+  String _name() {
     return _names[_rand.nextInt(_names.length)];
   }
 
-  String category() {
+  String _category() {
     return _categories[_rand.nextInt(_categories.length)];
   }
 
   Book book() => Book(
-        id: id(),
-        name: name(),
+        id: _id(),
+        name: _name(),
         coveUrl: _cover,
         price: count(1, 50) * 10,
-        rate: rate(),
+        rate: _rate(),
         categoriesIds: List.generate(
           count(1, 5),
-          (index) => category(),
+          (index) => _category(),
         ),
+      );
+
+  Category category() => Category(
+        id: _id(),
+        name: _category(),
+        imageUrl: _categoryCover,
       );
 }
 
