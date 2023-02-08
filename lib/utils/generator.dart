@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:bibliotheque/models/book.dart';
 import 'package:flutter/material.dart';
 
 final generator = Generator();
@@ -16,56 +17,6 @@ class Generator {
     final max = b ?? a;
     final min = b == null ? 0 : a;
     return _rand.nextInt(max - min) + min;
-  }
-
-  double rate() {
-    return _rand.nextInt(50) / 10;
-  }
-
-  static const String picture =
-      'https://images.unsplash.com/photo-1520719627573-5e2c1a6610f0?h=500&w=500&fit=crop';
-
-  static const String servicePicture =
-      'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Y2xvdGglMjB3YXNofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60';
-
-  static const orderCategories = [
-    'General cleaning',
-    'Clothes washing',
-    'In house shaving',
-    'Backyard and removal works',
-    'Devices fixing',
-    'Car servant',
-  ];
-
-  static const _names = [
-    'Alziber Mohammed',
-    'Akram Izzeldin',
-    'Mohammed Hashim',
-    'Saif Elislam',
-  ];
-
-  static const _donationCentersNames = [
-    'مجمع النور',
-    'مسجد الشهيد',
-    'مسجد المقرن',
-    'مسجد الخليفة',
-    'مسجد الشيخ قريب الله',
-    'مسجد النيلين',
-    'الجامع الكبير',
-    'مقبرة الشيخ السماني',
-    'مبنى سكني قيد الانشاء'
-  ];
-
-  String name() {
-    return _names[_rand.nextInt(_names.length)];
-  }
-
-  String orderCategory() {
-    return orderCategories[_rand.nextInt(orderCategories.length)];
-  }
-
-  String donationCenterName() {
-    return _donationCentersNames[_rand.nextInt(_donationCentersNames.length)];
   }
 
   bool boolean() {
@@ -86,13 +37,9 @@ class Generator {
   static const _countryCodes = [
     '+249',
   ];
+
   String phoneNumber() {
     return _countryCodes.random(_rand) + '123456789';
-  }
-
-  String text(int count, [int? max]) {
-    count = max == null ? count : _rand.nextInt(max - count) + count;
-    return List.generate(count, (i) => _words.random(_rand)).join(' ');
   }
 
   /// if before and after aren't specified, the returned dateTime is between
@@ -137,6 +84,49 @@ class Generator {
     final time = generator.time(after: afterTime);
     return TimeOfDay(hour: time.hour, minute: time.minute);
   }
+
+  double rate() {
+    return _rand.nextInt(50) / 10;
+  }
+
+  static const _names = [
+    'The house of hades (Heroes of olympics)',
+    'My quiet Blacksmith, Life in Another world',
+    'It starts with us: A novel',
+    'Trapped in a dating Sim: The world',
+    'His dark material: The golden company',
+    'Batman: Arkham Unhinged vol. 1',
+  ];
+
+  static const _categories = [
+    'Romance',
+    'Thriller',
+    'Inspirational',
+    'Non-Fiction',
+  ];
+
+  final String _cover =
+      "https://static.wikia.nocookie.net/iceandfire/images/b/b6/Game_of_thrones.jpeg/revision/latest?cb=20130302001049";
+
+  String name() {
+    return _names[_rand.nextInt(_names.length)];
+  }
+
+  String category() {
+    return _categories[_rand.nextInt(_categories.length)];
+  }
+
+  Book book() => Book(
+        id: id(),
+        name: name(),
+        coveUrl: _cover,
+        price: count(1, 50) * 10,
+        rate: rate(),
+        categoriesIds: List.generate(
+          count(1, 5),
+          (index) => category(),
+        ),
+      );
 }
 
 extension RandomItemFromList on List {
@@ -144,56 +134,3 @@ extension RandomItemFromList on List {
     return this[random.nextInt(length)];
   }
 }
-
-const _words = [
-  'fall',
-  'former',
-  'happen',
-  'agent',
-  'response',
-  'result',
-  'my',
-  'gas',
-  'human',
-  'cultural',
-  'war',
-  'method',
-  'Democrat',
-  'you',
-  'notice',
-  'lay',
-  'reason',
-  'western',
-  'fill',
-  'key',
-  'force',
-  'event',
-  'leave',
-  'turn',
-  'find',
-  'prove',
-  'less',
-  'culture',
-  'son',
-  'sound',
-  'happy',
-  'fire',
-  'chair',
-  'race',
-  'eight',
-  'degree',
-  'forget',
-  'series',
-  'interesting',
-  'significant',
-  'surface',
-  'main',
-  'yeah',
-  'cancer',
-  'private',
-  'every',
-  'father',
-  'woman',
-  'chance',
-  'small'
-];
