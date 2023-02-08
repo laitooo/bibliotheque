@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
                 theme: state.theme.material(context),
                 home: BlocProvider(
                   create: (_) => PopularBooksBloc()..add(LoadPopularBooks()),
-                  child: const HomeScreen(),
+                  child: HomeScreen(),
                 ),
               );
             },

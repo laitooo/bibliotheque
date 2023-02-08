@@ -9,3 +9,7 @@ enum CategoriesError {
 enum RecommendedBooksError {
   networkError,
 }
+
+enum WishListError {
+  networkError,
+}

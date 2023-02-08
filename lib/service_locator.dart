@@ -2,6 +2,7 @@ import 'package:bibliotheque/i18n/translations.g.dart';
 import 'package:bibliotheque/repos/categories.dart';
 import 'package:bibliotheque/repos/popular_books.dart';
 import 'package:bibliotheque/repos/recommended_books.dart';
+import 'package:bibliotheque/repos/wish_list.dart';
 import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
@@ -24,5 +25,8 @@ Future<void> initServices() async {
   );
   serviceLocator.registerSingleton<RecommendedBooksRepository>(
     MockRecommendedBooksRepository(),
+  );
+  serviceLocator.registerSingleton<WishListRepository>(
+    MockWishListRepository(),
   );
 }
