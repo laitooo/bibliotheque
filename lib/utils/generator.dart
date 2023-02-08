@@ -1,5 +1,9 @@
+// ignore_for_file: unused_element
+
 import 'dart:math';
 
+import 'package:bibliotheque/models/book.dart';
+import 'package:bibliotheque/models/category.dart';
 import 'package:flutter/material.dart';
 
 final generator = Generator();
@@ -7,7 +11,7 @@ final generator = Generator();
 class Generator {
   final _rand = Random();
 
-  String id() {
+  String _id() {
     return List.generate(
         10, (i) => String.fromCharCode(_rand.nextInt(127 - 33) + 33)).join();
   }
@@ -18,65 +22,15 @@ class Generator {
     return _rand.nextInt(max - min) + min;
   }
 
-  double rate() {
-    return _rand.nextInt(50) / 10;
-  }
-
-  static const String picture =
-      'https://images.unsplash.com/photo-1520719627573-5e2c1a6610f0?h=500&w=500&fit=crop';
-
-  static const String servicePicture =
-      'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Y2xvdGglMjB3YXNofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60';
-
-  static const orderCategories = [
-    'General cleaning',
-    'Clothes washing',
-    'In house shaving',
-    'Backyard and removal works',
-    'Devices fixing',
-    'Car servant',
-  ];
-
-  static const _names = [
-    'Alziber Mohammed',
-    'Akram Izzeldin',
-    'Mohammed Hashim',
-    'Saif Elislam',
-  ];
-
-  static const _donationCentersNames = [
-    'مجمع النور',
-    'مسجد الشهيد',
-    'مسجد المقرن',
-    'مسجد الخليفة',
-    'مسجد الشيخ قريب الله',
-    'مسجد النيلين',
-    'الجامع الكبير',
-    'مقبرة الشيخ السماني',
-    'مبنى سكني قيد الانشاء'
-  ];
-
-  String name() {
-    return _names[_rand.nextInt(_names.length)];
-  }
-
-  String orderCategory() {
-    return orderCategories[_rand.nextInt(orderCategories.length)];
-  }
-
-  String donationCenterName() {
-    return _donationCentersNames[_rand.nextInt(_donationCentersNames.length)];
-  }
-
-  bool boolean() {
+  bool _boolean() {
     return _rand.nextBool();
   }
 
-  T oneOf<T>(List<T> choices) {
+  T _oneOf<T>(List<T> choices) {
     return choices[_rand.nextInt(choices.length)];
   }
 
-  List<T> sample<T>(List<T> population, {int? size}) {
+  List<T> _sample<T>(List<T> population, {int? size}) {
     size ??= count(population.length);
     size = size > population.length ? population.length : size;
     return List.generate(
@@ -86,13 +40,9 @@ class Generator {
   static const _countryCodes = [
     '+249',
   ];
-  String phoneNumber() {
-    return _countryCodes.random(_rand) + '123456789';
-  }
 
-  String text(int count, [int? max]) {
-    count = max == null ? count : _rand.nextInt(max - count) + count;
-    return List.generate(count, (i) => _words.random(_rand)).join(' ');
+  String _phoneNumber() {
+    return _countryCodes.random(_rand) + '123456789';
   }
 
   /// if before and after aren't specified, the returned dateTime is between
@@ -101,7 +51,7 @@ class Generator {
   /// and the year before it.
   /// if before isn't specified, the returned dateTime is between `after` and the
   /// year after it.
-  DateTime dateTime({DateTime? after, DateTime? before}) {
+  DateTime _dateTime({DateTime? after, DateTime? before}) {
     after ??= before != null
         ? before.subtract(const Duration(days: 365))
         : DateTime.now();
@@ -114,7 +64,7 @@ class Generator {
         _rand.nextInt(millisecondsRange & ((1 << 32) - 1)) + afterMilliseconds);
   }
 
-  DateTime time({DateTime? after, DateTime? before}) {
+  DateTime _time({DateTime? after, DateTime? before}) {
     // // we don't use the year, month, and day fields, but they are required
     // defaults to 00:00 begining of day
     after = DateTime(
@@ -129,14 +79,66 @@ class Generator {
         _rand.nextInt(millisecondsRange & ((1 << 32) - 1)) + afterMilliseconds);
   }
 
-  TimeOfDay timeOfDay({TimeOfDay? after}) {
+  TimeOfDay _timeOfDay({TimeOfDay? after}) {
     DateTime? afterTime;
     if (after != null) {
       afterTime = DateTime(2000, 1, 1, after.hour, after.minute, 0);
     }
-    final time = generator.time(after: afterTime);
+    final time = generator._time(after: afterTime);
     return TimeOfDay(hour: time.hour, minute: time.minute);
   }
+
+  double _rate() {
+    return _rand.nextInt(50) / 10;
+  }
+
+  static const _names = [
+    'The house of hades (Heroes of olympics)',
+    'My quiet Blacksmith, Life in Another world',
+    'It starts with us: A novel',
+    'Trapped in a dating Sim: The world',
+    'His dark material: The golden company',
+    'Batman: Arkham Unhinged vol. 1',
+  ];
+
+  static const _categories = [
+    'Romance',
+    'Thriller',
+    'Inspirational',
+    'Non-Fiction',
+  ];
+
+  final String _cover =
+      "https://static.wikia.nocookie.net/iceandfire/images/b/b6/Game_of_thrones.jpeg/revision/latest?cb=20130302001049";
+
+  final String _categoryCover =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7geJofAX7-2aS4LjFnuR2xibj-Hxcbm3WKg&usqp=CAU";
+
+  String _name() {
+    return _names[_rand.nextInt(_names.length)];
+  }
+
+  String _category() {
+    return _categories[_rand.nextInt(_categories.length)];
+  }
+
+  Book book() => Book(
+        id: _id(),
+        name: _name(),
+        coveUrl: _cover,
+        price: count(1, 50) * 10,
+        rate: _rate(),
+        categoriesIds: List.generate(
+          count(1, 5),
+          (index) => _category(),
+        ),
+      );
+
+  Category category() => Category(
+        id: _id(),
+        name: _category(),
+        imageUrl: _categoryCover,
+      );
 }
 
 extension RandomItemFromList on List {
@@ -144,56 +146,3 @@ extension RandomItemFromList on List {
     return this[random.nextInt(length)];
   }
 }
-
-const _words = [
-  'fall',
-  'former',
-  'happen',
-  'agent',
-  'response',
-  'result',
-  'my',
-  'gas',
-  'human',
-  'cultural',
-  'war',
-  'method',
-  'Democrat',
-  'you',
-  'notice',
-  'lay',
-  'reason',
-  'western',
-  'fill',
-  'key',
-  'force',
-  'event',
-  'leave',
-  'turn',
-  'find',
-  'prove',
-  'less',
-  'culture',
-  'son',
-  'sound',
-  'happy',
-  'fire',
-  'chair',
-  'race',
-  'eight',
-  'degree',
-  'forget',
-  'series',
-  'interesting',
-  'significant',
-  'surface',
-  'main',
-  'yeah',
-  'cancer',
-  'private',
-  'every',
-  'father',
-  'woman',
-  'chance',
-  'small'
-];

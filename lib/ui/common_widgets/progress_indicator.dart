@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/blocs/theme.dart';
 import 'package:flutter/material.dart';
 
 class AppProgressIndicator extends StatefulWidget {

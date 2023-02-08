@@ -1,7 +1,7 @@
-import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/blocs/theme.dart';
 import 'package:bibliotheque/i18n/translations.g.dart';
-import 'package:bibliotheque/ui/widgets/buttons.dart';
-import 'package:bibliotheque/ui/widgets/progress_indicator.dart';
+import 'package:bibliotheque/ui/common_widgets/buttons.dart';
+import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/utils/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

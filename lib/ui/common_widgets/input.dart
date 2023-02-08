@@ -1,6 +1,6 @@
-import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/blocs/theme.dart';
 import 'package:bibliotheque/i18n/translations.g.dart';
-import 'package:bibliotheque/ui/widgets/svg.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:flutter/material.dart';
 
 const kAppTextFieldHeight = 48.0;
