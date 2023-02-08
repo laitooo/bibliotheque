@@ -2,9 +2,9 @@ import 'package:bibliotheque/blocs/theme.dart';
 import 'package:bibliotheque/models/book.dart';
 import 'package:flutter/material.dart';
 
-class PopularBookCard extends StatelessWidget {
+class BookCard extends StatelessWidget {
   final Book book;
-  const PopularBookCard({Key? key, required this.book}) : super(key: key);
+  const BookCard({Key? key, required this.book}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

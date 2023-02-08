@@ -5,3 +5,7 @@ enum PopularBooksError {
 enum CategoriesError {
   networkError,
 }
+
+enum RecommendedBooksError {
+  networkError,
+}

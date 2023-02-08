@@ -1,9 +1,10 @@
 import 'package:bibliotheque/blocs/categories.dart';
 import 'package:bibliotheque/blocs/popular_books.dart';
+import 'package:bibliotheque/blocs/recommended_books.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/category_card.dart';
-import 'package:bibliotheque/ui/widgets/popular_book_card.dart';
+import 'package:bibliotheque/ui/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,6 +23,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          const SizedBox(height: 20),
           BlocProvider(
             create: (_) => PopularBooksBloc()..add(LoadPopularBooks()),
             child: _PopularBooksContainer(),
@@ -30,6 +32,11 @@ class HomeScreen extends StatelessWidget {
           BlocProvider(
             create: (_) => CategoriesBloc()..add(LoadCategories()),
             child: _CategoriesContainer(),
+          ),
+          const SizedBox(height: 20),
+          BlocProvider(
+            create: (_) => RecommendedBooksBloc()..add(LoadRecommendedBooks()),
+            child: _RecommendedBooksContainer(),
           ),
         ],
       ),
@@ -74,7 +81,7 @@ class _PopularBooksContainer extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 7),
-                    child: PopularBookCard(book: state.books![index]),
+                    child: BookCard(book: state.books![index]),
                   );
                 },
               ),
@@ -124,6 +131,56 @@ class _CategoriesContainer extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 7),
                     child: CategoryCard(category: state.categories![index]),
+                  );
+                },
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _RecommendedBooksContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<RecommendedBooksBloc, RecommendedBooksState>(
+      builder: (context, state) {
+        if (state.status == RecommendedBooksStatus.loading) {
+          return const Center(child: AppProgressIndicator(size: 100));
+        }
+
+        if (state.status == RecommendedBooksStatus.error) {
+          return TryAgainWidget(onPressed: () {
+            BlocProvider.of<RecommendedBooksBloc>(context)
+                .add(LoadRecommendedBooks());
+          });
+        }
+
+        return Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text('Recommended for you'),
+                  Icon(Icons.arrow_right_alt),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              height: 350,
+              child: ListView.builder(
+                itemCount: state.books!.length,
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 7),
+                    child: BookCard(book: state.books![index]),
                   );
                 },
               ),
