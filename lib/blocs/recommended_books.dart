@@ -1,5 +1,5 @@
 import 'package:bibliotheque/models/book.dart';
-import 'package:bibliotheque/repos/recommended_books.dart';
+import 'package:bibliotheque/repos/books.dart';
 import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/utils/bloc.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
@@ -43,7 +43,7 @@ class LoadRecommendedBooks
 }
 
 class RecommendedBooksBloc extends BaseBloc<RecommendedBooksState> {
-  final _repo = serviceLocator.get<RecommendedBooksRepository>();
+  final _repo = serviceLocator.get<BooksRepository>();
 
   RecommendedBooksBloc()
       : super(RecommendedBooksState(RecommendedBooksStatus.loading));

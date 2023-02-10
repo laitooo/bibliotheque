@@ -19,10 +19,15 @@ class CategoriesState {
 }
 
 class LoadCategories extends BlocEvent<CategoriesState, CategoriesBloc> {
+  final bool allCategories;
+
+  LoadCategories({required this.allCategories});
   @override
   Stream<CategoriesState> toState(
       CategoriesState current, CategoriesBloc bloc) async* {
-    final res = await bloc._repo.getCategories();
+    final res = allCategories
+        ? await bloc._repo.getAllCategories()
+        : await bloc._repo.getTopCategories();
 
     yield res.incase(
       value: (value) {
