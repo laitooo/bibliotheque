@@ -1,7 +1,6 @@
 import 'package:bibliotheque/i18n/translations.g.dart';
+import 'package:bibliotheque/repos/books.dart';
 import 'package:bibliotheque/repos/categories.dart';
-import 'package:bibliotheque/repos/popular_books.dart';
-import 'package:bibliotheque/repos/recommended_books.dart';
 import 'package:bibliotheque/repos/wish_list.dart';
 import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/widgets.dart';
@@ -17,14 +16,11 @@ Future<void> initServices() async {
   String storedLocale = prefs.getPreferredLanguage() ?? 'en';
   LocaleSettings.setLocaleRaw(storedLocale);
 
-  serviceLocator.registerSingleton<PopularBooksRepository>(
-    MockPopularBooksRepository(),
+  serviceLocator.registerSingleton<BooksRepository>(
+    MockBooksRepository(),
   );
   serviceLocator.registerSingleton<CategoriesRepositories>(
     MockCategoriesRepositories(),
-  );
-  serviceLocator.registerSingleton<RecommendedBooksRepository>(
-    MockRecommendedBooksRepository(),
   );
   serviceLocator.registerSingleton<WishListRepository>(
     MockWishListRepository(),

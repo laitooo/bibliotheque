@@ -1,5 +1,7 @@
+import 'package:bibliotheque/blocs/books_bloc.dart';
 import 'package:bibliotheque/blocs/theme.dart';
 import 'package:bibliotheque/models/category.dart';
+import 'package:bibliotheque/ui/widgets/books_list_page.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -11,7 +13,17 @@ class CategoryCard extends StatelessWidget {
     return Stack(
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => BooksListPage(
+                  title: category.name,
+                  categoryId: category.id,
+                  booksSource: BooksSource.category,
+                ),
+              ),
+            );
+          },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(5),
             child: SizedBox(

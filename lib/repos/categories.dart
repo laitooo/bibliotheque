@@ -4,12 +4,13 @@ import 'package:bibliotheque/utils/generator.dart';
 import 'package:bibliotheque/utils/result.dart';
 
 abstract class CategoriesRepositories {
-  Future<Result<List<Category>, CategoriesError>> getCategories();
+  Future<Result<List<Category>, CategoriesError>> getTopCategories();
+  Future<Result<List<Category>, CategoriesError>> getAllCategories();
 }
 
 class MockCategoriesRepositories extends CategoriesRepositories {
   @override
-  Future<Result<List<Category>, CategoriesError>> getCategories() async {
+  Future<Result<List<Category>, CategoriesError>> getTopCategories() async {
     await Future.delayed(
       const Duration(seconds: 1),
     );
@@ -17,6 +18,20 @@ class MockCategoriesRepositories extends CategoriesRepositories {
     return Result.value(
       List.generate(
         4,
+        (index) => generator.category(),
+      ),
+    );
+  }
+
+  @override
+  Future<Result<List<Category>, CategoriesError>> getAllCategories() async {
+    await Future.delayed(
+      const Duration(seconds: 1),
+    );
+
+    return Result.value(
+      List.generate(
+        20,
         (index) => generator.category(),
       ),
     );

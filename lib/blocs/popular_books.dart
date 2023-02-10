@@ -1,5 +1,5 @@
 import 'package:bibliotheque/models/book.dart';
-import 'package:bibliotheque/repos/popular_books.dart';
+import 'package:bibliotheque/repos/books.dart';
 import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/utils/bloc.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
@@ -42,7 +42,7 @@ class LoadPopularBooks extends BlocEvent<PopularBooksState, PopularBooksBloc> {
 }
 
 class PopularBooksBloc extends BaseBloc<PopularBooksState> {
-  final _repo = serviceLocator.get<PopularBooksRepository>();
+  final _repo = serviceLocator.get<BooksRepository>();
 
   PopularBooksBloc() : super(PopularBooksState(PopularBooksStatus.loading));
 }

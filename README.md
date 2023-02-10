@@ -18,3 +18,4 @@ A flutter mobile app for selling books
 - Settings
 - Night mode
 - Authentication
+- New Releases

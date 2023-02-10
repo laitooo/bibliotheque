@@ -4,6 +4,7 @@ import 'package:bibliotheque/blocs/recommended_books.dart';
 import 'package:bibliotheque/blocs/wish_list.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
+import 'package:bibliotheque/ui/screens/categories/categories_list.dart';
 import 'package:bibliotheque/ui/widgets/category_card.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,10 @@ class HomeTab extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           BlocProvider(
-            create: (_) => CategoriesBloc()..add(LoadCategories()),
+            create: (_) => CategoriesBloc()
+              ..add(
+                LoadCategories(allCategories: false),
+              ),
             child: _CategoriesContainer(),
           ),
           const SizedBox(height: 20),
@@ -117,9 +121,13 @@ class _CategoriesContainer extends StatelessWidget {
         }
 
         if (state.status == CategoriesStatus.error) {
-          return TryAgainWidget(onPressed: () {
-            BlocProvider.of<CategoriesBloc>(context).add(LoadCategories());
-          });
+          return TryAgainWidget(
+            onPressed: () {
+              BlocProvider.of<CategoriesBloc>(context).add(
+                LoadCategories(allCategories: false),
+              );
+            },
+          );
         }
 
         return Column(
@@ -128,9 +136,26 @@ class _CategoriesContainer extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('Explore by Genre'),
-                  Icon(Icons.arrow_right_alt),
+                children: [
+                  const Text('Explore by Genre'),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => BlocProvider(
+                            create: (_) => CategoriesBloc()
+                              ..add(
+                                LoadCategories(
+                                  allCategories: true,
+                                ),
+                              ),
+                            child: const CategoriesListScreen(),
+                          ),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.arrow_right_alt),
+                  ),
                 ],
               ),
             ),

@@ -13,3 +13,7 @@ enum RecommendedBooksError {
 enum WishListError {
   networkError,
 }
+
+enum BooksError {
+  networkError,
+}
