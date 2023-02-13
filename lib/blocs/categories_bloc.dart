@@ -1,5 +1,5 @@
 import 'package:bibliotheque/models/category.dart';
-import 'package:bibliotheque/repos/categories.dart';
+import 'package:bibliotheque/repos/categories_repo.dart';
 import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/utils/bloc.dart';
 import 'package:bibliotheque/utils/error_enums.dart';

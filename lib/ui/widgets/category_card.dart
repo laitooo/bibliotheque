@@ -1,5 +1,5 @@
 import 'package:bibliotheque/blocs/books_bloc.dart';
-import 'package:bibliotheque/blocs/theme.dart';
+import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/category.dart';
 import 'package:bibliotheque/ui/widgets/books_list_page.dart';
 import 'package:flutter/material.dart';

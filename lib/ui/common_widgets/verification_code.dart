@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bibliotheque/blocs/theme.dart';
+import 'package:bibliotheque/blocs/theme_bloc.dart';
 
 class VerificationCode extends StatefulWidget {
   final void Function(String code) onChanged;

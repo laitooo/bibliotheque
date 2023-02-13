@@ -1,4 +1,4 @@
-import 'package:bibliotheque/blocs/theme.dart';
+import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:flutter/material.dart';
 

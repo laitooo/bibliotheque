@@ -3,6 +3,7 @@
 import 'dart:math';
 
 import 'package:bibliotheque/models/book.dart';
+import 'package:bibliotheque/models/book_details.dart';
 import 'package:bibliotheque/models/category.dart';
 import 'package:flutter/material.dart';
 
@@ -108,11 +109,28 @@ class Generator {
     'Non-Fiction',
   ];
 
+  static const _authors = [
+    'J.K. Rowling',
+    'Collen Hoover',
+    'Victor franklin',
+    'Phillip pullman',
+  ];
+
   final String _cover =
       "https://static.wikia.nocookie.net/iceandfire/images/b/b6/Game_of_thrones.jpeg/revision/latest?cb=20130302001049";
 
   final String _categoryCover =
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7geJofAX7-2aS4LjFnuR2xibj-Hxcbm3WKg&usqp=CAU";
+
+  final String _loremIpsum =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      " Pellentesque dictum consectetur tincidunt. Nullam ultrices imperdiet posuere."
+      " Maecenas ipsum dui, tincidunt nec lorem sed, blandit congue lacus. Cras fermentum ut nunc at mattis."
+      " Etiam sed risus enim. Cras vel est in tellus feugiat fringilla. Praesent consequat lectus quis elementum commodo."
+      " Integer quis suscipit enim. Donec ipsum purus, posuere at sem vel, finibus placerat erat."
+      " Mauris consequat ipsum eros, in mattis nibh consectetur eu. Praesent varius faucibus dolor non malesuada."
+      " Cras vel tellus in nisl sagittis lacinia. Suspendisse eget porta enim. Nullam feugiat fringilla gravida."
+      " Suspendisse a neque malesuada, mollis tortor vitae.";
 
   String _name() {
     return _names[_rand.nextInt(_names.length)];
@@ -120,6 +138,10 @@ class Generator {
 
   String _category() {
     return _categories[_rand.nextInt(_categories.length)];
+  }
+
+  String _author() {
+    return _authors[_rand.nextInt(_authors.length)];
   }
 
   Book book() => Book(
@@ -138,6 +160,25 @@ class Generator {
         id: _id(),
         name: _category(),
         imageUrl: _categoryCover,
+      );
+
+  BookDetails bookDetails() => BookDetails(
+        id: _id(),
+        name: _name(),
+        coveUrl: _cover,
+        price: count(1, 50) * 10,
+        rate: _rate(),
+        author: _author(),
+        numPages: count(100, 1000),
+        numBuyers: count(1, 100),
+        numReviews: count(1, 2000),
+        releaseDate: DateTime(2015, 11, 24),
+        aboutBook: _loremIpsum,
+        reviewsPercentage: [0.6, 0.12, 0.05, 0.03, 0.2],
+        categories: List.generate(
+          count(1, 5),
+          (index) => _category(),
+        ),
       );
 }
 
