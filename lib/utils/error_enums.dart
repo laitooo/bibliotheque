@@ -17,3 +17,7 @@ enum WishListError {
 enum BooksError {
   networkError,
 }
+
+enum BookDetailsError {
+  networkError,
+}

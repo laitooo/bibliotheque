@@ -1,4 +1,4 @@
-import 'package:bibliotheque/blocs/categories.dart';
+import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/category_card.dart';

@@ -1,10 +1,10 @@
-import 'package:bibliotheque/blocs/categories.dart';
-import 'package:bibliotheque/blocs/popular_books.dart';
-import 'package:bibliotheque/blocs/recommended_books.dart';
-import 'package:bibliotheque/blocs/wish_list.dart';
+import 'package:bibliotheque/blocs/categories_bloc.dart';
+import 'package:bibliotheque/blocs/popular_books_bloc.dart';
+import 'package:bibliotheque/blocs/recommended_books_bloc.dart';
+import 'package:bibliotheque/blocs/wish_list_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
-import 'package:bibliotheque/ui/screens/categories/categories_list.dart';
+import 'package:bibliotheque/ui/screens/categories/categories_list_screen.dart';
 import 'package:bibliotheque/ui/widgets/category_card.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
 import 'package:flutter/material.dart';

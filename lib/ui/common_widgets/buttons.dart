@@ -1,4 +1,4 @@
-import 'package:bibliotheque/blocs/theme.dart';
+import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
 import 'package:bibliotheque/models/book.dart';
-import 'package:bibliotheque/repos/wish_list.dart';
+import 'package:bibliotheque/repos/wish_list_repo.dart';
 import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/utils/bloc.dart';
 import 'package:bibliotheque/utils/error_enums.dart';

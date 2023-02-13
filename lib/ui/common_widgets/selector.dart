@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bibliotheque/blocs/theme.dart';
+import 'package:bibliotheque/blocs/theme_bloc.dart';
 
 class QuantitySelector extends StatelessWidget {
   const QuantitySelector({
