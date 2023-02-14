@@ -4,14 +4,14 @@ A flutter mobile app for selling books
 
 ## DONE:
 - Home screen
+- Books by category
 - Book details
+- Notifications
 
 
 ## TODO:
-- Notifications
 - Search
 - Filter
-- Books by category
 - Popular books
 - Recommended
 - Wish list

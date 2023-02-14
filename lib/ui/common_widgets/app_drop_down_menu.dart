@@ -42,20 +42,20 @@ class AppDropDownMenuState<T> extends State<AppDropDownMenu> {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
-        color: context.theme.dropDownBackgroundColor,
+        color: context.theme.secondaryColor,
         borderRadius: BorderRadius.circular(30),
         border: Border.all(
-          color: context.theme.borderColor,
+          color: context.theme.primaryColor,
           width: 1,
         ),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<T>(
-          dropdownColor: context.theme.dropDownBackgroundColor,
+          dropdownColor: context.theme.backgroundColor,
           hint: Text(
             widget.hintText,
             style: TextStyle(
-              color: context.theme.dropDownTextColor,
+              color: context.theme.textColor1,
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
@@ -69,7 +69,7 @@ class AppDropDownMenuState<T> extends State<AppDropDownMenu> {
               Icon(
                 Icons.keyboard_arrow_down_outlined,
                 size: 20,
-                color: context.theme.dropDownIconColor,
+                color: context.theme.iconColor1,
               ),
             ],
           ),
@@ -93,7 +93,7 @@ class AppDropDownMenuState<T> extends State<AppDropDownMenu> {
       child: Icon(
         Icons.clear,
         size: 15,
-        color: context.theme.dropDownIconColor,
+        color: context.theme.iconColor1,
       ),
     );
   }

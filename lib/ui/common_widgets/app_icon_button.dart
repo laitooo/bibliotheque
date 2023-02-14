@@ -22,11 +22,11 @@ class AppIconButton extends StatelessWidget {
             height: 45,
             margin: const EdgeInsetsDirectional.fromSTEB(20, 0, 0, 20),
             decoration: BoxDecoration(
-              color: context.theme.iconBackgroundColor,
+              color: context.theme.backgroundColor,
               borderRadius: BorderRadius.circular(40),
               border: Border.all(
                 width: 2,
-                color: context.theme.borderColor,
+                color: context.theme.inActiveColor,
               ),
             ),
             child: IconButton(
@@ -35,7 +35,7 @@ class AppIconButton extends StatelessWidget {
                 child: Svg(
                   svgPath,
                   size: 20,
-                  color: context.theme.iconColor,
+                  color: context.theme.iconColor1,
                 ),
               ),
             ),

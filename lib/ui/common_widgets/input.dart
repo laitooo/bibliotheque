@@ -22,7 +22,8 @@ class _TextFieldDecoration extends StatelessWidget {
       decoration: BoxDecoration(
           color: context.theme.backgroundColor,
           borderRadius: BorderRadius.circular(25),
-          border: Border.all(color: borderColor ?? context.theme.borderColor)),
+          border:
+              Border.all(color: borderColor ?? context.theme.inActiveColor)),
       child: child,
     );
   }
@@ -143,7 +144,7 @@ class _AppTextFieldState extends State<AppTextField> {
                             keyboardType: widget.keyboardType,
                             textDirection: widget.textDirection,
                             style: TextStyle(
-                              color: context.theme.primaryTextColor,
+                              color: context.theme.primaryColor,
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                             ),
@@ -152,7 +153,7 @@ class _AppTextFieldState extends State<AppTextField> {
                               border: InputBorder.none,
                               hintText: widget.hint,
                               hintStyle: TextStyle(
-                                color: context.theme.hintColor,
+                                color: context.theme.textColor1,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -224,7 +225,7 @@ class _AppFormFieldState extends State<AppFormField> {
   @override
   Widget build(BuildContext context) {
     return IconTheme(
-      data: IconThemeData(color: context.theme.dropDownTextColor),
+      data: IconThemeData(color: context.theme.iconColor1),
       child: _TextFieldDecoration(
         borderColor: widget.borderColor,
         child: Container(
@@ -238,7 +239,7 @@ class _AppFormFieldState extends State<AppFormField> {
             keyboardType: TextInputType.multiline,
             maxLines: widget.isSingleLine ? 1 : null,
             style: TextStyle(
-              color: context.theme.dropDownTextColor,
+              color: context.theme.textColor1,
               fontSize: 14,
               fontWeight: FontWeight.w400,
             ),
@@ -253,7 +254,7 @@ class _AppFormFieldState extends State<AppFormField> {
               errorBorder: InputBorder.none,
               contentPadding: const EdgeInsets.all(10),
               hintStyle: TextStyle(
-                color: context.theme.dropDownTextColor,
+                color: context.theme.textColor2,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
@@ -322,7 +323,7 @@ class _AppPhoneNumberFieldState extends State<AppPhoneNumberField> {
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: Svg(
         'assets/icons/phone_number.svg',
-        color: context.theme.hintColor,
+        color: context.theme.iconColor1,
         matchTextDirection: true,
         size: 24.0,
       ),
@@ -369,7 +370,7 @@ class _AppPhoneNumberFieldState extends State<AppPhoneNumberField> {
           const SizedBox(width: 6.0),
           DecoratedBox(
             decoration: BoxDecoration(
-              color: context.theme.borderColor,
+              color: context.theme.inActiveColor,
             ),
             child: const SizedBox(width: 1, height: double.infinity),
           ),

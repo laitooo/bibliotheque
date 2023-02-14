@@ -2,6 +2,7 @@ import 'package:bibliotheque/i18n/translations.g.dart';
 import 'package:bibliotheque/repos/book_details_repo.dart';
 import 'package:bibliotheque/repos/books_repo.dart';
 import 'package:bibliotheque/repos/categories_repo.dart';
+import 'package:bibliotheque/repos/notificatios_repo.dart';
 import 'package:bibliotheque/repos/wish_list_repo.dart';
 import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/widgets.dart';
@@ -28,5 +29,8 @@ Future<void> initServices() async {
   );
   serviceLocator.registerSingleton<BookDetailsRepository>(
     MockBookDetailsRepository(),
+  );
+  serviceLocator.registerSingleton<NotificationsRepository>(
+    MockNotificationsRepository(),
   );
 }

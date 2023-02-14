@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:bibliotheque/models/book.dart';
 import 'package:bibliotheque/models/book_details.dart';
 import 'package:bibliotheque/models/category.dart';
+import 'package:bibliotheque/models/notification.dart' as no;
 import 'package:flutter/material.dart';
 
 final generator = Generator();
@@ -23,7 +24,7 @@ class Generator {
     return _rand.nextInt(max - min) + min;
   }
 
-  bool _boolean() {
+  bool boolean() {
     return _rand.nextBool();
   }
 
@@ -178,6 +179,26 @@ class Generator {
         categories: List.generate(
           count(1, 5),
           (index) => _category(),
+        ),
+      );
+
+  no.Notification notification() => no.Notification(
+        id: _id(),
+        user: 'user',
+        event: no.NotificationEvent(
+          context: {},
+          type: _oneOf(no.NotificationType.values),
+        ),
+        target: no.NotificationTarget.donor,
+        role: no.UserRole.donor,
+        title: 'Multiple cards features!',
+        body:
+            'Update the app now to get access to the latest features for better experience using the app.',
+        titleAr: 'titleAr',
+        bodyAr: 'bodyAr',
+        date: _dateTime(
+          before: DateTime(2000),
+          after: DateTime.now(),
         ),
       );
 }

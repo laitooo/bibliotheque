@@ -122,7 +122,7 @@ class TryAgainWidget extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,
-              color: context.theme.primaryTextColor,
+              color: context.theme.textColor1,
             ),
           ),
           const SizedBox(height: 16),

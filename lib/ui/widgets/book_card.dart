@@ -52,7 +52,7 @@ class BookCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: 16,
-                  color: context.theme.primaryTextColor,
+                  color: context.theme.textColor1,
                 ),
               ),
             ),
