@@ -180,7 +180,7 @@ class __DigitBlockState extends State<_DigitBlock> {
         ),
         style: TextStyle(
           fontSize: 18.0,
-          color: isEmpty ? Colors.transparent : context.theme.primaryTextColor,
+          color: isEmpty ? Colors.transparent : context.theme.primaryColor,
         ),
         onChanged: (value) {
           // we need to detect deletions even when the field is empty to move

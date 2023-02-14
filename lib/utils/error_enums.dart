@@ -21,3 +21,11 @@ enum BooksError {
 enum BookDetailsError {
   networkError,
 }
+
+enum NotificationsError {
+  networkError,
+}
+
+enum UnreadNotificationsError {
+  networkError,
+}

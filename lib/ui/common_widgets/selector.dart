@@ -26,7 +26,7 @@ class QuantitySelector extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: context.theme.primaryTextColor,
+                color: context.theme.primaryColor,
               ),
             ),
           ),
@@ -69,12 +69,15 @@ class QuantitySelector extends StatelessWidget {
           margin: const EdgeInsets.all(4.0),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: context.theme.dropDownBackgroundColor,
+            color: context.theme.backgroundColor,
             border: Border.all(
-              color: context.theme.borderColor,
+              color: context.theme.inActiveColor,
             ),
           ),
-          child: Icon(icon, color: context.theme.iconColor),
+          child: Icon(
+            icon,
+            color: context.theme.iconColor1,
+          ),
         ),
       ),
     );

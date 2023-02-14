@@ -46,7 +46,7 @@ class CategoryCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: 16,
-              color: context.theme.cardColor,
+              color: context.theme.textColor2,
             ),
           ),
         ),

@@ -1,10 +1,12 @@
 import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/blocs/popular_books_bloc.dart';
 import 'package:bibliotheque/blocs/recommended_books_bloc.dart';
+import 'package:bibliotheque/blocs/unread_notifications_bloc.dart';
 import 'package:bibliotheque/blocs/wish_list_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/categories/categories_list_screen.dart';
+import 'package:bibliotheque/ui/screens/notifications/notifications_icon_button.dart';
 import 'package:bibliotheque/ui/widgets/category_card.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
 import 'package:flutter/material.dart';
@@ -24,10 +26,10 @@ class HomeTab extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(Icons.search),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications_none_outlined),
-          ),
+          BlocProvider(
+            create: (_) => UnreadNotificationsBloc(),
+            child: const NotificationsIconButton(),
+          )
         ],
       ),
       body: ListView(

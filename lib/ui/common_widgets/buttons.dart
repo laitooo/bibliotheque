@@ -46,7 +46,7 @@ class MainButton extends StatelessWidget {
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(onPressed != null
               ? backgroundColor ?? context.theme.primaryColor
-              : context.theme.hintColor),
+              : context.theme.textColor3),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -54,7 +54,7 @@ class MainButton extends StatelessWidget {
           ),
           shadowColor: showShadow
               ? MaterialStateProperty.all(
-                  shadowColor ?? context.theme.mainButtonShadowColor)
+                  shadowColor ?? context.theme.inActiveColor)
               : MaterialStateProperty.all(Colors.transparent),
         ),
         onPressed: isLoading ? null : onPressed,
@@ -74,7 +74,7 @@ class MainButton extends StatelessWidget {
                     Text(
                       title,
                       style: TextStyle(
-                        color: textColor ?? context.theme.mainButtonTextColor,
+                        color: textColor ?? context.theme.textColor1,
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                       ),
@@ -124,7 +124,7 @@ class MainFlatButton extends StatelessWidget {
       child: TextButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(
-              backgroundColor ?? context.theme.cardColor),
+              backgroundColor ?? context.theme.backgroundColor),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               side: BorderSide(
@@ -148,7 +148,7 @@ class MainFlatButton extends StatelessWidget {
                     Text(
                       title,
                       style: TextStyle(
-                        color: textColor ?? context.theme.cardColor,
+                        color: textColor ?? context.theme.textColor1,
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                       ),
@@ -194,7 +194,7 @@ class MainIconButton extends StatelessWidget {
           backgroundColor: MaterialStateProperty.all(Colors.transparent),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
-              side: BorderSide(color: context.theme.borderColor),
+              side: BorderSide(color: context.theme.inActiveColor),
               borderRadius: BorderRadius.circular(10),
             ),
           ),
@@ -211,7 +211,7 @@ class MainIconButton extends StatelessWidget {
                     Text(
                       title,
                       style: TextStyle(
-                        color: context.theme.titleColor,
+                        color: context.theme.textColor1,
                         fontSize: 14,
                       ),
                     ),

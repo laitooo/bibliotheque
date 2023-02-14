@@ -39,9 +39,7 @@ class NoDataPage extends StatelessWidget {
                 text,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: subText != null
-                      ? context.theme.primaryTextColor
-                      : context.theme.secondaryTextColor,
+                  color: context.theme.textColor1,
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
                 ),
@@ -52,9 +50,9 @@ class NoDataPage extends StatelessWidget {
                   subText!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: context.theme.secondaryTextColor,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500,
+                    color: context.theme.textColor1,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ],
