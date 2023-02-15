@@ -102,7 +102,10 @@ class _BooksListPageState extends State<_BooksListPage> {
                 showMethod(),
                 ...state.books!
                     .map(
-                      (book) => HorizontalBookCard(book: book),
+                      (book) => HorizontalBookCard(
+                        book: book,
+                        isWishList: false,
+                      ),
                     )
                     .toList(),
               ],
