@@ -8,10 +8,13 @@ import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/categories/categories_list_screen.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:bibliotheque/ui/screens/notifications/notifications_icon_button.dart';
+import 'package:bibliotheque/ui/widgets/books_list_page.dart';
 import 'package:bibliotheque/ui/widgets/category_card.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../blocs/books_bloc.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -226,9 +229,20 @@ class _RecommendedBooksContainer extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('Recommended for you'),
-                  Icon(Icons.arrow_right_alt),
+                children: [
+                  const Text('Recommended for you'),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const BooksListPage(
+                              title: "Recommended for you",
+                              booksSource: BooksSource.recommended,
+                            ),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.arrow_right_alt)),
                 ],
               ),
             ),
