@@ -20,7 +20,8 @@ class BookDetails with _$BookDetails {
     required int numPages,
     required int numBuyers,
     required List<double> reviewsPercentage,
-    required List<String> categories,
+    required List<String> categoriesNames,
+    required List<String> categoriesIds,
   }) = _BookDetails;
 
   factory BookDetails.fromJson(Map<String, dynamic> json) =>

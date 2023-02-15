@@ -41,6 +41,7 @@ abstract class AppThemeData {
   Color get iconColor1;
   Color get activeColor;
   Color get inActiveColor;
+  Color get tagBackgroundColor;
 }
 
 class _InputThemeData extends _ChildThemeData {
@@ -92,6 +93,7 @@ class LightThemeData extends AppThemeData {
   Color get iconColor1 => Colors.black;
   Color get activeColor => primaryColor;
   Color get inActiveColor => Colors.grey;
+  Color get tagBackgroundColor => const Color(0xFFE4E5EF);
 }
 
 class DarkThemeData extends LightThemeData {}
