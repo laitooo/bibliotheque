@@ -95,8 +95,15 @@ class BookCard extends StatelessWidget {
 
 class HorizontalBookCard extends StatelessWidget {
   final Book book;
+  final bool isWishList;
+  final void Function()? onRemoveClicked;
 
-  const HorizontalBookCard({Key? key, required this.book}) : super(key: key);
+  const HorizontalBookCard({
+    Key? key,
+    required this.book,
+    required this.isWishList,
+    this.onRemoveClicked,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -130,69 +137,117 @@ class HorizontalBookCard extends StatelessWidget {
             ),
             const SizedBox(width: 20),
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Stack(
                 children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      book.name,
-                      maxLines: 2,
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        height: 1.5,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: context.theme.textColor1,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(
-                        Icons.star_rate_outlined,
-                        size: 14,
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          book.name,
+                          maxLines: 2,
+                          textAlign: TextAlign.start,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            height: 1.5,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: context.theme.textColor1,
+                          ),
+                        ),
                       ),
-                      const SizedBox(width: 5),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.star_rate_outlined,
+                            size: 14,
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            book.rate.toString(),
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
                       Text(
-                        book.rate.toString(),
+                        "\$ " + book.price.toString(),
                         style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Wrap(
+                        spacing: 10,
+                        runSpacing: 8,
+                        children: List.generate(
+                          book.categoriesNames.length,
+                          (index) => Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 6, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: context.theme.tagBackgroundColor,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Text(
+                              book.categoriesNames[index],
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: context.theme.textColor1,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 12),
-                  Text(
-                    "\$ " + book.price.toString(),
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 8,
-                    children: List.generate(
-                      book.categoriesNames.length,
-                      (index) => Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 6, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: context.theme.tagBackgroundColor,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Text(
-                          book.categoriesNames[index],
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: context.theme.textColor1,
-                          ),
-                        ),
+                  Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 40),
+                      child: PopupMenuButton(
+                        icon: const Icon(Icons.list),
+                        padding: EdgeInsets.zero,
+                        itemBuilder: (_) {
+                          return [
+                            PopupMenuItem(
+                              child: Row(
+                                children: const [
+                                  Icon(Icons.remove),
+                                  SizedBox(width: 10),
+                                  Text("Remove from wish list"),
+                                ],
+                              ),
+                              onTap: onRemoveClicked,
+                            ),
+                            PopupMenuItem(
+                              child: Row(
+                                children: const [
+                                  Icon(Icons.share),
+                                  SizedBox(width: 10),
+                                  Text("Share"),
+                                ],
+                              ),
+                              onTap: () {},
+                            ),
+                            PopupMenuItem(
+                              child: Row(
+                                children: const [
+                                  Icon(Icons.info_outline),
+                                  SizedBox(width: 10),
+                                  Text("About the app"),
+                                ],
+                              ),
+                              onTap: () {},
+                            ),
+                          ];
+                        },
                       ),
                     ),
                   ),

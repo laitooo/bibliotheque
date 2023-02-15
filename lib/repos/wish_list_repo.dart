@@ -4,21 +4,30 @@ import 'package:bibliotheque/utils/generator.dart';
 import 'package:bibliotheque/utils/result.dart';
 
 abstract class WishListRepository {
-  Future<Result<List<Book>, WishListError>> getWishList();
+  Future<Result<List<Book>, WishListError>> getWishList(bool loadAll);
+  Future<Result<void, WishListError>> removeFromWishList(String bookId);
 }
 
 class MockWishListRepository extends WishListRepository {
   @override
-  Future<Result<List<Book>, WishListError>> getWishList() async {
+  Future<Result<List<Book>, WishListError>> getWishList(bool loadAll) async {
     await Future.delayed(
       const Duration(seconds: 1),
     );
 
     return Result.value(
       List.generate(
-        5,
+        loadAll ? 12 : 5,
         (index) => generator.book(),
       ),
     );
+  }
+
+  @override
+  Future<Result<void, WishListError>> removeFromWishList(String bookId) async {
+    await Future.delayed(
+      const Duration(seconds: 1),
+    );
+    return Result.value(null);
   }
 }

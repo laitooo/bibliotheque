@@ -64,7 +64,7 @@ class HomeTab extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           BlocProvider(
-            create: (_) => WishListBloc()..add(LoadWishList()),
+            create: (_) => WishListBloc()..add(LoadWishList(false)),
             child: _WishListContainer(
               onWishListClicked: () {
                 if (globalHomeScreenKey.currentState != null) {
@@ -284,7 +284,7 @@ class _WishListContainer extends StatelessWidget {
 
         if (state.status == WishListStatus.error) {
           return TryAgainWidget(onPressed: () {
-            BlocProvider.of<WishListBloc>(context).add(LoadWishList());
+            BlocProvider.of<WishListBloc>(context).add(LoadWishList(false));
           });
         }
 
