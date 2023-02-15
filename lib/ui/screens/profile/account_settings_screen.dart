@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/screens/profile/change_language_page.dart';
 import 'package:flutter/material.dart';
 
 class AccountSettingsScreen extends StatelessWidget {
@@ -70,10 +71,10 @@ class AccountSettingsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           _settingsItem(
+            context,
             "Payment methods",
             Icons.payment,
-            () {},
-            context,
+            const ChangeLanguagePage(),
           ),
           const SizedBox(height: 15),
           Divider(
@@ -82,45 +83,45 @@ class AccountSettingsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           _settingsItem(
+            context,
             "Personal Info",
             Icons.supervised_user_circle_sharp,
-            () {},
-            context,
+            const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
+            context,
             "Notification",
             Icons.notifications,
-            () {},
-            context,
+            const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
+            context,
             "Preferences",
             Icons.settings,
-            () {},
-            context,
+            const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
+            context,
             "Security",
             Icons.security,
-            () {},
-            context,
+            const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
+            context,
             "Language",
             Icons.language,
-            () {},
-            context,
+            const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
+            context,
             "DarkMode",
             Icons.remove_red_eye_sharp,
-            () {},
-            context,
+            const ChangeLanguagePage(),
           ),
           const SizedBox(height: 15),
           Divider(
@@ -129,24 +130,24 @@ class AccountSettingsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           _settingsItem(
+            context,
             "Help center",
             Icons.help,
-            () {},
-            context,
+            const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
+            context,
             "About the app",
             Icons.info,
-            () {},
-            context,
+            const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
+            context,
             "Logout",
             Icons.logout,
-            () {},
-            context,
+            const ChangeLanguagePage(),
           ),
           const SizedBox(height: 50),
         ],
@@ -154,40 +155,47 @@ class AccountSettingsScreen extends StatelessWidget {
     );
   }
 
-  _settingsItem(String title, IconData iconData, Function() onClick,
-      BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(15),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: context.theme.iconBackgroundColor,
-          ),
-          child: Icon(
-            iconData,
-            size: 25,
-            color: Colors.blue,
-          ),
-        ),
-        const SizedBox(width: 20),
-        Center(
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: context.theme.textColor1,
+  _settingsItem(
+      BuildContext context, String title, IconData iconData, Widget newScreen) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => newScreen),
+        );
+      },
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: context.theme.iconBackgroundColor,
+            ),
+            child: Icon(
+              iconData,
+              size: 25,
+              color: Colors.blue,
             ),
           ),
-        ),
-        const Spacer(),
-        Icon(
-          Icons.chevron_right_sharp,
-          color: context.theme.iconColor1,
-          size: 20,
-        ),
-      ],
+          const SizedBox(width: 20),
+          Center(
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: context.theme.textColor1,
+              ),
+            ),
+          ),
+          const Spacer(),
+          Icon(
+            Icons.chevron_right_sharp,
+            color: context.theme.iconColor1,
+            size: 20,
+          ),
+        ],
+      ),
     );
   }
 }
