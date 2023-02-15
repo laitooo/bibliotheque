@@ -11,6 +11,7 @@ class Book with _$Book {
     required String coveUrl,
     required double price,
     required double rate,
+    required List<String> categoriesNames,
     required List<String> categoriesIds,
   }) = _Book;
 

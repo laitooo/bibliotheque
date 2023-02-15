@@ -90,7 +90,7 @@ class BookDetailsScreen extends StatelessWidget {
                           spacing: 10,
                           runSpacing: 8,
                           children: List.generate(
-                            book.categories.length,
+                            book.categoriesNames.length,
                             (index) => Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 8),
@@ -98,9 +98,9 @@ class BookDetailsScreen extends StatelessWidget {
                                   color: Colors.grey.shade300,
                                   borderRadius: BorderRadius.circular(5),
                                 ),
-                                child: Text(book.categories[index])),
+                                child: Text(book.categoriesNames[index])),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),

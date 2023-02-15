@@ -6,6 +6,7 @@ import 'package:bibliotheque/blocs/wish_list_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/categories/categories_list_screen.dart';
+import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:bibliotheque/ui/screens/notifications/notifications_icon_button.dart';
 import 'package:bibliotheque/ui/widgets/category_card.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
@@ -37,7 +38,13 @@ class HomeTab extends StatelessWidget {
           const SizedBox(height: 20),
           BlocProvider(
             create: (_) => PopularBooksBloc()..add(LoadPopularBooks()),
-            child: _PopularBooksContainer(),
+            child: _PopularBooksContainer(
+              onPopularClicked: () {
+                if (globalHomeScreenKey.currentState != null) {
+                  globalHomeScreenKey.currentState!.gotoPopular();
+                }
+              },
+            ),
           ),
           const SizedBox(height: 20),
           BlocProvider(
@@ -55,7 +62,13 @@ class HomeTab extends StatelessWidget {
           const SizedBox(height: 20),
           BlocProvider(
             create: (_) => WishListBloc()..add(LoadWishList()),
-            child: _WishListContainer(),
+            child: _WishListContainer(
+              onWishListClicked: () {
+                if (globalHomeScreenKey.currentState != null) {
+                  globalHomeScreenKey.currentState!.gotoWishList();
+                }
+              },
+            ),
           ),
           const SizedBox(height: 40),
         ],
@@ -65,6 +78,11 @@ class HomeTab extends StatelessWidget {
 }
 
 class _PopularBooksContainer extends StatelessWidget {
+  final void Function() onPopularClicked;
+
+  const _PopularBooksContainer({Key? key, required this.onPopularClicked})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PopularBooksBloc, PopularBooksState>(
@@ -85,9 +103,12 @@ class _PopularBooksContainer extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('Top charts'),
-                  Icon(Icons.arrow_right_alt),
+                children: [
+                  const Text('Top charts'),
+                  IconButton(
+                    icon: const Icon(Icons.arrow_right_alt),
+                    onPressed: onPopularClicked,
+                  ),
                 ],
               ),
             ),
@@ -234,6 +255,11 @@ class _RecommendedBooksContainer extends StatelessWidget {
 }
 
 class _WishListContainer extends StatelessWidget {
+  final void Function() onWishListClicked;
+
+  const _WishListContainer({Key? key, required this.onWishListClicked})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<WishListBloc, WishListState>(
@@ -254,9 +280,12 @@ class _WishListContainer extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('Wish List'),
-                  Icon(Icons.arrow_right_alt),
+                children: [
+                  const Text('Wish List'),
+                  IconButton(
+                    icon: const Icon(Icons.arrow_right_alt),
+                    onPressed: onWishListClicked,
+                  ),
                 ],
               ),
             ),

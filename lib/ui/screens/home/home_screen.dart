@@ -1,26 +1,33 @@
+import 'package:bibliotheque/blocs/books_bloc.dart';
 import 'package:bibliotheque/ui/screens/home/home_tab.dart';
+import 'package:bibliotheque/ui/widgets/books_list_page.dart';
 import 'package:flutter/material.dart';
+
+final globalHomeScreenKey = GlobalKey<HomeScreenState>();
 
 class HomeScreen extends StatefulWidget {
   final _pages = [
     const HomeTab(),
-    const HomeTab(),
+    const BooksListPage(
+      title: "Top popular",
+      booksSource: BooksSource.popular,
+    ),
     const HomeTab(),
     const HomeTab(),
   ];
-
   HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
   int selectedTap = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: globalHomeScreenKey,
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
@@ -61,5 +68,17 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: widget._pages[selectedTap],
     );
+  }
+
+  void gotoPopular() {
+    setState(() {
+      selectedTap = 1;
+    });
+  }
+
+  void gotoWishList() {
+    setState(() {
+      selectedTap = 2;
+    });
   }
 }

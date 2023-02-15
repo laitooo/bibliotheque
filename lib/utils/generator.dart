@@ -155,6 +155,10 @@ class Generator {
           count(1, 5),
           (index) => _category(),
         ),
+        categoriesNames: List.generate(
+          count(1, 5),
+          (index) => _category(),
+        ),
       );
 
   Category category() => Category(
@@ -176,7 +180,11 @@ class Generator {
         releaseDate: DateTime(2015, 11, 24),
         aboutBook: _loremIpsum,
         reviewsPercentage: [0.6, 0.12, 0.05, 0.03, 0.2],
-        categories: List.generate(
+        categoriesIds: List.generate(
+          count(1, 5),
+          (index) => _category(),
+        ),
+        categoriesNames: List.generate(
           count(1, 5),
           (index) => _category(),
         ),

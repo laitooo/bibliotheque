@@ -2,18 +2,20 @@
 
 A flutter mobile app for selling books
 
+## DOING:
+- Recommended
+
 ## DONE:
 - Home screen
 - Books by category
 - Book details
 - Notifications
+- Popular books
 
 
 ## TODO:
 - Search
 - Filter
-- Popular books
-- Recommended
 - Wish list
 - User profile
 - Settings

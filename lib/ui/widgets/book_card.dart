@@ -42,48 +42,165 @@ class BookCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 4),
-          Expanded(
+          Flexible(
             child: GestureDetector(
               onTap: () {},
-              child: Text(
-                book.name,
-                maxLines: 2,
-                textAlign: TextAlign.start,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: context.theme.textColor1,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Text(
+                  book.name,
+                  maxLines: 2,
+                  textAlign: TextAlign.start,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    height: 1.5,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: context.theme.textColor1,
+                  ),
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 4),
-          IntrinsicHeight(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.star_rate_outlined,
-                  size: 14,
+          const SizedBox(height: 10),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(width: 15),
+              const Icon(
+                Icons.star_rate_outlined,
+                size: 14,
+              ),
+              const SizedBox(width: 5),
+              Text(
+                book.rate.toString(),
+                style: const TextStyle(
+                  fontSize: 14,
                 ),
-                const SizedBox(width: 5),
-                Text(
-                  book.rate.toString(),
-                  style: const TextStyle(
-                    fontSize: 14,
-                  ),
+              ),
+              const SizedBox(width: 15),
+              Text(
+                "\$" + book.price.toString(),
+                style: const TextStyle(
+                  fontSize: 14,
                 ),
-                const SizedBox(width: 15),
-                Text(
-                  book.price.toString() + "\$",
-                  style: const TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           )
         ],
+      ),
+    );
+  }
+}
+
+class HorizontalBookCard extends StatelessWidget {
+  final Book book;
+
+  const HorizontalBookCard({Key? key, required this.book}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      child: SizedBox(
+        height: 180,
+        child: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => BlocProvider(
+                      create: (context) => BookDetailsBloc()
+                        ..add(
+                          LoadBookDetails(book.id),
+                        ),
+                      child: BookDetailsScreen(id: book.id),
+                    ),
+                  ),
+                );
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image(
+                  image: NetworkImage(book.coveUrl),
+                  height: 180,
+                ),
+              ),
+            ),
+            const SizedBox(width: 20),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      book.name,
+                      maxLines: 2,
+                      textAlign: TextAlign.start,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        height: 1.5,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: context.theme.textColor1,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.star_rate_outlined,
+                        size: 14,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        book.rate.toString(),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    "\$ " + book.price.toString(),
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Wrap(
+                    spacing: 10,
+                    runSpacing: 8,
+                    children: List.generate(
+                      book.categoriesNames.length,
+                      (index) => Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 6, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: context.theme.tagBackgroundColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Text(
+                          book.categoriesNames[index],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: context.theme.textColor1,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
