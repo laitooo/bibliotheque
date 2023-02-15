@@ -45,24 +45,28 @@ class BookCard extends StatelessWidget {
           Flexible(
             child: GestureDetector(
               onTap: () {},
-              child: Text(
-                book.name,
-                maxLines: 2,
-                textAlign: TextAlign.start,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  height: 1.5,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: context.theme.textColor1,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Text(
+                  book.name,
+                  maxLines: 2,
+                  textAlign: TextAlign.start,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    height: 1.5,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: context.theme.textColor1,
+                  ),
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 10),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(width: 15),
               const Icon(
                 Icons.star_rate_outlined,
                 size: 14,
@@ -76,7 +80,7 @@ class BookCard extends StatelessWidget {
               ),
               const SizedBox(width: 15),
               Text(
-                book.price.toString() + "\$",
+                "\$" + book.price.toString(),
                 style: const TextStyle(
                   fontSize: 14,
                 ),
