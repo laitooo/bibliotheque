@@ -354,11 +354,11 @@ class _AppPhoneNumberFieldState extends State<AppPhoneNumberField> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(
-            'assets/images/qatar.png',
-            width: 24.0,
-            height: 24.0,
-          ),
+          // Image.asset(
+          //   'assets/images/qatar.png',
+          //   width: 24.0,
+          //   height: 24.0,
+          // ),
           const SizedBox(width: 6.0),
           Padding(
             padding: const EdgeInsets.only(top: 3.0),

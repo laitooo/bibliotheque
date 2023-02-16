@@ -25,12 +25,6 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
       appBar: AppBar(
         title: const Text('Language'),
         centerTitle: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.language),
-          ),
-        ],
       ),
       body: Column(
         children: [

@@ -1,5 +1,7 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
-import 'package:bibliotheque/ui/screens/profile/change_language_page.dart';
+import 'package:bibliotheque/ui/screens/settings/change_language_page.dart';
+import 'package:bibliotheque/ui/screens/settings/user_profile_screen.dart';
+import 'package:bibliotheque/utils/generator.dart';
 import 'package:flutter/material.dart';
 
 class AccountSettingsScreen extends StatelessWidget {
@@ -22,47 +24,53 @@ class AccountSettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         children: [
           const SizedBox(height: 10),
-          Row(
-            children: [
-              const CircleAvatar(
-                backgroundImage: NetworkImage(
-                  'https://images.unsplash.com/photo-1553729784-e91953dec042?'
-                  'ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGV'
-                  'yc29uJTIwcmVhZGluZ3xlbnwwfHwwfHw%3D&auto=format&'
-                  'fit=crop&w=500&q=60',
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const UserProfilePage(),
                 ),
-                radius: 30,
-              ),
-              const SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Andrew Ainsley',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: context.theme.textColor1,
-                    ),
+              );
+            },
+            child: Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    generator.avatar(),
                   ),
-                  const SizedBox(height: 20),
-                  Text(
-                    'Andrew_ainsley@yourdomain.com',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: context.theme.textColor5,
+                  radius: 30,
+                ),
+                const SizedBox(width: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Andrew Ainsley',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: context.theme.textColor1,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const Spacer(),
-              Icon(
-                Icons.edit,
-                color: context.theme.iconColor1,
-                size: 20,
-              ),
-            ],
+                    const SizedBox(height: 20),
+                    Text(
+                      'Andrew_ainsley@yourdomain.com',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: context.theme.textColor5,
+                      ),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                Icon(
+                  Icons.edit,
+                  color: context.theme.iconColor1,
+                  size: 20,
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 15),
           Divider(

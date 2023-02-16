@@ -29,3 +29,7 @@ enum NotificationsError {
 enum UnreadNotificationsError {
   networkError,
 }
+
+enum ProfileError {
+  networkError,
+}

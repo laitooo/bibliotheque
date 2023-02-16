@@ -1,6 +1,6 @@
 import 'package:bibliotheque/blocs/books_bloc.dart';
 import 'package:bibliotheque/ui/screens/home/home_tab.dart';
-import 'package:bibliotheque/ui/screens/profile/account_settings_screen.dart';
+import 'package:bibliotheque/ui/screens/settings/account_settings_screen.dart';
 import 'package:bibliotheque/ui/screens/wishlist/wish_list_screen.dart';
 import 'package:bibliotheque/ui/widgets/books_list_page.dart';
 import 'package:flutter/material.dart';

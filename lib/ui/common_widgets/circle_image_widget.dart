@@ -15,6 +15,7 @@ class CircleImageWidget extends StatelessWidget {
         backgroundImage: NetworkImage(
           image,
         ),
+        radius: size,
       ),
     );
   }
