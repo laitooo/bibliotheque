@@ -6,6 +6,7 @@ import 'package:bibliotheque/models/book.dart';
 import 'package:bibliotheque/models/book_details.dart';
 import 'package:bibliotheque/models/category.dart';
 import 'package:bibliotheque/models/notification.dart' as no;
+import 'package:bibliotheque/models/notifications_option.dart';
 import 'package:bibliotheque/models/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -222,6 +223,17 @@ class Generator {
         avatarUrl: avatar(),
         email: 'test@gmail.com',
         phoneNumber: '+249100640513',
+      );
+
+  NotificationsOptions notificationsOption() => NotificationsOptions(
+        userId: _id(),
+        newBookSeries: boolean(),
+        newPriceDrop: boolean(),
+        newPurchase: boolean(),
+        newRecommendation: boolean(),
+        newSurvey: boolean(),
+        newTipOrService: boolean(),
+        newUpdateFromAuthors: boolean(),
       );
 }
 

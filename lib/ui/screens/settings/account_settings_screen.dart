@@ -1,8 +1,12 @@
+import 'package:bibliotheque/blocs/notifications_options_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/screens/settings/change_language_page.dart';
+import 'package:bibliotheque/ui/screens/settings/notification_preferences_screen.dart';
+import 'package:bibliotheque/ui/screens/settings/payment_methods_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/user_profile_screen.dart';
 import 'package:bibliotheque/utils/generator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AccountSettingsScreen extends StatelessWidget {
   const AccountSettingsScreen({Key? key}) : super(key: key);
@@ -82,7 +86,7 @@ class AccountSettingsScreen extends StatelessWidget {
             context,
             "Payment methods",
             Icons.payment,
-            const ChangeLanguagePage(),
+            const PaymentMethodScreen(),
           ),
           const SizedBox(height: 15),
           Divider(
@@ -94,14 +98,18 @@ class AccountSettingsScreen extends StatelessWidget {
             context,
             "Personal Info",
             Icons.supervised_user_circle_sharp,
-            const ChangeLanguagePage(),
+            const UserProfilePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
             context,
             "Notification",
             Icons.notifications,
-            const ChangeLanguagePage(),
+            BlocProvider(
+              create: (_) =>
+                  NotificationsOptionsBloc()..add(LoadNotificationsOptions()),
+              child: const NotificationPreferencesScreen(),
+            ),
           ),
           const SizedBox(height: 20),
           _settingsItem(
