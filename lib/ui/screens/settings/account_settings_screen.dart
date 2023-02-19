@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/notifications_options_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/screens/settings/about_app_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/change_language_page.dart';
 import 'package:bibliotheque/ui/screens/settings/help/help_center_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/notification_preferences_screen.dart';
@@ -157,7 +158,7 @@ class AccountSettingsScreen extends StatelessWidget {
             context,
             "About the app",
             Icons.info,
-            const ChangeLanguagePage(),
+            const AboutAppScreen(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
