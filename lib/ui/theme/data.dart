@@ -45,6 +45,8 @@ abstract class AppThemeData {
   Color get tagBackgroundColor;
   Color get dividerColor;
   Color get iconBackgroundColor;
+  Color get filterItemColor1;
+  Color get filterItemColor2;
 }
 
 class _InputThemeData extends _ChildThemeData {
@@ -100,6 +102,8 @@ class LightThemeData extends AppThemeData {
   Color get tagBackgroundColor => const Color(0xFFE4E5EF);
   Color get dividerColor => Colors.grey.shade400;
   Color get iconBackgroundColor => const Color(0x221144bb);
+  Color get filterItemColor1 => primaryColor;
+  Color get filterItemColor2 => backgroundColor;
 }
 
 class DarkThemeData extends LightThemeData {}

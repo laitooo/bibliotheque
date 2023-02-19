@@ -25,6 +25,7 @@ class HelpCenterScreen extends StatelessWidget {
           ),
           centerTitle: false,
           bottom: TabBar(
+            indicatorWeight: 4,
             labelColor: context.theme.textColor3,
             unselectedLabelColor: context.theme.textColor5,
             labelStyle: const TextStyle(
