@@ -2,6 +2,7 @@ import 'package:bibliotheque/i18n/translations.g.dart';
 import 'package:bibliotheque/repos/book_details_repo.dart';
 import 'package:bibliotheque/repos/books_repo.dart';
 import 'package:bibliotheque/repos/categories_repo.dart';
+import 'package:bibliotheque/repos/faqs_repo.dart';
 import 'package:bibliotheque/repos/notificatios_repo.dart';
 import 'package:bibliotheque/repos/profile_repo.dart';
 import 'package:bibliotheque/repos/wish_list_repo.dart';
@@ -36,5 +37,8 @@ Future<void> initServices() async {
   );
   serviceLocator.registerSingleton<ProfileRepository>(
     MockProfileRepository(),
+  );
+  serviceLocator.registerSingleton<FAQsRepository>(
+    MockFAQsRepository(),
   );
 }

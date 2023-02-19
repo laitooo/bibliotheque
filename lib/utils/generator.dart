@@ -8,6 +8,7 @@ import 'package:bibliotheque/models/category.dart';
 import 'package:bibliotheque/models/notification.dart' as no;
 import 'package:bibliotheque/models/notifications_option.dart';
 import 'package:bibliotheque/models/profile.dart';
+import 'package:bibliotheque/models/question.dart';
 import 'package:flutter/material.dart';
 
 final generator = Generator();
@@ -234,6 +235,14 @@ class Generator {
         newSurvey: boolean(),
         newTipOrService: boolean(),
         newUpdateFromAuthors: boolean(),
+      );
+
+  Question faq() => Question(
+        id: _id(),
+        question: "What is Bibliotheque?",
+        answer:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue tempor, a sit accumsan",
+        type: _oneOf(QuestionType.values),
       );
 }
 

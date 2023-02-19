@@ -37,3 +37,7 @@ enum ProfileError {
 enum NotificationsOptionError {
   networkError,
 }
+
+enum FAQError {
+  networkError,
+}
