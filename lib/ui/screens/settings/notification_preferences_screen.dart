@@ -161,6 +161,7 @@ class _NotificationPreferencesScreenState
         Switch(
           value: value,
           onChanged: onChanged,
+          activeColor: context.theme.primaryColor,
         ),
       ],
     );
