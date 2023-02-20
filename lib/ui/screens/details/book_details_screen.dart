@@ -1,8 +1,10 @@
 import 'package:bibliotheque/blocs/book_details_bloc.dart';
+import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
-import 'package:bibliotheque/ui/widgets/reviews_numbes.dart';
+import 'package:bibliotheque/ui/screens/details/about_book_screen.dart';
+import 'package:bibliotheque/ui/widgets/reviews_numbers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -183,19 +185,26 @@ class BookDetailsScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Padding(
-                    padding: EdgeInsetsDirectional.only(start: 20),
+                  Padding(
+                    padding: const EdgeInsetsDirectional.only(start: 20),
                     child: Text(
                       'About this book',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: Colors.black,
+                        color: context.theme.textColor1,
+                        height: 1.5,
                       ),
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => AboutBookScreen(book: book),
+                        ),
+                      );
+                    },
                     icon: const Icon(
                       Icons.arrow_forward_outlined,
                       color: Colors.orange,
@@ -207,9 +216,12 @@ class BookDetailsScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   book.aboutBook,
-                  style: const TextStyle(
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 4,
+                  style: TextStyle(
                     fontSize: 14,
-                    color: Colors.black,
+                    color: context.theme.textColor1,
+                    height: 1.5,
                   ),
                 ),
               ),
