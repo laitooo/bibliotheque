@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/book_details.dart';
+import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
 
 class AboutBookScreen extends StatelessWidget {
@@ -75,14 +76,14 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  "English",
+                  languageToText(book.language),
                   style: textStyle,
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Text(
-                  "Ages 20 & Up",
+                  ageRangeToText(book.age),
                   style: textStyle,
                 ),
               ),
@@ -113,14 +114,14 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  book.author,
+                  book.authorName,
                   style: linkStyle,
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Text(
-                  "Pottermore Publishing",
+                  book.publisherName,
                   style: linkStyle,
                 ),
               ),
@@ -151,14 +152,14 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  book.releaseDate.toString(),
+                  book.publishDate.toString(),
                   style: textStyle,
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Text(
-                  "9781781102435",
+                  book.isbn,
                   style: textStyle,
                 ),
               ),
@@ -177,7 +178,7 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  "Genre",
+                  "Purchases",
                   style: titleStyle,
                 ),
               ),
@@ -197,46 +198,7 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  book.categoriesNames.toString(),
-                  style: linkStyle,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 25),
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Text(
-                  "Purchases",
-                  style: titleStyle,
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  "Size",
-                  style: titleStyle,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 5),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Text(
                   book.numBuyers.toString(),
-                  style: textStyle,
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  "5.6 MB",
                   style: textStyle,
                 ),
               ),

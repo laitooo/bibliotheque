@@ -120,6 +120,13 @@ class Generator {
     'Phillip pullman',
   ];
 
+  static const _publishers = [
+    'Pottermore Publishing',
+    'Harper Collins',
+    'Macmillan',
+    'Simon and Schuster',
+  ];
+
   final String _cover =
       "https://static.wikia.nocookie.net/iceandfire/images/b/b6/Game_of_thrones.jpeg/revision/latest?cb=20130302001049";
 
@@ -181,13 +188,19 @@ class Generator {
         coveUrl: _cover,
         price: count(1, 50) * 10,
         rate: _rate(),
-        author: _author(),
+        authorId: _id(),
+        authorName: _author(),
+        publisherId: _id(),
+        publisherName: _oneOf(_publishers),
         numPages: count(100, 1000),
         numBuyers: count(1, 100),
         numReviews: count(1, 2000),
-        releaseDate: DateTime(2015, 11, 24),
+        publishDate: DateTime(2015, 11, 24),
         aboutBook: _loremIpsum,
         reviewsPercentage: [0.6, 0.12, 0.05, 0.03, 0.2],
+        isbn: "9781781102435",
+        age: AgeRange.twentyUp,
+        language: Language.english,
         categoriesIds: List.generate(
           count(1, 5),
           (index) => _category(),

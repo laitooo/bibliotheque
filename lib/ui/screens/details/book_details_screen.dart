@@ -76,7 +76,7 @@ class BookDetailsScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          book.author,
+                          book.authorName,
                           style: const TextStyle(
                             fontSize: 16,
                             color: Colors.orange,
@@ -84,9 +84,9 @@ class BookDetailsScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         Text('Released on ' +
-                            book.releaseDate.month.toString() +
+                            book.publishDate.month.toString() +
                             '. ' +
-                            book.releaseDate.year.toString()),
+                            book.publishDate.year.toString()),
                         const SizedBox(height: 10),
                         Wrap(
                           spacing: 10,
