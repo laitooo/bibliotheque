@@ -39,6 +39,9 @@ abstract class AppThemeData {
   Color get textColor3;
   Color get textColor4;
   Color get textColor5;
+  Color get textColor6;
+  Color get buttonColor1;
+  Color get buttonColor2;
   Color get iconColor1;
   Color get activeColor;
   Color get inActiveColor;
@@ -96,6 +99,9 @@ class LightThemeData extends AppThemeData {
   Color get textColor3 => primaryColor;
   Color get textColor4 => Colors.grey;
   Color get textColor5 => const Color(0xFF424242);
+  Color get textColor6 => Colors.red;
+  Color get buttonColor1 => primaryColor;
+  Color get buttonColor2 => const Color(0x11FF9800);
   Color get iconColor1 => Colors.black;
   Color get activeColor => primaryColor;
   Color get inActiveColor => Colors.grey;
