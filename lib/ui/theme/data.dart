@@ -38,10 +38,15 @@ abstract class AppThemeData {
   Color get textColor2;
   Color get textColor3;
   Color get textColor4;
+  Color get textColor5;
   Color get iconColor1;
   Color get activeColor;
   Color get inActiveColor;
   Color get tagBackgroundColor;
+  Color get dividerColor;
+  Color get iconBackgroundColor;
+  Color get filterItemColor1;
+  Color get filterItemColor2;
 }
 
 class _InputThemeData extends _ChildThemeData {
@@ -90,10 +95,15 @@ class LightThemeData extends AppThemeData {
   Color get textColor2 => Colors.white;
   Color get textColor3 => primaryColor;
   Color get textColor4 => Colors.grey;
+  Color get textColor5 => const Color(0xFF424242);
   Color get iconColor1 => Colors.black;
   Color get activeColor => primaryColor;
   Color get inActiveColor => Colors.grey;
   Color get tagBackgroundColor => const Color(0xFFE4E5EF);
+  Color get dividerColor => Colors.grey.shade400;
+  Color get iconBackgroundColor => const Color(0x221144bb);
+  Color get filterItemColor1 => primaryColor;
+  Color get filterItemColor2 => backgroundColor;
 }
 
 class DarkThemeData extends LightThemeData {}

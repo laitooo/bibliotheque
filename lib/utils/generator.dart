@@ -6,6 +6,9 @@ import 'package:bibliotheque/models/book.dart';
 import 'package:bibliotheque/models/book_details.dart';
 import 'package:bibliotheque/models/category.dart';
 import 'package:bibliotheque/models/notification.dart' as no;
+import 'package:bibliotheque/models/notifications_option.dart';
+import 'package:bibliotheque/models/profile.dart';
+import 'package:bibliotheque/models/question.dart';
 import 'package:flutter/material.dart';
 
 final generator = Generator();
@@ -145,6 +148,11 @@ class Generator {
     return _authors[_rand.nextInt(_authors.length)];
   }
 
+  String avatar() {
+    return 'https://images.unsplash.com/photo-1553729784-e91953dec042?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGV'
+        'yc29uJTIwcmVhZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60';
+  }
+
   Book book() => Book(
         id: _id(),
         name: _name(),
@@ -208,6 +216,33 @@ class Generator {
           before: DateTime(2000),
           after: DateTime.now(),
         ),
+      );
+
+  Profile profile() => Profile(
+        id: _id(),
+        name: _name(),
+        avatarUrl: avatar(),
+        email: 'test@gmail.com',
+        phoneNumber: '+249100640513',
+      );
+
+  NotificationsOptions notificationsOption() => NotificationsOptions(
+        userId: _id(),
+        newBookSeries: boolean(),
+        newPriceDrop: boolean(),
+        newPurchase: boolean(),
+        newRecommendation: boolean(),
+        newSurvey: boolean(),
+        newTipOrService: boolean(),
+        newUpdateFromAuthors: boolean(),
+      );
+
+  Question faq() => Question(
+        id: _id(),
+        question: "What is Bibliotheque?",
+        answer:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue tempor, a sit accumsan",
+        type: _oneOf(QuestionType.values),
       );
 }
 
