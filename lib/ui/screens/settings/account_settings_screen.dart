@@ -3,6 +3,7 @@ import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/screens/settings/about_app_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/change_language_page.dart';
 import 'package:bibliotheque/ui/screens/settings/help/help_center_screen.dart';
+import 'package:bibliotheque/ui/screens/settings/logout_bottom_sheet.dart';
 import 'package:bibliotheque/ui/screens/settings/notification_preferences_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/payment_methods_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/user_profile_screen.dart';
@@ -88,7 +89,7 @@ class AccountSettingsScreen extends StatelessWidget {
             context,
             "Payment methods",
             Icons.payment,
-            const PaymentMethodScreen(),
+            newScreen: const PaymentMethodScreen(),
           ),
           const SizedBox(height: 15),
           Divider(
@@ -100,14 +101,14 @@ class AccountSettingsScreen extends StatelessWidget {
             context,
             "Personal Info",
             Icons.supervised_user_circle_sharp,
-            const UserProfilePage(),
+            newScreen: const UserProfilePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
             context,
             "Notification",
             Icons.notifications,
-            BlocProvider(
+            newScreen: BlocProvider(
               create: (_) =>
                   NotificationsOptionsBloc()..add(LoadNotificationsOptions()),
               child: const NotificationPreferencesScreen(),
@@ -118,28 +119,28 @@ class AccountSettingsScreen extends StatelessWidget {
             context,
             "Preferences",
             Icons.settings,
-            const ChangeLanguagePage(),
+            newScreen: const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
             context,
             "Security",
             Icons.security,
-            const ChangeLanguagePage(),
+            newScreen: const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
             context,
             "Language",
             Icons.language,
-            const ChangeLanguagePage(),
+            newScreen: const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
             context,
             "DarkMode",
             Icons.remove_red_eye_sharp,
-            const ChangeLanguagePage(),
+            newScreen: const ChangeLanguagePage(),
           ),
           const SizedBox(height: 15),
           Divider(
@@ -151,21 +152,23 @@ class AccountSettingsScreen extends StatelessWidget {
             context,
             "Help center",
             Icons.help,
-            const HelpCenterScreen(),
+            newScreen: const HelpCenterScreen(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
             context,
             "About the app",
             Icons.info,
-            const AboutAppScreen(),
+            newScreen: const AboutAppScreen(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
             context,
             "Logout",
             Icons.logout,
-            const ChangeLanguagePage(),
+            onClick: () {
+              onLogoutCLicked(context);
+            },
           ),
           const SizedBox(height: 50),
         ],
@@ -173,13 +176,19 @@ class AccountSettingsScreen extends StatelessWidget {
     );
   }
 
-  _settingsItem(
-      BuildContext context, String title, IconData iconData, Widget newScreen) {
+  _settingsItem(BuildContext context, String title, IconData iconData,
+      {Widget? newScreen, void Function()? onClick}) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => newScreen),
-        );
+        if (newScreen != null) {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => newScreen),
+          );
+        } else {
+          if (onClick != null) {
+            onClick();
+          }
+        }
       },
       child: Row(
         children: [
@@ -214,6 +223,19 @@ class AccountSettingsScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void onLogoutCLicked(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: context.theme.backgroundColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
+      builder: (_) => const LogoutBottomSheet(),
     );
   }
 }
