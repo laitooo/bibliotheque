@@ -117,25 +117,12 @@ class AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            "Preferences",
-            Icons.settings,
-            newScreen: const ChangeLanguagePage(),
-          ),
-          const SizedBox(height: 20),
-          _settingsItem(
-            context,
-            "Security",
-            Icons.security,
-            newScreen: const ChangeLanguagePage(),
-          ),
-          const SizedBox(height: 20),
-          _settingsItem(
-            context,
             "Language",
             Icons.language,
             newScreen: const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
+          // TODO:: do night mode
           _settingsItem(
             context,
             "DarkMode",
