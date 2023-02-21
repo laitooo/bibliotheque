@@ -45,3 +45,8 @@ enum FAQError {
 enum ReviewsError {
   networkError,
 }
+
+enum SearchError {
+  networkError,
+  invalidQuery,
+}
