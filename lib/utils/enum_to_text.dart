@@ -1,5 +1,6 @@
 import 'package:bibliotheque/models/book_details.dart';
 import 'package:bibliotheque/models/question.dart';
+import 'package:bibliotheque/models/review.dart';
 
 String questionToText(QuestionType type) {
   switch (type) {
@@ -43,5 +44,20 @@ String ageRangeToText(AgeRange ageRange) {
       return "Ages 18 & Up";
     case AgeRange.twentyUp:
       return "Ages 20 & Up";
+  }
+}
+
+String starsNumberToText(StarsNumber starsNumber) {
+  switch (starsNumber) {
+    case StarsNumber.oneStar:
+      return "1";
+    case StarsNumber.twoStars:
+      return "2";
+    case StarsNumber.threeStars:
+      return "3";
+    case StarsNumber.fourStars:
+      return "4";
+    case StarsNumber.fiveStars:
+      return "5";
   }
 }

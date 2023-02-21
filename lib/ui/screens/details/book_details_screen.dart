@@ -1,9 +1,11 @@
 import 'package:bibliotheque/blocs/book_details_bloc.dart';
+import 'package:bibliotheque/blocs/reviews_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/details/about_book_screen.dart';
+import 'package:bibliotheque/ui/screens/details/reviews_list_screen.dart';
 import 'package:bibliotheque/ui/widgets/reviews_numbers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -241,7 +243,16 @@ class BookDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => BlocProvider(
+                            create: (_) => ReviewsBloc()..add(LoadReviews()),
+                            child: ReviewsListScreen(book: book),
+                          ),
+                        ),
+                      );
+                    },
                     icon: const Icon(
                       Icons.arrow_forward_outlined,
                       color: Colors.orange,
