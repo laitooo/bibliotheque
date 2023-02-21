@@ -41,3 +41,7 @@ enum NotificationsOptionError {
 enum FAQError {
   networkError,
 }
+
+enum ReviewsError {
+  networkError,
+}

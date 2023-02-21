@@ -10,6 +10,7 @@ class CircleImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      width: size,
       height: size,
       child: CircleAvatar(
         backgroundImage: NetworkImage(

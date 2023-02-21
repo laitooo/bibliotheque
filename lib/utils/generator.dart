@@ -9,6 +9,7 @@ import 'package:bibliotheque/models/notification.dart' as no;
 import 'package:bibliotheque/models/notifications_option.dart';
 import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/models/question.dart';
+import 'package:bibliotheque/models/review.dart';
 import 'package:flutter/material.dart';
 
 final generator = Generator();
@@ -97,7 +98,14 @@ class Generator {
     return _rand.nextInt(50) / 10;
   }
 
-  static const _names = [
+  static const _users = [
+    'Charlotte Hanlin',
+    'Alfonzo Schuessler',
+    'Maryland Winkles',
+    'Alzobair Mohammed',
+  ];
+
+  static const _books = [
     'The house of hades (Heroes of olympics)',
     'My quiet Blacksmith, Life in Another world',
     'It starts with us: A novel',
@@ -120,6 +128,13 @@ class Generator {
     'Phillip pullman',
   ];
 
+  static const _publishers = [
+    'Pottermore Publishing',
+    'Harper Collins',
+    'Macmillan',
+    'Simon and Schuster',
+  ];
+
   final String _cover =
       "https://static.wikia.nocookie.net/iceandfire/images/b/b6/Game_of_thrones.jpeg/revision/latest?cb=20130302001049";
 
@@ -136,8 +151,12 @@ class Generator {
       " Cras vel tellus in nisl sagittis lacinia. Suspendisse eget porta enim. Nullam feugiat fringilla gravida."
       " Suspendisse a neque malesuada, mollis tortor vitae.";
 
-  String _name() {
-    return _names[_rand.nextInt(_names.length)];
+  String _userName() {
+    return _users[_rand.nextInt(_users.length)];
+  }
+
+  String _bookName() {
+    return _books[_rand.nextInt(_books.length)];
   }
 
   String _category() {
@@ -155,7 +174,7 @@ class Generator {
 
   Book book() => Book(
         id: _id(),
-        name: _name(),
+        name: _bookName(),
         coveUrl: _cover,
         price: count(1, 50) * 10,
         rate: _rate(),
@@ -177,17 +196,23 @@ class Generator {
 
   BookDetails bookDetails() => BookDetails(
         id: _id(),
-        name: _name(),
+        name: _bookName(),
         coveUrl: _cover,
         price: count(1, 50) * 10,
         rate: _rate(),
-        author: _author(),
+        authorId: _id(),
+        authorName: _author(),
+        publisherId: _id(),
+        publisherName: _oneOf(_publishers),
         numPages: count(100, 1000),
         numBuyers: count(1, 100),
         numReviews: count(1, 2000),
-        releaseDate: DateTime(2015, 11, 24),
+        publishDate: DateTime(2015, 11, 24),
         aboutBook: _loremIpsum,
         reviewsPercentage: [0.6, 0.12, 0.05, 0.03, 0.2],
+        isbn: "9781781102435",
+        age: AgeRange.twentyUp,
+        language: Language.english,
         categoriesIds: List.generate(
           count(1, 5),
           (index) => _category(),
@@ -220,7 +245,7 @@ class Generator {
 
   Profile profile() => Profile(
         id: _id(),
-        name: _name(),
+        name: _userName(),
         avatarUrl: avatar(),
         email: 'test@gmail.com',
         phoneNumber: '+249100640513',
@@ -243,6 +268,23 @@ class Generator {
         answer:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue tempor, a sit accumsan",
         type: _oneOf(QuestionType.values),
+      );
+
+  Review review({StarsNumber? starsNumber}) => Review(
+        id: _id(),
+        userId: _id(),
+        userName: _userName(),
+        userCover: _cover,
+        hasLiked: boolean(),
+        numStars: starsNumber ?? _oneOf(StarsNumber.values),
+        numLikes: count(10, 1000),
+        creationDate: _dateTime(
+          before: DateTime(2000),
+          after: DateTime.now(),
+        ),
+        content:
+            "As a person who has a hard time picking up a book to read. I very"
+            " much enjoy this book and definitely wouldn't mind reading it again.",
       );
 }
 
