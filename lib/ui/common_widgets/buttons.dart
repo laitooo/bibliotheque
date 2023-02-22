@@ -74,7 +74,7 @@ class MainButton extends StatelessWidget {
                     Text(
                       title,
                       style: TextStyle(
-                        color: textColor ?? context.theme.textColor1,
+                        color: textColor ?? context.theme.textColor2,
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                       ),
@@ -124,7 +124,8 @@ class MainFlatButton extends StatelessWidget {
       child: TextButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(
-              backgroundColor ?? context.theme.backgroundColor),
+            backgroundColor ?? context.theme.buttonColor2,
+          ),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               side: BorderSide(
@@ -148,7 +149,7 @@ class MainFlatButton extends StatelessWidget {
                     Text(
                       title,
                       style: TextStyle(
-                        color: textColor ?? context.theme.textColor1,
+                        color: textColor ?? context.theme.textColor3,
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                       ),

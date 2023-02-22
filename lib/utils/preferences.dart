@@ -40,7 +40,7 @@ class Preferences {
     await _prefs.setBool(_isFirstTimer, isFirstTimer);
   }
 
-  bool? isFirstTimer() {
-    return _prefs.getBool(_isFirstTimer);
+  bool isFirstTimer() {
+    return _prefs.getBool(_isFirstTimer) ?? true;
   }
 }

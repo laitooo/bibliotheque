@@ -3,8 +3,7 @@
 A flutter mobile app for selling books
 
 ## DOING:
-- Search
-- Filter
+- Authentication
 
 ## DONE:
 - Home screen
@@ -18,10 +17,11 @@ A flutter mobile app for selling books
 - Settings
 - About book
 - Reviews
+- Search
+- Filter
 
 
 ## TODO:
 - Edit profile
 - Night mode
-- Authentication
 - New Releases
