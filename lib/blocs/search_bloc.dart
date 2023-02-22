@@ -1,3 +1,4 @@
+import 'package:bibliotheque/entities/filter_options.dart';
 import 'package:bibliotheque/models/book.dart';
 import 'package:bibliotheque/repos/search_repo.dart';
 import 'package:bibliotheque/service_locator.dart';
@@ -14,42 +15,55 @@ enum SearchStatus {
 class SearchState {
   final SearchStatus status;
   final List<Book>? books;
+  final String query;
+  final FilterOptions filterOptions;
   final SearchError? error;
 
-  SearchState(this.status, {this.books, this.error});
+  SearchState(
+    this.status, {
+    required this.query,
+    required this.filterOptions,
+    required this.books,
+    this.error,
+  });
 }
 
 class SearchBook extends BlocEvent<SearchState, SearchBloc> {
-  final String query;
+  final String? query;
+  final FilterOptions? options;
 
-  SearchBook(this.query);
+  SearchBook({this.query, this.options});
 
   @override
   Stream<SearchState> toState(SearchState current, SearchBloc bloc) async* {
-    yield SearchState(SearchStatus.loading);
+    yield SearchState(
+      SearchStatus.loading,
+      query: query ?? current.query,
+      filterOptions: options ?? current.filterOptions,
+      books: current.books,
+    );
 
-    if (query.isEmpty) {
-      yield SearchState(
-        SearchStatus.error,
-        books: current.books,
-        error: SearchError.invalidQuery,
-      );
-      return;
-    }
-
-    final res = await bloc._repo.search(query);
+    final res = await bloc._repo.search(
+      query ?? current.query,
+      options ?? current.filterOptions,
+    );
 
     yield res.incase(
       value: (value) {
         return SearchState(
           SearchStatus.success,
+          query: query ?? current.query,
+          filterOptions: options ?? current.filterOptions,
           books: value,
         );
       },
       error: (error) {
         return SearchState(
           SearchStatus.error,
+          query: query ?? current.query,
+          filterOptions: options ?? current.filterOptions,
           error: error,
+          books: current.books,
         );
       },
     );
@@ -59,5 +73,13 @@ class SearchBook extends BlocEvent<SearchState, SearchBloc> {
 class SearchBloc extends BaseBloc<SearchState> {
   final _repo = serviceLocator.get<SearchRepository>();
 
-  SearchBloc() : super(SearchState(SearchStatus.idle));
+  SearchBloc()
+      : super(
+          SearchState(
+            SearchStatus.idle,
+            query: "",
+            books: [],
+            filterOptions: FilterOptions.emptyFilter(),
+          ),
+        );
 }

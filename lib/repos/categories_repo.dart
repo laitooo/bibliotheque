@@ -32,7 +32,7 @@ class MockCategoriesRepositories extends CategoriesRepositories {
     return Result.value(
       List.generate(
         20,
-        (index) => generator.category(),
+        (index) => generator.category(id: index.toString()),
       ),
     );
   }

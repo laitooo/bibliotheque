@@ -48,5 +48,4 @@ enum ReviewsError {
 
 enum SearchError {
   networkError,
-  invalidQuery,
 }
