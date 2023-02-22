@@ -50,6 +50,7 @@ abstract class AppThemeData {
   Color get iconBackgroundColor;
   Color get filterItemColor1;
   Color get filterItemColor2;
+  Color get filterCardBackground;
 }
 
 class _InputThemeData extends _ChildThemeData {
@@ -110,6 +111,7 @@ class LightThemeData extends AppThemeData {
   Color get iconBackgroundColor => const Color(0x221144bb);
   Color get filterItemColor1 => primaryColor;
   Color get filterItemColor2 => backgroundColor;
+  Color get filterCardBackground => Colors.grey;
 }
 
 class DarkThemeData extends LightThemeData {}

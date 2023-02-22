@@ -188,8 +188,8 @@ class Generator {
         ),
       );
 
-  Category category() => Category(
-        id: _id(),
+  Category category({String? id}) => Category(
+        id: id ?? _id(),
         name: _category(),
         imageUrl: _categoryCover,
       );

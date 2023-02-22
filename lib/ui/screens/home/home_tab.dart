@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/blocs/popular_books_bloc.dart';
 import 'package:bibliotheque/blocs/recommended_books_bloc.dart';
+import 'package:bibliotheque/blocs/search_bloc.dart';
 import 'package:bibliotheque/blocs/unread_notifications_bloc.dart';
 import 'package:bibliotheque/blocs/wish_list_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
@@ -8,6 +9,7 @@ import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/categories/categories_list_screen.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:bibliotheque/ui/screens/notifications/notifications_icon_button.dart';
+import 'package:bibliotheque/ui/screens/search/search_screen.dart';
 import 'package:bibliotheque/ui/widgets/books_list_page.dart';
 import 'package:bibliotheque/ui/widgets/category_card.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
@@ -27,7 +29,16 @@ class HomeTab extends StatelessWidget {
         centerTitle: false,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => BlocProvider(
+                    create: (_) => SearchBloc(),
+                    child: const SearchScreen(),
+                  ),
+                ),
+              );
+            },
             icon: const Icon(Icons.search),
           ),
           BlocProvider(

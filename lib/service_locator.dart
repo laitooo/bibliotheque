@@ -6,6 +6,7 @@ import 'package:bibliotheque/repos/faqs_repo.dart';
 import 'package:bibliotheque/repos/notificatios_repo.dart';
 import 'package:bibliotheque/repos/profile_repo.dart';
 import 'package:bibliotheque/repos/reviews_repo.dart';
+import 'package:bibliotheque/repos/search_repo.dart';
 import 'package:bibliotheque/repos/wish_list_repo.dart';
 import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/widgets.dart';
@@ -44,5 +45,8 @@ Future<void> initServices() async {
   );
   serviceLocator.registerSingleton<ReviewsRepository>(
     MockReviewsRepository(),
+  );
+  serviceLocator.registerSingleton<SearchRepository>(
+    MockSearchRepository(),
   );
 }

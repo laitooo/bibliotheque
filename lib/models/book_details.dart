@@ -4,6 +4,7 @@ part 'book_details.g.dart';
 part 'book_details.freezed.dart';
 
 enum AgeRange {
+  all,
   fiveUp,
   eightUp,
   thirteenUp,
@@ -12,6 +13,7 @@ enum AgeRange {
 }
 
 enum Language {
+  all,
   arabic,
   english,
   french,
