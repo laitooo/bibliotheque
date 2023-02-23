@@ -1,5 +1,7 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
+import 'package:bibliotheque/ui/screens/auth/login/login_page.dart';
+import 'package:bibliotheque/ui/screens/auth/register/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -133,12 +135,24 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 const SizedBox(height: 20),
                 MainButton(
                   title: "Get Started",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => const RegisterPage(),
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 20),
                 MainFlatButton(
                   title: "I already have an Account",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => const LoginScreen(),
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 20),
               ],
