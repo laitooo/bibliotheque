@@ -1,4 +1,5 @@
 import 'package:bibliotheque/models/book_details.dart';
+import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/models/question.dart';
 import 'package:bibliotheque/models/review.dart';
 import 'package:bibliotheque/repos/search_repo.dart';
@@ -92,5 +93,37 @@ String languageToText(Language language) {
       return "Spanish";
     case Language.all:
       return "All";
+  }
+}
+
+String genderToText(Gender gender) {
+  switch (gender) {
+    case Gender.male:
+      return "I am male";
+    case Gender.female:
+      return "I am female";
+    case Gender.preferNotToSay:
+      return "Prefer not to say";
+  }
+}
+
+String ageToText(Age age) {
+  switch (age) {
+    case Age.from14To17:
+      return "14 - 17";
+    case Age.from18To24:
+      return "18 - 24";
+    case Age.from25To29:
+      return "25 - 29";
+    case Age.from30To34:
+      return "30 - 34";
+    case Age.from35To39:
+      return "35 - 39";
+    case Age.from40To44:
+      return "40 - 44";
+    case Age.from45To49:
+      return "45 - 49";
+    case Age.moreThan50:
+      return ">= 50";
   }
 }

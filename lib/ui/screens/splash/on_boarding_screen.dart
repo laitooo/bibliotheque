@@ -136,7 +136,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 MainButton(
                   title: "Get Started",
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(
+                    Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const RegisterPage(),
                       ),
@@ -147,7 +147,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 MainFlatButton(
                   title: "I already have an Account",
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(
+                    Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const LoginScreen(),
                       ),

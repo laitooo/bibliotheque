@@ -25,6 +25,7 @@ dependencies:
   percent_indicator: ^4.2.2
   flutter_rating_bar: ^4.0.1
   syncfusion_flutter_sliders: ^20.4.51
+  country_picker: ^2.0.19
 
 dev_dependencies:
   flutter_test:

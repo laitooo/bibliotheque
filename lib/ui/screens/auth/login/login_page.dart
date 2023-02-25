@@ -16,18 +16,22 @@ class _LoginScreenState extends State<LoginScreen> {
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
           children: [
-            Text("Hello there",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              color: context.theme.textColor1,
-            ),),
+            Text(
+              "Hello there",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                color: context.theme.textColor1,
+              ),
+            ),
             const SizedBox(height: 20),
-            Text("Please enter your username/email and password to sign in",
+            Text(
+              "Please enter your username/email and password to sign in",
               style: TextStyle(
                 fontSize: 14,
                 color: context.theme.textColor3,
-              ),),
+              ),
+            ),
           ],
         ),
       ),
