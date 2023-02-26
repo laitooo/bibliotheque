@@ -1,6 +1,6 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
-import 'package:bibliotheque/ui/screens/auth/login/login_page.dart';
+import 'package:bibliotheque/ui/screens/auth/login/login_screen.dart';
 import 'package:bibliotheque/ui/screens/auth/register/register_screen.dart';
 import 'package:flutter/material.dart';
 
