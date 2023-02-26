@@ -1,4 +1,5 @@
 import 'package:bibliotheque/i18n/translations.g.dart';
+import 'package:bibliotheque/repos/auth_repo.dart';
 import 'package:bibliotheque/repos/book_details_repo.dart';
 import 'package:bibliotheque/repos/books_repo.dart';
 import 'package:bibliotheque/repos/categories_repo.dart';
@@ -48,5 +49,8 @@ Future<void> initServices() async {
   );
   serviceLocator.registerSingleton<SearchRepository>(
     MockSearchRepository(),
+  );
+  serviceLocator.registerSingleton<AuthRepository>(
+    MockAuthRepository(),
   );
 }

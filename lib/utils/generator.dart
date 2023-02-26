@@ -10,6 +10,7 @@ import 'package:bibliotheque/models/notifications_option.dart';
 import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/models/question.dart';
 import 'package:bibliotheque/models/review.dart';
+import 'package:bibliotheque/models/user.dart';
 import 'package:flutter/material.dart';
 
 final generator = Generator();
@@ -143,6 +144,8 @@ class Generator {
     'United arab emirates',
   ];
 
+  final String _email = "alziber50@gmail.com";
+
   final String _cover =
       "https://static.wikia.nocookie.net/iceandfire/images/b/b6/Game_of_thrones.jpeg/revision/latest?cb=20130302001049";
 
@@ -257,7 +260,7 @@ class Generator {
 
   Profile profile() => Profile(
         id: _id(),
-        email: 'test@gmail.com',
+        email: _email,
         username: _userName(),
         fullName: _userName(),
         avatarUrl: avatar(),
@@ -309,6 +312,12 @@ class Generator {
         content:
             "As a person who has a hard time picking up a book to read. I very"
             " much enjoy this book and definitely wouldn't mind reading it again.",
+      );
+
+  User user() => User(
+        id: _id(),
+        email: _email,
+        username: _userName(),
       );
 }
 
