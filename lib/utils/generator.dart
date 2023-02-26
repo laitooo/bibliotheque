@@ -135,6 +135,14 @@ class Generator {
     'Simon and Schuster',
   ];
 
+  static const _countries = [
+    'Sudan',
+    'Japan',
+    'Canada',
+    'United kingdom',
+    'United arab emirates',
+  ];
+
   final String _cover =
       "https://static.wikia.nocookie.net/iceandfire/images/b/b6/Game_of_thrones.jpeg/revision/latest?cb=20130302001049";
 
@@ -165,6 +173,10 @@ class Generator {
 
   String _author() {
     return _authors[_rand.nextInt(_authors.length)];
+  }
+
+  String _country() {
+    return _countries[_rand.nextInt(_countries.length)];
   }
 
   String avatar() {
@@ -245,12 +257,22 @@ class Generator {
 
   Profile profile() => Profile(
         id: _id(),
-        name: _userName(),
-        avatarUrl: avatar(),
         email: 'test@gmail.com',
+        username: _userName(),
+        fullName: _userName(),
+        avatarUrl: avatar(),
         phoneNumber: '+249100640513',
         gender: _oneOf(Gender.values),
         age: _oneOf(Age.values),
+        country: _country(),
+        favouriteCategories: List.generate(
+          count(1, 5),
+          (index) => _category(),
+        ),
+        birthDate: _dateTime(
+          before: DateTime(1900),
+          after: DateTime(2020),
+        ),
       );
 
   NotificationsOptions notificationsOption() => NotificationsOptions(
