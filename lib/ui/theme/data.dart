@@ -43,6 +43,8 @@ abstract class AppThemeData {
   Color get buttonColor1;
   Color get buttonColor2;
   Color get iconColor1;
+  Color get iconColor2;
+  Color get iconColor3;
   Color get activeColor;
   Color get inActiveColor;
   Color get tagBackgroundColor;
@@ -51,6 +53,8 @@ abstract class AppThemeData {
   Color get filterItemColor1;
   Color get filterItemColor2;
   Color get filterCardBackground;
+  Color get textFieldActiveColor;
+  Color get textFieldInactiveColor;
 }
 
 class _InputThemeData extends _ChildThemeData {
@@ -104,6 +108,8 @@ class LightThemeData extends AppThemeData {
   Color get buttonColor1 => primaryColor;
   Color get buttonColor2 => const Color(0x11FF9800);
   Color get iconColor1 => Colors.black;
+  Color get iconColor2 => primaryColor;
+  Color get iconColor3 => Colors.white;
   Color get activeColor => primaryColor;
   Color get inActiveColor => Colors.grey;
   Color get tagBackgroundColor => const Color(0xFFE4E5EF);
@@ -112,6 +118,8 @@ class LightThemeData extends AppThemeData {
   Color get filterItemColor1 => primaryColor;
   Color get filterItemColor2 => backgroundColor;
   Color get filterCardBackground => Colors.grey;
+  Color get textFieldActiveColor => primaryColor;
+  Color get textFieldInactiveColor => const Color(0xFF666666);
 }
 
 class DarkThemeData extends LightThemeData {}

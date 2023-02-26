@@ -249,6 +249,8 @@ class Generator {
         avatarUrl: avatar(),
         email: 'test@gmail.com',
         phoneNumber: '+249100640513',
+        gender: _oneOf(Gender.values),
+        age: _oneOf(Age.values),
       );
 
   NotificationsOptions notificationsOption() => NotificationsOptions(

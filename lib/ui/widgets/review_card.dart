@@ -32,7 +32,7 @@ class ReviewCard extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            FilterItem(
+            IconFilterItem(
               name: starsNumberToText(review.numStars),
               icon: Icon(
                 Icons.star,

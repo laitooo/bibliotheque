@@ -2,7 +2,7 @@ import 'package:bibliotheque/blocs/popular_books_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.g.dart';
 import 'package:bibliotheque/service_locator.dart';
-import 'package:bibliotheque/ui/screens/home/home_screen.dart';
+import 'package:bibliotheque/ui/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
                 theme: state.theme.material(context),
                 home: BlocProvider(
                   create: (_) => PopularBooksBloc()..add(LoadPopularBooks()),
-                  child: HomeScreen(),
+                  child: const SplashScreen(),
                 ),
               );
             },

@@ -63,7 +63,7 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 scrollDirection: Axis.horizontal,
                 children: [
-                  FilterItem(
+                  IconFilterItem(
                     name: "All",
                     isSelected: selectedNumOfStarts == null,
                     icon: Icon(
@@ -86,7 +86,7 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
                       .map(
                         (stars) => Padding(
                           padding: const EdgeInsetsDirectional.only(start: 10),
-                          child: FilterItem(
+                          child: IconFilterItem(
                             name: starsNumberToText(stars),
                             isSelected: selectedNumOfStarts == stars,
                             icon: Icon(
