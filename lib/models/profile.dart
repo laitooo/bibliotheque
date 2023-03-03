@@ -24,14 +24,29 @@ enum Age {
 class Profile with _$Profile {
   const factory Profile({
     required String id,
-    required String name,
     required String email,
+    required String username,
+    required String fullName,
     required String phoneNumber,
     required String avatarUrl,
     required Gender gender,
     required Age age,
+    List<String>? favouriteCategories,
+    String? country,
+    DateTime? birthDate,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>
       _$ProfileFromJson(json);
+
+  factory Profile.empty() => const Profile(
+        id: "",
+        email: "",
+        username: "",
+        fullName: "",
+        phoneNumber: "",
+        avatarUrl: "",
+        gender: Gender.male,
+        age: Age.from18To24,
+      );
 }

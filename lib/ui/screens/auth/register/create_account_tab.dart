@@ -1,7 +1,10 @@
+import 'package:bibliotheque/blocs/register_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/widgets/input_field.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CreateAccountTab extends StatefulWidget {
   const CreateAccountTab({Key? key}) : super(key: key);
@@ -92,6 +95,23 @@ class _CreateAccountTabState extends State<CreateAccountTab> {
               setState(() {
                 rememberMe = !rememberMe;
               });
+            },
+          ),
+          const SizedBox(height: 20),
+          const Spacer(),
+          MainButton(
+            title: "Sign up",
+            removePadding: true,
+            onPressed: () {
+              BlocProvider.of<RegisterBloc>(context).add(
+                SignUp(
+                  email: emailController.text,
+                  password: passwordController.text,
+                  passwordConfirm: passwordConfirmController.text,
+                  username: usernameController.text,
+                  rememberMe: rememberMe,
+                ),
+              );
             },
           ),
         ],

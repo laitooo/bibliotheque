@@ -10,6 +10,7 @@ import 'package:bibliotheque/models/notifications_option.dart';
 import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/models/question.dart';
 import 'package:bibliotheque/models/review.dart';
+import 'package:bibliotheque/models/user.dart';
 import 'package:flutter/material.dart';
 
 final generator = Generator();
@@ -135,6 +136,16 @@ class Generator {
     'Simon and Schuster',
   ];
 
+  static const _countries = [
+    'Sudan',
+    'Japan',
+    'Canada',
+    'United kingdom',
+    'United arab emirates',
+  ];
+
+  final String _email = "alziber50@gmail.com";
+
   final String _cover =
       "https://static.wikia.nocookie.net/iceandfire/images/b/b6/Game_of_thrones.jpeg/revision/latest?cb=20130302001049";
 
@@ -165,6 +176,10 @@ class Generator {
 
   String _author() {
     return _authors[_rand.nextInt(_authors.length)];
+  }
+
+  String _country() {
+    return _countries[_rand.nextInt(_countries.length)];
   }
 
   String avatar() {
@@ -245,12 +260,22 @@ class Generator {
 
   Profile profile() => Profile(
         id: _id(),
-        name: _userName(),
+        email: _email,
+        username: _userName(),
+        fullName: _userName(),
         avatarUrl: avatar(),
-        email: 'test@gmail.com',
         phoneNumber: '+249100640513',
         gender: _oneOf(Gender.values),
         age: _oneOf(Age.values),
+        country: _country(),
+        favouriteCategories: List.generate(
+          count(1, 5),
+          (index) => _category(),
+        ),
+        birthDate: _dateTime(
+          before: DateTime(1900),
+          after: DateTime(2020),
+        ),
       );
 
   NotificationsOptions notificationsOption() => NotificationsOptions(
@@ -287,6 +312,12 @@ class Generator {
         content:
             "As a person who has a hard time picking up a book to read. I very"
             " much enjoy this book and definitely wouldn't mind reading it again.",
+      );
+
+  User user() => User(
+        id: _id(),
+        email: _email,
+        username: _userName(),
       );
 }
 

@@ -49,3 +49,9 @@ enum ReviewsError {
 enum SearchError {
   networkError,
 }
+
+enum AuthError {
+  networkError,
+  uploadProfileError,
+  passwordsNotMatching,
+}

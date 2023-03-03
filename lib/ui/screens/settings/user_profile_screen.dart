@@ -234,8 +234,13 @@ class _Body extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           _ProfileInfoItem(
-            title: "Name",
-            value: state.profile!.name,
+            title: "Full Name",
+            value: state.profile!.fullName,
+          ),
+          const SizedBox(height: 15),
+          _ProfileInfoItem(
+            title: "Username",
+            value: state.profile!.username,
           ),
           const SizedBox(height: 20),
           _ProfileInfoItem(

@@ -163,14 +163,14 @@ class _AppPasswordTextFieldState extends State<AppPasswordTextField> {
 
 class AppDateSelector extends StatefulWidget {
   final String label;
-  final DateTime currentTime;
+  final DateTime? selectedDateTime;
   final void Function(DateTime dateTime) onDateSelected;
 
   const AppDateSelector({
     Key? key,
     required this.label,
     required this.onDateSelected,
-    required this.currentTime,
+    this.selectedDateTime,
   }) : super(key: key);
 
   @override
@@ -204,9 +204,8 @@ class _AppDateSelectorState extends State<AppDateSelector> {
 
             DateTime? pickedDate = await showDatePicker(
               context: context,
-              initialDate: DateTime(2000), //get today's date
-              firstDate: DateTime(
-                  1900), //DateTime.now() - not to allow to choose before today.
+              initialDate: DateTime(2000),
+              firstDate: DateTime(1900),
               lastDate: DateTime(2023),
             );
 
@@ -222,7 +221,7 @@ class _AppDateSelectorState extends State<AppDateSelector> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                widget.currentTime.toString(),
+                (widget.selectedDateTime ?? DateTime(2000)).toString(),
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -254,14 +253,14 @@ class _AppDateSelectorState extends State<AppDateSelector> {
 
 class AppCountrySelector extends StatefulWidget {
   final String label;
-  final String selectedCountry;
+  final Country? selectedCountry;
   final void Function(Country country) onCountrySelected;
 
   const AppCountrySelector({
     Key? key,
     required this.label,
-    required this.selectedCountry,
     required this.onCountrySelected,
+    this.selectedCountry,
   }) : super(key: key);
 
   @override
@@ -334,7 +333,7 @@ class _AppCountrySelectorState extends State<AppCountrySelector> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                widget.selectedCountry.toString(),
+                (widget.selectedCountry ?? Country.parse("sd").name).toString(),
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,

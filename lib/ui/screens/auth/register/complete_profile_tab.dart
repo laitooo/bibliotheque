@@ -1,8 +1,11 @@
+import 'package:bibliotheque/blocs/register_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
 import 'package:bibliotheque/ui/widgets/input_field.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CompleteProfileTab extends StatefulWidget {
   const CompleteProfileTab({Key? key}) : super(key: key);
@@ -14,8 +17,8 @@ class CompleteProfileTab extends StatefulWidget {
 class _CompleteProfileTabState extends State<CompleteProfileTab> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  DateTime birthDay = DateTime(2000);
-  Country country = Country.parse("sd");
+  DateTime? birthDate;
+  Country? country;
 
   @override
   Widget build(BuildContext context) {
@@ -52,15 +55,22 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
                 PositionedDirectional(
                   bottom: 10,
                   end: 10,
-                  child: Container(
-                    padding: const EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                        color: context.theme.primaryColor,
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Icon(
-                      Icons.edit,
-                      size: 16,
-                      color: context.theme.iconColor3,
+                  child: GestureDetector(
+                    onTap: () {
+                      BlocProvider.of<RegisterBloc>(context).add(
+                        UploadProfilePicture(),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                          color: context.theme.primaryColor,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Icon(
+                        Icons.edit,
+                        size: 16,
+                        color: context.theme.iconColor3,
+                      ),
                     ),
                   ),
                 ),
@@ -83,21 +93,37 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
           const SizedBox(height: 20),
           AppDateSelector(
             label: "Date of birth",
-            currentTime: birthDay,
+            selectedDateTime: birthDate,
             onDateSelected: (dateTime) {
               setState(() {
-                birthDay = dateTime;
+                birthDate = dateTime;
               });
             },
           ),
           const SizedBox(height: 20),
           AppCountrySelector(
             label: "Date of birth",
-            selectedCountry: country.name,
+            selectedCountry: country,
             onCountrySelected: (selectedCountry) {
               setState(() {
                 country = selectedCountry;
               });
+            },
+          ),
+          const SizedBox(height: 20),
+          const Spacer(),
+          MainButton(
+            title: "Continue",
+            removePadding: true,
+            onPressed: () {
+              BlocProvider.of<RegisterBloc>(context).add(
+                InputProfileInfo(
+                  fullName: nameController.text,
+                  phoneNumber: phoneController.text,
+                  country: country == null ? null : country!.name,
+                  dateOfBirth: birthDate,
+                ),
+              );
             },
           ),
         ],
