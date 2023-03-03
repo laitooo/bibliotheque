@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -144,11 +145,9 @@ class _AppPasswordTextFieldState extends State<AppPasswordTextField> {
                   isPasswordVisible = !isPasswordVisible;
                 });
               },
-              icon: Icon(
-                isPasswordVisible
-                    ? Icons.remove_red_eye_outlined
-                    : Icons.remove_red_eye_sharp,
-                size: 16,
+              icon: Svg(
+                isPasswordVisible ? "hide_password.svg" : "show_password.svg",
+                size: 20,
                 color: focusNode.hasFocus
                     ? context.theme.textFieldActiveColor
                     : context.theme.textFieldInactiveColor,
@@ -229,13 +228,13 @@ class _AppDateSelectorState extends State<AppDateSelector> {
                 ),
               ),
               const Spacer(),
-              Icon(
-                Icons.calendar_today_outlined,
+              Svg(
+                "calendar.svg",
                 size: 16,
                 color: isSelecting
                     ? context.theme.textFieldActiveColor
                     : context.theme.textFieldInactiveColor,
-              )
+              ),
             ],
           ),
         ),
@@ -341,13 +340,13 @@ class _AppCountrySelectorState extends State<AppCountrySelector> {
                 ),
               ),
               const Spacer(),
-              Icon(
-                Icons.keyboard_arrow_down_sharp,
+              Svg(
+                "arrow_down.svg",
                 size: 24,
                 color: isSelecting
                     ? context.theme.textFieldActiveColor
                     : context.theme.textFieldInactiveColor,
-              )
+              ),
             ],
           ),
         ),

@@ -2,6 +2,7 @@ import 'package:bibliotheque/blocs/sign_in_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/reset_password_screen.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:bibliotheque/ui/widgets/input_field.dart';
@@ -202,9 +203,10 @@ class _LoginScreenState extends State<_LoginScreen> {
                               ),
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: const Icon(
-                              Icons.language,
-                            ),
+                            child: const Svg(
+                              "google.svg",
+                              size: 20,
+                            )
                           ),
                         ),
                       ),
@@ -225,8 +227,9 @@ class _LoginScreenState extends State<_LoginScreen> {
                               ),
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: const Icon(
-                              Icons.language,
+                            child: const Svg(
+                              "apple.svg",
+                              size: 20,
                             ),
                           ),
                         ),
@@ -248,9 +251,10 @@ class _LoginScreenState extends State<_LoginScreen> {
                               ),
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: const Icon(
-                              Icons.language,
-                            ),
+                            child: const Svg(
+                              "facebook.svg",
+                              size: 20,
+                            )
                           ),
                         ),
                       ),

@@ -14,12 +14,11 @@ class Svg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      path,
+      "assets/icons/" + path,
       width: size,
       height: size,
       matchTextDirection: matchTextDirection ?? false,
-      colorFilter:
-          color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+      color: color,
     );
   }
 }

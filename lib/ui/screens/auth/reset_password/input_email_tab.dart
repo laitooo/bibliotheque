@@ -1,7 +1,7 @@
 import 'package:bibliotheque/blocs/forget_password_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
-import 'package:bibliotheque/ui/screens/auth/register/register_success_dialog.dart';
+import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,31 +18,19 @@ class _InputEmailTabState extends State<InputEmailTab> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ForgetPasswordBloc, ForgetPasswordState>(
-      listener: (context, state) async {
-        if (state.status == ForgetPasswordStatus.success) {
-          await showDialog(
-            context: context,
-            builder: (context) => const RegisterSuccessDialog(),
-            useRootNavigator: false,
-          );
-          Navigator.of(context).pop();
-        }
-
-        if (state.status == ForgetPasswordStatus.error) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(
-                "Network error",
-                style: TextStyle(
-                  fontSize: 14,
-                ),
+    return BlocBuilder<ForgetPasswordBloc, ForgetPasswordState>(
+      builder: (context, state) {
+        if (state.status == ForgetPasswordStatus.loading) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: const Center(
+              child: AppProgressIndicator(
+                size: 100,
               ),
             ),
           );
         }
-      },
-      builder: (context, state) {
+
         return Padding(
           padding: const EdgeInsets.all(20),
           child: Column(

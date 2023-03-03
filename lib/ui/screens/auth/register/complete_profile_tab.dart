@@ -2,6 +2,7 @@ import 'package:bibliotheque/blocs/register_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/widgets/input_field.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,7 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
           Center(
             child: Stack(
               children: [
+                // TODO:: handle user profile picture
                 const CircleImageWidget(
                   "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
                   size: 130,
@@ -66,8 +68,8 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
                       decoration: BoxDecoration(
                           color: context.theme.primaryColor,
                           borderRadius: BorderRadius.circular(5)),
-                      child: Icon(
-                        Icons.edit,
+                      child: Svg(
+                        "edit_picture.svg",
                         size: 16,
                         color: context.theme.iconColor3,
                       ),
