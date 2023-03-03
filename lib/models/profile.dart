@@ -48,6 +48,5 @@ class Profile with _$Profile {
         avatarUrl: "",
         gender: Gender.male,
         age: Age.from18To24,
-        favouriteCategories: [],
       );
 }

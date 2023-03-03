@@ -11,17 +11,31 @@ enum RegisterStatus {
   success,
 }
 
+enum RegisterProcess {
+  gender,
+  age,
+  categories,
+  profile,
+  account,
+}
+
 class RegisterState {
   final RegisterStatus status;
+  final RegisterProcess process;
   final Profile profile;
   final AuthError? error;
 
-  RegisterState(this.status, {required this.profile, this.error});
+  RegisterState(this.status, this.process, {required this.profile, this.error});
 
-  RegisterState copyWith(
-          {RegisterStatus? status, Profile? profile, AuthError? error}) =>
+  RegisterState copyWith({
+    RegisterStatus? status,
+    RegisterProcess? process,
+    Profile? profile,
+    AuthError? error,
+  }) =>
       RegisterState(
         status ?? this.status,
+        process ?? this.process,
         error: error ?? this.error,
         profile: profile ?? this.profile,
       );
@@ -36,6 +50,7 @@ class InputGender extends BlocEvent<RegisterState, RegisterBloc> {
   Stream<RegisterState> toState(
       RegisterState current, RegisterBloc bloc) async* {
     yield current.copyWith(
+      process: RegisterProcess.age,
       profile: current.profile.copyWith(
         gender: gender,
       ),
@@ -52,6 +67,7 @@ class InputAge extends BlocEvent<RegisterState, RegisterBloc> {
   Stream<RegisterState> toState(
       RegisterState current, RegisterBloc bloc) async* {
     yield current.copyWith(
+      process: RegisterProcess.categories,
       profile: current.profile.copyWith(
         age: age,
       ),
@@ -60,16 +76,18 @@ class InputAge extends BlocEvent<RegisterState, RegisterBloc> {
 }
 
 class InputFavouriteCategories extends BlocEvent<RegisterState, RegisterBloc> {
-  final List<String> categoriesIds;
+  final List<String>? categoriesIds;
 
-  InputFavouriteCategories({required this.categoriesIds});
+  InputFavouriteCategories({this.categoriesIds});
 
   @override
   Stream<RegisterState> toState(
       RegisterState current, RegisterBloc bloc) async* {
     yield current.copyWith(
+      process: RegisterProcess.profile,
       profile: current.profile.copyWith(
-        favouriteCategories: categoriesIds,
+        favouriteCategories:
+            categoriesIds ?? current.profile.favouriteCategories,
       ),
     );
   }
@@ -116,6 +134,7 @@ class InputProfileInfo extends BlocEvent<RegisterState, RegisterBloc> {
       RegisterState current, RegisterBloc bloc) async* {
     // TODO:: validate all data in all blocs
     yield current.copyWith(
+      process: RegisterProcess.account,
       profile: current.profile.copyWith(
         fullName: fullName,
         phoneNumber: phoneNumber,
@@ -175,6 +194,7 @@ class RegisterBloc extends BaseBloc<RegisterState> {
       : super(
           RegisterState(
             RegisterStatus.idle,
+            RegisterProcess.gender,
             profile: Profile.empty(),
           ),
         );

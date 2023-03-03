@@ -119,7 +119,7 @@ class InputNewPassword
 
     yield res.incase(
       value: (value) => current.copyWith(
-        status: ForgetPasswordStatus.idle,
+        status: ForgetPasswordStatus.success,
         process: ForgetPasswordProcess.inputNewPassword,
       ),
       error: (error) => current.copyWith(

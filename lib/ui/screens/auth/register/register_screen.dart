@@ -1,6 +1,6 @@
 import 'package:bibliotheque/blocs/categories_bloc.dart';
-import 'package:bibliotheque/blocs/theme_bloc.dart';
-import 'package:bibliotheque/ui/common_widgets/buttons.dart';
+import 'package:bibliotheque/blocs/register_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/auth/register/age_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/categories_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/complete_profile_tab.dart';
@@ -10,14 +10,26 @@ import 'package:bibliotheque/ui/screens/auth/register/register_success_dialog.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RegisterPage extends StatefulWidget {
+class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => RegisterBloc(),
+      child: const _RegisterPage(),
+    );
+  }
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPage extends StatefulWidget {
+  const _RegisterPage({Key? key}) : super(key: key);
+
+  @override
+  State<_RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<_RegisterPage> {
   final controller = PageController();
   int current = 0;
 
@@ -27,74 +39,108 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
         title: Container(),
       ),
-      body: PageView(
-        controller: controller,
-        reverse: false,
-        onPageChanged: (newPage) {
+      body: BlocConsumer<RegisterBloc, RegisterState>(
+        listener: (context, state) async {
+          if (state.status == RegisterStatus.success) {
+            await showDialog(
+              context: context,
+              builder: (context) => const RegisterSuccessDialog(),
+              useRootNavigator: false,
+            );
+            Navigator.of(context).pop();
+          }
+
+          if (state.status == RegisterStatus.error) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  "Network error",
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+            );
+          }
+
           setState(() {
-            current = newPage;
+            current = registerProcessToInt(state.process);
+            controller.jumpToPage(current);
           });
         },
-        children: [
-          const GenderTab(),
-          const AgeTab(),
-          BlocProvider(
-            create: (_) => CategoriesBloc()
-              ..add(
-                LoadCategories(allCategories: true),
+        builder: (context, state) {
+          // TODO: maybe handle the auth processes loading ui better
+          // Maybe even use a loading dialog
+          if (state.status == RegisterStatus.loading) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: const Center(
+                child: AppProgressIndicator(
+                  size: 100,
+                ),
               ),
-            child: const CategoriesTab(),
-          ),
-          const CompleteProfileTab(),
-          const CreateAccountTab(),
-        ],
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30),
-        child: current == 2
-            ? Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  const SizedBox(width: 20),
-                  Expanded(
-                    child: MainButton(
-                      title: "Continue",
-                      textColor: context.theme.textColor2,
-                      backgroundColor: context.theme.buttonColor1,
-                      removePadding: true,
-                      onPressed: () async {
-                        // TODO:: complete this
-                      },
-                    ),
+            );
+          }
+
+          return PageView(
+            controller: controller,
+            reverse: false,
+            physics: const NeverScrollableScrollPhysics(),
+            onPageChanged: (newPage) {
+              setState(() {
+                current = newPage;
+              });
+            },
+            children: [
+              BlocProvider.value(
+                value: BlocProvider.of<RegisterBloc>(context),
+                child: const GenderTab(),
+              ),
+              BlocProvider.value(
+                value: BlocProvider.of<RegisterBloc>(context),
+                child: const AgeTab(),
+              ),
+              MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (_) => CategoriesBloc()
+                      ..add(
+                        LoadCategories(allCategories: true),
+                      ),
                   ),
-                  const SizedBox(width: 20),
-                  Expanded(
-                    child: MainFlatButton(
-                      title: "Skip",
-                      removePadding: true,
-                      textColor: context.theme.textColor3,
-                      backgroundColor: context.theme.buttonColor2,
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
+                  BlocProvider.value(
+                    value: BlocProvider.of<RegisterBloc>(context),
                   ),
-                  const SizedBox(width: 20),
                 ],
-              )
-            : MainButton(
-                title: current != 4 ? "Continue" : "Sign up",
-                onPressed: () {
-                  if (current == 4) {
-                    showDialog(
-                      context: context,
-                      builder: (context) => const RegisterSuccessDialog(),
-                      useRootNavigator: false,
-                    );
-                  }
-                },
+                child: const CategoriesTab(),
               ),
+              BlocProvider.value(
+                value: BlocProvider.of<RegisterBloc>(context),
+                child: const CompleteProfileTab(),
+              ),
+              BlocProvider.value(
+                value: BlocProvider.of<RegisterBloc>(context),
+                child: const CreateAccountTab(),
+              ),
+            ],
+          );
+        },
       ),
     );
+  }
+
+  registerProcessToInt(RegisterProcess process) {
+    switch (process) {
+      case RegisterProcess.gender:
+        return 0;
+      case RegisterProcess.age:
+        return 1;
+      case RegisterProcess.categories:
+        return 2;
+      case RegisterProcess.profile:
+        return 3;
+      case RegisterProcess.account:
+        return 4;
+    }
   }
 }

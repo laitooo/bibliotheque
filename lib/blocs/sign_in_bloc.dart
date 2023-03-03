@@ -4,6 +4,7 @@ import 'package:bibliotheque/utils/bloc.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
 
 enum SignInStatus {
+  idle,
   loading,
   error,
   success,
@@ -30,6 +31,8 @@ class SignIn extends BlocEvent<SignInState, SignInBloc> {
 
   @override
   Stream<SignInState> toState(SignInState current, SignInBloc bloc) async* {
+    yield SignInState(SignInStatus.loading);
+
     final res = await bloc._repo.signIn(usernameEmail, password);
 
     yield res.incase(
@@ -47,6 +50,8 @@ class SignIn extends BlocEvent<SignInState, SignInBloc> {
 class GoogleSignIn extends BlocEvent<SignInState, SignInBloc> {
   @override
   Stream<SignInState> toState(SignInState current, SignInBloc bloc) async* {
+    yield SignInState(SignInStatus.loading);
+
     final res = await bloc._repo.googleSignIn();
 
     yield res.incase(
@@ -64,6 +69,8 @@ class GoogleSignIn extends BlocEvent<SignInState, SignInBloc> {
 class AppleSignIn extends BlocEvent<SignInState, SignInBloc> {
   @override
   Stream<SignInState> toState(SignInState current, SignInBloc bloc) async* {
+    yield SignInState(SignInStatus.loading);
+
     final res = await bloc._repo.appleSignIn();
 
     yield res.incase(
@@ -81,6 +88,8 @@ class AppleSignIn extends BlocEvent<SignInState, SignInBloc> {
 class FacebookSignIn extends BlocEvent<SignInState, SignInBloc> {
   @override
   Stream<SignInState> toState(SignInState current, SignInBloc bloc) async* {
+    yield SignInState(SignInStatus.loading);
+
     final res = await bloc._repo.facebookSignIn();
 
     yield res.incase(
@@ -97,5 +106,11 @@ class FacebookSignIn extends BlocEvent<SignInState, SignInBloc> {
 
 class SignInBloc extends BaseBloc<SignInState> {
   final _repo = serviceLocator<AuthRepository>();
-  SignInBloc() : super(SignInState(SignInStatus.loading));
+
+  SignInBloc()
+      : super(
+          SignInState(
+            SignInStatus.idle,
+          ),
+        );
 }

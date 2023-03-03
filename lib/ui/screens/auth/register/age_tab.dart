@@ -1,8 +1,11 @@
+import 'package:bibliotheque/blocs/register_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/profile.dart';
+import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/widgets/filter_item.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AgeTab extends StatefulWidget {
   const AgeTab({Key? key}) : super(key: key);
@@ -63,6 +66,19 @@ class _AgeTabState extends State<AgeTab> {
                     .toList(),
               ),
             ),
+          ),
+          const SizedBox(height: 20),
+          const Spacer(),
+          MainButton(
+            title: "Continue",
+            removePadding: true,
+            onPressed: () {
+              BlocProvider.of<RegisterBloc>(context).add(
+                InputAge(
+                  age: userAge,
+                ),
+              );
+            },
           ),
         ],
       ),
