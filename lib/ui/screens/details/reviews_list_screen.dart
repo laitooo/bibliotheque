@@ -4,6 +4,7 @@ import 'package:bibliotheque/models/book_details.dart';
 import 'package:bibliotheque/models/review.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/widgets/filter_item.dart';
 import 'package:bibliotheque/ui/widgets/review_card.dart';
 import 'package:bibliotheque/ui/widgets/reviews_numbers.dart';
@@ -32,8 +33,8 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(
-              Icons.more_horiz,
+            icon: const Svg(
+              'more.svg',
             ),
           )
         ],

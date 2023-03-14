@@ -1,10 +1,8 @@
-import 'package:bibliotheque/blocs/book_details_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/book.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/details/book_details_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BookCard extends StatelessWidget {
   final Book book;
@@ -23,13 +21,7 @@ class BookCard extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (_) => BlocProvider(
-                    create: (context) => BookDetailsBloc()
-                      ..add(
-                        LoadBookDetails(book.id),
-                      ),
-                    child: BookDetailsScreen(id: book.id),
-                  ),
+                  builder: (_) => BookDetailsScreen(id: book.id),
                 ),
               );
             },
@@ -119,13 +111,7 @@ class HorizontalBookCard extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (_) => BlocProvider(
-                      create: (context) => BookDetailsBloc()
-                        ..add(
-                          LoadBookDetails(book.id),
-                        ),
-                      child: BookDetailsScreen(id: book.id),
-                    ),
+                    builder: (_) => BookDetailsScreen(id: book.id),
                   ),
                 );
               },

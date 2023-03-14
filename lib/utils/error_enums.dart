@@ -11,7 +11,10 @@ enum RecommendedBooksError {
 }
 
 enum WishListError {
-  networkError,
+  loadingListError,
+  loadingStatusError,
+  addingError,
+  removingError,
 }
 
 enum BooksError {
