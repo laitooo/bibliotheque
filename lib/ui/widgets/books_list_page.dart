@@ -2,6 +2,8 @@ import 'package:bibliotheque/blocs/books_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
+import 'package:bibliotheque/ui/screens/search/filter_screen.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
 import 'package:bibliotheque/ui/widgets/search_icon.dart';
 import 'package:flutter/material.dart';
@@ -54,8 +56,18 @@ class _BooksListPageState extends State<_BooksListPage> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: false,
-        actions: const [
-          SearchIcon(),
+        actions: [
+          const SearchIcon(),
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const FilterScreen(),
+                ),
+              );
+            },
+            icon: const Svg('filter.svg'),
+          ),
         ],
       ),
       body: BlocBuilder<BooksBloc, BooksState>(
@@ -133,8 +145,8 @@ class _BooksListPageState extends State<_BooksListPage> {
               isGrid = true;
             });
           },
-          icon: Icon(
-            Icons.grid_view,
+          icon: Svg(
+            'grid_view.svg',
             color: isGrid
                 ? context.theme.activeColor
                 : context.theme.inActiveColor,
@@ -146,8 +158,8 @@ class _BooksListPageState extends State<_BooksListPage> {
               isGrid = false;
             });
           },
-          icon: Icon(
-            Icons.menu,
+          icon: Svg(
+            'menu.svg',
             color: isGrid
                 ? context.theme.inActiveColor
                 : context.theme.activeColor,
