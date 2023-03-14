@@ -8,6 +8,7 @@ import 'package:bibliotheque/repos/search_repo.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/widgets/range_selector.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
@@ -54,8 +55,8 @@ class _FilterScreenState extends State<FilterScreen> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: Icon(
-            Icons.close,
+          icon: Svg(
+            'close.svg',
             size: 20,
             color: context.theme.iconColor1,
           ),

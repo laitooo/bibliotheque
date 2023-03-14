@@ -43,7 +43,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  icon: const Icon(Icons.arrow_back_rounded),
+                  icon: const Svg('back.svg'),
                 ),
                 Flexible(
                   flex: 1,
@@ -154,8 +154,8 @@ class _SearchScreenState extends State<SearchScreen> {
               isGrid = true;
             });
           },
-          icon: Icon(
-            Icons.grid_view,
+          icon: Svg(
+            'grid_view.svg',
             color: isGrid
                 ? context.theme.activeColor
                 : context.theme.inActiveColor,
@@ -167,8 +167,8 @@ class _SearchScreenState extends State<SearchScreen> {
               isGrid = false;
             });
           },
-          icon: Icon(
-            Icons.menu,
+          icon: Svg(
+            'menu.svg',
             color: isGrid
                 ? context.theme.inActiveColor
                 : context.theme.activeColor,
@@ -192,7 +192,7 @@ class _SearchScreenState extends State<SearchScreen> {
           );
         },
         style: TextStyle(
-          fontSize: 14,
+          fontSize: 18,
           color: context.theme.textColor1,
         ),
         decoration: InputDecoration(
@@ -206,10 +206,16 @@ class _SearchScreenState extends State<SearchScreen> {
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide.none,
           ),
-          prefixIcon: Svg(
-            "search.svg",
-            size: 24,
-            color: context.theme.iconColor1,
+          prefixIcon: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Svg(
+              "search.svg",
+              // size: 16,
+              color: context.theme.iconColor1,
+            ),
+          ),
+          prefixIconConstraints: const BoxConstraints(
+            maxHeight: 24,
           ),
           suffixIcon: IconButton(
             onPressed: () {
@@ -230,8 +236,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               );
             },
-            icon: Icon(
-              Icons.filter_list,
+            icon: Svg(
+              'filter.svg',
               color: context.theme.primaryColor,
             ),
           ),
