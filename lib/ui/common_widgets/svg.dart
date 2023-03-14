@@ -1,3 +1,4 @@
+import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -8,7 +9,7 @@ class Svg extends StatelessWidget {
   final bool? matchTextDirection;
 
   const Svg(this.path,
-      {Key? key, this.color, this.size, this.matchTextDirection})
+      {Key? key, this.color, this.size = 24, this.matchTextDirection})
       : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class Svg extends StatelessWidget {
       width: size,
       height: size,
       matchTextDirection: matchTextDirection ?? false,
-      color: color,
+      color: color ?? context.theme.iconColor1,
     );
   }
 }

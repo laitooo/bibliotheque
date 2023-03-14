@@ -60,8 +60,8 @@ class _ResetPasswordScreenState extends State<_ResetPasswordScreen> {
           }
 
           setState(() {
-              current = resetPasswordProcessToInt(state.process);
-              controller.jumpToPage(current);
+            current = resetPasswordProcessToInt(state.process);
+            controller.jumpToPage(current);
           });
         },
         builder: (context, state) {

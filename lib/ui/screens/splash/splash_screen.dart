@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:bibliotheque/ui/screens/splash/on_boarding_screen.dart';
 import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/material.dart';
@@ -57,9 +58,8 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (_) => prefs.isFirstTimer()
-                ? const OnBoardingScreen()
-                : const SplashScreen(),
+            builder: (_) =>
+                !prefs.isFirstTimer() ? const OnBoardingScreen() : HomeScreen(),
           ),
         );
       },

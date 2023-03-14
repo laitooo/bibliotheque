@@ -57,7 +57,8 @@ class _ResetPasswordSuccessDialogState
                     color: context.theme.primaryColor,
                     borderRadius: BorderRadius.circular(50),
                   ),
-                  child: Svg("success.svg",
+                  child: Svg(
+                    "success.svg",
                     size: 40,
                     color: context.theme.iconColor3,
                   ),

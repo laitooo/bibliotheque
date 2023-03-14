@@ -3,6 +3,7 @@ import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
+import 'package:bibliotheque/ui/widgets/search_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,11 +54,8 @@ class _BooksListPageState extends State<_BooksListPage> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          ),
+        actions: const [
+          SearchIcon(),
         ],
       ),
       body: BlocBuilder<BooksBloc, BooksState>(

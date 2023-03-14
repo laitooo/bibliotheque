@@ -2,6 +2,7 @@ import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/category_card.dart';
+import 'package:bibliotheque/ui/widgets/search_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,11 +15,8 @@ class CategoriesListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Explore by Genre'),
         centerTitle: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          ),
+        actions: const [
+          SearchIcon(),
         ],
       ),
       body: BlocBuilder<CategoriesBloc, CategoriesState>(

@@ -306,7 +306,9 @@ class _AppCountrySelectorState extends State<AppCountrySelector> {
                 inputDecoration: InputDecoration(
                   labelText: 'Search',
                   hintText: 'Start typing to search',
-                  prefixIcon: const Icon(Icons.search),
+                  prefixIcon: const Svg(
+                    "search.svg",
+                  ),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: const Color(0xFF8C98A8).withOpacity(0.2),

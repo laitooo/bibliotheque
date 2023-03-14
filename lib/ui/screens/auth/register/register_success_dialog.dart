@@ -55,9 +55,10 @@ class _RegisterSuccessDialogState extends State<RegisterSuccessDialog> {
                     color: context.theme.primaryColor,
                     borderRadius: BorderRadius.circular(50),
                   ),
-                  child: Svg("account_created.svg",
-                  size: 40,
-                  color: context.theme.iconColor3,
+                  child: Svg(
+                    "account_created.svg",
+                    size: 40,
+                    color: context.theme.iconColor3,
                   ),
                 ),
                 const SizedBox(height: 40),

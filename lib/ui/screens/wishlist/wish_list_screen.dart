@@ -3,6 +3,7 @@ import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
+import 'package:bibliotheque/ui/widgets/search_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -37,11 +38,8 @@ class _WishListScreenState extends State<_WishListScreen> {
       appBar: AppBar(
         title: const Text("Wish List"),
         centerTitle: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          ),
+        actions: const [
+          SearchIcon(),
         ],
       ),
       body: BlocBuilder<WishListBloc, WishListState>(

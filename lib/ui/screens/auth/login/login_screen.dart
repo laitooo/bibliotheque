@@ -195,19 +195,18 @@ class _LoginScreenState extends State<_LoginScreen> {
                                 .add(GoogleSignIn());
                           },
                           child: Container(
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 0.5,
-                                color: context.theme.dividerColor,
+                              padding: const EdgeInsets.symmetric(vertical: 15),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 0.5,
+                                  color: context.theme.dividerColor,
+                                ),
+                                borderRadius: BorderRadius.circular(30),
                               ),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: const Svg(
-                              "google.svg",
-                              size: 20,
-                            )
-                          ),
+                              child: const Svg(
+                                "google.svg",
+                                size: 20,
+                              )),
                         ),
                       ),
                       const SizedBox(width: 20),
@@ -243,19 +242,18 @@ class _LoginScreenState extends State<_LoginScreen> {
                                 .add(FacebookSignIn());
                           },
                           child: Container(
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 0.5,
-                                color: context.theme.dividerColor,
+                              padding: const EdgeInsets.symmetric(vertical: 15),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 0.5,
+                                  color: context.theme.dividerColor,
+                                ),
+                                borderRadius: BorderRadius.circular(30),
                               ),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: const Svg(
-                              "facebook.svg",
-                              size: 20,
-                            )
-                          ),
+                              child: const Svg(
+                                "facebook.svg",
+                                size: 20,
+                              )),
                         ),
                       ),
                     ],
