@@ -1,9 +1,8 @@
-import 'package:bibliotheque/blocs/book_details_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/book.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/details/book_details_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BookCard extends StatelessWidget {
   final Book book;
@@ -22,13 +21,7 @@ class BookCard extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (_) => BlocProvider(
-                    create: (context) => BookDetailsBloc()
-                      ..add(
-                        LoadBookDetails(book.id),
-                      ),
-                    child: BookDetailsScreen(id: book.id),
-                  ),
+                  builder: (_) => BookDetailsScreen(id: book.id),
                 ),
               );
             },
@@ -67,9 +60,10 @@ class BookCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(width: 15),
-              const Icon(
-                Icons.star_rate_outlined,
+              Svg(
+                'half_star.svg',
                 size: 14,
+                color: context.theme.iconColor4,
               ),
               const SizedBox(width: 5),
               Text(
@@ -117,13 +111,7 @@ class HorizontalBookCard extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (_) => BlocProvider(
-                      create: (context) => BookDetailsBloc()
-                        ..add(
-                          LoadBookDetails(book.id),
-                        ),
-                      child: BookDetailsScreen(id: book.id),
-                    ),
+                    builder: (_) => BookDetailsScreen(id: book.id),
                   ),
                 );
               },
@@ -160,9 +148,10 @@ class HorizontalBookCard extends StatelessWidget {
                       const SizedBox(height: 12),
                       Row(
                         children: [
-                          const Icon(
-                            Icons.star_rate_outlined,
+                          Svg(
+                            'half_star.svg',
                             size: 14,
+                            color: context.theme.iconColor4,
                           ),
                           const SizedBox(width: 5),
                           Text(
@@ -207,50 +196,62 @@ class HorizontalBookCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Align(
-                    alignment: AlignmentDirectional.centerEnd,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 40),
-                      child: PopupMenuButton(
-                        icon: const Icon(Icons.list),
-                        padding: EdgeInsets.zero,
-                        itemBuilder: (_) {
-                          return [
-                            PopupMenuItem(
-                              child: Row(
-                                children: const [
-                                  Icon(Icons.remove),
-                                  SizedBox(width: 10),
-                                  Text("Remove from wish list"),
-                                ],
+                  if (isWishList)
+                    Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 40),
+                        child: PopupMenuButton(
+                          icon: const Svg(
+                            'dots_vertical.svg',
+                          ),
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (_) {
+                            return [
+                              PopupMenuItem(
+                                child: Row(
+                                  children: const [
+                                    Svg(
+                                      'remove_from_list.svg',
+                                      size: 18,
+                                    ),
+                                    SizedBox(width: 10),
+                                    Text("Remove from wish list"),
+                                  ],
+                                ),
+                                onTap: onRemoveClicked,
                               ),
-                              onTap: onRemoveClicked,
-                            ),
-                            PopupMenuItem(
-                              child: Row(
-                                children: const [
-                                  Icon(Icons.share),
-                                  SizedBox(width: 10),
-                                  Text("Share"),
-                                ],
+                              PopupMenuItem(
+                                child: Row(
+                                  children: const [
+                                    Svg(
+                                      'send.svg',
+                                      size: 18,
+                                    ),
+                                    SizedBox(width: 10),
+                                    Text("Share"),
+                                  ],
+                                ),
+                                onTap: () {},
                               ),
-                              onTap: () {},
-                            ),
-                            PopupMenuItem(
-                              child: Row(
-                                children: const [
-                                  Icon(Icons.info_outline),
-                                  SizedBox(width: 10),
-                                  Text("About the app"),
-                                ],
+                              PopupMenuItem(
+                                child: Row(
+                                  children: const [
+                                    Svg(
+                                      'info.svg',
+                                      size: 18,
+                                    ),
+                                    SizedBox(width: 10),
+                                    Text("About the app"),
+                                  ],
+                                ),
+                                onTap: () {},
                               ),
-                              onTap: () {},
-                            ),
-                          ];
-                        },
+                            ];
+                          },
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -49,6 +50,20 @@ class _ResetPasswordSuccessDialogState
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                const SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.all(30),
+                  decoration: BoxDecoration(
+                    color: context.theme.primaryColor,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Svg(
+                    "success.svg",
+                    size: 40,
+                    color: context.theme.iconColor3,
+                  ),
+                ),
+                const SizedBox(height: 40),
                 Text(
                   "Reset Password Successful",
                   style: TextStyle(

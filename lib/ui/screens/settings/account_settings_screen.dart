@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/notifications_options_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/settings/about_app_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/change_language_page.dart';
 import 'package:bibliotheque/ui/screens/settings/help/help_center_screen.dart';
@@ -23,12 +24,15 @@ class AccountSettingsScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.more_vert),
+            icon: const Svg(
+              'more.svg',
+              size: 28,
+            ),
           ),
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         children: [
           const SizedBox(height: 10),
           InkWell(
@@ -39,44 +43,45 @@ class AccountSettingsScreen extends StatelessWidget {
                 ),
               );
             },
-            child: Row(
-              children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    generator.avatar(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      generator.avatar(),
+                    ),
+                    radius: 30,
                   ),
-                  radius: 30,
-                ),
-                const SizedBox(width: 20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Andrew Ainsley',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: context.theme.textColor1,
+                  const SizedBox(width: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Andrew Ainsley',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: context.theme.textColor1,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    Text(
-                      'Andrew_ainsley@yourdomain.com',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: context.theme.textColor5,
+                      const SizedBox(height: 10),
+                      Text(
+                        'Andrew_ainsley@yourdomain.com',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: context.theme.textColor5,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                Icon(
-                  Icons.edit,
-                  color: context.theme.iconColor1,
-                  size: 20,
-                ),
-              ],
+                    ],
+                  ),
+                  const Spacer(),
+                  const Svg(
+                    'edit_account.svg',
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 15),
@@ -88,7 +93,8 @@ class AccountSettingsScreen extends StatelessWidget {
           _settingsItem(
             context,
             "Payment methods",
-            Icons.payment,
+            "wallet.svg",
+            Colors.green,
             newScreen: const PaymentMethodScreen(),
           ),
           const SizedBox(height: 15),
@@ -100,14 +106,16 @@ class AccountSettingsScreen extends StatelessWidget {
           _settingsItem(
             context,
             "Personal Info",
-            Icons.supervised_user_circle_sharp,
+            "account_created.svg",
+            Colors.lightBlue,
             newScreen: const UserProfilePage(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
             context,
             "Notification",
-            Icons.notifications,
+            "notifications_settings.svg",
+            Colors.pinkAccent,
             newScreen: BlocProvider(
               create: (_) =>
                   NotificationsOptionsBloc()..add(LoadNotificationsOptions()),
@@ -118,7 +126,8 @@ class AccountSettingsScreen extends StatelessWidget {
           _settingsItem(
             context,
             "Language",
-            Icons.language,
+            "grid_view.svg",
+            Colors.orangeAccent,
             newScreen: const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
@@ -126,7 +135,8 @@ class AccountSettingsScreen extends StatelessWidget {
           _settingsItem(
             context,
             "DarkMode",
-            Icons.remove_red_eye_sharp,
+            "dark_mode.svg",
+            Colors.blueAccent,
             newScreen: const ChangeLanguagePage(),
           ),
           const SizedBox(height: 15),
@@ -138,21 +148,24 @@ class AccountSettingsScreen extends StatelessWidget {
           _settingsItem(
             context,
             "Help center",
-            Icons.help,
+            "wishlist_active.svg",
+            Colors.green,
             newScreen: const HelpCenterScreen(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
             context,
             "About the app",
-            Icons.info,
+            "about.svg",
+            Colors.orange,
             newScreen: const AboutAppScreen(),
           ),
           const SizedBox(height: 20),
           _settingsItem(
             context,
             "Logout",
-            Icons.logout,
+            'logout.svg',
+            Colors.redAccent,
             onClick: () {
               onLogoutCLicked(context);
             },
@@ -163,7 +176,7 @@ class AccountSettingsScreen extends StatelessWidget {
     );
   }
 
-  _settingsItem(BuildContext context, String title, IconData iconData,
+  _settingsItem(BuildContext context, String title, String svgPath, Color color,
       {Widget? newScreen, void Function()? onClick}) {
     return InkWell(
       onTap: () {
@@ -177,38 +190,41 @@ class AccountSettingsScreen extends StatelessWidget {
           }
         }
       },
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: context.theme.iconBackgroundColor,
-            ),
-            child: Icon(
-              iconData,
-              size: 25,
-              color: Colors.blue,
-            ),
-          ),
-          const SizedBox(width: 20),
-          Center(
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: context.theme.textColor1,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: color.withOpacity(0.1),
+              ),
+              child: Svg(
+                svgPath,
+                size: 25,
+                color: color,
               ),
             ),
-          ),
-          const Spacer(),
-          Icon(
-            Icons.chevron_right_sharp,
-            color: context.theme.iconColor1,
-            size: 20,
-          ),
-        ],
+            const SizedBox(width: 20),
+            Center(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: context.theme.textColor1,
+                ),
+              ),
+            ),
+            const Spacer(),
+            Icon(
+              Icons.chevron_right_sharp,
+              color: context.theme.iconColor1,
+              size: 20,
+            ),
+          ],
+        ),
       ),
     );
   }

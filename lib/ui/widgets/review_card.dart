@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/review.dart';
 import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/widgets/filter_item.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
@@ -44,9 +45,9 @@ class ReviewCard extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {},
-              icon: const Icon(
-                Icons.more_horiz,
-                size: 20,
+              icon: const Svg(
+                'more.svg',
+                size: 28,
               ),
             ),
           ],
@@ -67,9 +68,11 @@ class ReviewCard extends StatelessWidget {
           children: [
             const SizedBox(width: 20),
             // TODO: do on fav clicked interaction
-            Icon(
-              review.hasLiked ? Icons.favorite_border : Icons.favorite,
-              size: 20,
+            Svg(
+              review.hasLiked ? 'favorite_full.svg' : 'favorite_empty.svg',
+              color: review.hasLiked
+                  ? context.theme.iconColor2
+                  : context.theme.iconColor1,
             ),
             const SizedBox(width: 10),
             Text(

@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/notifications_bloc.dart';
+import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/notification.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
@@ -6,7 +7,7 @@ import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/notification_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 
 class NotificationsListPage extends StatefulWidget {
   const NotificationsListPage({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _NotificationsListPageState extends State<NotificationsListPage> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.settings),
+            icon: const Svg('settings.svg'),
           ),
         ],
       ),
@@ -45,14 +46,14 @@ class _NotificationsListPageState extends State<NotificationsListPage> {
             );
           }
 
-          if (state.notifications!.isNotEmpty) {
+          if (state.notifications!.isEmpty) {
             return NoDataPage(
               text: "Empty",
               subText: "You don't have any notifications at this time",
-              icon: SvgPicture.asset(
-                'assets/images/no_notifications.svg',
-                width: 300,
-                height: 200,
+              icon: Svg(
+                'empty_page.svg',
+                size: 200,
+                color: context.theme.iconColor2,
               ),
             );
           }

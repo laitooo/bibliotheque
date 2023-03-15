@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/notifications_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/blocs/unread_notifications_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/notifications/notifications_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,10 +40,12 @@ class NotificationsIconButton extends StatelessWidget {
               );
             },
             child: Center(
-                child: Icon(
-              Icons.notifications,
-              color: context.theme.iconColor1,
-            )),
+              child: Svg(
+                "notifications.svg",
+                size: 24,
+                color: context.theme.iconColor1,
+              ),
+            ),
           ),
           PositionedDirectional(
             start: 8,

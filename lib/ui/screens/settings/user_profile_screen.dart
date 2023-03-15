@@ -3,6 +3,7 @@ import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,7 @@ class UserProfilePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.edit),
+            icon: const Svg('edit_account.svg'),
           ),
         ],
       ),
@@ -252,6 +253,9 @@ class _Body extends StatelessWidget {
             title: "Phone number",
             value: state.profile!.phoneNumber,
           ),
+
+          // TODO:: add birthyear and maybe street address input fields to this
+          // screen
         ],
       );
     });

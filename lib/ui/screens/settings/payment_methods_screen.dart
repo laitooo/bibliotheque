@@ -1,5 +1,7 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart' as svg;
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PaymentMethodScreen extends StatelessWidget {
   const PaymentMethodScreen({Key? key}) : super(key: key);
@@ -13,66 +15,61 @@ class PaymentMethodScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.more_vert),
+            icon: const svg.Svg(
+              'more.svg',
+              size: 28,
+            ),
           ),
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
         children: [
           const SizedBox(height: 15),
           _paymentMethod(
             context,
             "Paypal",
-            Icons.payment,
+            "paypal.svg",
             () {},
           ),
-          const SizedBox(height: 15),
           Divider(
             thickness: 0.5,
             color: context.theme.dividerColor,
           ),
-          const SizedBox(height: 15),
           _paymentMethod(
             context,
             "Google Pay",
-            Icons.payment,
+            "google.svg",
             () {},
           ),
-          const SizedBox(height: 15),
           Divider(
             thickness: 0.5,
             color: context.theme.dividerColor,
           ),
-          const SizedBox(height: 15),
           _paymentMethod(
             context,
             "Apple Pay",
-            Icons.payment,
+            "apple.svg",
             () {},
           ),
-          const SizedBox(height: 15),
           Divider(
             thickness: 0.5,
             color: context.theme.dividerColor,
           ),
-          const SizedBox(height: 15),
           _paymentMethod(
             context,
             "Visa card",
-            Icons.payment,
+            "visa.svg",
             () {},
           ),
-          const SizedBox(height: 15),
           Divider(
             thickness: 0.5,
             color: context.theme.dividerColor,
           ),
-          const SizedBox(height: 15),
           _paymentMethod(
             context,
             "Master Card",
-            Icons.payment,
+            "mastercard.svg",
             () {},
           ),
           const SizedBox(height: 15),
@@ -81,42 +78,38 @@ class PaymentMethodScreen extends StatelessWidget {
     );
   }
 
-  _paymentMethod(BuildContext context, String title, IconData iconData,
+  _paymentMethod(BuildContext context, String title, String svgPath,
       void Function() onClick) {
     return InkWell(
       onTap: onClick,
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: context.theme.iconBackgroundColor,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              "assets/icons/" + svgPath,
+              width: 50,
+              height: 50,
             ),
-            child: Icon(
-              iconData,
-              size: 25,
-              color: Colors.blue,
-            ),
-          ),
-          const SizedBox(width: 20),
-          Center(
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: context.theme.textColor1,
+            const SizedBox(width: 20),
+            Center(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: context.theme.textColor1,
+                ),
               ),
             ),
-          ),
-          const Spacer(),
-          Icon(
-            Icons.chevron_right_sharp,
-            color: context.theme.iconColor1,
-            size: 20,
-          ),
-        ],
+            const Spacer(),
+            Icon(
+              Icons.chevron_right_sharp,
+              color: context.theme.iconColor1,
+              size: 20,
+            ),
+          ],
+        ),
       ),
     );
   }

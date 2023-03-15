@@ -1,3 +1,4 @@
+import 'package:bibliotheque/models/book.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'book_details.g.dart';
@@ -22,6 +23,8 @@ enum Language {
 
 @freezed
 class BookDetails with _$BookDetails {
+  const BookDetails._();
+
   @Assert('reviewsPercentage.length >= 5',
       'Stars percentage should contain 5 items')
   const factory BookDetails({
@@ -49,4 +52,14 @@ class BookDetails with _$BookDetails {
 
   factory BookDetails.fromJson(Map<String, dynamic> json) =>
       _$BookDetailsFromJson(json);
+
+  Book toBook() => Book(
+        id: id,
+        name: name,
+        coveUrl: coveUrl,
+        price: price,
+        rate: rate,
+        categoriesNames: categoriesNames,
+        categoriesIds: categoriesIds,
+      );
 }

@@ -3,12 +3,12 @@ import 'package:bibliotheque/blocs/search_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/search/filter_screen.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -43,7 +43,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  icon: const Icon(Icons.arrow_back_rounded),
+                  icon: const Svg('back.svg'),
                 ),
                 Flexible(
                   flex: 1,
@@ -80,10 +80,10 @@ class _SearchScreenState extends State<SearchScreen> {
                     return NoDataPage(
                       text: "Empty",
                       subText: "Error",
-                      icon: SvgPicture.asset(
-                        'assets/images/no_notifications.svg',
-                        width: 300,
-                        height: 200,
+                      icon: Svg(
+                        "no_notifications.svg",
+                        size: 24,
+                        color: context.theme.iconColor1,
                       ),
                     );
                   }
@@ -154,8 +154,8 @@ class _SearchScreenState extends State<SearchScreen> {
               isGrid = true;
             });
           },
-          icon: Icon(
-            Icons.grid_view,
+          icon: Svg(
+            'grid_view.svg',
             color: isGrid
                 ? context.theme.activeColor
                 : context.theme.inActiveColor,
@@ -167,8 +167,8 @@ class _SearchScreenState extends State<SearchScreen> {
               isGrid = false;
             });
           },
-          icon: Icon(
-            Icons.menu,
+          icon: Svg(
+            'menu.svg',
             color: isGrid
                 ? context.theme.inActiveColor
                 : context.theme.activeColor,
@@ -192,7 +192,7 @@ class _SearchScreenState extends State<SearchScreen> {
           );
         },
         style: TextStyle(
-          fontSize: 14,
+          fontSize: 18,
           color: context.theme.textColor1,
         ),
         decoration: InputDecoration(
@@ -206,9 +206,16 @@ class _SearchScreenState extends State<SearchScreen> {
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide.none,
           ),
-          prefixIcon: Icon(
-            Icons.search,
-            color: context.theme.iconColor1,
+          prefixIcon: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Svg(
+              "search.svg",
+              // size: 16,
+              color: context.theme.iconColor1,
+            ),
+          ),
+          prefixIconConstraints: const BoxConstraints(
+            maxHeight: 24,
           ),
           suffixIcon: IconButton(
             onPressed: () {
@@ -229,8 +236,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               );
             },
-            icon: Icon(
-              Icons.filter_list,
+            icon: Svg(
+              'filter.svg',
               color: context.theme.primaryColor,
             ),
           ),

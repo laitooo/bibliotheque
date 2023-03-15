@@ -1,4 +1,6 @@
 import 'package:bibliotheque/blocs/books_bloc.dart';
+import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/home/home_tab.dart';
 import 'package:bibliotheque/ui/screens/settings/account_settings_screen.dart';
 import 'package:bibliotheque/ui/screens/wishlist/wish_list_screen.dart';
@@ -36,30 +38,26 @@ class HomeScreenState extends State<HomeScreen> {
         currentIndex: selectedTap,
         showSelectedLabels: true,
         showUnselectedLabels: true,
-        items: const [
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon: Icon(
-              Icons.home,
-            ),
+        items: [
+          _getBottomTabBarItem(
+            title: 'Home',
+            iconPath: 'home',
+            index: 0,
           ),
-          BottomNavigationBarItem(
-            label: 'Discover',
-            icon: Icon(
-              Icons.support,
-            ),
+          _getBottomTabBarItem(
+            title: 'Discover',
+            iconPath: 'discover',
+            index: 1,
           ),
-          BottomNavigationBarItem(
-            label: 'Wish list',
-            icon: Icon(
-              Icons.description,
-            ),
+          _getBottomTabBarItem(
+            title: 'Wish list',
+            iconPath: 'wishlist',
+            index: 2,
           ),
-          BottomNavigationBarItem(
-            label: 'Account',
-            icon: Icon(
-              Icons.supervised_user_circle_sharp,
-            ),
+          _getBottomTabBarItem(
+            title: 'Account',
+            iconPath: 'profile',
+            index: 3,
           ),
         ],
         onTap: (index) {
@@ -69,6 +67,25 @@ class HomeScreenState extends State<HomeScreen> {
         },
       ),
       body: widget._pages[selectedTap],
+    );
+  }
+
+  _getBottomTabBarItem(
+      {required String title, required String iconPath, required int index}) {
+    return BottomNavigationBarItem(
+      label: title,
+      icon: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Svg(
+          selectedTap == index
+              ? "${iconPath}_active.svg"
+              : "${iconPath}_inactive.svg",
+          size: 24,
+          color: selectedTap == index
+              ? context.theme.activeColor
+              : context.theme.inActiveColor,
+        ),
+      ),
     );
   }
 

@@ -3,6 +3,7 @@
 A flutter mobile app for selling books
 
 ## DOING:
+- Icons
 
 ## DONE:
 - Home screen
@@ -24,3 +25,4 @@ A flutter mobile app for selling books
 - Edit profile
 - Night mode
 - New Releases
+- New review

@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:flutter/material.dart';
 
 class ContactTab extends StatelessWidget {
@@ -14,37 +15,37 @@ class ContactTab extends StatelessWidget {
         _mediaItem(
           context,
           'Customer service',
-          Icons.headset,
+          'call_center.svg',
           () {},
         ),
         _mediaItem(
           context,
           'WhatsApp',
-          Icons.headset,
+          'whatsapp.svg',
           () {},
         ),
         _mediaItem(
           context,
           'Website',
-          Icons.headset,
+          'website.svg',
           () {},
         ),
         _mediaItem(
           context,
           'Facebook',
-          Icons.headset,
+          'facebook.svg',
           () {},
         ),
         _mediaItem(
           context,
           'Twitter',
-          Icons.headset,
+          'twitter.svg',
           () {},
         ),
         _mediaItem(
           context,
           'Instagram',
-          Icons.headset,
+          'instagram.svg',
           () {},
         ),
         const SizedBox(height: 50),
@@ -52,7 +53,7 @@ class ContactTab extends StatelessWidget {
     );
   }
 
-  _mediaItem(BuildContext context, String name, IconData iconData,
+  _mediaItem(BuildContext context, String name, String svgPath,
       void Function() onClick) {
     return GestureDetector(
       onTap: onClick,
@@ -67,10 +68,10 @@ class ContactTab extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
           children: [
-            Icon(
-              iconData,
+            Svg(
+              svgPath,
               color: context.theme.primaryColor,
-              size: 16,
+              size: 24,
             ),
             const SizedBox(width: 20),
             Text(

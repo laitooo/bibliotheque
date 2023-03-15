@@ -1,5 +1,4 @@
 import 'package:bibliotheque/blocs/forget_password_bloc.dart';
-import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/input_email_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/input_otp_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/input_password_tab.dart';
@@ -66,17 +65,6 @@ class _ResetPasswordScreenState extends State<_ResetPasswordScreen> {
           });
         },
         builder: (context, state) {
-          if (state.status == ForgetPasswordStatus.loading) {
-            return SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: const Center(
-                child: AppProgressIndicator(
-                  size: 100,
-                ),
-              ),
-            );
-          }
-
           return PageView(
             controller: controller,
             reverse: false,

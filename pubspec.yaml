@@ -18,7 +18,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_bloc: ^7.2.0
   shared_preferences: ^2.0.17
-  flutter_svg: ^2.0.0+1
+  flutter_svg: ^1.0.3
   get_it: ^7.2.0
   paginated_live_list:
     git: https://github.com/AkramIzz/paginated_live_list
@@ -46,6 +46,7 @@ flutter:
 
   assets:
     - assets/i18n/
+    - assets/icons/
 
   # example:
   # fonts:
