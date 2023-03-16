@@ -57,7 +57,15 @@ class _SearchScreenState extends State<SearchScreen> {
               child: BlocBuilder<SearchBloc, SearchState>(
                 builder: (context, state) {
                   if (state.status == SearchStatus.idle) {
-                    return const Center(child: Text("Start searching"));
+                    return Center(
+                      child: Text(
+                        "Start searching",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: context.theme.textColor1,
+                        ),
+                      ),
+                    );
                   }
 
                   if (state.status == SearchStatus.loading) {

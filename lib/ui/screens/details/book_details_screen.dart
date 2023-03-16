@@ -94,6 +94,12 @@ class _BookDetailsScreen extends StatelessWidget {
                     icon: const Svg('send.svg'),
                   ),
                 ],
+                leading: IconButton(
+                  icon: const Svg('back.svg'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
               ),
               body: ListView(
                 children: [
@@ -121,26 +127,32 @@ class _BookDetailsScreen extends StatelessWidget {
                             const SizedBox(height: 10),
                             Text(
                               book.name,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 height: 1.5,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.black,
+                                color: context.theme.textColor1,
                               ),
                             ),
                             const SizedBox(height: 10),
                             Text(
                               book.authorName,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 16,
-                                color: Colors.orange,
+                                color: context.theme.textColor3,
                               ),
                             ),
                             const SizedBox(height: 10),
-                            Text('Released on ' +
-                                book.publishDate.month.toString() +
-                                '. ' +
-                                book.publishDate.year.toString()),
+                            Text(
+                              'Released on ' +
+                                  book.publishDate.month.toString() +
+                                  '. ' +
+                                  book.publishDate.year.toString(),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: context.theme.textColor4,
+                              ),
+                            ),
                             const SizedBox(height: 10),
                             Wrap(
                               spacing: 10,
@@ -148,13 +160,19 @@ class _BookDetailsScreen extends StatelessWidget {
                               children: List.generate(
                                 book.categoriesNames.length,
                                 (index) => Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 8),
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey.shade300,
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    child: Text(book.categoriesNames[index])),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 8),
+                                  decoration: BoxDecoration(
+                                    color: context.theme.tagBackgroundColor,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Text(
+                                    book.categoriesNames[index],
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: context.theme.textColor4),
+                                  ),
+                                ),
                               ),
                             ),
                           ],
@@ -173,10 +191,10 @@ class _BookDetailsScreen extends StatelessWidget {
                             children: [
                               Text(
                                 book.rate.toString(),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.black,
+                                  color: context.theme.textColor1,
                                 ),
                               ),
                               const SizedBox(width: 5),
@@ -186,12 +204,12 @@ class _BookDetailsScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 4),
+                          const SizedBox(height: 6),
                           Text(
                             book.numReviews.toString() + " Reviews",
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 14,
-                              color: Colors.black,
+                              color: context.theme.textColor4,
                             ),
                           ),
                         ],
@@ -200,18 +218,18 @@ class _BookDetailsScreen extends StatelessWidget {
                         children: [
                           Text(
                             book.numPages.toString(),
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
-                              color: Colors.black,
+                              color: context.theme.textColor1,
                             ),
                           ),
-                          const SizedBox(height: 4),
-                          const Text(
+                          const SizedBox(height: 6),
+                          Text(
                             'Pages',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.black,
+                              color: context.theme.textColor4,
                             ),
                           ),
                         ],
@@ -220,18 +238,18 @@ class _BookDetailsScreen extends StatelessWidget {
                         children: [
                           Text(
                             book.numBuyers.toString(),
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
-                              color: Colors.black,
+                              color: context.theme.textColor1,
                             ),
                           ),
                           const SizedBox(height: 4),
-                          const Text(
+                          Text(
                             'purchases',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.black,
+                              color: context.theme.textColor4,
                             ),
                           ),
                         ],
@@ -256,7 +274,6 @@ class _BookDetailsScreen extends StatelessWidget {
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                             color: context.theme.textColor1,
-                            height: 1.5,
                           ),
                         ),
                       ),
@@ -292,14 +309,14 @@ class _BookDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Padding(
-                        padding: EdgeInsetsDirectional.only(start: 20),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.only(start: 20),
                         child: Text(
                           'Ratings & Reviews',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
-                            color: Colors.black,
+                            color: context.theme.textColor1,
                           ),
                         ),
                       ),

@@ -73,6 +73,7 @@ class HomeScreenState extends State<HomeScreen> {
   _getBottomTabBarItem(
       {required String title, required String iconPath, required int index}) {
     return BottomNavigationBarItem(
+      backgroundColor: context.theme.backgroundColor,
       label: title,
       icon: Padding(
         padding: const EdgeInsets.only(bottom: 10),

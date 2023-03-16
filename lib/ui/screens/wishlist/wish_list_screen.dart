@@ -38,7 +38,14 @@ class _WishListScreenState extends State<_WishListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Wish List"),
+        title: Text(
+          "Wish List",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
         centerTitle: false,
         actions: [
           IconButton(

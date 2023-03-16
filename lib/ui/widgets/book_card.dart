@@ -68,15 +68,17 @@ class BookCard extends StatelessWidget {
               const SizedBox(width: 5),
               Text(
                 book.rate.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 14,
+                  color: context.theme.textColor4,
                 ),
               ),
               const SizedBox(width: 15),
               Text(
                 "\$" + book.price.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 14,
+                  color: context.theme.textColor4,
                 ),
               ),
             ],
@@ -104,8 +106,9 @@ class HorizontalBookCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: SizedBox(
-        height: 180,
+        height: 210,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GestureDetector(
               onTap: () {
@@ -119,7 +122,7 @@ class HorizontalBookCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 child: Image(
                   image: NetworkImage(book.coveUrl),
-                  height: 180,
+                  height: 200,
                 ),
               ),
             ),
@@ -138,14 +141,14 @@ class HorizontalBookCard extends StatelessWidget {
                           textAlign: TextAlign.start,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            height: 1.5,
+                            height: 1.4,
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             color: context.theme.textColor1,
                           ),
                         ),
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 10),
                       Row(
                         children: [
                           Svg(
@@ -156,19 +159,21 @@ class HorizontalBookCard extends StatelessWidget {
                           const SizedBox(width: 5),
                           Text(
                             book.rate.toString(),
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
+                              color: context.theme.textColor4,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 10),
                       Text(
                         "\$ " + book.price.toString(),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
+                          color: context.theme.textColor4,
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -179,7 +184,7 @@ class HorizontalBookCard extends StatelessWidget {
                           book.categoriesNames.length,
                           (index) => Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 6, vertical: 4),
+                                horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
                               color: context.theme.tagBackgroundColor,
                               borderRadius: BorderRadius.circular(5),
@@ -188,7 +193,7 @@ class HorizontalBookCard extends StatelessWidget {
                               book.categoriesNames[index],
                               style: TextStyle(
                                 fontSize: 14,
-                                color: context.theme.textColor1,
+                                color: context.theme.textColor4,
                               ),
                             ),
                           ),
@@ -200,7 +205,7 @@ class HorizontalBookCard extends StatelessWidget {
                     Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: Padding(
-                        padding: const EdgeInsets.only(bottom: 40),
+                        padding: const EdgeInsets.only(bottom: 70),
                         child: PopupMenuButton(
                           icon: const Svg(
                             'dots_vertical.svg',

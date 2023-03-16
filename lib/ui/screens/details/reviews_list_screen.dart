@@ -28,13 +28,27 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ratings & Reviews"),
+        title: Text(
+          "Ratings & Reviews",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
         centerTitle: false,
+        leading: IconButton(
+          icon: const Svg('back.svg'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: const Svg(
               'more.svg',
+              size: 28,
             ),
           )
         ],
@@ -52,7 +66,7 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Divider(
               thickness: 0.5,
-              color: Colors.grey.shade400,
+              color: context.theme.dividerColor,
             ),
           ),
           const SizedBox(height: 10),
@@ -71,7 +85,7 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
                       Icons.star,
                       size: 14,
                       color: selectedNumOfStarts == null
-                          ? context.theme.filterItemColor2
+                          ? context.theme.filterItemColor3
                           : context.theme.filterItemColor1,
                     ),
                     onClick: () {
@@ -94,7 +108,7 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
                               Icons.star,
                               size: 14,
                               color: stars == selectedNumOfStarts
-                                  ? context.theme.filterItemColor2
+                                  ? context.theme.filterItemColor3
                                   : context.theme.filterItemColor1,
                             ),
                             onClick: () {

@@ -26,7 +26,14 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bibliotheque'),
+        title: Text(
+          'Bibliotheque',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
         centerTitle: false,
         actions: [
           const SearchIcon(),
@@ -107,7 +114,14 @@ class _PopularBooksContainer extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Top charts'),
+                  Text(
+                    'Top charts',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: context.theme.textColor1,
+                    ),
+                  ),
                   IconButton(
                     icon: Svg(
                       'forward.svg',
@@ -166,7 +180,14 @@ class _CategoriesContainer extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Explore by Genre'),
+                  Text(
+                    'Explore by Genre',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: context.theme.textColor1,
+                    ),
+                  ),
                   IconButton(
                     onPressed: () {
                       Navigator.of(context).push(
@@ -236,7 +257,14 @@ class _RecommendedBooksContainer extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Recommended for you'),
+                  Text(
+                    'Recommended for you',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: context.theme.textColor1,
+                    ),
+                  ),
                   IconButton(
                     onPressed: () {
                       Navigator.of(context).push(
@@ -305,7 +333,14 @@ class _WishListContainer extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Wish List'),
+                  Text(
+                    'Wish List',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: context.theme.textColor1,
+                    ),
+                  ),
                   IconButton(
                     icon: Svg(
                       "forward.svg",
