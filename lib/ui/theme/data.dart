@@ -170,7 +170,7 @@ class DarkThemeData extends AppThemeData {
   Color get activeColor => primaryColor;
   Color get inActiveColor => const Color(0xFF626160);
   Color get tagBackgroundColor => const Color(0xFF35383F);
-  Color get dividerColor => Colors.grey.shade400;
+  Color get dividerColor => Colors.grey.shade700;
   Color get iconBackgroundColor => const Color(0x221144bb);
   Color get filterItemColor1 => primaryColor;
   Color get filterItemColor2 => backgroundColor;

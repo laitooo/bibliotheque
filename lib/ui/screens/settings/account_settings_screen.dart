@@ -19,7 +19,14 @@ class AccountSettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Account'),
+        title: Text(
+          'Account',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
         centerTitle: false,
         actions: [
           IconButton(
@@ -71,7 +78,7 @@ class AccountSettingsScreen extends StatelessWidget {
                         'Andrew_ainsley@yourdomain.com',
                         style: TextStyle(
                           fontSize: 14,
-                          color: context.theme.textColor5,
+                          color: context.theme.textColor1,
                         ),
                       ),
                     ],

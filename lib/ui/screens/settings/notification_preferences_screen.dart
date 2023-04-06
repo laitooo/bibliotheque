@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../common_widgets/progress_indicator.dart';
+import '../../common_widgets/svg.dart';
 
 class NotificationPreferencesScreen extends StatefulWidget {
   const NotificationPreferencesScreen({Key? key}) : super(key: key);
@@ -20,7 +21,20 @@ class _NotificationPreferencesScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notification'),
+        title: Text(
+          'Notification',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
+        leading: IconButton(
+          icon: const Svg('back.svg'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         centerTitle: false,
       ),
       body: BlocBuilder<NotificationsOptionsBloc, NotificationsOptionsState>(
