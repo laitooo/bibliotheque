@@ -90,9 +90,8 @@ class _WishListScreenState extends State<_WishListScreen> {
           return ListView(
             children: state.books!
                 .map(
-                  (book) => HorizontalBookCard(
+                  (book) => WishListCard(
                     book: book,
-                    isWishList: true,
                     onRemoveClicked: () {
                       BlocProvider.of<WishListBloc>(context).add(
                         RemoveFromWishList(book.id),
