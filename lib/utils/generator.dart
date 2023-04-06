@@ -11,6 +11,7 @@ import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/models/question.dart';
 import 'package:bibliotheque/models/review.dart';
 import 'package:bibliotheque/models/user.dart';
+import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/material.dart';
 
 final generator = Generator();
@@ -122,6 +123,13 @@ class Generator {
     'Non-Fiction',
   ];
 
+  static const _categoriesAr = [
+    'رومانسي',
+    'رعب',
+    'ملهم',
+    'واقعي',
+  ];
+
   static const _authors = [
     'J.K. Rowling',
     'Collen Hoover',
@@ -171,7 +179,8 @@ class Generator {
   }
 
   String _category() {
-    return _categories[_rand.nextInt(_categories.length)];
+    return !prefs.isArabic() ? _categories[_rand.nextInt(_categories.length)] :
+    _categoriesAr[_rand.nextInt(_categoriesAr.length)];
   }
 
   String _author() {
@@ -206,6 +215,7 @@ class Generator {
   Category category({String? id}) => Category(
         id: id ?? _id(),
         name: _category(),
+        nameAr: _category(),
         imageUrl: _categoryCover,
       );
 
