@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/forget_password_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/input_field.dart';
@@ -37,7 +38,7 @@ class _InputEmailTabState extends State<InputEmailTab> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Forgot Password",
+                t.auth.resetPassword.forgotPassword,
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
@@ -46,7 +47,7 @@ class _InputEmailTabState extends State<InputEmailTab> {
               ),
               const SizedBox(height: 10),
               Text(
-                "Enter your email address. We will send an OTP code for verification in the next step.",
+                t.auth.resetPassword.enterEmail,
                 style: TextStyle(
                   fontSize: 14,
                   height: 1.5,
@@ -55,14 +56,14 @@ class _InputEmailTabState extends State<InputEmailTab> {
               ),
               const SizedBox(height: 40),
               AppTextField(
-                label: "Email",
+                label: t.auth.resetPassword.email,
                 initialValue: "andrew.ainsley@yourdomain.com",
                 controller: emailController,
               ),
               const SizedBox(height: 20),
               const Spacer(),
               MainButton(
-                title: "Continue",
+                title: t.auth.resetPassword.continu,
                 removePadding: true,
                 onPressed: () {
                   BlocProvider.of<ForgetPasswordBloc>(context).add(

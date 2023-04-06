@@ -7,6 +7,8 @@ import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../i18n/translations.dart';
+
 class AgeTab extends StatefulWidget {
   const AgeTab({Key? key}) : super(key: key);
 
@@ -25,7 +27,7 @@ class _AgeTabState extends State<AgeTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Choose your age",
+            t.auth.register.chooseAge,
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,
@@ -34,7 +36,7 @@ class _AgeTabState extends State<AgeTab> {
           ),
           const SizedBox(height: 20),
           Text(
-            "Select age range for better content",
+            t.auth.register.selectAgeRange,
             style: TextStyle(
               fontSize: 14,
               color: context.theme.textColor5,
@@ -70,7 +72,7 @@ class _AgeTabState extends State<AgeTab> {
           const SizedBox(height: 20),
           const Spacer(),
           MainButton(
-            title: "Continue",
+            title: t.auth.register.continu,
             removePadding: true,
             onPressed: () {
               BlocProvider.of<RegisterBloc>(context).add(

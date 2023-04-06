@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/forget_password_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/input_field.dart';
@@ -40,7 +41,7 @@ class _InputPasswordTabState extends State<InputPasswordTab> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Forgot Password",
+                    t.auth.resetPassword.forgotPassword,
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
@@ -49,7 +50,7 @@ class _InputPasswordTabState extends State<InputPasswordTab> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "Enter your email address. We will send an OTP code for verification in the next step.",
+                    t.auth.resetPassword.enterNewPassword,
                     style: TextStyle(
                       fontSize: 14,
                       height: 1.5,
@@ -58,13 +59,13 @@ class _InputPasswordTabState extends State<InputPasswordTab> {
                   ),
                   const SizedBox(height: 40),
                   AppPasswordTextField(
-                    label: "Password",
+                    label: t.auth.resetPassword.password,
                     initialValue: "password",
                     controller: passwordController,
                   ),
                   const SizedBox(height: 20),
                   AppPasswordTextField(
-                    label: "Password",
+                    label: t.auth.resetPassword.confirmPassword,
                     initialValue: "password",
                     controller: confirmPasswordController,
                   ),
@@ -78,7 +79,7 @@ class _InputPasswordTabState extends State<InputPasswordTab> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: MainButton(
-          title: "Continue",
+          title: t.auth.resetPassword.confirm,
           onPressed: () {
             BlocProvider.of<ForgetPasswordBloc>(context).add(
               InputNewPassword(

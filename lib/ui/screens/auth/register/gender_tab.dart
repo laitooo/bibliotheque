@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/register_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
@@ -24,7 +25,7 @@ class _GenderTabState extends State<GenderTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "What is your gender?",
+            t.auth.register.whatGender,
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,
@@ -33,7 +34,7 @@ class _GenderTabState extends State<GenderTab> {
           ),
           const SizedBox(height: 10),
           Text(
-            "Select gender for better content",
+            t.auth.register.selectGender,
             style: TextStyle(
               fontSize: 14,
               color: context.theme.textColor5,
@@ -75,7 +76,7 @@ class _GenderTabState extends State<GenderTab> {
           const SizedBox(height: 20),
           const Spacer(),
           MainButton(
-            title: "Continue",
+            title: t.auth.register.continu,
             removePadding: true,
             onPressed: () {
               BlocProvider.of<RegisterBloc>(context).add(
