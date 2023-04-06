@@ -63,10 +63,10 @@ class FAQQuestionWidgetState extends State<FAQQuestionWidget>
               children: [
                 Text(
                   widget.question,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: context.theme.textColor1),
                 ),
                 const Spacer(),
                 AnimatedIcon(
@@ -90,9 +90,9 @@ class FAQQuestionWidgetState extends State<FAQQuestionWidget>
                 const SizedBox(height: 10),
                 Text(
                   widget.answer,
-                  style: const TextStyle(
-                    // color: widget.color,
+                  style: TextStyle(
                     fontSize: 14,
+                    color: context.theme.textColor4,
                   ),
                 ),
               ],

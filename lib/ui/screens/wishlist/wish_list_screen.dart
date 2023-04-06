@@ -38,7 +38,14 @@ class _WishListScreenState extends State<_WishListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Wish List"),
+        title: Text(
+          "Wish List",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
         centerTitle: false,
         actions: [
           IconButton(
@@ -83,9 +90,8 @@ class _WishListScreenState extends State<_WishListScreen> {
           return ListView(
             children: state.books!
                 .map(
-                  (book) => HorizontalBookCard(
+                  (book) => WishListCard(
                     book: book,
-                    isWishList: true,
                     onRemoveClicked: () {
                       BlocProvider.of<WishListBloc>(context).add(
                         RemoveFromWishList(book.id),

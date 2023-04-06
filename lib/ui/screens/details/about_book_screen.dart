@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/book_details.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,20 @@ class AboutBookScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("About this book"),
+        title: Text(
+          "About this book",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
+        leading: IconButton(
+          icon: const Svg('back.svg'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         centerTitle: false,
       ),
       body: ListView(
@@ -39,17 +53,17 @@ class AboutBookScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(
               book.aboutBook,
-              style: const TextStyle(
+              style: TextStyle(
                 height: 1.5,
                 fontSize: 14,
-                color: Colors.black,
+                color: context.theme.textColor1,
               ),
             ),
           ),
           const SizedBox(height: 10),
           Divider(
             thickness: 0.5,
-            color: Colors.grey.shade400,
+            color: context.theme.dividerColor,
           ),
           const SizedBox(height: 20),
           Row(

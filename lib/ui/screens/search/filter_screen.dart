@@ -50,7 +50,14 @@ class _FilterScreenState extends State<FilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Filter"),
+        title: Text(
+          "Filter",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
         centerTitle: false,
         leading: IconButton(
           onPressed: () {
@@ -493,8 +500,8 @@ class _FilterScreenState extends State<FilterScreen> {
                       child: MainFlatButton(
                         title: "Reset",
                         removePadding: true,
-                        textColor: context.theme.textColor3,
-                        backgroundColor: context.theme.buttonColor2,
+                        textColor: context.theme.textColor1,
+                        backgroundColor: context.theme.buttonColor3,
                         onPressed: resetFilter,
                       ),
                     ),

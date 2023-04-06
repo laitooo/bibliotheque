@@ -6,6 +6,8 @@ import 'package:bibliotheque/ui/screens/settings/help/faq_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../common_widgets/svg.dart';
+
 class HelpCenterScreen extends StatelessWidget {
   const HelpCenterScreen({Key? key}) : super(key: key);
 
@@ -22,6 +24,12 @@ class HelpCenterScreen extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: context.theme.textColor1,
             ),
+          ),
+          leading: IconButton(
+            icon: const Svg('back.svg'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
           ),
           centerTitle: false,
           bottom: TabBar(

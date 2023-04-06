@@ -88,7 +88,7 @@ class ReviewCard extends StatelessWidget {
               review.creationDate.toString(),
               style: TextStyle(
                 fontSize: 14,
-                color: context.theme.textColor5,
+                color: context.theme.textColor1,
               ),
             ),
             const SizedBox(width: 20),

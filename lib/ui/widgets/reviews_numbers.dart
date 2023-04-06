@@ -1,3 +1,4 @@
+import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -26,10 +27,10 @@ class ReviewsNumbersWidget extends StatelessWidget {
               const SizedBox(height: 20),
               Text(
                 rate.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.w800,
                   fontSize: 24,
-                  color: Colors.black,
+                  color: context.theme.textColor1,
                 ),
               ),
               const SizedBox(height: 12),
@@ -42,20 +43,20 @@ class ReviewsNumbersWidget extends StatelessWidget {
                 itemSize: 18,
                 ignoreGestures: true,
                 itemPadding: const EdgeInsets.symmetric(horizontal: 3.0),
-                unratedColor: Colors.orangeAccent.shade100,
-                itemBuilder: (context, _) => const Icon(
+                unratedColor: context.theme.emptyStarColor,
+                itemBuilder: (context, _) => Icon(
                   Icons.star,
-                  color: Colors.orange,
+                  color: context.theme.fullStarColor,
                 ),
                 onRatingUpdate: (rating) {},
               ),
               const SizedBox(height: 10),
               Text(
                 '(${reviewsNumber}k reviews)',
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
+                  color: context.theme.textColor1,
                 ),
               ),
             ],
@@ -65,7 +66,7 @@ class ReviewsNumbersWidget extends StatelessWidget {
         Container(
           width: 0.5,
           height: 150,
-          color: Colors.grey.shade400,
+          color: context.theme.dividerColor,
         ),
         const SizedBox(width: 20),
         Expanded(
@@ -76,6 +77,7 @@ class ReviewsNumbersWidget extends StatelessWidget {
               (index) => _getProgressBar(
                 5 - index,
                 numberByReview[index],
+                context,
               ),
             ),
           ),
@@ -85,15 +87,18 @@ class ReviewsNumbersWidget extends StatelessWidget {
     );
   }
 
-  _getProgressBar(int number, double value) {
+  _getProgressBar(int number, double value, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: Row(
         children: [
           Text(
             number.toString(),
-            style: const TextStyle(
-                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w700),
+            style: TextStyle(
+              color: context.theme.textColor1,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           const SizedBox(width: 10),
           Expanded(
@@ -103,7 +108,7 @@ class ReviewsNumbersWidget extends StatelessWidget {
               linearGradient: LinearGradient(
                 colors: [Colors.orangeAccent.shade100, Colors.orange],
               ),
-              backgroundColor: Colors.grey.shade300,
+              backgroundColor: context.theme.progressBarBackgroundColor,
               barRadius: const Radius.circular(5),
             ),
           ),

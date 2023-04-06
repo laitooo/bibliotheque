@@ -1,7 +1,7 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
-import 'package:bibliotheque/ui/common_widgets/svg.dart' as svg;
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart' as fsvg;
 
 class PaymentMethodScreen extends StatelessWidget {
   const PaymentMethodScreen({Key? key}) : super(key: key);
@@ -10,17 +10,30 @@ class PaymentMethodScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Payment method'),
-        centerTitle: false,
+        title: Text(
+          "Payment method",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
+        leading: IconButton(
+          icon: const Svg('back.svg'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const svg.Svg(
+            icon: const Svg(
               'more.svg',
               size: 28,
             ),
           ),
         ],
+        centerTitle: false,
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
@@ -30,6 +43,7 @@ class PaymentMethodScreen extends StatelessWidget {
             context,
             "Paypal",
             "paypal.svg",
+            false,
             () {},
           ),
           Divider(
@@ -40,6 +54,7 @@ class PaymentMethodScreen extends StatelessWidget {
             context,
             "Google Pay",
             "google.svg",
+            false,
             () {},
           ),
           Divider(
@@ -50,6 +65,7 @@ class PaymentMethodScreen extends StatelessWidget {
             context,
             "Apple Pay",
             "apple.svg",
+            true,
             () {},
           ),
           Divider(
@@ -60,6 +76,7 @@ class PaymentMethodScreen extends StatelessWidget {
             context,
             "Visa card",
             "visa.svg",
+            true,
             () {},
           ),
           Divider(
@@ -70,6 +87,7 @@ class PaymentMethodScreen extends StatelessWidget {
             context,
             "Master Card",
             "mastercard.svg",
+            false,
             () {},
           ),
           const SizedBox(height: 15),
@@ -79,17 +97,18 @@ class PaymentMethodScreen extends StatelessWidget {
   }
 
   _paymentMethod(BuildContext context, String title, String svgPath,
-      void Function() onClick) {
+      bool nightModeColor, void Function() onClick) {
     return InkWell(
       onTap: onClick,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Row(
           children: [
-            SvgPicture.asset(
+            fsvg.SvgPicture.asset(
               "assets/icons/" + svgPath,
               width: 50,
               height: 50,
+              color: nightModeColor ? context.theme.iconColor1 : null,
             ),
             const SizedBox(width: 20),
             Center(

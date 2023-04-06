@@ -1,5 +1,4 @@
 import 'package:bibliotheque/blocs/search_bloc.dart';
-import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/search/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +20,8 @@ class SearchIcon extends StatelessWidget {
           ),
         );
       },
-      icon: Svg(
+      icon: const Svg(
         "search.svg",
-        size: 24,
-        color: context.theme.iconColor1,
       ),
     );
   }

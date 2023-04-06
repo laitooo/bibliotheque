@@ -1,6 +1,8 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:flutter/material.dart';
 
+import '../../common_widgets/svg.dart';
+
 class AboutAppScreen extends StatelessWidget {
   const AboutAppScreen({Key? key}) : super(key: key);
 
@@ -8,7 +10,20 @@ class AboutAppScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About Bibliotheque'),
+        title: Text(
+          'About Bibliotheque',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: context.theme.textColor1,
+          ),
+        ),
+        leading: IconButton(
+          icon: const Svg('back.svg'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         centerTitle: false,
       ),
       body: ListView(

@@ -95,7 +95,7 @@ class IconFilterItem extends StatelessWidget {
               name,
               style: TextStyle(
                 color: isSelected
-                    ? context.theme.filterItemColor2
+                    ? context.theme.filterItemColor3
                     : context.theme.filterItemColor1,
                 fontSize: 14,
               ),

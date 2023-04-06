@@ -9,6 +9,7 @@ import 'package:bibliotheque/ui/screens/settings/notification_preferences_screen
 import 'package:bibliotheque/ui/screens/settings/payment_methods_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/user_profile_screen.dart';
 import 'package:bibliotheque/utils/generator.dart';
+import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +20,14 @@ class AccountSettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Account'),
+        title: Text(
+          'Account',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
         centerTitle: false,
         actions: [
           IconButton(
@@ -71,7 +79,7 @@ class AccountSettingsScreen extends StatelessWidget {
                         'Andrew_ainsley@yourdomain.com',
                         style: TextStyle(
                           fontSize: 14,
-                          color: context.theme.textColor5,
+                          color: context.theme.textColor1,
                         ),
                       ),
                     ],
@@ -131,13 +139,43 @@ class AccountSettingsScreen extends StatelessWidget {
             newScreen: const ChangeLanguagePage(),
           ),
           const SizedBox(height: 20),
-          // TODO:: do night mode
-          _settingsItem(
-            context,
-            "DarkMode",
-            "dark_mode.svg",
-            Colors.blueAccent,
-            newScreen: const ChangeLanguagePage(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.blueAccent.withOpacity(0.1),
+                  ),
+                  child: const Svg(
+                    "dark_mode.svg",
+                    size: 25,
+                    color: Colors.blueAccent,
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Center(
+                  child: Text(
+                    "Night mode",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: context.theme.textColor1,
+                    ),
+                  ),
+                ),
+                const Spacer(),
+                Switch(
+                  activeColor: context.theme.activeColor,
+                  value: prefs.isNightMode() ?? false,
+                  onChanged: (newVal) {
+                    BlocProvider.of<ThemeBloc>(context).add(LoadTheme(true));
+                  },
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 15),
           Divider(
