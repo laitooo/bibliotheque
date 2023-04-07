@@ -14,6 +14,8 @@ import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../i18n/translations.dart';
+
 class FilterScreen extends StatefulWidget {
   // TODO: handle filter screen for category and wish list screens
   const FilterScreen({Key? key}) : super(key: key);
@@ -51,7 +53,7 @@ class _FilterScreenState extends State<FilterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Filter",
+          t.search.filter,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -122,7 +124,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       Padding(
                         padding: const EdgeInsetsDirectional.only(start: 10),
                         child: Text(
-                          "Sort",
+                          t.search.sort,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -184,7 +186,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       Padding(
                         padding: const EdgeInsetsDirectional.only(start: 10),
                         child: Text(
-                          "Price",
+                          t.search.price,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -202,7 +204,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         start: 1,
                         step: 1,
                         end: 50,
-                        quantityName: "Dollars",
+                        quantityName: t.search.usd,
                         initialStart: startPrice.toDouble(),
                         initialEnd: endPrice.toDouble(),
                         onChanged: (start, end) {
@@ -233,7 +235,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       Padding(
                         padding: const EdgeInsetsDirectional.only(start: 10),
                         child: Text(
-                          "Rating",
+                          t.search.rating,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -295,7 +297,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       Padding(
                         padding: const EdgeInsetsDirectional.only(start: 10),
                         child: Text(
-                          "Genre",
+                          t.search.genre,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -357,7 +359,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       Padding(
                         padding: const EdgeInsetsDirectional.only(start: 10),
                         child: Text(
-                          "Language",
+                          t.search.language,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -419,7 +421,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       Padding(
                         padding: const EdgeInsetsDirectional.only(start: 10),
                         child: Text(
-                          "Age",
+                          t.search.age,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -470,7 +472,7 @@ class _FilterScreenState extends State<FilterScreen> {
                     const SizedBox(width: 20),
                     Expanded(
                       child: MainButton(
-                        title: "Apply",
+                        title: t.search.apply,
                         textColor: context.theme.textColor2,
                         backgroundColor: context.theme.buttonColor1,
                         removePadding: true,
@@ -498,7 +500,7 @@ class _FilterScreenState extends State<FilterScreen> {
                     const SizedBox(width: 20),
                     Expanded(
                       child: MainFlatButton(
-                        title: "Reset",
+                        title: t.search.reset,
                         removePadding: true,
                         textColor: context.theme.textColor1,
                         backgroundColor: context.theme.buttonColor3,

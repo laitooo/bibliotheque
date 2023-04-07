@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/blocs/search_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
@@ -59,7 +60,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   if (state.status == SearchStatus.idle) {
                     return Center(
                       child: Text(
-                        "Start searching",
+                        t.search.startSearching,
                         style: TextStyle(
                           fontSize: 18,
                           color: context.theme.textColor1,
@@ -86,8 +87,8 @@ class _SearchScreenState extends State<SearchScreen> {
 
                   if (state.books!.isEmpty) {
                     return NoDataPage(
-                      text: "Empty",
-                      subText: "Error",
+                      text: t.search.noResults,
+                      subText: t.search.noResults,
                       icon: Svg(
                         "no_notifications.svg",
                         size: 24,
@@ -148,7 +149,7 @@ class _SearchScreenState extends State<SearchScreen> {
       children: [
         const SizedBox(width: 20),
         Text(
-          'Show in',
+          t.search.showIn,
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
