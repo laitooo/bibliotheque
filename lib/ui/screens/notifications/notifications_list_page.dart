@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/notifications_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/notification.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
@@ -21,7 +22,20 @@ class _NotificationsListPageState extends State<NotificationsListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notifications'),
+        title: Text(
+          t.notifications.title,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: context.theme.textColor1,
+          ),
+        ),
+        leading: IconButton(
+          icon: const Svg('back.svg'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         centerTitle: false,
         actions: [
           IconButton(
@@ -48,8 +62,8 @@ class _NotificationsListPageState extends State<NotificationsListPage> {
 
           if (state.notifications!.isEmpty) {
             return NoDataPage(
-              text: "Empty",
-              subText: "You don't have any notifications at this time",
+              text: t.notifications.empty,
+              subText: t.notifications.noNotifications,
               icon: Svg(
                 'empty_page.svg',
                 size: 200,
