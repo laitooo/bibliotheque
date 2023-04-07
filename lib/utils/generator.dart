@@ -179,8 +179,9 @@ class Generator {
   }
 
   String _category() {
-    return !prefs.isArabic() ? _categories[_rand.nextInt(_categories.length)] :
-    _categoriesAr[_rand.nextInt(_categoriesAr.length)];
+    return !prefs.isArabic()
+        ? _categories[_rand.nextInt(_categories.length)]
+        : _categoriesAr[_rand.nextInt(_categoriesAr.length)];
   }
 
   String _author() {

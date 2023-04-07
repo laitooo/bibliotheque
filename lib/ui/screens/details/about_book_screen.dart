@@ -4,6 +4,8 @@ import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
 
+import '../../../i18n/translations.dart';
+
 class AboutBookScreen extends StatelessWidget {
   final BookDetails book;
 
@@ -31,7 +33,7 @@ class AboutBookScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "About this book",
+          t.details.aboutThisBook,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -71,14 +73,14 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  "Language",
+                  t.details.language,
                   style: titleStyle,
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Text(
-                  "Age",
+                  t.details.age,
                   style: titleStyle,
                 ),
               ),
@@ -109,14 +111,14 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  "Author",
+                  t.details.author,
                   style: titleStyle,
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Text(
-                  "Publisher",
+                  t.details.publisher,
                   style: titleStyle,
                 ),
               ),
@@ -147,14 +149,14 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  "Published on",
+                  t.details.publishedOn,
                   style: titleStyle,
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Text(
-                  "ISBN",
+                  t.details.isbn,
                   style: titleStyle,
                 ),
               ),
@@ -185,14 +187,14 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  "Pages",
+                  t.details.pages,
                   style: titleStyle,
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Text(
-                  "Purchases",
+                  t.details.purchases,
                   style: titleStyle,
                 ),
               ),

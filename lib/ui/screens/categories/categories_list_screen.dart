@@ -16,7 +16,8 @@ class CategoriesListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(t.categories.exploreByGenre,
+        title: Text(
+          t.categories.exploreByGenre,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,

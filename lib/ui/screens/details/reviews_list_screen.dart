@@ -12,6 +12,8 @@ import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../i18n/translations.dart';
+
 class ReviewsListScreen extends StatefulWidget {
   final BookDetails book;
 
@@ -29,7 +31,7 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Ratings & Reviews",
+          t.details.ratingsAndReviews,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -79,7 +81,7 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
                 scrollDirection: Axis.horizontal,
                 children: [
                   IconFilterItem(
-                    name: "All",
+                    name: t.details.all,
                     isSelected: selectedNumOfStarts == null,
                     icon: Icon(
                       Icons.star,
