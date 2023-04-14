@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (_) =>
-                prefs.isFirstTimer() ? const OnBoardingScreen() : HomeScreen(),
+                !prefs.isFirstTimer() ? const OnBoardingScreen() : const HomeScreen(),
           ),
         );
       },

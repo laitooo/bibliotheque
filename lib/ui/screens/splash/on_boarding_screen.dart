@@ -221,7 +221,7 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
   void _loginSuccess() {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (_) => HomeScreen(),
+        builder: (_) => const HomeScreen(),
       ),
     );
   }

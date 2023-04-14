@@ -19,7 +19,7 @@ class _RegisterSuccessDialogState extends State<RegisterSuccessDialog> {
     Future.delayed(const Duration(seconds: 1), () {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (_) => HomeScreen(),
+          builder: (_) => const HomeScreen(),
         ),
       );
     });
