@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:flutter/material.dart';
 
 import '../../common_widgets/svg.dart';
@@ -11,9 +12,9 @@ class AboutAppScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'About Bibliotheque',
+          t.account.about.aboutAppName,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 20,
             fontWeight: FontWeight.w700,
             color: context.theme.textColor1,
           ),
@@ -40,7 +41,7 @@ class AboutAppScreen extends StatelessWidget {
           const SizedBox(height: 15),
           Center(
             child: Text(
-              "Bibliotheque v1.2.5",
+              "${t.appname} v1.2.5",
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w700,
@@ -56,15 +57,21 @@ class AboutAppScreen extends StatelessWidget {
               thickness: 0.5,
             ),
           ),
-          _mediaLink(context, 'Fees', 'https://laitooo.vercel.app'),
-          _mediaLink(context, 'Developer', 'https://laitooo.vercel.app'),
-          _mediaLink(context, 'Partner', 'https://laitooo.vercel.app'),
-          _mediaLink(context, 'Accessibility', 'https://laitooo.vercel.app'),
-          _mediaLink(context, 'Feedback', 'https://laitooo.vercel.app'),
-          _mediaLink(context, 'Rate us', 'https://laitooo.vercel.app'),
           _mediaLink(
-              context, 'Visit our website', 'https://laitooo.vercel.app'),
-          _mediaLink(context, 'Follow us on social media',
+              context, t.account.about.fees, 'https://laitooo.vercel.app'),
+          _mediaLink(
+              context, t.account.about.developer, 'https://laitooo.vercel.app'),
+          _mediaLink(
+              context, t.account.about.partner, 'https://laitooo.vercel.app'),
+          _mediaLink(context, t.account.about.accessibility,
+              'https://laitooo.vercel.app'),
+          _mediaLink(
+              context, t.account.about.feedback, 'https://laitooo.vercel.app'),
+          _mediaLink(
+              context, t.account.about.rateUs, 'https://laitooo.vercel.app'),
+          _mediaLink(context, t.account.about.visitOurWebsite,
+              'https://laitooo.vercel.app'),
+          _mediaLink(context, t.account.about.followSocialMedia,
               'https://laitooo.vercel.app'),
         ],
       ),

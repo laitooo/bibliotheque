@@ -6,6 +6,8 @@ import 'package:bibliotheque/ui/screens/auth/reset_password/reset_password_succe
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../i18n/translations.dart';
+
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({Key? key}) : super(key: key);
 
@@ -48,10 +50,10 @@ class _ResetPasswordScreenState extends State<_ResetPasswordScreen> {
 
           if (state.status == ForgetPasswordStatus.error) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 content: Text(
-                  "Network error",
-                  style: TextStyle(
+                  t.errors.networkError,
+                  style: const TextStyle(
                     fontSize: 14,
                   ),
                 ),

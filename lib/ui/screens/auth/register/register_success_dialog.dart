@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
@@ -63,7 +64,7 @@ class _RegisterSuccessDialogState extends State<RegisterSuccessDialog> {
                 ),
                 const SizedBox(height: 40),
                 Text(
-                  "Sign Up Successful",
+                  t.auth.register.singUpSuccessful,
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -71,7 +72,7 @@ class _RegisterSuccessDialogState extends State<RegisterSuccessDialog> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  "Your account has been created. Please wait a moment, we are preparing for you...",
+                  t.auth.register.accountCreated,
                   textAlign: TextAlign.center,
                   style:
                       TextStyle(fontSize: 14, color: context.theme.textColor5),

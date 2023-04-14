@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/register_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
@@ -29,7 +30,7 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Complete your profile",
+            t.auth.register.completeProfile,
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,
@@ -38,7 +39,7 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
           ),
           const SizedBox(height: 10),
           Text(
-            "Don't worry, only you can see your personal data. No one else will be able to see it.",
+            t.auth.register.onlyYouCanSeePersonalInfo,
             style: TextStyle(
               fontSize: 14,
               height: 1.5,
@@ -81,20 +82,20 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
           ),
           const SizedBox(height: 40),
           AppTextField(
-            label: "Full name",
+            label: t.auth.register.fullName,
             initialValue: "Laitooo san",
             controller: nameController,
           ),
           const SizedBox(height: 20),
           AppTextField(
-            label: "Phone Number",
+            label: t.auth.register.phoneNumber,
             initialValue: "+1-300-555-0399",
             controller: phoneController,
             inputType: TextInputType.phone,
           ),
           const SizedBox(height: 20),
           AppDateSelector(
-            label: "Date of birth",
+            label: t.auth.register.birthDate,
             selectedDateTime: birthDate,
             onDateSelected: (dateTime) {
               setState(() {
@@ -104,7 +105,7 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
           ),
           const SizedBox(height: 20),
           AppCountrySelector(
-            label: "Date of birth",
+            label: t.auth.register.country,
             selectedCountry: country,
             onCountrySelected: (selectedCountry) {
               setState(() {
@@ -115,7 +116,7 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
           const SizedBox(height: 20),
           const Spacer(),
           MainButton(
-            title: "Continue",
+            title: t.auth.register.continu,
             removePadding: true,
             onPressed: () {
               BlocProvider.of<RegisterBloc>(context).add(

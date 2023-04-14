@@ -2,6 +2,7 @@ import 'package:bibliotheque/blocs/book_details_bloc.dart';
 import 'package:bibliotheque/blocs/does_wish_bloc.dart';
 import 'package:bibliotheque/blocs/reviews_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
@@ -144,7 +145,7 @@ class _BookDetailsScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              'Released on ' +
+                              t.details.releasedOn +
                                   book.publishDate.month.toString() +
                                   '. ' +
                                   book.publishDate.year.toString(),
@@ -206,7 +207,9 @@ class _BookDetailsScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            book.numReviews.toString() + " Reviews",
+                            book.numReviews.toString() +
+                                " " +
+                                t.details.reviews,
                             style: TextStyle(
                               fontSize: 14,
                               color: context.theme.textColor4,
@@ -226,7 +229,7 @@ class _BookDetailsScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            'Pages',
+                            t.details.pages,
                             style: TextStyle(
                               fontSize: 14,
                               color: context.theme.textColor4,
@@ -246,7 +249,7 @@ class _BookDetailsScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            'purchases',
+                            t.details.purchases,
                             style: TextStyle(
                               fontSize: 14,
                               color: context.theme.textColor4,
@@ -258,7 +261,9 @@ class _BookDetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   MainButton(
-                    title: 'Buy ${book.price.toString()} USD',
+                    title: t.details.buy +
+                        ' ${book.price.toString()} ' +
+                        t.details.usd,
                     backgroundColor: Colors.orange,
                     onPressed: () {},
                   ),
@@ -269,7 +274,7 @@ class _BookDetailsScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsetsDirectional.only(start: 20),
                         child: Text(
-                          'About this book',
+                          t.details.aboutThisBook,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
@@ -312,7 +317,7 @@ class _BookDetailsScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsetsDirectional.only(start: 20),
                         child: Text(
-                          'Ratings & Reviews',
+                          t.details.ratingsAndReviews,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,

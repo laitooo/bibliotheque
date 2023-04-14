@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/books_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/home/home_tab.dart';
 import 'package:bibliotheque/ui/screens/settings/account_settings_screen.dart';
@@ -12,8 +13,8 @@ final globalHomeScreenKey = GlobalKey<HomeScreenState>();
 class HomeScreen extends StatefulWidget {
   final _pages = [
     const HomeTab(),
-    const BooksListPage(
-      title: "Top popular",
+    BooksListPage(
+      title: t.home.topPopular,
       booksSource: BooksSource.popular,
     ),
     const WishListScreen(),
@@ -40,22 +41,22 @@ class HomeScreenState extends State<HomeScreen> {
         showUnselectedLabels: true,
         items: [
           _getBottomTabBarItem(
-            title: 'Home',
+            title: t.home.home,
             iconPath: 'home',
             index: 0,
           ),
           _getBottomTabBarItem(
-            title: 'Discover',
+            title: t.home.discover,
             iconPath: 'discover',
             index: 1,
           ),
           _getBottomTabBarItem(
-            title: 'Wish list',
+            title: t.home.wishlist,
             iconPath: 'wishlist',
             index: 2,
           ),
           _getBottomTabBarItem(
-            title: 'Account',
+            title: t.home.account,
             iconPath: 'profile',
             index: 3,
           ),

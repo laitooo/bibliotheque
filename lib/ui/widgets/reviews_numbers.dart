@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -52,7 +53,7 @@ class ReviewsNumbersWidget extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                '(${reviewsNumber}k reviews)',
+                '(${reviewsNumber}k ${t.details.reviews})',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,

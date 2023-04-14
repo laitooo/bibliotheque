@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,7 @@ class LogoutBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 260,
       child: Column(
         children: [
           const SizedBox(height: 6),
@@ -21,7 +22,7 @@ class LogoutBottomSheet extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           Text(
-            "Logout",
+            t.account.logout.title,
             style: TextStyle(
               color: context.theme.textColor6,
               fontSize: 20,
@@ -38,7 +39,7 @@ class LogoutBottomSheet extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           Text(
-            "Are you sure you want to log out?",
+            t.account.logout.areYouSure,
             style: TextStyle(
               color: context.theme.textColor1,
               fontSize: 17,
@@ -52,7 +53,7 @@ class LogoutBottomSheet extends StatelessWidget {
               const SizedBox(width: 20),
               Expanded(
                 child: MainButton(
-                  title: "Logout",
+                  title: t.account.logout.title,
                   textColor: context.theme.textColor2,
                   backgroundColor: context.theme.buttonColor1,
                   removePadding: true,
@@ -72,7 +73,7 @@ class LogoutBottomSheet extends StatelessWidget {
               const SizedBox(width: 20),
               Expanded(
                 child: MainFlatButton(
-                  title: "Cancel",
+                  title: t.account.logout.cancel,
                   removePadding: true,
                   textColor: context.theme.textColor3,
                   backgroundColor: context.theme.buttonColor2,

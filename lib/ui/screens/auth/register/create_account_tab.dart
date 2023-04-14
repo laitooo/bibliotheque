@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/register_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/widgets/input_field.dart';
 import 'package:country_picker/country_picker.dart';
@@ -30,7 +31,7 @@ class _CreateAccountTabState extends State<CreateAccountTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Create an account",
+            t.auth.register.createAccount,
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,
@@ -39,7 +40,7 @@ class _CreateAccountTabState extends State<CreateAccountTab> {
           ),
           const SizedBox(height: 10),
           Text(
-            "Enter your username, email & password. If you forget it, then you have to do forget password.",
+            t.auth.register.enterUsernameEmailAndPassword,
             style: TextStyle(
               fontSize: 14,
               height: 1.5,
@@ -48,26 +49,26 @@ class _CreateAccountTabState extends State<CreateAccountTab> {
           ),
           const SizedBox(height: 40),
           AppTextField(
-            label: "Username",
+            label: t.auth.register.username,
             initialValue: "laitooo",
             controller: usernameController,
           ),
           const SizedBox(height: 20),
           AppTextField(
-            label: "Email",
+            label: t.auth.register.email,
             initialValue: "alziber50@gmail.com",
             controller: emailController,
             inputType: TextInputType.emailAddress,
           ),
           const SizedBox(height: 20),
           AppPasswordTextField(
-            label: "Password",
+            label: t.auth.register.password,
             initialValue: "password",
             controller: passwordController,
           ),
           const SizedBox(height: 20),
           AppPasswordTextField(
-            label: "Confirm password",
+            label: t.auth.register.confirmPassword,
             initialValue: "password",
             controller: passwordConfirmController,
           ),
@@ -83,7 +84,7 @@ class _CreateAccountTabState extends State<CreateAccountTab> {
                   ),
                 ),
                 Text(
-                  "Remember me",
+                  t.auth.register.rememberMe,
                   style: TextStyle(
                     fontSize: 14,
                     color: context.theme.textColor1,
@@ -100,7 +101,7 @@ class _CreateAccountTabState extends State<CreateAccountTab> {
           const SizedBox(height: 20),
           const Spacer(),
           MainButton(
-            title: "Sign up",
+            title: t.auth.register.signUp,
             removePadding: true,
             onPressed: () {
               BlocProvider.of<RegisterBloc>(context).add(

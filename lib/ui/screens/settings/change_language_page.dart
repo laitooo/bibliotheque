@@ -26,7 +26,7 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Language',
+          t.account.language.language,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -45,7 +45,7 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
         children: [
           ListTile(
             title: Text(
-              'العربية',
+              t.account.language.arabic,
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w500,
@@ -66,7 +66,7 @@ class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
           ),
           ListTile(
             title: Text(
-              'English',
+              t.account.language.english,
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w500,

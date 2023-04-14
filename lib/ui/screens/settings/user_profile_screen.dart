@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/profile_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
@@ -15,7 +16,7 @@ class UserProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Personal Info',
+          t.account.personalInfo.title,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -249,22 +250,22 @@ class _Body extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           _ProfileInfoItem(
-            title: "Full Name",
+            title: t.account.personalInfo.fullName,
             value: state.profile!.fullName,
           ),
           const SizedBox(height: 15),
           _ProfileInfoItem(
-            title: "Username",
+            title: t.account.personalInfo.userName,
             value: state.profile!.username,
           ),
           const SizedBox(height: 20),
           _ProfileInfoItem(
-            title: "Email",
+            title: t.account.personalInfo.email,
             value: state.profile!.email,
           ),
           const SizedBox(height: 20),
           _ProfilePhoneNumber(
-            title: "Phone number",
+            title: t.account.personalInfo.phoneNumber,
             value: state.profile!.phoneNumber,
           ),
 

@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/blocs/register_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
@@ -26,7 +27,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
         child: ListView(
           children: [
             Text(
-              "Choose the book genre you like",
+              t.auth.register.chooseBookGenre,
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w700,
@@ -35,7 +36,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
             ),
             const SizedBox(height: 20),
             Text(
-              "Select your preferred book genre for better recommendations or you can skip it.",
+              t.auth.register.selectBookGenre,
               style: TextStyle(
                 fontSize: 14,
                 color: context.theme.textColor5,
@@ -96,7 +97,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
           children: [
             Expanded(
               child: MainButton(
-                title: "Continue",
+                title: t.auth.register.continu,
                 textColor: context.theme.textColor2,
                 backgroundColor: context.theme.buttonColor1,
                 removePadding: true,
@@ -112,7 +113,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
             const SizedBox(width: 20),
             Expanded(
               child: MainFlatButton(
-                title: "Skip",
+                title: t.auth.register.skip,
                 removePadding: true,
                 textColor: context.theme.textColor3,
                 backgroundColor: context.theme.buttonColor2,

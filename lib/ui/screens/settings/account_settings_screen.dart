@@ -13,6 +13,8 @@ import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../i18n/translations.dart';
+
 class AccountSettingsScreen extends StatelessWidget {
   const AccountSettingsScreen({Key? key}) : super(key: key);
 
@@ -21,7 +23,7 @@ class AccountSettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Account',
+          t.account.account.title,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -100,7 +102,7 @@ class AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 15),
           _settingsItem(
             context,
-            "Payment methods",
+            t.account.account.paymentMethod,
             "wallet.svg",
             Colors.green,
             newScreen: const PaymentMethodScreen(),
@@ -113,7 +115,7 @@ class AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 15),
           _settingsItem(
             context,
-            "Personal Info",
+            t.account.account.personalInfo,
             "account_created.svg",
             Colors.lightBlue,
             newScreen: const UserProfilePage(),
@@ -121,7 +123,7 @@ class AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            "Notification",
+            t.account.account.notifications,
             "notifications_settings.svg",
             Colors.pinkAccent,
             newScreen: BlocProvider(
@@ -133,7 +135,7 @@ class AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            "Language",
+            t.account.account.notifications,
             "grid_view.svg",
             Colors.orangeAccent,
             newScreen: const ChangeLanguagePage(),
@@ -158,7 +160,7 @@ class AccountSettingsScreen extends StatelessWidget {
                 const SizedBox(width: 20),
                 Center(
                   child: Text(
-                    "Night mode",
+                    t.account.account.nightMode,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -185,7 +187,7 @@ class AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 15),
           _settingsItem(
             context,
-            "Help center",
+            t.account.account.helpCenter,
             "wishlist_active.svg",
             Colors.green,
             newScreen: const HelpCenterScreen(),
@@ -193,7 +195,7 @@ class AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            "About the app",
+            t.account.account.aboutApp,
             "about.svg",
             Colors.orange,
             newScreen: const AboutAppScreen(),
@@ -201,7 +203,7 @@ class AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            "Logout",
+            t.account.account.logout,
             'logout.svg',
             Colors.redAccent,
             onClick: () {

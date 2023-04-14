@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/sign_in_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
@@ -45,10 +46,10 @@ class _LoginScreenState extends State<_LoginScreen> {
 
           if (state.status == SignInStatus.error) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 content: Text(
-                  "Network error",
-                  style: TextStyle(
+                  t.errors.networkError,
+                  style: const TextStyle(
                     fontSize: 14,
                   ),
                 ),
@@ -75,7 +76,7 @@ class _LoginScreenState extends State<_LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Hello there",
+                    t.auth.login.helloThere,
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
@@ -84,7 +85,7 @@ class _LoginScreenState extends State<_LoginScreen> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "Please enter your username/email and password to sign in.",
+                    t.auth.login.pleaseEnterEmailPassword,
                     style: TextStyle(
                       fontSize: 14,
                       height: 1.5,
@@ -93,13 +94,13 @@ class _LoginScreenState extends State<_LoginScreen> {
                   ),
                   const SizedBox(height: 40),
                   AppTextField(
-                    label: "Username / Email",
+                    label: t.auth.login.usernameEmail,
                     initialValue: "laitooo",
                     controller: usernameEmailController,
                   ),
                   const SizedBox(height: 20),
                   AppPasswordTextField(
-                    label: "Password",
+                    label: t.auth.login.password,
                     initialValue: "password",
                     controller: passwordController,
                   ),
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<_LoginScreen> {
                           ),
                         ),
                         Text(
-                          "Remember me",
+                          t.auth.login.rememberMe,
                           style: TextStyle(
                             fontSize: 14,
                             color: context.theme.textColor1,
@@ -146,7 +147,7 @@ class _LoginScreenState extends State<_LoginScreen> {
                     },
                     child: Center(
                       child: Text(
-                        "Forgot Password",
+                        t.auth.login.forgotPassword,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -168,7 +169,7 @@ class _LoginScreenState extends State<_LoginScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
-                          "or continue with",
+                          t.auth.login.orContinueWith,
                           style: TextStyle(
                             fontSize: 16,
                             color: context.theme.textColor5,
@@ -267,7 +268,7 @@ class _LoginScreenState extends State<_LoginScreen> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: MainButton(
-          title: "Sign in",
+          title: t.auth.login.signIn,
           onPressed: () {
             BlocProvider.of<SignInBloc>(context).add(
               SignIn(

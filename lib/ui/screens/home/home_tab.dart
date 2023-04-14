@@ -4,6 +4,7 @@ import 'package:bibliotheque/blocs/recommended_books_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/blocs/unread_notifications_bloc.dart';
 import 'package:bibliotheque/blocs/wish_list_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
@@ -27,7 +28,7 @@ class HomeTab extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Bibliotheque',
+          t.appname,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -115,7 +116,7 @@ class _PopularBooksContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Top charts',
+                    t.home.topCharts,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -181,7 +182,7 @@ class _CategoriesContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Explore by Genre',
+                    t.home.exploreByGenre,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -258,7 +259,7 @@ class _RecommendedBooksContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Recommended for you',
+                    t.home.recommended,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -269,8 +270,8 @@ class _RecommendedBooksContainer extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (_) => const BooksListPage(
-                            title: "Recommended for you",
+                          builder: (_) => BooksListPage(
+                            title: t.home.recommended,
                             booksSource: BooksSource.recommended,
                           ),
                         ),
@@ -334,7 +335,7 @@ class _WishListContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Wish List',
+                    t.home.wishlist,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,

@@ -4,6 +4,8 @@ import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../i18n/translations.dart';
+
 class ResetPasswordSuccessDialog extends StatefulWidget {
   const ResetPasswordSuccessDialog({Key? key}) : super(key: key);
 
@@ -65,7 +67,7 @@ class _ResetPasswordSuccessDialogState
                 ),
                 const SizedBox(height: 40),
                 Text(
-                  "Reset Password Successful",
+                  t.auth.resetPassword.resetPasswordSuccessTitle,
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
@@ -73,7 +75,7 @@ class _ResetPasswordSuccessDialogState
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  "Your passwrod has been successfully changed.",
+                  t.auth.resetPassword.resetPasswordSuccessSubtitle,
                   textAlign: TextAlign.center,
                   style:
                       TextStyle(fontSize: 14, color: context.theme.textColor5),

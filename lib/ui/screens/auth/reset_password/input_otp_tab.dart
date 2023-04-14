@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/forget_password_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class _InputOtpTabState extends State<InputOtpTab> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Create new password",
+                    t.auth.resetPassword.createPassword,
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
@@ -47,7 +48,7 @@ class _InputOtpTabState extends State<InputOtpTab> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "Enter your new password. If you forget it, then you have to forget password.",
+                    t.auth.resetPassword.enterNewPassword,
                     style: TextStyle(
                       fontSize: 14,
                       height: 1.5,
@@ -57,7 +58,7 @@ class _InputOtpTabState extends State<InputOtpTab> {
                   const SizedBox(height: 40),
                   Center(
                     child: Text(
-                      "Didn't receive email?",
+                      t.auth.resetPassword.notReceivedEmail,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -68,7 +69,7 @@ class _InputOtpTabState extends State<InputOtpTab> {
                   const SizedBox(height: 10),
                   Center(
                     child: Text(
-                      "You can resend code in 55 s",
+                      t.auth.resetPassword.resendIn + "55 s",
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -85,7 +86,7 @@ class _InputOtpTabState extends State<InputOtpTab> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: MainButton(
-          title: "Confirm",
+          title: t.auth.resetPassword.continu,
           onPressed: () {
             BlocProvider.of<ForgetPasswordBloc>(context).add(
               InputOtpCode(
