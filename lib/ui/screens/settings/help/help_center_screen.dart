@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/faqs_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/question.dart';
 import 'package:bibliotheque/ui/screens/settings/help/contact_tab.dart';
 import 'package:bibliotheque/ui/screens/settings/help/faq_tab.dart';
@@ -18,7 +19,7 @@ class HelpCenterScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Help center',
+            t.account.help.title,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -46,9 +47,9 @@ class HelpCenterScreen extends StatelessWidget {
             ),
             indicatorColor: context.theme.primaryColor,
             indicatorPadding: const EdgeInsets.symmetric(horizontal: 20),
-            tabs: const [
-              Tab(text: 'FAQ'),
-              Tab(text: 'Contact us'),
+            tabs: [
+              Tab(text: t.account.help.faq),
+              Tab(text: t.account.help.contact),
             ],
           ),
         ),

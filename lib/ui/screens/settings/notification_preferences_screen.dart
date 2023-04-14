@@ -4,6 +4,7 @@ import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../i18n/translations.dart';
 import '../../common_widgets/progress_indicator.dart';
 import '../../common_widgets/svg.dart';
 
@@ -22,7 +23,7 @@ class _NotificationPreferencesScreenState
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Notification',
+          t.account.notifications.title,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -59,7 +60,7 @@ class _NotificationPreferencesScreenState
             children: [
               const SizedBox(height: 10),
               Text(
-                "Notify me when...",
+                t.account.notifications.notifyMeWhen,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -69,7 +70,7 @@ class _NotificationPreferencesScreenState
               const SizedBox(height: 20),
               _item(
                 context,
-                'There is a new Recommendation',
+                t.account.notifications.newRecommendation,
                 state.notificationsOptions!.newRecommendation,
                 (newVal) {
                   BlocProvider.of<NotificationsOptionsBloc>(context).add(
@@ -81,7 +82,7 @@ class _NotificationPreferencesScreenState
               ),
               _item(
                 context,
-                'There\'s a new book series',
+                t.account.notifications.newBookSeries,
                 state.notificationsOptions!.newBookSeries,
                 (newVal) {
                   BlocProvider.of<NotificationsOptionsBloc>(context).add(
@@ -93,7 +94,7 @@ class _NotificationPreferencesScreenState
               ),
               _item(
                 context,
-                'There is an update from authors',
+                t.account.notifications.authorsUpdate,
                 state.notificationsOptions!.newUpdateFromAuthors,
                 (newVal) {
                   BlocProvider.of<NotificationsOptionsBloc>(context).add(
@@ -105,7 +106,7 @@ class _NotificationPreferencesScreenState
               ),
               _item(
                 context,
-                'There are price drops available',
+                t.account.notifications.priceDrop,
                 state.notificationsOptions!.newPriceDrop,
                 (newVal) {
                   BlocProvider.of<NotificationsOptionsBloc>(context).add(
@@ -117,7 +118,7 @@ class _NotificationPreferencesScreenState
               ),
               _item(
                 context,
-                'When I make a purchase',
+                t.account.notifications.whenPurchase,
                 state.notificationsOptions!.newPurchase,
                 (newVal) {
                   BlocProvider.of<NotificationsOptionsBloc>(context).add(
@@ -129,7 +130,7 @@ class _NotificationPreferencesScreenState
               ),
               _item(
                 context,
-                'New tips and services available',
+                t.account.notifications.whenPurchase,
                 state.notificationsOptions!.newTipOrService,
                 (newVal) {
                   BlocProvider.of<NotificationsOptionsBloc>(context).add(
@@ -141,7 +142,7 @@ class _NotificationPreferencesScreenState
               ),
               _item(
                 context,
-                'Participate in survey',
+                t.account.notifications.participateInSurvey,
                 state.notificationsOptions!.newSurvey,
                 (newVal) {
                   BlocProvider.of<NotificationsOptionsBloc>(context).add(

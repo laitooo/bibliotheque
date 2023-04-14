@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:flutter/material.dart';
 
@@ -14,37 +15,37 @@ class ContactTab extends StatelessWidget {
         // TODO:: complete this
         _mediaItem(
           context,
-          'Customer service',
+          t.account.help.customerService,
           'call_center.svg',
           () {},
         ),
         _mediaItem(
           context,
-          'WhatsApp',
+          t.account.help.whatsapp,
           'whatsapp.svg',
           () {},
         ),
         _mediaItem(
           context,
-          'Website',
+          t.account.help.website,
           'website.svg',
           () {},
         ),
         _mediaItem(
           context,
-          'Facebook',
+          t.account.help.facebook,
           'facebook.svg',
           () {},
         ),
         _mediaItem(
           context,
-          'Twitter',
+          t.account.help.twitter,
           'twitter.svg',
           () {},
         ),
         _mediaItem(
           context,
-          'Instagram',
+          t.account.help.instagram,
           'instagram.svg',
           () {},
         ),

@@ -3,6 +3,8 @@ import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart' as fsvg;
 
+import '../../../i18n/translations.dart';
+
 class PaymentMethodScreen extends StatelessWidget {
   const PaymentMethodScreen({Key? key}) : super(key: key);
 
@@ -11,7 +13,7 @@ class PaymentMethodScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Payment method",
+          t.account.paymentMethod.title,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -41,7 +43,7 @@ class PaymentMethodScreen extends StatelessWidget {
           const SizedBox(height: 15),
           _paymentMethod(
             context,
-            "Paypal",
+            t.account.paymentMethod.paypal,
             "paypal.svg",
             false,
             () {},
@@ -52,7 +54,7 @@ class PaymentMethodScreen extends StatelessWidget {
           ),
           _paymentMethod(
             context,
-            "Google Pay",
+            t.account.paymentMethod.google,
             "google.svg",
             false,
             () {},
@@ -63,7 +65,7 @@ class PaymentMethodScreen extends StatelessWidget {
           ),
           _paymentMethod(
             context,
-            "Apple Pay",
+            t.account.paymentMethod.apple,
             "apple.svg",
             true,
             () {},
@@ -74,7 +76,7 @@ class PaymentMethodScreen extends StatelessWidget {
           ),
           _paymentMethod(
             context,
-            "Visa card",
+            t.account.paymentMethod.visa,
             "visa.svg",
             true,
             () {},
@@ -85,7 +87,7 @@ class PaymentMethodScreen extends StatelessWidget {
           ),
           _paymentMethod(
             context,
-            "Master Card",
+            t.account.paymentMethod.master,
             "mastercard.svg",
             false,
             () {},
