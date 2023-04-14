@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/blocs/wish_list_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
@@ -39,7 +40,7 @@ class _WishListScreenState extends State<_WishListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Wish List",
+          t.wishlist.title,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -77,8 +78,8 @@ class _WishListScreenState extends State<_WishListScreen> {
 
           if (state.books!.isEmpty) {
             return NoDataPage(
-              text: 'Empty',
-              subText: 'Add books to your wish list',
+              text: t.wishlist.empty,
+              subText: t.wishlist.addBooks,
               icon: Svg(
                 'empty_page.svg',
                 size: 200,
