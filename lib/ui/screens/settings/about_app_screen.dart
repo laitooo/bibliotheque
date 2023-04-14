@@ -14,7 +14,7 @@ class AboutAppScreen extends StatelessWidget {
         title: Text(
           t.account.about.aboutAppName,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 20,
             fontWeight: FontWeight.w700,
             color: context.theme.textColor1,
           ),

@@ -130,7 +130,7 @@ class _NotificationPreferencesScreenState
               ),
               _item(
                 context,
-                t.account.notifications.whenPurchase,
+                t.account.notifications.newTips,
                 state.notificationsOptions!.newTipOrService,
                 (newVal) {
                   BlocProvider.of<NotificationsOptionsBloc>(context).add(

@@ -9,7 +9,7 @@ class LogoutBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 260,
       child: Column(
         children: [
           const SizedBox(height: 6),
