@@ -151,7 +151,7 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
                       width: double.infinity,
                       margin: const EdgeInsets.symmetric(horizontal: 20),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: context.theme.googleButtonBackgroundColor,
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(
                           width: 0.5,

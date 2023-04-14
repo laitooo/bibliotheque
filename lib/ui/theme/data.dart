@@ -61,6 +61,9 @@ abstract class AppThemeData {
   Color get fullStarColor;
   Color get emptyStarColor;
   Color get progressBarBackgroundColor;
+  Color get googleButtonBackgroundColor;
+  Color get flatButtonTextColor;
+  Color get flatButtonBackgroundColor;
 }
 
 class _InputThemeData extends _ChildThemeData {
@@ -133,6 +136,9 @@ class LightThemeData extends AppThemeData {
   Color get fullStarColor => primaryColor;
   Color get emptyStarColor => primaryColor.withOpacity(0.3);
   Color get progressBarBackgroundColor => Colors.grey.shade300;
+  Color get googleButtonBackgroundColor => Colors.white;
+  Color get flatButtonTextColor => primaryColor;
+  Color get flatButtonBackgroundColor => const Color(0x11FF9800);
 }
 
 class DarkThemeData extends AppThemeData {
@@ -181,4 +187,7 @@ class DarkThemeData extends AppThemeData {
   Color get fullStarColor => primaryColor;
   Color get emptyStarColor => primaryColor.withOpacity(0.3);
   Color get progressBarBackgroundColor => const Color(0xFF35383F);
+  Color get googleButtonBackgroundColor => const Color(0xFF1F222A);
+  Color get flatButtonTextColor => Colors.white;
+  Color get flatButtonBackgroundColor => Colors.grey.withOpacity(0.7);
 }
