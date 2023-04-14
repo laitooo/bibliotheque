@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:bibliotheque/ui/screens/splash/on_boarding_screen.dart';
 import 'package:bibliotheque/utils/preferences.dart';
@@ -39,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             const SizedBox(height: 20),
             Text(
-              "Bibliotheque",
+              t.appname,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,

@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/google_auth_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/auth/login/login_screen.dart';
@@ -50,10 +51,10 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
           if (state.status == GoogleAuthStatus.error) {
             // TODO:: use real errors instead of always network error
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 content: Text(
-                  "Network error",
-                  style: TextStyle(
+                  t.errors.networkError,
+                  style: const TextStyle(
                     fontSize: 14,
                   ),
                 ),
@@ -100,7 +101,7 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
                         TextSpan(
                           children: [
                             TextSpan(
-                              text: "Welcome to ",
+                              text: t.onBoarding.welcomeTo,
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700,
@@ -108,7 +109,7 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
                               ),
                             ),
                             TextSpan(
-                              text: "Bibliotheque",
+                              text: t.appname,
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700,
@@ -122,7 +123,7 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
-                          "The number one best book store application in this century",
+                          t.onBoarding.numberOne,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             height: 1.5,
@@ -173,7 +174,7 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
                             ),
                             const SizedBox(width: 15),
                             Text(
-                              "Continue with Google",
+                              t.onBoarding.continueWithGoogle,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -186,7 +187,7 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
                     ),
                     const SizedBox(height: 20),
                     MainButton(
-                      title: "Get Started",
+                      title: t.onBoarding.getStarted,
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
@@ -197,7 +198,7 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
                     ),
                     const SizedBox(height: 20),
                     MainFlatButton(
-                      title: "I already have an Account",
+                      title: t.onBoarding.alreadyHaveACcount,
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
