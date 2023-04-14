@@ -39,7 +39,7 @@ class _AgeTabState extends State<AgeTab> {
             t.auth.register.selectAgeRange,
             style: TextStyle(
               fontSize: 14,
-              color: context.theme.textColor5,
+              color: context.theme.textColor4,
             ),
           ),
           const SizedBox(height: 25),

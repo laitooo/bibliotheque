@@ -138,7 +138,7 @@ class LightThemeData extends AppThemeData {
   Color get progressBarBackgroundColor => Colors.grey.shade300;
   Color get googleButtonBackgroundColor => Colors.white;
   Color get flatButtonTextColor => primaryColor;
-  Color get flatButtonBackgroundColor => const Color(0x11FF9800);
+  Color get flatButtonBackgroundColor => const Color(0x33FF9800);
 }
 
 class DarkThemeData extends AppThemeData {
@@ -183,7 +183,7 @@ class DarkThemeData extends AppThemeData {
   Color get filterItemColor3 => Colors.white;
   Color get filterCardBackground => Colors.grey;
   Color get textFieldActiveColor => primaryColor;
-  Color get textFieldInactiveColor => const Color(0xFF666666);
+  Color get textFieldInactiveColor => Colors.white;
   Color get fullStarColor => primaryColor;
   Color get emptyStarColor => primaryColor.withOpacity(0.3);
   Color get progressBarBackgroundColor => const Color(0xFF35383F);

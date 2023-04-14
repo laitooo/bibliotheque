@@ -39,7 +39,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
               t.auth.register.selectBookGenre,
               style: TextStyle(
                 fontSize: 14,
-                color: context.theme.textColor5,
+                color: context.theme.textColor4,
               ),
             ),
             const SizedBox(height: 25),
@@ -115,8 +115,6 @@ class _CategoriesTabState extends State<CategoriesTab> {
               child: MainFlatButton(
                 title: t.auth.register.skip,
                 removePadding: true,
-                textColor: context.theme.textColor3,
-                backgroundColor: context.theme.buttonColor2,
                 onPressed: () {
                   BlocProvider.of<RegisterBloc>(context).add(
                     InputFavouriteCategories(),

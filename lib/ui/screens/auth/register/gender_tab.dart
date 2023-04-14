@@ -37,7 +37,7 @@ class _GenderTabState extends State<GenderTab> {
             t.auth.register.selectGender,
             style: TextStyle(
               fontSize: 14,
-              color: context.theme.textColor5,
+              color: context.theme.textColor4,
             ),
           ),
           const SizedBox(height: 20),
