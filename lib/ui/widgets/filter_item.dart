@@ -18,9 +18,7 @@ class FilterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = TextStyle(
-      color: isSelected
-          ? context.theme.filterItemColor2
-          : context.theme.filterItemColor1,
+      color: isSelected ? Colors.white : context.theme.filterItemColor1,
       fontSize: 14,
     );
 

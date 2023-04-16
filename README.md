@@ -3,7 +3,7 @@
 A flutter mobile app for selling books
 
 ## DOING:
-- Localization
+- New review
 
 ## DONE:
 - Home screen
@@ -22,9 +22,9 @@ A flutter mobile app for selling books
 - Authentication
 - Icons
 - Night mode
+- Localization
 
 ## TODO:
 - Edit profile
 - New Releases
-- New review
 - Search history

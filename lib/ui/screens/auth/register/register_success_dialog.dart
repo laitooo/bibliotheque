@@ -19,7 +19,7 @@ class _RegisterSuccessDialogState extends State<RegisterSuccessDialog> {
     Future.delayed(const Duration(seconds: 1), () {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (_) => HomeScreen(),
+          builder: (_) => const HomeScreen(),
         ),
       );
     });
@@ -43,7 +43,7 @@ class _RegisterSuccessDialogState extends State<RegisterSuccessDialog> {
               horizontal: 60,
             ),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.theme.backgroundColor,
               borderRadius: BorderRadius.circular(38.0),
             ),
             child: Column(
@@ -66,16 +66,18 @@ class _RegisterSuccessDialogState extends State<RegisterSuccessDialog> {
                 Text(
                   t.auth.register.singUpSuccessful,
                   style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
                       color: context.theme.textColor3),
                 ),
                 const SizedBox(height: 20),
                 Text(
                   t.auth.register.accountCreated,
                   textAlign: TextAlign.center,
-                  style:
-                      TextStyle(fontSize: 14, color: context.theme.textColor5),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: context.theme.textColor4,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 const AppProgressIndicator(size: 90),

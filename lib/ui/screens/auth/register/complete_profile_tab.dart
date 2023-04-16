@@ -43,7 +43,7 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
             style: TextStyle(
               fontSize: 14,
               height: 1.5,
-              color: context.theme.textColor5,
+              color: context.theme.textColor4,
             ),
           ),
           const SizedBox(height: 40),

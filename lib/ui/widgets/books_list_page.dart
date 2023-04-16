@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/books_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
@@ -138,7 +139,7 @@ class _BooksListPageState extends State<_BooksListPage> {
       children: [
         const SizedBox(width: 20),
         Text(
-          'Show in',
+          t.search.showIn,
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,

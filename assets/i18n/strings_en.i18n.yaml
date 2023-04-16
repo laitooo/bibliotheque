@@ -57,3 +57,163 @@ auth:
     confirmPassword: "Confirm password"
     resetPasswordSuccessTitle: "Reset Password Successful"
     resetPasswordSuccessSubtitle: "Your password has been successfully changed."
+
+categories:
+  exploreByGenre: "Explore by Genre"
+
+details:
+  releasedOn: "Released on "
+  pages: "Pages"
+  purchases: "Purchases"
+  buy: "Buy"
+  usd: "USD"
+  aboutThisBook: "About this book"
+  ratingsAndReviews: "Ratings & Reviews"
+  language: "Language"
+  age: "Age"
+  author: "Author"
+  publisher: "Publisher"
+  publishedOn: "Published on"
+  isbn: "ISBN"
+  all: "All"
+  reviews: "reviews"
+
+home:
+  topPopular: "Top popular"
+  home: "Home"
+  discover: "Discover"
+  wishlist: "Wish list"
+  account: "Account"
+  topCharts: "Top charts"
+  exploreByGenre: "Explore by Genre"
+  recommended: "Recommended for you"
+
+notifications:
+  title: "Notifications"
+  empty: "No notifications"
+  noNotifications: "You don't have any notifications at this time"
+
+search:
+  startSearching: "Start searching"
+  empty: "No results"
+  noResults: "We couldn't find any search result for your search"
+  showIn: "Show method"
+  filter: "Filter"
+  sort: "Sort by"
+  price: "Price"
+  usd: "USD"
+  rating: "Rating"
+  genre: "Genre"
+  language: "Language"
+  age: "Age"
+  apply: "Apply"
+  reset: "Reset"
+
+account:
+  account:
+    title: "Account"
+    paymentMethod: "Payment methods"
+    personalInfo: "Personal Info"
+    notifications: "Notifications"
+    language: "Language"
+    nightMode: "Night mode"
+    helpCenter: "Help center"
+    aboutApp: "About the app"
+    logout: "Logout"
+  about:
+    aboutAppName: "About Bibliotheque"
+    fees: "Fees"
+    developer: "Developer"
+    partner: "Partner"
+    accessibility: "Accessibility"
+    feedback: "Feedback"
+    rateUs: "Rate us"
+    visitOurWebsite: "Visit our website"
+    followSocialMedia: "Follow us on social media"
+  language:
+    language: "Language"
+    arabic: "Arabic"
+    english: "English"
+  logout:
+    title: "Logout"
+    areYouSure: "Are you sure you want to log out?"
+    cancel: "Cancel"
+  notifications:
+    title: "Notifications"
+    notifyMeWhen: "Notify me when..."
+    newRecommendation: "There is a new Recommendation"
+    newBookSeries: "There is a new book series"
+    authorsUpdate: "There is an update from authors"
+    priceDrop: "There are price drops available"
+    whenPurchase: "When I make a purchase"
+    newTips: "New tips and services available"
+    participateInSurvey: "Participate in survey"
+  paymentMethod:
+    title: "Payment method"
+    paypal: "Paypal"
+    google: "Google pay"
+    apple: "Apple pay"
+    visa: "Visa card"
+    master: "Master card"
+  personalInfo:
+    title: "Personal info"
+    fullName: "Full name"
+    userName: "Username"
+    email: "Email"
+    phoneNumber: "Phone number"
+  help:
+    title: "Help center"
+    faq: "FAQ"
+    contact: "Contact us"
+    customerService: "Customer service"
+    whatsapp: "WhatsApp"
+    website: "Website"
+    facebook: "Facebook"
+    twitter: "Twitter"
+    instagram: "Instagram"
+
+onBoarding:
+  welcomeTo: "Welcome to "
+  numberOne: "The number one best book store application in this century"
+  continueWithGoogle: "Continue with Google"
+  getStarted: "Get Started"
+  alreadyHaveACcount: "I already have an Account"
+
+wishlist:
+  title: "Wish List"
+  empty: "Empty wish list"
+  addBooks: "Add books to your wish list"
+
+enums:
+  question:
+    general: "General"
+    account: "Account"
+    service: "Service"
+    books: "Books"
+    payment: "Payment"
+    others: "Others"
+  age:
+    fiveUp: "Ages 5 & Up"
+    eightUp: "Ages 8 & Up"
+    thirteenUp: "Ages 13 & Up"
+    eighteenUp: "Ages 18 & Up"
+    twentyUp: "Ages 20 & Up"
+    all: "All"
+  sorting:
+    trending: "Trending"
+    newRelease: "New Releases"
+    highRate: "Highest Rating"
+    lowRate: "Lowest Rating"
+    highPrice: "Highest price"
+    lowPrice: "Lowest price"
+  all: "All"
+  language:
+    arabic: "Arabic"
+    english: "English"
+    french: "French"
+    spanish: "Spanish"
+    all: "All"
+  gender:
+    male: "I am male"
+    female: "I am female"
+    preferNotSay: "Prefer not to say"

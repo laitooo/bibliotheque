@@ -10,7 +10,19 @@ import 'package:flutter/material.dart';
 
 final globalHomeScreenKey = GlobalKey<HomeScreenState>();
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
+
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return _HomeScreen(key: globalHomeScreenKey);
+  }
+}
+
+
+class _HomeScreen extends StatefulWidget {
+
   final _pages = [
     const HomeTab(),
     BooksListPage(
@@ -20,19 +32,18 @@ class HomeScreen extends StatefulWidget {
     const WishListScreen(),
     const AccountSettingsScreen(),
   ];
-  HomeScreen({Key? key}) : super(key: key);
+  _HomeScreen({Key? key}) : super(key: key);
 
   @override
   HomeScreenState createState() => HomeScreenState();
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<_HomeScreen> {
   int selectedTap = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: globalHomeScreenKey,
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,

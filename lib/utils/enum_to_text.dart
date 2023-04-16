@@ -1,3 +1,4 @@
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/book_details.dart';
 import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/models/question.dart';
@@ -7,34 +8,34 @@ import 'package:bibliotheque/repos/search_repo.dart';
 String questionToText(QuestionType type) {
   switch (type) {
     case QuestionType.general:
-      return "General";
+      return t.enums.question.general;
     case QuestionType.account:
-      return "Account";
+      return t.enums.question.account;
     case QuestionType.service:
-      return "Service";
+      return t.enums.question.service;
     case QuestionType.book:
-      return "Books";
+      return t.enums.question.books;
     case QuestionType.payment:
-      return "Payment";
+      return t.enums.question.payment;
     case QuestionType.others:
-      return "Others";
+      return t.enums.question.others;
   }
 }
 
 String ageRangeToText(AgeRange ageRange) {
   switch (ageRange) {
     case AgeRange.fiveUp:
-      return "Ages 5 & Up";
+      return t.enums.age.fiveUp;
     case AgeRange.eightUp:
-      return "Ages 8 & Up";
+      return t.enums.age.eightUp;
     case AgeRange.thirteenUp:
-      return "Ages 13 & Up";
+      return t.enums.age.thirteenUp;
     case AgeRange.eighteenUp:
-      return "Ages 18 & Up";
+      return t.enums.age.eighteenUp;
     case AgeRange.twentyUp:
-      return "Ages 20 & Up";
+      return t.enums.age.twentyUp;
     case AgeRange.all:
-      return "All";
+      return t.enums.age.all;
   }
 }
 
@@ -56,24 +57,24 @@ String starsNumberToText(StarsNumber starsNumber) {
 String sortingMethodToText(SortingMethod sortingMethod) {
   switch (sortingMethod) {
     case SortingMethod.trending:
-      return "Trending";
+      return t.enums.sorting.trending;
     case SortingMethod.newReleases:
-      return "New Releases";
+      return t.enums.sorting.newRelease;
     case SortingMethod.highestRating:
-      return "Highest Rating";
+      return t.enums.sorting.highRate;
     case SortingMethod.lowestRating:
-      return "Lowest Rating";
+      return t.enums.sorting.lowRate;
     case SortingMethod.highestPrice:
-      return "Highest price";
+      return t.enums.sorting.highPrice;
     case SortingMethod.lowestPrice:
-      return "Lowest price";
+      return t.enums.sorting.lowPrice;
   }
 }
 
 String ratingRangeToText(RatingRange ratingRange) {
   switch (ratingRange) {
     case RatingRange.all:
-      return "All";
+      return t.enums.all;
     case RatingRange.fourHalfPlus:
       return "4.5+";
     case RatingRange.fourPlus:
@@ -84,26 +85,26 @@ String ratingRangeToText(RatingRange ratingRange) {
 String languageToText(Language language) {
   switch (language) {
     case Language.arabic:
-      return "Arabic";
+      return t.enums.language.arabic;
     case Language.english:
-      return "English";
+      return t.enums.language.english;
     case Language.french:
-      return "French";
+      return t.enums.language.french;
     case Language.spanish:
-      return "Spanish";
+      return t.enums.language.spanish;
     case Language.all:
-      return "All";
+      return t.enums.language.all;
   }
 }
 
 String genderToText(Gender gender) {
   switch (gender) {
     case Gender.male:
-      return "I am male";
+      return t.enums.gender.male;
     case Gender.female:
-      return "I am female";
+      return t.enums.gender.female;
     case Gender.preferNotToSay:
-      return "Prefer not to say";
+      return t.enums.gender.preferNotSay;
   }
 }
 

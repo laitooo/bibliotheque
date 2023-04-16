@@ -37,6 +37,7 @@ class _RegisterPageState extends State<_RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Container(),
       ),

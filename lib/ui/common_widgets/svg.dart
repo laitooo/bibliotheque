@@ -18,7 +18,7 @@ class Svg extends StatelessWidget {
       "assets/icons/" + path,
       width: size,
       height: size,
-      matchTextDirection: matchTextDirection ?? false,
+      matchTextDirection: matchTextDirection ?? true,
       color: color ?? context.theme.iconColor1,
     );
   }

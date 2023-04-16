@@ -1,4 +1,4 @@
-appname: "مكتبة"
+appname: "المكتبة"
 
 errors:
   networkError: "خطأ في الاتصال"
@@ -57,3 +57,163 @@ auth:
     confirmPassword: "تأكيد كلمة المرور"
     resetPasswordSuccessTitle: "تم إعادة تعيين كلمة المرور"
     resetPasswordSuccessSubtitle: "تم تغيير كلمة المرور الخاصة بك بنجاح"
+
+categories:
+  exploreByGenre: "التصفح عبر التصنيف"
+
+details:
+  releasedOn: "تم الإطلاق في "
+  pages: "صفحات"
+  purchases: "مبيعا"
+  buy: "اشتري"
+  usd: "دولار أمريكي"
+  aboutThisBook: "حول الكتاب"
+  ratingsAndReviews: "التقييمات والتعليقات"
+  language: "اللغة"
+  age: "العمر"
+  author: "المؤلف"
+  publisher: "الناشر"
+  publishedOn: "تم النشر في"
+  isbn: "ISBN"
+  all: "الك"
+  reviews: "تعليقا"
+
+home:
+  topPopular: "الأكثر شهرة"
+  home: "الرئيسية"
+  discover: "تصفح"
+  wishlist: "قائمتي"
+  account: "الحساب"
+  topCharts: "الأكثر مبيعا"
+  exploreByGenre: "تصفح عبر التصنيف"
+  recommended: "مقترح لك"
+
+notifications:
+  title: "الإشعارات"
+  empty: "لا إشعارات"
+  noNotifications: "ليس لديك إشعارات في الوقت الحالي"
+
+search:
+  startSearching: "ابدأ البحث"
+  empty: "لا نتائج"
+  noResults: "لم نستطع إيجاد نتائج مطابقة لبحثك"
+  showIn: "طريقة العرض"
+  filter: "فلتر"
+  sort: "ترتيب حسب"
+  price: "السعر"
+  usd: "دولار أمريكي"
+  rating: "التقييم"
+  genre: "التصنيف"
+  language: "اللغة"
+  age: "العمر"
+  apply: "تطبيق"
+  reset: "إعادة"
+
+account:
+  account:
+    title: "الإعدادات"
+    paymentMethod: "وسيلة الدفع"
+    personalInfo: "المعلومات الشخصية"
+    notifications: "الإشعارات"
+    language: "اللغة"
+    nightMode: "الوضع الليلي"
+    helpCenter: "مركز المساعدة"
+    aboutApp: "حول التطبيق"
+    logout: "تسجيل الخروج"
+  about:
+    aboutAppName: "حول المكتبة"
+    fees: "الرسوم"
+    developer: "المطور"
+    partner: "الشركاء"
+    accessibility: "إمكانية الوصول"
+    feedback: "تعليق"
+    rateUs: "قيم التطبيق"
+    visitOurWebsite: "قم بزيارة موقعنا"
+    followSocialMedia: "قم بتمابعتنا على وسائل التواصل الاجتماعي"
+  language:
+    language: "اللغة"
+    arabic: "العربية"
+    english: "الإنجليزية"
+  logout:
+    title: "تسجيل الخروج"
+    areYouSure: "هل أنت متأكد من أنك تود تسجيل الخروج"
+    cancel: "إلغاء"
+  notifications:
+    title: "الإشعارات"
+    notifyMeWhen: "نبهني حين..."
+    newRecommendation: "هنالك مقترح جديد"
+    newBookSeries: "هنالك سلسلة كتب جديدة"
+    authorsUpdate: "هنالك جديد من المؤلف"
+    priceDrop: "هنالك تخفيض في الأسعار"
+    whenPurchase: "عندما أقوم بالشراء"
+    newTips: "هنالك خدمات جديدة"
+    participateInSurvey: "للمشاركة في استطلاع"
+  paymentMethod:
+    title: "وسيلة الدفع"
+    paypal: "Paypal"
+    google: "Google pay"
+    apple: "Apple pay"
+    visa: "Visa card"
+    master: "Master card"
+  personalInfo:
+    title: "المعلومات الشخصية"
+    fullName: "الإسم الكامل"
+    userName: "إسم المستخدم"
+    email: "البريد الإلكتروني"
+    phoneNumber: "رقم الهاتف"
+  help:
+    title: "مركز المساعدة"
+    faq: "أسئلة متكررة"
+    contact: "تواصل معنا"
+    customerService: "خدمة العملاء"
+    whatsapp: "واتساب"
+    website: "الموقع الإلكتروني"
+    facebook: "فيسبوك"
+    twitter: "تويتر"
+    instagram: "انستجرام"
+
+onBoarding:
+  welcomeTo: "مرحبا بك في "
+  numberOne: "أفضل تطبيق بيع كتب في هذا القرن"
+  continueWithGoogle: "تابع باستخدام جوجل"
+  getStarted: "إبدأ الاستخدام"
+  alreadyHaveACcount: "بالفعل لدي حساب"
+
+wishlist:
+  title: "قائمتي"
+  empty: "قائمتك فارغة"
+  addBooks: "قم بإضافة الكتب الى قائمتك"
+
+enums:
+  question:
+    general: "عام"
+    account: "الحساب"
+    service: "الخدمات"
+    books: "الكتب"
+    payment: "الدفع"
+    others: "أخرى"
+  age:
+    fiveUp: "عمر 5 وأكبر"
+    eightUp: "عمر 8 وأكبر"
+    thirteenUp: "عمر 13 وأكبر"
+    eighteenUp: "عمر 18 وأكبر"
+    twentyUp: "عمر 20 وأكبر"
+    all: "الكل"
+  sorting:
+    trending: "الشائع مؤخرا"
+    newRelease: "نشر مؤخرا"
+    highRate: "الأعلى تقييما"
+    lowRate: "الأقل تقييما"
+    highPrice: "الأعلى سعرا"
+    lowPrice: "الأقل سعرا"
+  all: "الكل"
+  language:
+    arabic: "العربية"
+    english: "الإنجليزية"
+    french: "الفرنسية"
+    spanish: "الإسبانية"
+    all: "الكل"
+  gender:
+    male: "ذكر"
+    female: "أنثى"
+    preferNotSay: "أفضل أن لا أجاوب"
