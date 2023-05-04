@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/book.dart';
+import 'package:bibliotheque/ui/common_widgets/mockable_image.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/details/book_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,8 @@ class BookCard extends StatelessWidget {
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image(
-                image: NetworkImage(book.coveUrl),
+              child: MockableImage(
+                book.coveUrl,
                 width: 178,
                 height: 280,
               ),
@@ -120,8 +121,8 @@ class HorizontalBookCard extends StatelessWidget {
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image(
-                  image: NetworkImage(book.coveUrl),
+                child: MockableImage(
+                  book.coveUrl,
                   height: 200,
                 ),
               ),
@@ -315,8 +316,8 @@ class WishListCard extends StatelessWidget {
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image(
-                  image: NetworkImage(book.coveUrl),
+                child: MockableImage(
+                  book.coveUrl,
                   height: 200,
                 ),
               ),
