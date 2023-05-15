@@ -37,17 +37,62 @@ class UserProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      body: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (_) => ProfileBloc()..add(LoadProfile()),
-          ),
-          // BlocProvider(
-          //   create: (_) => ProfilePictureBloc(),
-          // )
-        ],
-        child: _Body(),
-      ),
+      body: BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
+        if (state.status == ProfileStatus.loading) {
+          return const Center(
+            child: AppProgressIndicator(),
+          );
+        }
+
+        if (state.status == ProfileStatus.error) {
+          return TryAgainWidget(
+            onPressed: () {
+              BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
+            },
+          );
+        }
+
+        return ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          children: [
+            const SizedBox(height: 20),
+            Center(
+              child: CircleImageWidget(
+                state.profile!.avatarUrl,
+                size: 130,
+              ),
+            ),
+            const SizedBox(height: 15),
+            Divider(
+              thickness: 0.5,
+              color: context.theme.dividerColor,
+            ),
+            const SizedBox(height: 15),
+            _ProfileInfoItem(
+              title: t.account.personalInfo.fullName,
+              value: state.profile!.fullName,
+            ),
+            const SizedBox(height: 15),
+            _ProfileInfoItem(
+              title: t.account.personalInfo.userName,
+              value: state.profile!.username,
+            ),
+            const SizedBox(height: 20),
+            _ProfileInfoItem(
+              title: t.account.personalInfo.email,
+              value: state.profile!.email,
+            ),
+            const SizedBox(height: 20),
+            _ProfilePhoneNumber(
+              title: t.account.personalInfo.phoneNumber,
+              value: state.profile!.phoneNumber,
+            ),
+
+            // TODO:: add birthyear and maybe street address input fields to this
+            // screen
+          ],
+        );
+      }),
     );
   }
 }
@@ -212,67 +257,5 @@ class _ProfilePhoneNumber extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class _Body extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
-      if (state.status == ProfileStatus.loading) {
-        return const Center(
-          child: AppProgressIndicator(),
-        );
-      }
-
-      if (state.status == ProfileStatus.error) {
-        return TryAgainWidget(
-          onPressed: () {
-            BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
-          },
-        );
-      }
-
-      return ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        children: [
-          const SizedBox(height: 20),
-          Center(
-            child: CircleImageWidget(
-              state.profile!.avatarUrl,
-              size: 130,
-            ),
-          ),
-          const SizedBox(height: 15),
-          Divider(
-            thickness: 0.5,
-            color: context.theme.dividerColor,
-          ),
-          const SizedBox(height: 15),
-          _ProfileInfoItem(
-            title: t.account.personalInfo.fullName,
-            value: state.profile!.fullName,
-          ),
-          const SizedBox(height: 15),
-          _ProfileInfoItem(
-            title: t.account.personalInfo.userName,
-            value: state.profile!.username,
-          ),
-          const SizedBox(height: 20),
-          _ProfileInfoItem(
-            title: t.account.personalInfo.email,
-            value: state.profile!.email,
-          ),
-          const SizedBox(height: 20),
-          _ProfilePhoneNumber(
-            title: t.account.personalInfo.phoneNumber,
-            value: state.profile!.phoneNumber,
-          ),
-
-          // TODO:: add birthyear and maybe street address input fields to this
-          // screen
-        ],
-      );
-    });
   }
 }

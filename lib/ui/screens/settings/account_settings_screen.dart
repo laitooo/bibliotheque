@@ -1,5 +1,8 @@
 import 'package:bibliotheque/blocs/notifications_options_bloc.dart';
+import 'package:bibliotheque/blocs/profile_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
+import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/settings/about_app_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/change_language_page.dart';
@@ -8,7 +11,6 @@ import 'package:bibliotheque/ui/screens/settings/logout_bottom_sheet.dart';
 import 'package:bibliotheque/ui/screens/settings/notification_preferences_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/payment_methods_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/user_profile_screen.dart';
-import 'package:bibliotheque/utils/generator.dart';
 import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +19,18 @@ import '../../../i18n/translations.dart';
 
 class AccountSettingsScreen extends StatelessWidget {
   const AccountSettingsScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => ProfileBloc()..add(LoadProfile()),
+      child: const _AccountSettingsScreen(),
+    );
+  }
+}
+
+class _AccountSettingsScreen extends StatelessWidget {
+  const _AccountSettingsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +63,10 @@ class AccountSettingsScreen extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (_) => const UserProfilePage(),
+                  builder: (_) => BlocProvider.value(
+                    value: BlocProvider.of<ProfileBloc>(context),
+                    child: const UserProfilePage(),
+                  ),
                 ),
               );
             },
@@ -57,12 +74,17 @@ class AccountSettingsScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: Row(
                 children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      generator.avatar(),
-                    ),
-                    radius: 30,
-                  ),
+                  BlocBuilder<ProfileBloc, ProfileState>(
+                      builder: (context, state) {
+                    if (state.status == ProfileStatus.loading) {
+                      return const AppProgressIndicator(size: 60);
+                    }
+
+                    return CircleImageWidget(
+                      state.profile!.avatarUrl,
+                      size: 60,
+                    );
+                  }),
                   const SizedBox(width: 20),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +140,10 @@ class AccountSettingsScreen extends StatelessWidget {
             t.account.account.personalInfo,
             "account_created.svg",
             Colors.lightBlue,
-            newScreen: const UserProfilePage(),
+            newScreen: BlocProvider.value(
+              value: BlocProvider.of<ProfileBloc>(context),
+              child: const UserProfilePage(),
+            ),
           ),
           const SizedBox(height: 20),
           _settingsItem(
@@ -135,7 +160,7 @@ class AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            t.account.account.notifications,
+            t.account.account.language,
             "grid_view.svg",
             Colors.orangeAccent,
             newScreen: const ChangeLanguagePage(),
