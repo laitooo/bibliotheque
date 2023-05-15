@@ -6,6 +6,7 @@ import 'package:bibliotheque/utils/result.dart';
 abstract class ReviewsRepository {
   Future<Result<List<Review>, ReviewsError>> getReviews(
       {StarsNumber? starsNumber});
+  Future<Result<void, ReviewsError>> createReview(Review review);
 }
 
 class MockReviewsRepository extends ReviewsRepository {
@@ -22,5 +23,14 @@ class MockReviewsRepository extends ReviewsRepository {
         (index) => generator.review(starsNumber: starsNumber),
       ),
     );
+  }
+
+  @override
+  Future<Result<void, ReviewsError>> createReview(Review review) async {
+    await Future.delayed(
+      const Duration(seconds: 1),
+    );
+
+    return Result.value(null);
   }
 }
