@@ -173,7 +173,7 @@ class SignUp extends BlocEvent<RegisterState, RegisterBloc> {
       profile: profile,
     );
 
-    final res = await bloc._repo.signUp(profile, username, password, email);
+    final res = await bloc._repo.signUp(profile, password);
 
     yield res.incase(
       value: (value) => current.copyWith(
