@@ -4,6 +4,7 @@ errors:
   networkError: "Network Error"
   networkErrorTryAgain: "Network Error, Try again"
   tryAgain: "Try again"
+  invalidRate: "Please enter a valid rate"
 
 widgets:
   phoneNumber: "Phone number"
@@ -77,6 +78,8 @@ details:
   isbn: "ISBN"
   all: "All"
   reviews: "reviews"
+  rateBook: "Rate this book"
+  writeReview: "Write a review"
 
 home:
   topPopular: "Top popular"
@@ -217,3 +220,12 @@ enums:
     male: "I am male"
     female: "I am female"
     preferNotSay: "Prefer not to say"
+
+createReview:
+  rateBook: "Rate this book"
+  describeExperience: "Describe your experience (Optional)"
+  submit: "Submit"
+  cancel: "Cancel"
+  successTitle: "Submitted successfully"
+  successContent: "Thank you for providing a rating and a review for the book: "
+  ok: "OK"
