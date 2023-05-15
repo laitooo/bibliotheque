@@ -46,7 +46,10 @@ enum FAQError {
 }
 
 enum ReviewsError {
-  networkError,
+  loadingError,
+  sendingError,
+  invalidRate,
+  fetchingAvatar,
 }
 
 enum SearchError {
