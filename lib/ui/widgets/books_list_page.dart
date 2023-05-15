@@ -128,7 +128,6 @@ class _BooksListPageState extends State<_BooksListPage> {
                     .map(
                       (book) => HorizontalBookCard(
                         book: book,
-                        isWishList: false,
                       ),
                     )
                     .toList(),

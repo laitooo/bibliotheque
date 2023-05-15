@@ -92,13 +92,11 @@ class BookCard extends StatelessWidget {
 
 class HorizontalBookCard extends StatelessWidget {
   final Book book;
-  final bool isWishList;
   final void Function()? onRemoveClicked;
 
   const HorizontalBookCard({
     Key? key,
     required this.book,
-    required this.isWishList,
     this.onRemoveClicked,
   }) : super(key: key);
 
@@ -129,154 +127,75 @@ class HorizontalBookCard extends StatelessWidget {
             ),
             const SizedBox(width: 20),
             Expanded(
-              child: Stack(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      book.name,
+                      maxLines: 2,
+                      textAlign: TextAlign.start,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        height: 1.4,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: context.theme.textColor1,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
                     children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          book.name,
-                          maxLines: 2,
-                          textAlign: TextAlign.start,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            height: 1.4,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: context.theme.textColor1,
-                          ),
-                        ),
+                      Svg(
+                        'half_star.svg',
+                        size: 14,
+                        color: context.theme.iconColor4,
                       ),
-                      const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Svg(
-                            'half_star.svg',
-                            size: 14,
-                            color: context.theme.iconColor4,
-                          ),
-                          const SizedBox(width: 5),
-                          Text(
-                            book.rate.toString(),
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: context.theme.textColor4,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
+                      const SizedBox(width: 5),
                       Text(
-                        "\$ " + book.price.toString(),
+                        book.rate.toString(),
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 14,
                           fontWeight: FontWeight.w500,
                           color: context.theme.textColor4,
                         ),
                       ),
-                      const SizedBox(height: 10),
-                      Wrap(
-                        spacing: 10,
-                        runSpacing: 8,
-                        children: List.generate(
-                          book.categoriesNames.length,
-                          (index) => Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 6),
-                            decoration: BoxDecoration(
-                              color: context.theme.tagBackgroundColor,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Text(
-                              book.categoriesNames[index],
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: context.theme.textColor4,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
-                  if (isWishList)
-                    Align(
-                      alignment: AlignmentDirectional.centerEnd,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 70),
-                        child: PopupMenuButton(
-                          color: context.theme.backgroundColor,
-                          icon: const Svg(
-                            'dots_vertical.svg',
+                  const SizedBox(height: 10),
+                  Text(
+                    "\$ " + book.price.toString(),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: context.theme.textColor4,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Wrap(
+                    spacing: 10,
+                    runSpacing: 8,
+                    children: List.generate(
+                      book.categoriesNames.length,
+                      (index) => Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: context.theme.tagBackgroundColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Text(
+                          book.categoriesNames[index],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: context.theme.textColor4,
                           ),
-                          padding: EdgeInsets.zero,
-                          itemBuilder: (_) {
-                            return [
-                              PopupMenuItem(
-                                child: Row(
-                                  children: [
-                                    const Svg(
-                                      'remove_from_list.svg',
-                                      size: 18,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Text(
-                                      "Remove from wish list",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: context.theme.textColor1,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: onRemoveClicked,
-                              ),
-                              PopupMenuItem(
-                                child: Row(
-                                  children: [
-                                    const Svg(
-                                      'send.svg',
-                                      size: 18,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Text(
-                                      "Share",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: context.theme.textColor1,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {},
-                              ),
-                              PopupMenuItem(
-                                child: Row(
-                                  children: [
-                                    const Svg(
-                                      'info.svg',
-                                      size: 18,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Text(
-                                      "About the app",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: context.theme.textColor1,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {},
-                              ),
-                            ];
-                          },
                         ),
                       ),
                     ),
+                  ),
                 ],
               ),
             ),

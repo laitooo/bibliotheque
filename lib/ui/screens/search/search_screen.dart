@@ -128,7 +128,6 @@ class _SearchScreenState extends State<SearchScreen> {
                             .map(
                               (book) => HorizontalBookCard(
                                 book: book,
-                                isWishList: false,
                               ),
                             )
                             .toList(),

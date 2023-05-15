@@ -19,7 +19,7 @@ final generator = Generator();
 class Generator {
   final _rand = Random();
 
-  String _id() {
+  String id() {
     return List.generate(
         10, (i) => String.fromCharCode(_rand.nextInt(127 - 33) + 33)).join();
   }
@@ -198,7 +198,7 @@ class Generator {
   }
 
   Book book() => Book(
-        id: _id(),
+        id: id(),
         name: _bookName(),
         coveUrl: _cover,
         price: count(1, 50) * 10,
@@ -213,22 +213,22 @@ class Generator {
         ),
       );
 
-  Category category({String? id}) => Category(
-        id: id ?? _id(),
+  Category category({String? index}) => Category(
+        id: index ?? id(),
         name: _category(),
         nameAr: _category(),
         imageUrl: _categoryCover,
       );
 
   BookDetails bookDetails() => BookDetails(
-        id: _id(),
+        id: id(),
         name: _bookName(),
         coveUrl: _cover,
         price: count(1, 50) * 10,
         rate: _rate(),
-        authorId: _id(),
+        authorId: id(),
         authorName: _author(),
-        publisherId: _id(),
+        publisherId: id(),
         publisherName: _oneOf(_publishers),
         numPages: count(100, 1000),
         numBuyers: count(1, 100),
@@ -250,7 +250,7 @@ class Generator {
       );
 
   no.Notification notification() => no.Notification(
-        id: _id(),
+        id: id(),
         user: 'user',
         event: no.NotificationEvent(
           context: {},
@@ -270,7 +270,7 @@ class Generator {
       );
 
   Profile profile() => Profile(
-        id: _id(),
+        id: id(),
         email: _email,
         username: _userName(),
         fullName: _userName(),
@@ -290,7 +290,7 @@ class Generator {
       );
 
   NotificationsOptions notificationsOption() => NotificationsOptions(
-        userId: _id(),
+        userId: id(),
         newBookSeries: boolean(),
         newPriceDrop: boolean(),
         newPurchase: boolean(),
@@ -301,7 +301,7 @@ class Generator {
       );
 
   Question faq() => Question(
-        id: _id(),
+        id: id(),
         question: "What is Bibliotheque?",
         answer:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue tempor, a sit accumsan",
@@ -309,8 +309,8 @@ class Generator {
       );
 
   Review review({StarsNumber? starsNumber}) => Review(
-        id: _id(),
-        userId: _id(),
+        id: id(),
+        userId: id(),
         userName: _userName(),
         userCover: _cover,
         hasLiked: boolean(),
@@ -326,7 +326,7 @@ class Generator {
       );
 
   User user() => User(
-        id: _id(),
+        id: id(),
         email: _email,
         username: _userName(),
       );

@@ -364,7 +364,7 @@ class _BookDetailsScreen extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        "Rate this book",
+                        t.details.rateBook,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -417,7 +417,7 @@ class _BookDetailsScreen extends StatelessWidget {
                           Expanded(
                             flex: 2,
                             child: MainFlatButton(
-                              title: "Write a review",
+                              title: t.details.writeReview,
                               textColor: context.theme.primaryColor,
                               backgroundColor: context.theme.backgroundColor,
                               borderColor: context.theme.primaryColor,
