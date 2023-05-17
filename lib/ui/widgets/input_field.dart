@@ -27,7 +27,7 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   void initState() {
     super.initState();
-    widget.controller.text = widget.label;
+    widget.controller.text = widget.initialValue;
     focusNode.addListener(() {
       setState(() {});
     });
@@ -49,8 +49,9 @@ class _AppTextFieldState extends State<AppTextField> {
           ),
         ),
         TextField(
-          keyboardType: widget.inputType ?? TextInputType.name,
           focusNode: focusNode,
+          controller: widget.controller,
+          keyboardType: widget.inputType ?? TextInputType.name,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,

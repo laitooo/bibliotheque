@@ -10,6 +10,7 @@ class CircleImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO:// handle no avatar url
     return SizedBox(
       width: size,
       height: size,

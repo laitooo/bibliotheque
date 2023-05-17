@@ -105,6 +105,7 @@ class Generator {
     'Alfonzo Schuessler',
     'Maryland Winkles',
     'Alzobair Mohammed',
+    'Howard Rivera',
   ];
 
   static const _books = [

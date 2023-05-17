@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
+import 'package:bibliotheque/ui/screens/splash/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class LogoutBottomSheet extends StatelessWidget {
@@ -61,12 +62,12 @@ class LogoutBottomSheet extends StatelessWidget {
                     // TODO:: complete this
                     // final auth = serviceLocator<AuthRepository>();
                     // await auth.signOut();
-                    // Navigator.of(context).pushAndRemoveUntil(
-                    //   MaterialPageRoute(
-                    //     builder: (_) => const HomePage(),
-                    //   ),
-                    //       (_) => false,
-                    // );
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                        builder: (_) => const OnBoardingScreen(),
+                      ),
+                      (_) => false,
+                    );
                   },
                 ),
               ),

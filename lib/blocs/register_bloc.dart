@@ -119,14 +119,14 @@ class UploadProfilePicture extends BlocEvent<RegisterState, RegisterBloc> {
 class InputProfileInfo extends BlocEvent<RegisterState, RegisterBloc> {
   final String fullName;
   final String phoneNumber;
-  final DateTime? dateOfBirth;
-  final String? country;
+  final DateTime dateOfBirth;
+  final String country;
 
   InputProfileInfo({
     required this.fullName,
     required this.phoneNumber,
-    this.dateOfBirth,
-    this.country,
+    required this.dateOfBirth,
+    required this.country,
   });
 
   @override

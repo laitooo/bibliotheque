@@ -5,6 +5,13 @@ import 'package:bibliotheque/utils/result.dart';
 
 abstract class ProfileRepository {
   Future<Result<Profile, ProfileError>> loadProfile(String userId);
+  Future<Result<Profile, EditProfileError>> updateProfile(
+    String fullName,
+    String phoneNumber,
+    String country,
+    String avatarUrl,
+    DateTime birthDate,
+  );
 }
 
 class MockProfileRepository extends ProfileRepository {
@@ -13,5 +20,26 @@ class MockProfileRepository extends ProfileRepository {
     await Future.delayed(const Duration(seconds: 1));
 
     return Result.value(generator.profile());
+  }
+
+  @override
+  Future<Result<Profile, EditProfileError>> updateProfile(
+    String fullName,
+    String phoneNumber,
+    String country,
+    String avatarUrl,
+    DateTime birthDate,
+  ) async {
+    await Future.delayed(const Duration(seconds: 1));
+
+    return Result.value(
+      generator.profile().copyWith(
+            fullName: fullName,
+            phoneNumber: phoneNumber,
+            country: country,
+            avatarUrl: avatarUrl,
+            birthDate: birthDate,
+          ),
+    );
   }
 }

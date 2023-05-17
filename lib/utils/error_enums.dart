@@ -61,3 +61,7 @@ enum AuthError {
   uploadProfileError,
   passwordsNotMatching,
 }
+
+enum EditProfileError {
+  networkError,
+}

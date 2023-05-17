@@ -43,6 +43,22 @@ class LoadProfile extends BlocEvent<ProfileState, ProfileBloc> {
   }
 }
 
+class UpdateProfile extends BlocEvent<ProfileState, ProfileBloc> {
+  final Profile profile;
+
+  UpdateProfile(this.profile);
+
+  @override
+  Stream<ProfileState> toState(ProfileState current, ProfileBloc bloc) async* {
+    yield ProfileState(ProfileStatus.loading);
+
+    yield ProfileState(
+      ProfileStatus.success,
+      profile: profile,
+    );
+  }
+}
+
 class ProfileBloc extends BaseBloc<ProfileState> {
   final _repo = serviceLocator<ProfileRepository>();
   ProfileBloc() : super(ProfileState(ProfileStatus.loading));
