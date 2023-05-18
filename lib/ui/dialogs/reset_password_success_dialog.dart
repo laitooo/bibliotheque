@@ -4,7 +4,7 @@ import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../i18n/translations.dart';
+import '../../i18n/translations.dart';
 
 class ResetPasswordSuccessDialog extends StatefulWidget {
   const ResetPasswordSuccessDialog({Key? key}) : super(key: key);

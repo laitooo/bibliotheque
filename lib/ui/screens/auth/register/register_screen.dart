@@ -7,7 +7,7 @@ import 'package:bibliotheque/ui/screens/auth/register/categories_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/complete_profile_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/create_account_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/gender_tab.dart';
-import 'package:bibliotheque/ui/screens/auth/register/register_success_dialog.dart';
+import 'package:bibliotheque/ui/dialogs/register_success_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

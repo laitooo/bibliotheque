@@ -2,7 +2,7 @@ import 'package:bibliotheque/blocs/forget_password_bloc.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/input_email_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/input_otp_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/input_password_tab.dart';
-import 'package:bibliotheque/ui/screens/auth/reset_password/reset_password_success_dialog.dart';
+import 'package:bibliotheque/ui/dialogs/reset_password_success_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

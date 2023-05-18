@@ -7,7 +7,7 @@ import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/mockable_image.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
-import 'package:bibliotheque/ui/screens/details/created_review_success_dialog.dart';
+import 'package:bibliotheque/ui/dialogs/created_review_success_dialog.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
