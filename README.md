@@ -3,7 +3,6 @@
 A flutter mobile app for selling books
 
 ## DOING:
-- New review
 
 ## DONE:
 - Home screen
@@ -23,8 +22,16 @@ A flutter mobile app for selling books
 - Icons
 - Night mode
 - Localization
+- New review
+- Edit profile
+- Search history
 
 ## TODO:
-- Edit profile
 - New Releases
-- Search history
+
+## SMALL EDITS:
+- Use asset images for splash screen
+- Use screen instead of page
+- Use more mock book covers
+- Use api caller and throw errors from error enums
+- Fix UI of book cards
