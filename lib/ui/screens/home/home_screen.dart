@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 final globalHomeScreenKey = GlobalKey<HomeScreenState>();
 
 class HomeScreen extends StatelessWidget {
-
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -20,9 +19,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-
 class _HomeScreen extends StatefulWidget {
-
   final _pages = [
     const HomeTab(),
     BooksListPage(

@@ -4,6 +4,7 @@ import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/models/question.dart';
 import 'package:bibliotheque/models/review.dart';
 import 'package:bibliotheque/repos/search_repo.dart';
+import 'package:bibliotheque/utils/error_enums.dart';
 
 String questionToText(QuestionType type) {
   switch (type) {
@@ -126,5 +127,16 @@ String ageToText(Age age) {
       return "45 - 49";
     case Age.moreThan50:
       return ">= 50";
+  }
+}
+
+String reviewsErrorToText(ReviewsError error) {
+  switch (error) {
+    case ReviewsError.fetchingAvatar:
+    case ReviewsError.loadingError:
+    case ReviewsError.sendingError:
+      return t.errors.networkErrorTryAgain;
+    case ReviewsError.invalidRate:
+      return t.errors.invalidRate;
   }
 }

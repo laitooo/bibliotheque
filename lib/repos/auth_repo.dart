@@ -8,8 +8,7 @@ abstract class AuthRepository {
   User? get user;
   Future<bool> isLoggedIn();
   Future<Result<void, AuthError>> signIn(String usernameEmail, String password);
-  Future<Result<void, AuthError>> signUp(
-      Profile profile, String username, String password, String email);
+  Future<Result<void, AuthError>> signUp(Profile profile, String password);
   Future<Result<void, AuthError>> googleSignIn();
   Future<Result<void, AuthError>> appleSignIn();
   Future<Result<void, AuthError>> facebookSignIn();
@@ -43,7 +42,7 @@ class MockAuthRepository extends AuthRepository {
 
   @override
   Future<Result<void, AuthError>> signUp(
-      Profile profile, String username, String password, String email) async {
+      Profile profile, String password) async {
     await Future.delayed(
       const Duration(seconds: 1),
     );

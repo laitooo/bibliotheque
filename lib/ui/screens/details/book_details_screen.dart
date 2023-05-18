@@ -3,11 +3,13 @@ import 'package:bibliotheque/blocs/does_wish_bloc.dart';
 import 'package:bibliotheque/blocs/reviews_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
+import 'package:bibliotheque/ui/common_widgets/mockable_image.dart';
 import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/details/about_book_screen.dart';
+import 'package:bibliotheque/ui/screens/details/new_review_page.dart';
 import 'package:bibliotheque/ui/screens/details/reviews_list_screen.dart';
 import 'package:bibliotheque/ui/widgets/reviews_numbers.dart';
 import 'package:flutter/material.dart';
@@ -112,8 +114,8 @@ class _BookDetailsScreen extends StatelessWidget {
                         flex: 4,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
-                          child: Image(
-                            image: NetworkImage(book.coveUrl),
+                          child: MockableImage(
+                            book.coveUrl,
                             // width: 135,
                             // height: 210,
                           ),
@@ -358,7 +360,86 @@ class _BookDetailsScreen extends StatelessWidget {
                       color: Colors.grey.shade400,
                     ),
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 20),
+                  Column(
+                    children: [
+                      Text(
+                        t.details.rateBook,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: context.theme.newReviewColor,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.star_border,
+                            size: 28,
+                            color: context.theme.newReviewColor,
+                          ),
+                          const SizedBox(width: 10),
+                          Icon(
+                            Icons.star_border,
+                            size: 28,
+                            color: context.theme.newReviewColor,
+                          ),
+                          const SizedBox(width: 10),
+                          Icon(
+                            Icons.star_border,
+                            size: 28,
+                            color: context.theme.newReviewColor,
+                          ),
+                          const SizedBox(width: 10),
+                          Icon(
+                            Icons.star_border,
+                            size: 28,
+                            color: context.theme.newReviewColor,
+                          ),
+                          const SizedBox(width: 10),
+                          Icon(
+                            Icons.star_border,
+                            size: 28,
+                            color: context.theme.newReviewColor,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          const Expanded(
+                            flex: 1,
+                            child: SizedBox(),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: MainFlatButton(
+                              title: t.details.writeReview,
+                              textColor: context.theme.primaryColor,
+                              backgroundColor: context.theme.backgroundColor,
+                              borderColor: context.theme.primaryColor,
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (_) =>
+                                        NewReviewScreen(book: book.toBook()),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          const Expanded(
+                            flex: 1,
+                            child: SizedBox(),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 100),
+                    ],
+                  )
                 ],
               ),
             );

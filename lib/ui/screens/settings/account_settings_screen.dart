@@ -1,5 +1,9 @@
+import 'package:bibliotheque/blocs/edit_profile_bloc.dart';
 import 'package:bibliotheque/blocs/notifications_options_bloc.dart';
+import 'package:bibliotheque/blocs/profile_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
+import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/settings/about_app_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/change_language_page.dart';
@@ -7,8 +11,7 @@ import 'package:bibliotheque/ui/screens/settings/help/help_center_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/logout_bottom_sheet.dart';
 import 'package:bibliotheque/ui/screens/settings/notification_preferences_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/payment_methods_screen.dart';
-import 'package:bibliotheque/ui/screens/settings/user_profile_screen.dart';
-import 'package:bibliotheque/utils/generator.dart';
+import 'package:bibliotheque/ui/screens/settings/profile/user_profile_screen.dart';
 import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +20,18 @@ import '../../../i18n/translations.dart';
 
 class AccountSettingsScreen extends StatelessWidget {
   const AccountSettingsScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => ProfileBloc()..add(LoadProfile()),
+      child: const _AccountSettingsScreen(),
+    );
+  }
+}
+
+class _AccountSettingsScreen extends StatelessWidget {
+  const _AccountSettingsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,61 +60,83 @@ class AccountSettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         children: [
           const SizedBox(height: 10),
-          InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => const UserProfilePage(),
-                ),
+          BlocBuilder<ProfileBloc, ProfileState>(
+            builder: (context, state) {
+              return Column(
+                children: [
+                  if (state.status == ProfileStatus.loading)
+                    const Center(
+                      child: AppProgressIndicator(size: 60),
+                    ),
+                  if (state.status == ProfileStatus.success)
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => MultiBlocProvider(
+                              providers: [
+                                BlocProvider.value(
+                                  value: BlocProvider.of<ProfileBloc>(context),
+                                ),
+                                BlocProvider(create: (_) => EditProfileBloc())
+                              ],
+                              child: const UserProfileScreen(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        child: Row(
+                          children: [
+                            CircleImageWidget(
+                              state.profile!.avatarUrl,
+                              size: 60,
+                            ),
+                            const SizedBox(width: 20),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  state.profile!.fullName,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: context.theme.textColor1,
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  state.profile!.email,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: context.theme.textColor1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            const Svg(
+                              'edit_account.svg',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  if (state.status != ProfileStatus.error) ...[
+                    const SizedBox(height: 15),
+                    Divider(
+                      thickness: 0.5,
+                      color: context.theme.dividerColor,
+                    ),
+                    const SizedBox(height: 15),
+                  ],
+                ],
               );
             },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      generator.avatar(),
-                    ),
-                    radius: 30,
-                  ),
-                  const SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Andrew Ainsley',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: context.theme.textColor1,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Andrew_ainsley@yourdomain.com',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: context.theme.textColor1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  const Svg(
-                    'edit_account.svg',
-                  ),
-                ],
-              ),
-            ),
           ),
-          const SizedBox(height: 15),
-          Divider(
-            thickness: 0.5,
-            color: context.theme.dividerColor,
-          ),
-          const SizedBox(height: 15),
           _settingsItem(
             context,
             t.account.account.paymentMethod,
@@ -118,7 +155,15 @@ class AccountSettingsScreen extends StatelessWidget {
             t.account.account.personalInfo,
             "account_created.svg",
             Colors.lightBlue,
-            newScreen: const UserProfilePage(),
+            newScreen: MultiBlocProvider(
+              providers: [
+                BlocProvider.value(
+                  value: BlocProvider.of<ProfileBloc>(context),
+                ),
+                BlocProvider(create: (_) => EditProfileBloc())
+              ],
+              child: const UserProfileScreen(),
+            ),
           ),
           const SizedBox(height: 20),
           _settingsItem(
@@ -135,7 +180,7 @@ class AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            t.account.account.notifications,
+            t.account.account.language,
             "grid_view.svg",
             Colors.orangeAccent,
             newScreen: const ChangeLanguagePage(),

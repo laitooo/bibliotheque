@@ -64,6 +64,7 @@ abstract class AppThemeData {
   Color get googleButtonBackgroundColor;
   Color get flatButtonTextColor;
   Color get flatButtonBackgroundColor;
+  Color get newReviewColor;
 }
 
 class _InputThemeData extends _ChildThemeData {
@@ -139,6 +140,7 @@ class LightThemeData extends AppThemeData {
   Color get googleButtonBackgroundColor => Colors.white;
   Color get flatButtonTextColor => primaryColor;
   Color get flatButtonBackgroundColor => const Color(0x33FF9800);
+  Color get newReviewColor => const Color(0xFF424242);
 }
 
 class DarkThemeData extends AppThemeData {
@@ -190,4 +192,5 @@ class DarkThemeData extends AppThemeData {
   Color get googleButtonBackgroundColor => const Color(0xFF1F222A);
   Color get flatButtonTextColor => Colors.white;
   Color get flatButtonBackgroundColor => Colors.grey.withOpacity(0.7);
+  Color get newReviewColor => Colors.white;
 }

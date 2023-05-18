@@ -119,14 +119,14 @@ class UploadProfilePicture extends BlocEvent<RegisterState, RegisterBloc> {
 class InputProfileInfo extends BlocEvent<RegisterState, RegisterBloc> {
   final String fullName;
   final String phoneNumber;
-  final DateTime? dateOfBirth;
-  final String? country;
+  final DateTime dateOfBirth;
+  final String country;
 
   InputProfileInfo({
     required this.fullName,
     required this.phoneNumber,
-    this.dateOfBirth,
-    this.country,
+    required this.dateOfBirth,
+    required this.country,
   });
 
   @override
@@ -173,7 +173,7 @@ class SignUp extends BlocEvent<RegisterState, RegisterBloc> {
       profile: profile,
     );
 
-    final res = await bloc._repo.signUp(profile, username, password, email);
+    final res = await bloc._repo.signUp(profile, password);
 
     yield res.incase(
       value: (value) => current.copyWith(

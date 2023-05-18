@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/books_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/category.dart';
+import 'package:bibliotheque/ui/common_widgets/mockable_image.dart';
 import 'package:bibliotheque/ui/widgets/books_list_page.dart';
 import 'package:flutter/material.dart';
 
@@ -29,9 +30,10 @@ class CategoryCard extends StatelessWidget {
             child: SizedBox(
               height: 120,
               width: 200,
-              child: Image(
-                image: NetworkImage(category.imageUrl),
+              child: MockableImage(
+                category.imageUrl,
                 fit: BoxFit.cover,
+                assetPath: 'assets/mock/category.png',
               ),
             ),
           ),

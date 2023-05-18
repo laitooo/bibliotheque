@@ -4,6 +4,7 @@ errors:
   networkError: "خطأ في الاتصال"
   networkErrorTryAgain: "خطأ في الاتصال , الرجاء المحاولة مجددا"
   tryAgain: "حاول مجددا"
+  invalidRate: "الرجاء ادخال تقييم"
 
 widgets:
   phoneNumber: "رقم الهاتف"
@@ -77,6 +78,8 @@ details:
   isbn: "ISBN"
   all: "الك"
   reviews: "تعليقا"
+  rateBook: "قيم هذا الكتاب"
+  writeReview: "اكتب تعليق"
 
 home:
   topPopular: "الأكثر شهرة"
@@ -217,3 +220,12 @@ enums:
     male: "ذكر"
     female: "أنثى"
     preferNotSay: "أفضل أن لا أجاوب"
+
+createReview:
+  rateBook: "قيم هذا الكتاب"
+  describeExperience: "قم بوصف تجربتك (اختياري)"
+  submit: "إرسال"
+  cancel: "إلغاء"
+  successTitle: "تم إرسال التقييم"
+  successContent: "شكرا لإرسال تقييم لكتاب : "
+  ok: "حسنا"

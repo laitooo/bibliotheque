@@ -64,6 +64,12 @@ class _BooksListPageState extends State<_BooksListPage> {
           ),
         ),
         centerTitle: false,
+        leading: IconButton(
+          icon: const Svg('back.svg'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         actions: [
           const SearchIcon(),
           IconButton(
@@ -122,7 +128,6 @@ class _BooksListPageState extends State<_BooksListPage> {
                     .map(
                       (book) => HorizontalBookCard(
                         book: book,
-                        isWishList: false,
                       ),
                     )
                     .toList(),

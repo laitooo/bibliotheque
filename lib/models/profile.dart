@@ -32,14 +32,14 @@ class Profile with _$Profile {
     required Gender gender,
     required Age age,
     List<String>? favouriteCategories,
-    String? country,
-    DateTime? birthDate,
+    required String country,
+    required DateTime birthDate,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>
       _$ProfileFromJson(json);
 
-  factory Profile.empty() => const Profile(
+  factory Profile.empty() => Profile(
         id: "",
         email: "",
         username: "",
@@ -48,5 +48,7 @@ class Profile with _$Profile {
         avatarUrl: "",
         gender: Gender.male,
         age: Age.from18To24,
+        country: "sd",
+        birthDate: DateTime(1950),
       );
 }
