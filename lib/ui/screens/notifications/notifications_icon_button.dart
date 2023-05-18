@@ -33,7 +33,7 @@ class NotificationsIconButton extends StatelessWidget {
                         ),
                         BlocProvider.value(value: bloc)
                       ],
-                      child: const NotificationsListPage(),
+                      child: const NotificationsListScreen(),
                     );
                   },
                 ),

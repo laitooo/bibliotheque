@@ -10,14 +10,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 
-class NotificationsListPage extends StatefulWidget {
-  const NotificationsListPage({Key? key}) : super(key: key);
+class NotificationsListScreen extends StatefulWidget {
+  const NotificationsListScreen({Key? key}) : super(key: key);
 
   @override
-  _NotificationsListPageState createState() => _NotificationsListPageState();
+  _NotificationsListScreenState createState() =>
+      _NotificationsListScreenState();
 }
 
-class _NotificationsListPageState extends State<NotificationsListPage> {
+class _NotificationsListScreenState extends State<NotificationsListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

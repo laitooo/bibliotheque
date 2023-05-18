@@ -9,7 +9,7 @@ import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/details/about_book_screen.dart';
-import 'package:bibliotheque/ui/screens/details/new_review_page.dart';
+import 'package:bibliotheque/ui/screens/details/new_review_screen.dart';
 import 'package:bibliotheque/ui/screens/details/reviews_list_screen.dart';
 import 'package:bibliotheque/ui/widgets/reviews_numbers.dart';
 import 'package:flutter/material.dart';
