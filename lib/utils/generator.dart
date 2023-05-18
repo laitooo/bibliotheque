@@ -145,6 +145,14 @@ class Generator {
     'Simon and Schuster',
   ];
 
+  static const _searchHistory = [
+    "I'm glad my mom died",
+    "Don't tell mama",
+    "They let dad return",
+    "Harry Potter and the half blood prince",
+    "Taken by the dragon king",
+  ];
+
   static const _countries = [
     'Sudan',
     'Japan',
@@ -220,6 +228,10 @@ class Generator {
         nameAr: _category(),
         imageUrl: _categoryCover,
       );
+
+  String searchHistory() {
+    return _searchHistory[_rand.nextInt(_searchHistory.length)];
+  }
 
   BookDetails bookDetails() => BookDetails(
         id: id(),

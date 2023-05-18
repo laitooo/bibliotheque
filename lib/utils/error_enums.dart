@@ -65,3 +65,7 @@ enum AuthError {
 enum EditProfileError {
   networkError,
 }
+
+enum SearchHistoryError {
+  networkError,
+}

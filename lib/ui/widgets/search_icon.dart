@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/search_bloc.dart';
+import 'package:bibliotheque/blocs/search_history_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/search/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,15 @@ class SearchIcon extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) => BlocProvider(
-              create: (_) => SearchBloc(),
+            builder: (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (_) => SearchBloc(),
+                ),
+                BlocProvider(
+                  create: (_) => SearchHistoryBloc()..add(LoadSearchHistory()),
+                ),
+              ],
               child: const SearchScreen(),
             ),
           ),

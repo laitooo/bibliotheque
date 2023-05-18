@@ -22,6 +22,11 @@ enum RatingRange {
 abstract class SearchRepository {
   Future<Result<List<Book>, SearchError>> search(
       String query, FilterOptions filterOptions);
+  Future<Result<List<String>, SearchHistoryError>> getSearchHistory();
+  Future<Result<void, SearchHistoryError>> clearSearchHistory();
+  Future<Result<void, SearchHistoryError>> addPreviousSearchQuery(String query);
+  Future<Result<void, SearchHistoryError>> removePreviousSearchQuery(
+      String query);
 }
 
 class MockSearchRepository extends SearchRepository {
@@ -38,5 +43,49 @@ class MockSearchRepository extends SearchRepository {
         (index) => generator.book(),
       ),
     );
+  }
+
+  @override
+  Future<Result<List<String>, SearchHistoryError>> getSearchHistory() async {
+    await Future.delayed(
+      const Duration(seconds: 1),
+    );
+
+    return Result.value(
+      List.generate(
+        10,
+        (index) => generator.searchHistory(),
+      ),
+    );
+  }
+
+  @override
+  Future<Result<void, SearchHistoryError>> clearSearchHistory() async {
+    await Future.delayed(
+      const Duration(seconds: 1),
+    );
+
+    return Result.value(null);
+  }
+
+  @override
+  Future<Result<void, SearchHistoryError>> addPreviousSearchQuery(
+      String query) async {
+    // Make sure there's no duplicate
+    await Future.delayed(
+      const Duration(seconds: 1),
+    );
+
+    return Result.value(null);
+  }
+
+  @override
+  Future<Result<void, SearchHistoryError>> removePreviousSearchQuery(
+      String query) async {
+    await Future.delayed(
+      const Duration(seconds: 1),
+    );
+
+    return Result.value(null);
   }
 }
