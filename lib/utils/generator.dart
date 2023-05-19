@@ -109,12 +109,13 @@ class Generator {
   ];
 
   static const _books = [
-    'The house of hades (Heroes of olympics)',
-    'My quiet Blacksmith, Life in Another world',
-    'It starts with us: A novel',
-    'Trapped in a dating Sim: The world',
-    'His dark material: The golden company',
-    'Batman: Arkham Unhinged vol. 1',
+    'Bullshit jobs',
+    'The age of Vikings',
+    'A brief history of humankind Sapiens',
+    'Men are from Mars Women are from Venus',
+    'جمهورية أفلاطون',
+    'Talking to my daughter about the Economy',
+    ' فن الحرب',
   ];
 
   static const _categories = [

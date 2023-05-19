@@ -48,6 +48,7 @@ flutter:
     - assets/i18n/
     - assets/icons/
     - assets/mock/
+    - assets/mock/covers/
   # example:
   # fonts:
   #   - family: Schyler

@@ -1,4 +1,5 @@
 import 'package:bibliotheque/features.dart';
+import 'package:bibliotheque/utils/generator.dart';
 import 'package:flutter/material.dart';
 
 class MockableImage extends StatelessWidget {
@@ -17,13 +18,14 @@ class MockableImage extends StatelessWidget {
       image: getImageProvider(url, assetPath),
       width: width,
       height: height,
-      fit: fit,
+      fit: fit ?? BoxFit.cover,
     );
   }
 
   ImageProvider<Object> getImageProvider(String image, [String? assetPath]) {
     if (Features.isMockImages) {
-      return AssetImage(assetPath ?? "assets/mock/cover.png");
+      return AssetImage(assetPath ??
+          "assets/mock/covers/" + generator.count(1, 7).toString() + ".png");
     } else {
       return NetworkImage(image);
     }

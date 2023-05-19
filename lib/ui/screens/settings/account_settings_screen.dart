@@ -6,7 +6,7 @@ import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/settings/about_app_screen.dart';
- import 'package:bibliotheque/ui/screens/settings/change_language_screen.dart';
+import 'package:bibliotheque/ui/screens/settings/change_language_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/help/help_center_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/logout_bottom_sheet.dart';
 import 'package:bibliotheque/ui/screens/settings/notification_preferences_screen.dart';

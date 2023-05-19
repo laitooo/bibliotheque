@@ -44,7 +44,7 @@ class MockWishListRepository extends WishListRepository {
   @override
   Future<Result<bool, WishListError>> isInWishList(String bookId) async {
     await Future.delayed(
-      const Duration(seconds: 0),
+      const Duration(seconds: 1),
     );
     return Result.value(generator.boolean());
   }
