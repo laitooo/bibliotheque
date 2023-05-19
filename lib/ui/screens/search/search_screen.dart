@@ -89,9 +89,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                     Text(
                                       "Previous Search",
                                       style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: context.theme.textColor1),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: context.theme.textColor1,
+                                      ),
                                     ),
                                     IconButton(
                                       onPressed: () {

@@ -135,7 +135,7 @@ class _PopularBooksContainer extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             SizedBox(
-              height: 350,
+              height: 370,
               child: ListView.builder(
                 itemCount: state.books!.length,
                 scrollDirection: Axis.horizontal,
@@ -287,7 +287,7 @@ class _RecommendedBooksContainer extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             SizedBox(
-              height: 350,
+              height: 370,
               child: ListView.builder(
                 itemCount: state.books!.length,
                 scrollDirection: Axis.horizontal,
@@ -354,7 +354,7 @@ class _WishListContainer extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             SizedBox(
-              height: 350,
+              height: 370,
               child: ListView.builder(
                 itemCount: state.books!.length,
                 scrollDirection: Axis.horizontal,

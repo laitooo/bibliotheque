@@ -121,6 +121,7 @@ class HorizontalBookCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 child: MockableImage(
                   book.coveUrl,
+                  width: 150,
                   height: 200,
                 ),
               ),
