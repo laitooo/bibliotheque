@@ -46,8 +46,16 @@ class _BookDetailsScreen extends StatelessWidget {
     return BlocBuilder<BookDetailsBloc, BookDetailsState>(
       builder: (context, state) {
         if (state.status == BookDetailsStatus.loading) {
-          return const Scaffold(
-            body: Center(
+          return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Svg('back.svg'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+            body: const Center(
               child: AppProgressIndicator(size: 100),
             ),
           );
@@ -55,6 +63,14 @@ class _BookDetailsScreen extends StatelessWidget {
 
         if (state.status == BookDetailsStatus.error) {
           return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Svg('back.svg'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
             body: TryAgainWidget(
               onPressed: () {
                 BlocProvider.of<BookDetailsBloc>(context).add(

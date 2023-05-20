@@ -135,11 +135,11 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
               color: Colors.grey.shade400,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           BlocBuilder<ReviewsBloc, ReviewsState>(builder: (context, state) {
             if (state.status == ReviewsStatus.loading) {
               return const SizedBox(
-                height: 300,
+                height: 400,
                 child: Center(
                   child: AppProgressIndicator(size: 100),
                 ),
@@ -148,7 +148,7 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
 
             if (state.status == ReviewsStatus.error) {
               return SizedBox(
-                height: 300,
+                height: 400,
                 child: TryAgainWidget(
                   onPressed: () {
                     BlocProvider.of<ReviewsBloc>(context).add(
@@ -162,14 +162,17 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
             return Column(
               children: state.reviews!
                   .map(
-                    (review) => ReviewCard(
-                      review: review,
+                    (review) => Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: ReviewCard(
+                        review: review,
+                      ),
                     ),
                   )
                   .toList(),
             );
           }),
-          const SizedBox(height: 50),
+          const SizedBox(height: 30),
         ],
       ),
     );

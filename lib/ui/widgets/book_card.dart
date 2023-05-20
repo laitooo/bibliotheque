@@ -16,7 +16,7 @@ class BookCard extends StatelessWidget {
       width: 180,
       padding: const EdgeInsets.fromLTRB(1, 1, 1, 5),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GestureDetector(
             onTap: () {

@@ -62,8 +62,16 @@ class _NewReviewScreenState extends State<_NewReviewScreen> {
       },
       builder: (context, state) {
         if (state.status == CreateReviewStatus.sending) {
-          return const Scaffold(
-            body: Center(
+          return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Svg('back.svg'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+            body: const Center(
               child: AppProgressIndicator(size: 100),
             ),
           );
@@ -236,6 +244,7 @@ class _NewReviewScreenState extends State<_NewReviewScreen> {
                   RatingBar.builder(
                     unratedColor: context.theme.dividerColor.withOpacity(0.5),
                     glowColor: context.theme.primaryColor.withOpacity(0.3),
+                    initialRating: rate,
                     itemBuilder: (context, index) {
                       return Icon(
                         Icons.star,
