@@ -89,8 +89,10 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
                   (index) => Column(
                     children: [
                       SizedBox(
-                        child: Image.network(
-                          "https://julianstodd.files.wordpress.com/2016/03/img_3419.jpg?w=640&h=853",
+                        child: Image.asset(
+                          "assets/mock/splash/" +
+                              (index + 1).toString() +
+                              ".jpg",
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.5,
                           fit: BoxFit.cover,
