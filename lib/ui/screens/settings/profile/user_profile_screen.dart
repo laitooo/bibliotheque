@@ -21,16 +21,36 @@ class UserProfileScreen extends StatelessWidget {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (__, profileState) {
         if (profileState.status == ProfileStatus.loading) {
-          return const Center(
-            child: AppProgressIndicator(),
+          return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Svg('back.svg'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+            body: const Center(
+              child: AppProgressIndicator(),
+            ),
           );
         }
 
         if (profileState.status == ProfileStatus.error) {
-          return TryAgainWidget(
-            onPressed: () {
-              BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
-            },
+          return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Svg('back.svg'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+            body: TryAgainWidget(
+              onPressed: () {
+                BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
+              },
+            ),
           );
         }
 

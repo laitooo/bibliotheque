@@ -12,12 +12,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BooksListPage extends StatelessWidget {
   final String title;
+  final bool canGoBack;
   final String? categoryId;
   final BooksSource booksSource;
 
   const BooksListPage({
     Key? key,
     required this.title,
+    this.canGoBack = true,
     required this.booksSource,
     this.categoryId,
   }) : super(key: key);
@@ -30,6 +32,7 @@ class BooksListPage extends StatelessWidget {
       child: _BooksListPage(
         event: event,
         title: title,
+        canGoBack: canGoBack,
       ),
     );
   }
@@ -37,11 +40,14 @@ class BooksListPage extends StatelessWidget {
 
 class _BooksListPage extends StatefulWidget {
   final String title;
+  final bool canGoBack;
   final LoadBooks event;
+
   const _BooksListPage({
     Key? key,
     required this.title,
     required this.event,
+    required this.canGoBack,
   }) : super(key: key);
 
   @override
@@ -64,12 +70,14 @@ class _BooksListPageState extends State<_BooksListPage> {
           ),
         ),
         centerTitle: false,
-        leading: IconButton(
-          icon: const Svg('back.svg'),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        leading: widget.canGoBack
+            ? IconButton(
+                icon: const Svg('back.svg'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            : null,
         actions: [
           const SearchIcon(),
           IconButton(

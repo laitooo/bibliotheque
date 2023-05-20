@@ -335,7 +335,9 @@ class _AppCountrySelectorState extends State<AppCountrySelector> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                (widget.selectedCountry ?? Country.parse("sd").name).toString(),
+                widget.selectedCountry == null
+                    ? ""
+                    : widget.selectedCountry!.name,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,

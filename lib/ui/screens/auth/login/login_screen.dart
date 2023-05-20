@@ -3,12 +3,12 @@ import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
-import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/reset_password_screen.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:bibliotheque/ui/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -95,13 +95,13 @@ class _LoginScreenState extends State<_LoginScreen> {
                   const SizedBox(height: 40),
                   AppTextField(
                     label: t.auth.login.usernameEmail,
-                    initialValue: "laitooo",
+                    initialValue: "",
                     controller: usernameEmailController,
                   ),
                   const SizedBox(height: 20),
                   AppPasswordTextField(
                     label: t.auth.login.password,
-                    initialValue: "password",
+                    initialValue: "",
                     controller: passwordController,
                   ),
                   const SizedBox(height: 20),
@@ -196,18 +196,21 @@ class _LoginScreenState extends State<_LoginScreen> {
                                 .add(GoogleSignIn());
                           },
                           child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 15),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 0.5,
-                                  color: context.theme.dividerColor,
-                                ),
-                                borderRadius: BorderRadius.circular(30),
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 0.5,
+                                color: context.theme.dividerColor,
                               ),
-                              child: const Svg(
-                                "google.svg",
-                                size: 20,
-                              )),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: SvgPicture.asset(
+                              "assets/icons/google.svg",
+                              width: 24,
+                              height: 24,
+                              matchTextDirection: false,
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(width: 20),
@@ -227,9 +230,11 @@ class _LoginScreenState extends State<_LoginScreen> {
                               ),
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: const Svg(
-                              "apple.svg",
-                              size: 20,
+                            child: SvgPicture.asset(
+                              "assets/icons/apple.svg",
+                              width: 28,
+                              height: 28,
+                              matchTextDirection: false,
                             ),
                           ),
                         ),
@@ -243,18 +248,21 @@ class _LoginScreenState extends State<_LoginScreen> {
                                 .add(FacebookSignIn());
                           },
                           child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 15),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 0.5,
-                                  color: context.theme.dividerColor,
-                                ),
-                                borderRadius: BorderRadius.circular(30),
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 0.5,
+                                color: context.theme.dividerColor,
                               ),
-                              child: const Svg(
-                                "facebook.svg",
-                                size: 20,
-                              )),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: SvgPicture.asset(
+                              "assets/icons/facebook.svg",
+                              width: 28,
+                              height: 28,
+                              matchTextDirection: false,
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -265,20 +273,28 @@ class _LoginScreenState extends State<_LoginScreen> {
           );
         },
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: MainButton(
-          title: t.auth.login.signIn,
-          onPressed: () {
-            BlocProvider.of<SignInBloc>(context).add(
-              SignIn(
-                usernameEmail: usernameEmailController.text,
-                password: passwordController.text,
-                rememberMe: rememberMe,
-              ),
-            );
-          },
-        ),
+      bottomNavigationBar: BlocBuilder<SignInBloc, SignInState>(
+        builder: (context, state) {
+          if (state.status == SignInStatus.loading) {
+            return const SizedBox();
+          }
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: MainButton(
+              title: t.auth.login.signIn,
+              onPressed: () {
+                BlocProvider.of<SignInBloc>(context).add(
+                  SignIn(
+                    usernameEmail: usernameEmailController.text,
+                    password: passwordController.text,
+                    rememberMe: rememberMe,
+                  ),
+                );
+              },
+            ),
+          );
+        },
       ),
     );
   }
