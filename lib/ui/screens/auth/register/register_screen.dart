@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/blocs/register_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/auth/register/age_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/categories_tab.dart';
@@ -53,15 +54,8 @@ class _RegisterPageState extends State<_RegisterPage> {
           }
 
           if (state.status == RegisterStatus.error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  t.errors.networkError,
-                  style: const TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-              ),
+            context.showSnackBar(
+              text: t.errors.networkError,
             );
           }
 

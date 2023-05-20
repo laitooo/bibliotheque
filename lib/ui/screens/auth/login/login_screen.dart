@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/sign_in_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/reset_password_screen.dart';
@@ -39,21 +40,14 @@ class _LoginScreenState extends State<_LoginScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: BlocConsumer<SignInBloc, SignInState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state.status == SignInStatus.success) {
             _loginSuccess();
           }
 
           if (state.status == SignInStatus.error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  t.errors.networkError,
-                  style: const TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-              ),
+            context.showSnackBar(
+              text: t.errors.networkError,
             );
           }
         },

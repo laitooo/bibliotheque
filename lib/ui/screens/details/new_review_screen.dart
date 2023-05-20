@@ -3,6 +3,7 @@ import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/entities/review_content.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/book.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/mockable_image.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
@@ -45,11 +46,8 @@ class _NewReviewScreenState extends State<_NewReviewScreen> {
     return BlocConsumer<CreateReviewBloc, CreateReviewState>(
       listener: (context, state) async {
         if (state.status == CreateReviewStatus.error) {
-          final msg = reviewsErrorToText(state.error!);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(msg),
-            ),
+          context.showSnackBar(
+            text: reviewsErrorToText(state.error!),
           );
         }
 

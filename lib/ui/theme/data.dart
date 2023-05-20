@@ -166,7 +166,7 @@ class DarkThemeData extends AppThemeData {
   Color get textColor2 => Colors.white;
   Color get textColor3 => primaryColor;
   Color get textColor4 => const Color(0xFFE0E0E2);
-  Color get textColor5 => const Color(0xFF424242);
+  Color get textColor5 => const Color(0xFF727272);
   Color get textColor6 => Colors.red;
   Color get buttonColor1 => primaryColor;
   Color get buttonColor2 => const Color(0x11FF9800);
