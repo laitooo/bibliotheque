@@ -1,3 +1,4 @@
+import 'package:bibliotheque/features.dart';
 import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/models/user.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
@@ -37,6 +38,10 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
+
     return Result.value(null);
   }
 
@@ -47,6 +52,10 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
+
     return Result.value(null);
   }
 
@@ -55,6 +64,10 @@ class MockAuthRepository extends AuthRepository {
     await Future.delayed(
       const Duration(seconds: 3),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
 
     return Result.value(null);
   }
@@ -65,6 +78,10 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 3),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
+
     return Result.value(null);
   }
 
@@ -74,6 +91,10 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 3),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
+
     return Result.value(null);
   }
 
@@ -82,6 +103,10 @@ class MockAuthRepository extends AuthRepository {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
 
     return Result.value(null);
   }
@@ -93,6 +118,10 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
+
     return Result.value(null);
   }
 
@@ -102,6 +131,10 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
+
     return Result.value(null);
   }
 
@@ -110,6 +143,10 @@ class MockAuthRepository extends AuthRepository {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
 
     return Result.value(
       generator.avatar(),

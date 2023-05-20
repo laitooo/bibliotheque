@@ -1,4 +1,5 @@
 import 'package:bibliotheque/entities/filter_options.dart';
+import 'package:bibliotheque/features.dart';
 import 'package:bibliotheque/models/book.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:bibliotheque/utils/generator.dart';
@@ -37,6 +38,10 @@ class MockSearchRepository extends SearchRepository {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(SearchError.networkError);
+    }
+
     return Result.value(
       List.generate(
         10,
@@ -50,6 +55,10 @@ class MockSearchRepository extends SearchRepository {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(SearchHistoryError.loadingError);
+    }
 
     return Result.value(
       List.generate(
@@ -65,6 +74,10 @@ class MockSearchRepository extends SearchRepository {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(SearchHistoryError.clearingError);
+    }
+
     return Result.value(null);
   }
 
@@ -76,6 +89,10 @@ class MockSearchRepository extends SearchRepository {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(SearchHistoryError.addingError);
+    }
+
     return Result.value(null);
   }
 
@@ -85,6 +102,10 @@ class MockSearchRepository extends SearchRepository {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(SearchHistoryError.removingError);
+    }
 
     return Result.value(null);
   }

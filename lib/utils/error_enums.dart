@@ -38,7 +38,8 @@ enum ProfileError {
 }
 
 enum NotificationsOptionError {
-  networkError,
+  loadingError,
+  updatingError,
 }
 
 enum FAQError {
@@ -47,7 +48,7 @@ enum FAQError {
 
 enum ReviewsError {
   loadingError,
-  sendingError,
+  submittingError,
   invalidRate,
   fetchingAvatar,
 }
@@ -67,5 +68,8 @@ enum EditProfileError {
 }
 
 enum SearchHistoryError {
-  networkError,
+  loadingError,
+  addingError,
+  removingError,
+  clearingError,
 }

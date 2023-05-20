@@ -1,3 +1,4 @@
+import 'package:bibliotheque/features.dart';
 import 'package:bibliotheque/models/book.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:bibliotheque/utils/generator.dart';
@@ -17,6 +18,10 @@ class MockWishListRepository extends WishListRepository {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(WishListError.loadingListError);
+    }
+
     return Result.value(
       List.generate(
         loadAll ? 12 : 5,
@@ -30,6 +35,11 @@ class MockWishListRepository extends WishListRepository {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(WishListError.removingError);
+    }
+
     return Result.value(null);
   }
 
@@ -38,6 +48,11 @@ class MockWishListRepository extends WishListRepository {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(WishListError.addingError);
+    }
+
     return Result.value(null);
   }
 
@@ -46,6 +61,11 @@ class MockWishListRepository extends WishListRepository {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(WishListError.loadingStatusError);
+    }
+
     return Result.value(generator.boolean());
   }
 }

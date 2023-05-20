@@ -1,3 +1,4 @@
+import 'package:bibliotheque/features.dart';
 import 'package:bibliotheque/models/category.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:bibliotheque/utils/generator.dart';
@@ -15,6 +16,10 @@ class MockCategoriesRepositories extends CategoriesRepositories {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(CategoriesError.networkError);
+    }
+
     return Result.value(
       List.generate(
         4,
@@ -28,6 +33,10 @@ class MockCategoriesRepositories extends CategoriesRepositories {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(CategoriesError.networkError);
+    }
 
     return Result.value(
       List.generate(

@@ -2,7 +2,6 @@ import 'package:bibliotheque/models/book.dart';
 import 'package:bibliotheque/repos/books_repo.dart';
 import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/utils/bloc.dart';
-import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:bibliotheque/utils/result.dart';
 
 enum BooksStatus {
@@ -22,7 +21,7 @@ enum BooksSource {
 class BooksState {
   final BooksStatus status;
   final List<Book>? books;
-  final BooksError? error;
+  final dynamic error;
 
   BooksState(this.status, {this.books, this.error});
 }
@@ -46,7 +45,7 @@ class LoadBooks extends BlocEvent<BooksState, BooksBloc> {
         return BooksState(
           BooksStatus.error,
           // TODO: handle this correctly
-          error: BooksError.networkError,
+          error: error,
         );
       },
     );

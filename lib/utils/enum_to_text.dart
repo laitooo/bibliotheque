@@ -134,7 +134,7 @@ String reviewsErrorToText(ReviewsError error) {
   switch (error) {
     case ReviewsError.fetchingAvatar:
     case ReviewsError.loadingError:
-    case ReviewsError.sendingError:
+    case ReviewsError.submittingError:
       return t.errors.networkErrorTryAgain;
     case ReviewsError.invalidRate:
       return t.errors.invalidRate;
