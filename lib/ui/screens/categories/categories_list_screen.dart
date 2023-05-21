@@ -56,8 +56,8 @@ class CategoriesListScreen extends StatelessWidget {
           return GridView.count(
             crossAxisCount: 2,
             childAspectRatio: 2.5,
-            mainAxisSpacing: 10,
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            mainAxisSpacing: 15,
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             children: state.categories!
                 .map(
                   (category) => Padding(

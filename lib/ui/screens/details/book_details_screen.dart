@@ -137,6 +137,7 @@ class _BookDetailsScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       child: MockableImage(
                         book.coveUrl,
+                        type: MockImageType.bookCover,
                         // width: 135,
                         // height: 210,
                       ),

@@ -142,6 +142,7 @@ class _NewReviewScreenState extends State<_NewReviewScreen> {
                         child: MockableImage(
                           widget.book.coveUrl,
                           height: 200,
+                          type: MockImageType.bookCover,
                         ),
                       ),
                       const SizedBox(width: 20),

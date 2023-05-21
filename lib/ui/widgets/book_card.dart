@@ -32,6 +32,7 @@ class BookCard extends StatelessWidget {
                 book.coveUrl,
                 width: 178,
                 height: 280,
+                type: MockImageType.bookCover,
               ),
             ),
           ),
@@ -123,6 +124,7 @@ class HorizontalBookCard extends StatelessWidget {
                   book.coveUrl,
                   width: 150,
                   height: 200,
+                  type: MockImageType.bookCover,
                 ),
               ),
             ),
@@ -239,6 +241,7 @@ class WishListCard extends StatelessWidget {
                 child: MockableImage(
                   book.coveUrl,
                   height: 200,
+                  type: MockImageType.bookCover,
                 ),
               ),
             ),

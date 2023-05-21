@@ -5,5 +5,5 @@ class Features {
 
   /// If true it will show error for all network requests,
   /// if false it will load everything normally, this's for mock purposes.
-  static const isMockErrors = true;
+  static const isMockErrors = false;
 }

@@ -1,4 +1,5 @@
 import 'package:bibliotheque/features.dart';
+import 'package:bibliotheque/utils/generator.dart';
 import 'package:flutter/material.dart';
 
 class CircleImageWidget extends StatelessWidget {
@@ -25,7 +26,7 @@ class CircleImageWidget extends StatelessWidget {
 
   ImageProvider<Object>? getImageProvider(String image) {
     if (Features.isMockImages) {
-      return const AssetImage("assets/mock/avatar.png");
+      return AssetImage(generator.avatar());
     } else {
       return NetworkImage(image);
     }

@@ -203,8 +203,7 @@ class Generator {
   }
 
   String avatar() {
-    return 'https://images.unsplash.com/photo-1553729784-e91953dec042?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGV'
-        'yc29uJTIwcmVhZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60';
+    return "assets/mock/avatar/" + _oneOf(["male", "female"]) + ".png";
   }
 
   Book book() => Book(
