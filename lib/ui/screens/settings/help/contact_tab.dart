@@ -34,7 +34,7 @@ class ContactTab extends StatelessWidget {
         _mediaItem(
           context,
           t.account.help.facebook,
-          'facebook.svg',
+          'facebook2.svg',
           () {},
         ),
         _mediaItem(
