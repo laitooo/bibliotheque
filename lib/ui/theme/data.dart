@@ -1,3 +1,4 @@
+import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: annotate_overrides
@@ -25,6 +26,9 @@ abstract class AppThemeData {
             color: textColor1,
           ),
         ),
+        fontFamily: (prefs.getPreferredLanguage() ?? 'en') == "ar"
+            ? "Readex_Pro"
+            : "Roboto",
       );
 
   _InputThemeData get input;

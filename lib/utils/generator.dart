@@ -274,8 +274,9 @@ class Generator {
         title: 'Multiple cards features!',
         body:
             'Update the app now to get access to the latest features for better experience using the app.',
-        titleAr: 'titleAr',
-        bodyAr: 'bodyAr',
+        titleAr: 'ميزة البطاقات المتعددة',
+        bodyAr:
+            'قم بتحديث التطبيق للحصول على آخر الميزات لتجربة أداء أفضل في استخدام التطبيق',
         date: _dateTime(
           before: DateTime(2000),
           after: DateTime.now(),
@@ -315,8 +316,11 @@ class Generator {
 
   Question faq() => Question(
         id: id(),
-        question: "What is Bibliotheque?",
-        answer:
+        questionAr: "ما هدف تطبيق المكتبة",
+        answerAr: "هدف التطبيق هو تسهيل عملية شراء وتوصيل الكتب الى القراء."
+            "كما يتيح امكانية تصفح التكتب الموجودة ورؤية تقييمات القراء",
+        questionEn: "What is Bibliotheque?",
+        answerEn:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue tempor, a sit accumsan",
         type: _oneOf(QuestionType.values),
       );

@@ -76,7 +76,7 @@ details:
   publisher: "الناشر"
   publishedOn: "تم النشر في"
   isbn: "ISBN"
-  all: "الك"
+  all: "الكل"
   reviews: "تعليقا"
   rateBook: "قيم هذا الكتاب"
   writeReview: "اكتب تعليق"
@@ -95,6 +95,7 @@ notifications:
   title: "الإشعارات"
   empty: "لا إشعارات"
   noNotifications: "ليس لديك إشعارات في الوقت الحالي"
+  newText: "جديد"
 
 search:
   startSearching: "ابدأ البحث"

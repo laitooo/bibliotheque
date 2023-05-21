@@ -95,6 +95,7 @@ notifications:
   title: "Notifications"
   empty: "No notifications"
   noNotifications: "You don't have any notifications at this time"
+  newText: "New"
 
 search:
   startSearching: "Start searching"

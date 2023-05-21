@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/utils/locale_date_format.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +84,7 @@ class NotificationCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      "New",
+                      t.notifications.newText,
                       style: TextStyle(
                         fontSize: 12,
                         color: context.theme.textColor2,
@@ -118,7 +119,7 @@ class NotificationCard extends StatelessWidget {
       case nt.NotificationType.securityUpdates:
         return "success.svg";
       case nt.NotificationType.multipleCardFeatures:
-        return "grid.svg";
+        return "grid_view.svg";
       case nt.NotificationType.creditCardConnected:
         return "wallet.svg";
       default:

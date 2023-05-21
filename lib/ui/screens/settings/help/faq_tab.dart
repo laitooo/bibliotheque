@@ -44,7 +44,7 @@ class _FAQTabState extends State<FAQTab> {
           children: [
             const SizedBox(height: 10),
             SizedBox(
-              height: 32,
+              height: 38,
               width: MediaQuery.of(context).size.width,
               child: ListView(
                 shrinkWrap: true,
@@ -75,8 +75,7 @@ class _FAQTabState extends State<FAQTab> {
             ...state.faqs!
                 .map(
                   (faq) => FAQQuestionWidget(
-                    faq.question,
-                    faq.answer,
+                    faq,
                     iconColor: context.theme.activeColor,
                   ),
                 )
