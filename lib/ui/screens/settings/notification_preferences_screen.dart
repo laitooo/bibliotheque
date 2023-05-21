@@ -1,6 +1,6 @@
 import 'package:bibliotheque/blocs/notifications_options_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
-import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
+import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

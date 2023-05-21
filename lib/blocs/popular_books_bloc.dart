@@ -22,6 +22,8 @@ class LoadPopularBooks extends BlocEvent<PopularBooksState, PopularBooksBloc> {
   @override
   Stream<PopularBooksState> toState(
       PopularBooksState current, PopularBooksBloc bloc) async* {
+    yield PopularBooksState(PopularBooksStatus.loading);
+
     final res = await bloc._repo.getPopularBooks();
 
     yield res.incase(

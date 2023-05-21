@@ -22,6 +22,8 @@ class LoadSearchHistory
   @override
   Stream<SearchHistoryState> toState(
       SearchHistoryState current, SearchHistoryBloc bloc) async* {
+    yield SearchHistoryState(SearchHistoryStatus.loading);
+
     final res = await bloc._repo.getSearchHistory();
 
     yield res.incase(

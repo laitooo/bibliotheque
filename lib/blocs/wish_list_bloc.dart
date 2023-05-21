@@ -26,6 +26,8 @@ class LoadWishList extends BlocEvent<WishListState, WishListBloc> {
   @override
   Stream<WishListState> toState(
       WishListState current, WishListBloc bloc) async* {
+    yield WishListState(WishListStatus.loading);
+
     final res = await bloc._repo.getWishList(loadAll);
 
     yield res.incase(

@@ -23,6 +23,8 @@ class LoadRecommendedBooks
   @override
   Stream<RecommendedBooksState> toState(
       RecommendedBooksState current, RecommendedBooksBloc bloc) async* {
+    yield RecommendedBooksState(RecommendedBooksStatus.loading);
+
     final res = await bloc._repo.getRecommendedBooks();
 
     yield res.incase(

@@ -32,6 +32,8 @@ class LoadBooks extends BlocEvent<BooksState, BooksBloc> {
   LoadBooks(this.booksSource);
   @override
   Stream<BooksState> toState(BooksState current, BooksBloc bloc) async* {
+    yield BooksState(BooksStatus.loading);
+
     final res = await getBooks(booksSource, bloc);
 
     yield res.incase(
