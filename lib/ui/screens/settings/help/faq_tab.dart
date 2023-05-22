@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/faqs_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/question.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/faq_question_widget.dart';
@@ -35,6 +36,17 @@ class _FAQTabState extends State<FAQTab> {
                 LoadFAQs(selectedType),
               );
             },
+          );
+        }
+
+        if (state.faqs!.isEmpty) {
+          // TODO:: translate this
+          return const Center(
+            child: EmptyListWidget(
+              text: "empty",
+              subText: "content",
+              isPage: false,
+            ),
           );
         }
 

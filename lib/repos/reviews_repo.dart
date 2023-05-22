@@ -24,7 +24,7 @@ class MockReviewsRepository extends ReviewsRepository {
 
     return Result.value(
       List.generate(
-        5,
+        Features.isEmptyLists ? 0 : 5,
         (index) => generator.review(starsNumber: starsNumber),
       ),
     );

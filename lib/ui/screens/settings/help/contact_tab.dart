@@ -71,8 +71,9 @@ class ContactTab extends StatelessWidget {
           children: [
             Svg(
               svgPath,
-              color: context.theme.primaryColor,
               size: 24,
+              matchTextDirection: false,
+              color: context.theme.primaryColor,
             ),
             const SizedBox(width: 20),
             Text(

@@ -4,7 +4,7 @@ import 'package:bibliotheque/blocs/search_history_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
-import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/search/filter_screen.dart';
@@ -197,14 +197,10 @@ class _SearchScreenState extends State<SearchScreen> {
                   }
 
                   if (state.books!.isEmpty) {
-                    return NoDataPage(
-                      text: t.search.noResults,
+                    return EmptyListWidget(
+                      text: t.search.empty,
                       subText: t.search.noResults,
-                      icon: Svg(
-                        "no_notifications.svg",
-                        size: 24,
-                        color: context.theme.iconColor1,
-                      ),
+                      isPage: false,
                     );
                   }
 

@@ -24,7 +24,7 @@ class MockBooksRepository extends BooksRepository {
 
     return Result.value(
       List.generate(
-        5,
+        Features.isEmptyLists ? 0 : 5,
         (index) => generator.book(),
       ),
     );
@@ -43,7 +43,7 @@ class MockBooksRepository extends BooksRepository {
 
     return Result.value(
       List.generate(
-        5,
+        Features.isEmptyLists ? 0 : 5,
         (index) => generator.book(),
       ),
     );
@@ -61,7 +61,7 @@ class MockBooksRepository extends BooksRepository {
 
     return Result.value(
       List.generate(
-        5,
+        Features.isEmptyLists ? 0 : 5,
         (index) => generator.book(),
       ),
     );
@@ -79,7 +79,7 @@ class MockBooksRepository extends BooksRepository {
 
     return Result.value(
       List.generate(
-        5,
+        Features.isEmptyLists ? 0 : 5,
         (index) => generator.book(),
       ),
     );

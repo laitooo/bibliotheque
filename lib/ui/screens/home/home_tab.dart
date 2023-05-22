@@ -99,13 +99,22 @@ class _PopularBooksContainer extends StatelessWidget {
     return BlocBuilder<PopularBooksBloc, PopularBooksState>(
       builder: (context, state) {
         if (state.status == PopularBooksStatus.loading) {
-          return const Center(child: AppProgressIndicator(size: 100));
+          return const Center(
+            child: AppProgressIndicator(size: 100),
+          );
         }
 
         if (state.status == PopularBooksStatus.error) {
-          return TryAgainWidget(onPressed: () {
-            BlocProvider.of<PopularBooksBloc>(context).add(LoadPopularBooks());
-          });
+          return TryAgainWidget(
+            onPressed: () {
+              BlocProvider.of<PopularBooksBloc>(context)
+                  .add(LoadPopularBooks());
+            },
+          );
+        }
+
+        if (state.books!.isEmpty) {
+          return const SizedBox();
         }
 
         return Column(
@@ -161,7 +170,9 @@ class _CategoriesContainer extends StatelessWidget {
     return BlocBuilder<CategoriesBloc, CategoriesState>(
       builder: (context, state) {
         if (state.status == CategoriesStatus.loading) {
-          return const Center(child: AppProgressIndicator(size: 100));
+          return const Center(
+            child: AppProgressIndicator(size: 100),
+          );
         }
 
         if (state.status == CategoriesStatus.error) {
@@ -172,6 +183,10 @@ class _CategoriesContainer extends StatelessWidget {
               );
             },
           );
+        }
+
+        if (state.categories!.isEmpty) {
+          return const SizedBox();
         }
 
         return Column(
@@ -241,14 +256,22 @@ class _RecommendedBooksContainer extends StatelessWidget {
     return BlocBuilder<RecommendedBooksBloc, RecommendedBooksState>(
       builder: (context, state) {
         if (state.status == RecommendedBooksStatus.loading) {
-          return const Center(child: AppProgressIndicator(size: 100));
+          return const Center(
+            child: AppProgressIndicator(size: 100),
+          );
         }
 
         if (state.status == RecommendedBooksStatus.error) {
-          return TryAgainWidget(onPressed: () {
-            BlocProvider.of<RecommendedBooksBloc>(context)
-                .add(LoadRecommendedBooks());
-          });
+          return TryAgainWidget(
+            onPressed: () {
+              BlocProvider.of<RecommendedBooksBloc>(context)
+                  .add(LoadRecommendedBooks());
+            },
+          );
+        }
+
+        if (state.books!.isEmpty) {
+          return const SizedBox();
         }
 
         return Column(
@@ -318,13 +341,21 @@ class _WishListContainer extends StatelessWidget {
     return BlocBuilder<WishListBloc, WishListState>(
       builder: (context, state) {
         if (state.status == WishListStatus.loading) {
-          return const Center(child: AppProgressIndicator(size: 100));
+          return const Center(
+            child: AppProgressIndicator(size: 100),
+          );
         }
 
         if (state.status == WishListStatus.error) {
-          return TryAgainWidget(onPressed: () {
-            BlocProvider.of<WishListBloc>(context).add(LoadWishList(false));
-          });
+          return TryAgainWidget(
+            onPressed: () {
+              BlocProvider.of<WishListBloc>(context).add(LoadWishList(false));
+            },
+          );
+        }
+
+        if (state.books!.isEmpty) {
+          return const SizedBox();
         }
 
         return Column(

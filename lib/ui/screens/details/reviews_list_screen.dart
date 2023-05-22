@@ -2,7 +2,8 @@ import 'package:bibliotheque/blocs/reviews_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/book_details.dart';
 import 'package:bibliotheque/models/review.dart';
-import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
+import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/widgets/filter_item.dart';
@@ -73,7 +74,7 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
           ),
           const SizedBox(height: 10),
           SizedBox(
-            height: 32,
+            height: 38,
             width: MediaQuery.of(context).size.width,
             child: ListView(
                 shrinkWrap: true,
@@ -136,42 +137,56 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
             ),
           ),
           const SizedBox(height: 20),
-          BlocBuilder<ReviewsBloc, ReviewsState>(builder: (context, state) {
-            if (state.status == ReviewsStatus.loading) {
-              return const SizedBox(
-                height: 400,
-                child: Center(
-                  child: AppProgressIndicator(size: 100),
-                ),
-              );
-            }
+          BlocBuilder<ReviewsBloc, ReviewsState>(
+            builder: (context, state) {
+              if (state.status == ReviewsStatus.loading) {
+                return const SizedBox(
+                  height: 400,
+                  child: Center(
+                    child: AppProgressIndicator(size: 100),
+                  ),
+                );
+              }
 
-            if (state.status == ReviewsStatus.error) {
-              return SizedBox(
-                height: 400,
-                child: TryAgainWidget(
-                  onPressed: () {
-                    BlocProvider.of<ReviewsBloc>(context).add(
-                      LoadReviews(starsNumber: selectedNumOfStarts),
-                    );
-                  },
-                ),
-              );
-            }
+              if (state.status == ReviewsStatus.error) {
+                return SizedBox(
+                  height: 400,
+                  child: TryAgainWidget(
+                    onPressed: () {
+                      BlocProvider.of<ReviewsBloc>(context).add(
+                        LoadReviews(starsNumber: selectedNumOfStarts),
+                      );
+                    },
+                  ),
+                );
+              }
 
-            return Column(
-              children: state.reviews!
-                  .map(
-                    (review) => Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: ReviewCard(
-                        review: review,
+              if (state.reviews!.isEmpty) {
+                // TODO:: translate this
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 50),
+                  child: EmptyListWidget(
+                    text: "empty",
+                    subText: "no result",
+                    isPage: false,
+                  ),
+                );
+              }
+
+              return Column(
+                children: state.reviews!
+                    .map(
+                      (review) => Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: ReviewCard(
+                          review: review,
+                        ),
                       ),
-                    ),
-                  )
-                  .toList(),
-            );
-          }),
+                    )
+                    .toList(),
+              );
+            },
+          ),
           const SizedBox(height: 30),
         ],
       ),

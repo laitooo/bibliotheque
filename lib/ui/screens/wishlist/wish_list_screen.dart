@@ -2,7 +2,7 @@ import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/blocs/wish_list_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
-import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/search/filter_screen.dart';
@@ -77,14 +77,10 @@ class _WishListScreenState extends State<_WishListScreen> {
           }
 
           if (state.books!.isEmpty) {
-            return NoDataPage(
+            return EmptyListWidget(
               text: t.wishlist.empty,
               subText: t.wishlist.addBooks,
-              icon: Svg(
-                'empty_page.svg',
-                size: 200,
-                color: context.theme.iconColor2,
-              ),
+              isPage: false,
             );
           }
 

@@ -34,9 +34,7 @@ class MockSearchRepository extends SearchRepository {
   @override
   Future<Result<List<Book>, SearchError>> search(
       String query, FilterOptions filterOptions) async {
-    await Future.delayed(
-      const Duration(seconds: 1),
-    );
+    await Future.delayed(const Duration(seconds: 1));
 
     if (Features.isMockErrors) {
       return Result.error(SearchError.networkError);
@@ -44,7 +42,7 @@ class MockSearchRepository extends SearchRepository {
 
     return Result.value(
       List.generate(
-        10,
+        Features.isEmptyLists ? 0 : 10,
         (index) => generator.book(),
       ),
     );
@@ -52,9 +50,7 @@ class MockSearchRepository extends SearchRepository {
 
   @override
   Future<Result<List<String>, SearchHistoryError>> getSearchHistory() async {
-    await Future.delayed(
-      const Duration(seconds: 1),
-    );
+    await Future.delayed(const Duration(seconds: 1));
 
     if (Features.isMockErrors) {
       return Result.error(SearchHistoryError.loadingError);
@@ -62,7 +58,7 @@ class MockSearchRepository extends SearchRepository {
 
     return Result.value(
       List.generate(
-        10,
+        Features.isEmptyLists ? 0 : 10,
         (index) => generator.searchHistory(),
       ),
     );

@@ -3,7 +3,7 @@ import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/notification.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
-import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/notification_card.dart';
 import 'package:flutter/material.dart';
@@ -62,14 +62,10 @@ class _NotificationsListScreenState extends State<NotificationsListScreen> {
           }
 
           if (state.notifications!.isEmpty) {
-            return NoDataPage(
+            return EmptyListWidget(
               text: t.notifications.empty,
               subText: t.notifications.noNotifications,
-              icon: Svg(
-                'empty_page.svg',
-                size: 200,
-                color: context.theme.iconColor2,
-              ),
+              isPage: false,
             );
           }
 

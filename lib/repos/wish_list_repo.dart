@@ -14,9 +14,7 @@ abstract class WishListRepository {
 class MockWishListRepository extends WishListRepository {
   @override
   Future<Result<List<Book>, WishListError>> getWishList(bool loadAll) async {
-    await Future.delayed(
-      const Duration(seconds: 1),
-    );
+    await Future.delayed(const Duration(seconds: 1));
 
     if (Features.isMockErrors) {
       return Result.error(WishListError.loadingListError);
@@ -24,7 +22,11 @@ class MockWishListRepository extends WishListRepository {
 
     return Result.value(
       List.generate(
-        loadAll ? 12 : 5,
+        Features.isEmptyLists
+            ? 0
+            : loadAll
+                ? 12
+                : 5,
         (index) => generator.book(),
       ),
     );
@@ -32,9 +34,7 @@ class MockWishListRepository extends WishListRepository {
 
   @override
   Future<Result<void, WishListError>> removeFromWishList(String bookId) async {
-    await Future.delayed(
-      const Duration(seconds: 1),
-    );
+    await Future.delayed(const Duration(seconds: 1));
 
     if (Features.isMockErrors) {
       return Result.error(WishListError.removingError);
@@ -45,9 +45,7 @@ class MockWishListRepository extends WishListRepository {
 
   @override
   Future<Result<void, WishListError>> addToWishList(Book book) async {
-    await Future.delayed(
-      const Duration(seconds: 1),
-    );
+    await Future.delayed(const Duration(seconds: 1));
 
     if (Features.isMockErrors) {
       return Result.error(WishListError.addingError);
@@ -58,9 +56,7 @@ class MockWishListRepository extends WishListRepository {
 
   @override
   Future<Result<bool, WishListError>> isInWishList(String bookId) async {
-    await Future.delayed(
-      const Duration(seconds: 1),
-    );
+    await Future.delayed(const Duration(seconds: 1));
 
     if (Features.isMockErrors) {
       return Result.error(WishListError.loadingStatusError);

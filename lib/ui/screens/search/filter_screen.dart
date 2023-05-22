@@ -279,68 +279,72 @@ class _FilterScreenState extends State<FilterScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 30),
-                Container(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 0.5,
-                      color: context.theme.dividerColor,
+                if (state.categories!.isNotEmpty) ...[
+                  const SizedBox(height: 30),
+                  Container(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 0.5,
+                        color: context.theme.dividerColor,
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                      color:
+                          context.theme.filterCardBackground.withOpacity(0.1),
                     ),
-                    borderRadius: BorderRadius.circular(20),
-                    color: context.theme.filterCardBackground.withOpacity(0.1),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 10),
-                        child: Text(
-                          t.search.genre,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: context.theme.textColor1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 10),
+                          child: Text(
+                            t.search.genre,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: context.theme.textColor1,
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 15),
-                      ...searchCategories.entries
-                          .map(
-                            (entry) => Container(
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  top: BorderSide(
-                                    width: 0.5,
-                                    color: context.theme.dividerColor,
+                        const SizedBox(height: 15),
+                        ...searchCategories.entries
+                            .map(
+                              (entry) => Container(
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    top: BorderSide(
+                                      width: 0.5,
+                                      color: context.theme.dividerColor,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              child: CheckboxListTile(
-                                value: entry.value,
-                                title: Text(
-                                  entry.key.name,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: context.theme.textColor1,
+                                child: CheckboxListTile(
+                                  value: entry.value,
+                                  title: Text(
+                                    entry.key.name,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: context.theme.textColor1,
+                                    ),
                                   ),
+                                  onChanged: (value) {
+                                    if (value == null) return;
+                                    setState(() {
+                                      searchCategories[entry.key] = value;
+                                    });
+                                  },
+                                  contentPadding: EdgeInsets.zero,
                                 ),
-                                onChanged: (value) {
-                                  if (value == null) return;
-                                  setState(() {
-                                    searchCategories[entry.key] = value;
-                                  });
-                                },
-                                contentPadding: EdgeInsets.zero,
                               ),
-                            ),
-                          )
-                          .toList(),
-                    ],
+                            )
+                            .toList(),
+                      ],
+                    ),
                   ),
-                ),
+                ],
                 const SizedBox(height: 30),
                 Container(
                   padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),

@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
@@ -50,6 +51,17 @@ class CategoriesListScreen extends StatelessWidget {
                   ),
                 );
               },
+            );
+          }
+
+          if (state.categories!.isEmpty) {
+            // TODO:: translate this
+            return const Center(
+              child: EmptyListWidget(
+                text: "empty",
+                subText: "content",
+                isPage: false,
+              ),
             );
           }
 

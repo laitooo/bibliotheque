@@ -22,16 +22,17 @@ class MockNotificationsRepository extends NotificationsRepository {
   Future<Result<List<Notification>, NotificationsError>> listNotifications(
       String userId) async {
     await Future.delayed(const Duration(seconds: 1));
-    var list = List.generate(
-      10,
-      (index) => generator.notification(),
-    );
 
     if (Features.isMockErrors) {
       return Result.error(NotificationsError.networkError);
     }
 
-    return Result.value(list);
+    return Result.value(
+      List.generate(
+        Features.isEmptyLists ? 0 : 10,
+        (index) => generator.notification(),
+      ),
+    );
   }
 
   @override

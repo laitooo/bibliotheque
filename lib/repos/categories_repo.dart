@@ -22,7 +22,7 @@ class MockCategoriesRepositories extends CategoriesRepositories {
 
     return Result.value(
       List.generate(
-        4,
+        Features.isEmptyLists ? 0 : 5,
         (index) => generator.category(),
       ),
     );
@@ -40,7 +40,7 @@ class MockCategoriesRepositories extends CategoriesRepositories {
 
     return Result.value(
       List.generate(
-        20,
+        Features.isEmptyLists ? 0 : 20,
         (index) => generator.category(
           index: index.toString(),
         ),

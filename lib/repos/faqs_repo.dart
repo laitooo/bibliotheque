@@ -21,7 +21,7 @@ class MockFAQsRepository extends FAQsRepository {
 
     return Result.value(
       List.generate(
-        5,
+        Features.isEmptyLists ? 0 : 5,
         (index) => generator.faq(),
       ),
     );

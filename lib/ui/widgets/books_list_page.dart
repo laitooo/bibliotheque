@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/books_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
@@ -95,7 +96,9 @@ class _BooksListPageState extends State<_BooksListPage> {
       body: BlocBuilder<BooksBloc, BooksState>(
         builder: (context, state) {
           if (state.status == BooksStatus.loading) {
-            return const Center(child: AppProgressIndicator(size: 100));
+            return const Center(
+              child: AppProgressIndicator(size: 100),
+            );
           }
 
           if (state.status == BooksStatus.error) {
@@ -103,6 +106,17 @@ class _BooksListPageState extends State<_BooksListPage> {
               onPressed: () {
                 BlocProvider.of<BooksBloc>(context).add(widget.event);
               },
+            );
+          }
+
+          if (state.books!.isEmpty) {
+            // TODO:: translate this
+            return const Center(
+              child: EmptyListWidget(
+                text: "empty",
+                subText: "content",
+                isPage: false,
+              ),
             );
           }
 
