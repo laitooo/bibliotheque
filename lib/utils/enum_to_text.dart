@@ -140,3 +140,30 @@ String reviewsErrorToText(ReviewsError error) {
       return t.errors.invalidRate;
   }
 }
+
+String registerErrorToText(RegisterError error) {
+  switch (error) {
+    case RegisterError.networkError:
+      return t.errors.register.networkError;
+    case RegisterError.emptyCategories:
+      return t.errors.register.emptyCategories;
+    case RegisterError.emptyName:
+      return t.errors.register.emptyName;
+    case RegisterError.emptyCountry:
+      return t.errors.register.emptyCountry;
+    case RegisterError.invalidPhoneNumber:
+      return t.errors.register.invalidPhoneNumber;
+    case RegisterError.uploadAvatarError:
+      return t.errors.register.uploadAvatarError;
+    case RegisterError.emptyBirthDay:
+      return t.errors.register.emptyBirthDay;
+    case RegisterError.emptyUsername:
+      return t.errors.register.emptyUsername;
+    case RegisterError.emptyEmail:
+      return t.errors.register.invalidEmail;
+    case RegisterError.shortPassword:
+      return t.errors.register.shortPassword;
+    case RegisterError.nonMatchingPasswords:
+      return t.errors.register.nonMatchingPasswords;
+  }
+}

@@ -57,6 +57,20 @@ enum SearchError {
   networkError,
 }
 
+enum RegisterError {
+  networkError,
+  emptyCategories,
+  emptyName,
+  emptyCountry,
+  invalidPhoneNumber,
+  uploadAvatarError,
+  emptyBirthDay,
+  emptyUsername,
+  emptyEmail,
+  shortPassword,
+  nonMatchingPasswords,
+}
+
 enum AuthError {
   networkError,
   uploadProfileError,
