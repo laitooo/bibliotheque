@@ -108,7 +108,6 @@ class EditProfilePageState extends State<EditProfilePage> {
                 });
               },
             ),
-            // TODO:: maybe add street address input fields to this screen
           ],
         );
       },

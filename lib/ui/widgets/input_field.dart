@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
+import 'package:bibliotheque/utils/locale_date_format.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -223,7 +224,7 @@ class _AppDateSelectorState extends State<AppDateSelector> {
             children: [
               if (widget.selectedDateTime != null)
                 Text(
-                  widget.selectedDateTime!.toIso8601String(),
+                  LocaleDateFormat.defaultFormat(widget.selectedDateTime!),
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,

@@ -14,6 +14,7 @@ import 'package:bibliotheque/ui/screens/details/new_review_screen.dart';
 import 'package:bibliotheque/ui/screens/details/reviews_list_screen.dart';
 import 'package:bibliotheque/ui/widgets/reviews_numbers.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
+import 'package:bibliotheque/utils/locale_date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -186,9 +187,8 @@ class _BookDetailsScreen extends StatelessWidget {
                         const SizedBox(height: 10),
                         Text(
                           t.details.releasedOn +
-                              book.publishDate.month.toString() +
-                              '. ' +
-                              book.publishDate.year.toString(),
+                              LocaleDateFormat.monthYearFormat(
+                                  book.publishDate),
                           style: TextStyle(
                             fontSize: 14,
                             color: context.theme.textColor4,

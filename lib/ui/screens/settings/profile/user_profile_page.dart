@@ -2,6 +2,7 @@ import 'package:bibliotheque/blocs/profile_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
+import 'package:bibliotheque/utils/locale_date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,15 +32,23 @@ class UserProfilePage extends StatelessWidget {
                 context,
               ),
               const SizedBox(height: 40),
-              _infoWidget(t.auth.register.phoneNumber,
-                  state.profile!.phoneNumber, context),
+              _infoWidget(
+                t.auth.register.phoneNumber,
+                state.profile!.phoneNumber,
+                context,
+              ),
               const SizedBox(height: 40),
               _infoWidget(
-                  t.auth.register.country, state.profile!.country, context),
+                t.auth.register.country,
+                state.profile!.country,
+                context,
+              ),
               const SizedBox(height: 40),
-              _infoWidget(t.auth.register.birthDate,
-                  state.profile!.birthDate.toString(), context),
-              // TODO:: maybe add street address input fields to this screen
+              _infoWidget(
+                t.auth.register.birthDate,
+                LocaleDateFormat.defaultFormat(state.profile!.birthDate),
+                context,
+              ),
             ],
           ),
         );

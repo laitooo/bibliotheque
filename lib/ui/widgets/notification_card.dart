@@ -19,7 +19,6 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formatter = LocaleDateFormat();
     bool isArabic = Localizations.localeOf(context).languageCode == "ar";
 
     return InkWell(
@@ -59,10 +58,9 @@ class NotificationCard extends StatelessWidget {
                           fontSize: 14,
                         ),
                       ),
-                      // TODO: date time format for the whole app
                       const SizedBox(height: 8),
                       Text(
-                        formatter.defaultFormat(notification.date),
+                        LocaleDateFormat.defaultFormat(notification.date),
                         maxLines: 1,
                         style: TextStyle(
                           color: context.theme.textColor4,

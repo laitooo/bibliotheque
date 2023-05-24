@@ -4,6 +4,7 @@ import 'package:bibliotheque/ui/common_widgets/circle_image_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/widgets/filter_item.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
+import 'package:bibliotheque/utils/locale_date_format.dart';
 import 'package:flutter/material.dart';
 
 class ReviewCard extends StatelessWidget {
@@ -83,9 +84,8 @@ class ReviewCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 20),
-            // TODO: do time format
             Text(
-              review.creationDate.toString(),
+              LocaleDateFormat.defaultFormat(review.creationDate),
               style: TextStyle(
                 fontSize: 14,
                 color: context.theme.textColor1,
