@@ -98,7 +98,7 @@ class _AppPasswordTextFieldState extends State<AppPasswordTextField> {
   @override
   void initState() {
     super.initState();
-    widget.controller.text = widget.label;
+    widget.controller.text = widget.initialValue;
     focusNode.addListener(() {
       setState(() {});
     });
@@ -120,6 +120,7 @@ class _AppPasswordTextFieldState extends State<AppPasswordTextField> {
           ),
         ),
         TextField(
+          controller: widget.controller,
           focusNode: focusNode,
           obscureText: !isPasswordVisible,
           enableSuggestions: false,
@@ -220,14 +221,15 @@ class _AppDateSelectorState extends State<AppDateSelector> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(
-                (widget.selectedDateTime ?? DateTime(2000)).toString(),
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: context.theme.textColor1,
+              if (widget.selectedDateTime != null)
+                Text(
+                  widget.selectedDateTime!.toIso8601String(),
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: context.theme.textColor1,
+                  ),
                 ),
-              ),
               const Spacer(),
               Svg(
                 "calendar.svg",

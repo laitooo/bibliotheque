@@ -66,6 +66,7 @@ class RemoveFromWishList extends BlocEvent<WishListState, WishListBloc> {
       error: (error) {
         return WishListState(
           WishListStatus.error,
+          books: current.books,
           error: error,
         );
       },

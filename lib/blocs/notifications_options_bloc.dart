@@ -93,6 +93,7 @@ class UpdateNotificationsOptions
       error: (error) {
         return NotificationsOptionsState(
           NotificationsOptionsStatus.error,
+          notificationsOptions: current.notificationsOptions,
           error: error,
         );
       },

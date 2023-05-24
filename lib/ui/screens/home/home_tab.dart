@@ -39,7 +39,8 @@ class HomeTab extends StatelessWidget {
         actions: [
           const SearchIcon(),
           BlocProvider(
-            create: (_) => UnreadNotificationsBloc(),
+            create: (_) =>
+                UnreadNotificationsBloc()..add(LoadUnreadNotifications()),
             child: const NotificationsIconButton(),
           )
         ],

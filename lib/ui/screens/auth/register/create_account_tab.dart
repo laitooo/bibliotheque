@@ -100,18 +100,23 @@ class _CreateAccountTabState extends State<CreateAccountTab> {
           ),
           const SizedBox(height: 20),
           const Spacer(),
-          MainButton(
-            title: t.auth.register.signUp,
-            removePadding: true,
-            onPressed: () {
-              BlocProvider.of<RegisterBloc>(context).add(
-                SignUp(
-                  email: emailController.text,
-                  password: passwordController.text,
-                  passwordConfirm: passwordConfirmController.text,
-                  username: usernameController.text,
-                  rememberMe: rememberMe,
-                ),
+          BlocBuilder<RegisterBloc, RegisterState>(
+            builder: (context, state) {
+              return MainButton(
+                title: t.auth.register.signUp,
+                removePadding: true,
+                isLoading: state.status == RegisterStatus.loading,
+                onPressed: () {
+                  BlocProvider.of<RegisterBloc>(context).add(
+                    SignUp(
+                      email: emailController.text,
+                      password: passwordController.text,
+                      passwordConfirm: passwordConfirmController.text,
+                      username: usernameController.text,
+                      rememberMe: rememberMe,
+                    ),
+                  );
+                },
               );
             },
           ),

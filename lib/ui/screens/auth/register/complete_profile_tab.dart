@@ -119,13 +119,12 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
             title: t.auth.register.continu,
             removePadding: true,
             onPressed: () {
-              // TODO:: make sure this is not null (validate data)
               BlocProvider.of<RegisterBloc>(context).add(
                 InputProfileInfo(
                   fullName: nameController.text,
                   phoneNumber: phoneController.text,
-                  country: country!.name,
-                  dateOfBirth: birthDate ?? DateTime.now(),
+                  country: country,
+                  dateOfBirth: birthDate,
                 ),
               );
             },

@@ -1,10 +1,12 @@
 import 'package:bibliotheque/blocs/notifications_bloc.dart';
+import 'package:bibliotheque/blocs/notifications_options_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/notification.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
+import 'package:bibliotheque/ui/screens/settings/notification_preferences_screen.dart';
 import 'package:bibliotheque/ui/widgets/notification_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +42,17 @@ class _NotificationsListScreenState extends State<NotificationsListScreen> {
         centerTitle: false,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => BlocProvider(
+                    create: (_) => NotificationsOptionsBloc()
+                      ..add(LoadNotificationsOptions()),
+                    child: const NotificationPreferencesScreen(),
+                  ),
+                ),
+              );
+            },
             icon: const Svg('settings.svg'),
           ),
         ],

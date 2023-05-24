@@ -26,6 +26,8 @@ class LoadNotificationsList
     yield NotificationsListState(NotificationsListStatus.loading);
 
     // TODO: add user id
+    // Here after loading the new notification, it should update the unread
+    // notification data.
     final res = await bloc._repo.listNotifications('bloc._auth.user!.id');
 
     yield res.incase(

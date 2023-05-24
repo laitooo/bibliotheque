@@ -9,7 +9,7 @@ abstract class AuthRepository {
   User? get user;
   Future<bool> isLoggedIn();
   Future<Result<void, AuthError>> signIn(String usernameEmail, String password);
-  Future<Result<void, AuthError>> signUp(Profile profile, String password);
+  Future<Result<void, RegisterError>> signUp(Profile profile, String password);
   Future<Result<void, AuthError>> googleSignIn();
   Future<Result<void, AuthError>> appleSignIn();
   Future<Result<void, AuthError>> facebookSignIn();
@@ -46,14 +46,14 @@ class MockAuthRepository extends AuthRepository {
   }
 
   @override
-  Future<Result<void, AuthError>> signUp(
+  Future<Result<void, RegisterError>> signUp(
       Profile profile, String password) async {
     await Future.delayed(
       const Duration(seconds: 1),
     );
 
     if (Features.isMockErrors) {
-      return Result.error(AuthError.networkError);
+      return Result.error(RegisterError.networkError);
     }
 
     return Result.value(null);

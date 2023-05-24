@@ -211,16 +211,21 @@ class HorizontalBookCard extends StatelessWidget {
 
 class WishListCard extends StatelessWidget {
   final Book book;
-  final void Function()? onRemoveClicked;
+  final void Function() onRemoveClicked;
+  final void Function() onShareClicked;
+  final void Function() onAboutAppClicked;
 
   const WishListCard({
     Key? key,
     required this.book,
-    this.onRemoveClicked,
+    required this.onRemoveClicked,
+    required this.onShareClicked,
+    required this.onAboutAppClicked,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // TODO:: translate this page
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 0, 10),
       child: SizedBox(
@@ -347,7 +352,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onTap: () {},
+                            onTap: onShareClicked,
                           ),
                           PopupMenuItem(
                             child: Row(
@@ -366,7 +371,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onTap: () {},
+                            onTap: onAboutAppClicked,
                           ),
                         ];
                       },

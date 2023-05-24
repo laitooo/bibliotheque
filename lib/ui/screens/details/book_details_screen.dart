@@ -3,6 +3,7 @@ import 'package:bibliotheque/blocs/does_wish_bloc.dart';
 import 'package:bibliotheque/blocs/reviews_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
 import 'package:bibliotheque/ui/common_widgets/mockable_image.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
@@ -12,6 +13,7 @@ import 'package:bibliotheque/ui/screens/details/about_book_screen.dart';
 import 'package:bibliotheque/ui/screens/details/new_review_screen.dart';
 import 'package:bibliotheque/ui/screens/details/reviews_list_screen.dart';
 import 'package:bibliotheque/ui/widgets/reviews_numbers.dart';
+import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -86,31 +88,45 @@ class _BookDetailsScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             actions: [
-              BlocBuilder<DoesWishBloc, DoesWishState>(
+              BlocConsumer<DoesWishBloc, DoesWishState>(
+                listener: (context, doesWishState) {
+                  if (doesWishState.status == DoesWishStatus.error) {
+                    if (doesWishState.error == WishListError.addingError) {
+                      context.showSnackBar(text: t.errors.errorAddingTryAgain);
+                    }
+
+                    if (doesWishState.error == WishListError.removingError) {
+                      context.showSnackBar(
+                          text: t.errors.errorRemovingTryAgain);
+                    }
+                  }
+                },
                 builder: (context, doesWishState) {
-                  if (doesWishState.status != DoesWishStatus.success) {
+                  if (doesWishState.status == DoesWishStatus.success ||
+                      (doesWishState.error == WishListError.removingError ||
+                          doesWishState.error == WishListError.addingError)) {
+                    return IconButton(
+                      onPressed: () {
+                        if (doesWishState.doesWish!) {
+                          BlocProvider.of<DoesWishBloc>(context)
+                              .add(RemoveFromWishList(book.id));
+                        } else {
+                          BlocProvider.of<DoesWishBloc>(context)
+                              .add(AddToWishList(book.toBook()));
+                        }
+                      },
+                      icon: Svg(
+                        doesWishState.doesWish!
+                            ? 'remove_from_list.svg'
+                            : 'add_to_list.svg',
+                        color: doesWishState.doesWish!
+                            ? context.theme.textColor3
+                            : context.theme.iconColor1,
+                      ),
+                    );
+                  } else {
                     return const SizedBox();
                   }
-
-                  return IconButton(
-                    onPressed: () {
-                      if (doesWishState.doesWish!) {
-                        BlocProvider.of<DoesWishBloc>(context)
-                            .add(RemoveFromWishList(book.id));
-                      } else {
-                        BlocProvider.of<DoesWishBloc>(context)
-                            .add(AddToWishList(book.toBook()));
-                      }
-                    },
-                    icon: Svg(
-                      doesWishState.doesWish!
-                          ? 'add_to_list.svg'
-                          : 'remove_from_list.svg',
-                      color: doesWishState.doesWish!
-                          ? context.theme.iconColor1
-                          : context.theme.textColor3,
-                    ),
-                  );
                 },
               ),
               IconButton(
