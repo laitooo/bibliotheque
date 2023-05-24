@@ -3,6 +3,7 @@ import 'package:bibliotheque/repos/profile_repo.dart';
 import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/utils/bloc.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
+import 'package:country_picker/country_picker.dart';
 
 enum EditProfileStatus {
   idle,
@@ -67,8 +68,8 @@ class UploadProfilePicture
 class SubmitProfileEdits extends BlocEvent<EditProfileState, EditProfileBloc> {
   final String fullName;
   final String phoneNumber;
-  final DateTime dateOfBirth;
-  final String country;
+  final DateTime? dateOfBirth;
+  final Country? country;
   final String avatarUrl;
 
   SubmitProfileEdits({
@@ -84,12 +85,44 @@ class SubmitProfileEdits extends BlocEvent<EditProfileState, EditProfileBloc> {
       EditProfileState current, EditProfileBloc bloc) async* {
     yield EditProfileState(EditProfileStatus.sending);
 
+    if (fullName.isEmpty) {
+      yield EditProfileState(
+        EditProfileStatus.error,
+        error: EditProfileError.emptyName,
+      );
+      return;
+    }
+
+    if (phoneNumber.isEmpty || !phoneNumber.startsWith("+")) {
+      yield EditProfileState(
+        EditProfileStatus.error,
+        error: EditProfileError.invalidPhoneNumber,
+      );
+      return;
+    }
+
+    if (dateOfBirth == null) {
+      yield EditProfileState(
+        EditProfileStatus.error,
+        error: EditProfileError.emptyBirthDay,
+      );
+      return;
+    }
+
+    if (country == null) {
+      yield EditProfileState(
+        EditProfileStatus.error,
+        error: EditProfileError.emptyCountry,
+      );
+      return;
+    }
+
     final res = await bloc._repo.updateProfile(
       fullName,
       phoneNumber,
-      country,
+      country!.name,
       avatarUrl,
-      dateOfBirth,
+      dateOfBirth!,
     );
 
     // TODO:: validate all data in all blocs

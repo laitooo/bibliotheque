@@ -79,6 +79,11 @@ enum AuthError {
 
 enum EditProfileError {
   networkError,
+  emptyName,
+  emptyCountry,
+  invalidPhoneNumber,
+  uploadAvatarError,
+  emptyBirthDay,
 }
 
 enum SearchHistoryError {

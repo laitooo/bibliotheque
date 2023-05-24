@@ -120,7 +120,7 @@ class EditProfilePageState extends State<EditProfilePage> {
       SubmitProfileEdits(
         fullName: nameController.text,
         phoneNumber: phoneController.text,
-        country: country.name,
+        country: country,
         dateOfBirth: birthDate,
         avatarUrl: avatar,
       ),

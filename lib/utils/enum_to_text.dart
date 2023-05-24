@@ -167,3 +167,20 @@ String registerErrorToText(RegisterError error) {
       return t.errors.register.nonMatchingPasswords;
   }
 }
+
+String editProfileErrorToText(EditProfileError error) {
+  switch (error) {
+    case EditProfileError.networkError:
+      return t.errors.register.networkError;
+    case EditProfileError.emptyName:
+      return t.errors.register.emptyName;
+    case EditProfileError.emptyCountry:
+      return t.errors.register.emptyCountry;
+    case EditProfileError.invalidPhoneNumber:
+      return t.errors.register.invalidPhoneNumber;
+    case EditProfileError.uploadAvatarError:
+      return t.errors.register.uploadAvatarError;
+    case EditProfileError.emptyBirthDay:
+      return t.errors.register.emptyBirthDay;
+  }
+}

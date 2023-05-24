@@ -8,6 +8,7 @@ errors:
   errorAddingTryAgain: "Error adding, check your internet and try again please"
   errorRemovingTryAgain: "Error removing, check your internet and try again please"
   errorUpdaingTryAgain: "Error updating, check your internet and try again please"
+  errorClearingTryAgain: "Error clearing, check your internet and try again please"
   register:
     networkError: "Network error occurred, please try again"
     emptyCategories: "Please select at least one category"

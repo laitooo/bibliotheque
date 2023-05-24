@@ -3,12 +3,14 @@ import 'package:bibliotheque/blocs/search_bloc.dart';
 import 'package:bibliotheque/blocs/search_history_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/search/filter_screen.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
+import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -64,7 +66,24 @@ class _SearchScreenState extends State<SearchScreen> {
               child: BlocBuilder<SearchBloc, SearchState>(
                 builder: (context, state) {
                   if (state.status == SearchStatus.idle) {
-                    return BlocBuilder<SearchHistoryBloc, SearchHistoryState>(
+                    return BlocConsumer<SearchHistoryBloc, SearchHistoryState>(
+                      listener: (_, historyState) {
+                        if (historyState.status == SearchHistoryStatus.error) {
+                          if (historyState.error ==
+                              SearchHistoryError.clearingError) {
+                            context.showSnackBar(
+                              text: t.errors.errorClearingTryAgain,
+                            );
+                          }
+
+                          if (historyState.error ==
+                              SearchHistoryError.removingError) {
+                            context.showSnackBar(
+                              text: t.errors.errorRemovingTryAgain,
+                            );
+                          }
+                        }
+                      },
                       builder: (_, historyState) {
                         if (historyState.status ==
                             SearchHistoryStatus.loading) {
@@ -73,99 +92,9 @@ class _SearchScreenState extends State<SearchScreen> {
                           );
                         }
 
-                        if (historyState.status ==
-                                SearchHistoryStatus.success &&
-                            historyState.list!.isNotEmpty) {
-                          return ListView(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 6),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    // TODO: use svg
-                                    Text(
-                                      "Previous Search",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: context.theme.textColor1,
-                                      ),
-                                    ),
-                                    IconButton(
-                                      onPressed: () {
-                                        BlocProvider.of<SearchHistoryBloc>(
-                                                context)
-                                            .add(ClearSearchHistory());
-                                      },
-                                      icon: Icon(
-                                        Icons.close,
-                                        size: 24,
-                                        color: context.theme.iconColor1,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
-                                child: Divider(
-                                  thickness: 0.5,
-                                  color: Colors.grey.shade400,
-                                ),
-                              ),
-                              ...List.generate(historyState.list!.length,
-                                  (index) {
-                                return InkWell(
-                                  onTap: () {
-                                    searchController.text =
-                                        historyState.list![index];
-                                    BlocProvider.of<SearchBloc>(context).add(
-                                      SearchBook(
-                                        query: historyState.list![index],
-                                      ),
-                                    );
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 6),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          historyState.list![index],
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: context.theme.textColor1),
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            BlocProvider.of<SearchHistoryBloc>(
-                                                    context)
-                                                .add(
-                                              RemovePreviousSearch(
-                                                historyState.list![index],
-                                              ),
-                                            );
-                                          },
-                                          icon: Icon(
-                                            Icons.close,
-                                            size: 24,
-                                            color: context.theme.iconColor1,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              }),
-                            ],
-                          );
-                        } else {
+                        if (historyState.status == SearchStatus.error &&
+                            historyState.error ==
+                                SearchHistoryError.loadingError) {
                           return Center(
                             child: Text(
                               t.search.startSearching,
@@ -176,6 +105,95 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                           );
                         }
+                        return ListView(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 6),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  // TODO: use svg
+                                  Text(
+                                    "Previous Search",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: context.theme.textColor1,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      BlocProvider.of<SearchHistoryBloc>(
+                                              context)
+                                          .add(ClearSearchHistory());
+                                    },
+                                    icon: Icon(
+                                      Icons.close,
+                                      size: 24,
+                                      color: context.theme.iconColor1,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Divider(
+                                thickness: 0.5,
+                                color: Colors.grey.shade400,
+                              ),
+                            ),
+                            ...List.generate(historyState.list!.length,
+                                (index) {
+                              return InkWell(
+                                onTap: () {
+                                  searchController.text =
+                                      historyState.list![index];
+                                  BlocProvider.of<SearchBloc>(context).add(
+                                    SearchBook(
+                                      query: historyState.list![index],
+                                    ),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 6),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        historyState.list![index],
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: context.theme.textColor1),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {
+                                          BlocProvider.of<SearchHistoryBloc>(
+                                                  context)
+                                              .add(
+                                            RemovePreviousSearch(
+                                              historyState.list![index],
+                                            ),
+                                          );
+                                        },
+                                        icon: Icon(
+                                          Icons.close,
+                                          size: 24,
+                                          color: context.theme.iconColor1,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }),
+                          ],
+                        );
                       },
                     );
                   }
