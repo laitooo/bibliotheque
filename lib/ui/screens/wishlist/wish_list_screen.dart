@@ -11,7 +11,6 @@ import 'package:bibliotheque/ui/screens/settings/about_app_screen.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
 import 'package:bibliotheque/ui/widgets/search_icon.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
-import 'package:bibliotheque/utils/share_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -102,21 +101,24 @@ class _WishListScreenState extends State<_WishListScreen> {
                 .map(
                   (book) => WishListCard(
                     book: book,
-                    onRemoveClicked: () {
-                      BlocProvider.of<WishListBloc>(context).add(
-                        RemoveFromWishList(book.id),
-                      );
-                    },
-                    onShareClicked: () {
-                      ShareUtil.shareBook(book.name, book.coveUrl, context);
-                    },
-                    onAboutAppClicked: () {
-                      // TODO:: make sure this works
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => const AboutAppScreen(),
-                        ),
-                      );
+                    onItemClicked: (index) {
+                      switch (index) {
+                        case 0:
+                          BlocProvider.of<WishListBloc>(context).add(
+                            RemoveFromWishList(book.id),
+                          );
+                          break;
+                        case 2:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const AboutAppScreen(),
+                            ),
+                          );
+                          break;
+                        case 1:
+                        default:
+                          break;
+                      }
                     },
                   ),
                 )

@@ -223,8 +223,9 @@ class SignUp extends BlocEvent<RegisterState, RegisterBloc> {
       return;
     }
 
-    // TODO:: use correct email validation
-    if (email.isEmpty || !email.contains(".com") || !email.contains("@")) {
+    if (!RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email)) {
       yield current.copyWith(
         status: RegisterStatus.error,
         error: RegisterError.emptyEmail,

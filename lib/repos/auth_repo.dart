@@ -162,7 +162,7 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 1),
     );
 
-    return true;
+    return generator.boolean();
   }
 
   @override

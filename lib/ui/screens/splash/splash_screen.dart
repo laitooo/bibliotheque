@@ -1,8 +1,9 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
+import 'package:bibliotheque/repos/auth_repo.dart';
+import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:bibliotheque/ui/screens/splash/on_boarding_screen.dart';
-import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -57,12 +58,13 @@ class _SplashScreenState extends State<SplashScreen> {
   void _goToNext(BuildContext context) {
     Future.delayed(
       const Duration(seconds: 3),
-      () {
+      () async {
+        final isLoggedIn = await serviceLocator.get<AuthRepository>().isLoggedIn();
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (_) => !prefs.isFirstTimer()
-                ? const OnBoardingScreen()
-                : const HomeScreen(),
+            builder: (_) => isLoggedIn
+                ? const HomeScreen()
+                : const OnBoardingScreen(),
           ),
         );
       },

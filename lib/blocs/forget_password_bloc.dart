@@ -50,7 +50,9 @@ class InputEmail extends BlocEvent<ForgetPasswordState, ForgetPasswordBloc> {
   @override
   Stream<ForgetPasswordState> toState(
       ForgetPasswordState current, ForgetPasswordBloc bloc) async* {
-    if (email.isEmpty || !email.contains(".com") || !email.contains("@")) {
+    if (!RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email)) {
       yield current.copyWith(
         status: ForgetPasswordStatus.error,
         error: ForgetPasswordError.invalidEmail,

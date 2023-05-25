@@ -212,16 +212,12 @@ class HorizontalBookCard extends StatelessWidget {
 
 class WishListCard extends StatelessWidget {
   final Book book;
-  final void Function() onRemoveClicked;
-  final void Function() onShareClicked;
-  final void Function() onAboutAppClicked;
+  final void Function(int index) onItemClicked;
 
   const WishListCard({
     Key? key,
     required this.book,
-    required this.onRemoveClicked,
-    required this.onShareClicked,
-    required this.onAboutAppClicked,
+    required this.onItemClicked,
   }) : super(key: key);
 
   @override
@@ -314,6 +310,7 @@ class WishListCard extends StatelessWidget {
                         'dots_vertical.svg',
                       ),
                       padding: EdgeInsets.zero,
+                      onSelected: onItemClicked,
                       itemBuilder: (_) {
                         return [
                           PopupMenuItem(
@@ -333,7 +330,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onTap: onRemoveClicked,
+                            value: 0,
                           ),
                           PopupMenuItem(
                             child: Row(
@@ -352,7 +349,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onTap: onShareClicked,
+                            value: 1,
                           ),
                           PopupMenuItem(
                             child: Row(
@@ -371,7 +368,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onTap: onAboutAppClicked,
+                            value: 2,
                           ),
                         ];
                       },
