@@ -1,7 +1,8 @@
 import 'package:bibliotheque/blocs/books_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
-import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
+import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/search/filter_screen.dart';
@@ -12,12 +13,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BooksListPage extends StatelessWidget {
   final String title;
+  final bool canGoBack;
   final String? categoryId;
   final BooksSource booksSource;
 
   const BooksListPage({
     Key? key,
     required this.title,
+    this.canGoBack = true,
     required this.booksSource,
     this.categoryId,
   }) : super(key: key);
@@ -30,6 +33,7 @@ class BooksListPage extends StatelessWidget {
       child: _BooksListPage(
         event: event,
         title: title,
+        canGoBack: canGoBack,
       ),
     );
   }
@@ -37,11 +41,14 @@ class BooksListPage extends StatelessWidget {
 
 class _BooksListPage extends StatefulWidget {
   final String title;
+  final bool canGoBack;
   final LoadBooks event;
+
   const _BooksListPage({
     Key? key,
     required this.title,
     required this.event,
+    required this.canGoBack,
   }) : super(key: key);
 
   @override
@@ -64,12 +71,14 @@ class _BooksListPageState extends State<_BooksListPage> {
           ),
         ),
         centerTitle: false,
-        leading: IconButton(
-          icon: const Svg('back.svg'),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        leading: widget.canGoBack
+            ? IconButton(
+                icon: const Svg('back.svg'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            : null,
         actions: [
           const SearchIcon(),
           IconButton(
@@ -87,7 +96,9 @@ class _BooksListPageState extends State<_BooksListPage> {
       body: BlocBuilder<BooksBloc, BooksState>(
         builder: (context, state) {
           if (state.status == BooksStatus.loading) {
-            return const Center(child: AppProgressIndicator(size: 100));
+            return const Center(
+              child: AppProgressIndicator(size: 100),
+            );
           }
 
           if (state.status == BooksStatus.error) {
@@ -95,6 +106,16 @@ class _BooksListPageState extends State<_BooksListPage> {
               onPressed: () {
                 BlocProvider.of<BooksBloc>(context).add(widget.event);
               },
+            );
+          }
+
+          if (state.books!.isEmpty) {
+            return Center(
+              child: EmptyListWidget(
+                text: t.search.noBooksTitle,
+                subText: t.search.noBooksSubtitle,
+                isPage: false,
+              ),
             );
           }
 

@@ -3,11 +3,12 @@ import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/entities/review_content.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/book.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/mockable_image.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
-import 'package:bibliotheque/ui/screens/details/created_review_success_dialog.dart';
+import 'package:bibliotheque/ui/dialogs/created_review_success_dialog.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,11 +46,8 @@ class _NewReviewScreenState extends State<_NewReviewScreen> {
     return BlocConsumer<CreateReviewBloc, CreateReviewState>(
       listener: (context, state) async {
         if (state.status == CreateReviewStatus.error) {
-          final msg = reviewsErrorToText(state.error!);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(msg),
-            ),
+          context.showSnackBar(
+            text: reviewsErrorToText(state.error!),
           );
         }
 
@@ -64,8 +62,16 @@ class _NewReviewScreenState extends State<_NewReviewScreen> {
       },
       builder: (context, state) {
         if (state.status == CreateReviewStatus.sending) {
-          return const Scaffold(
-            body: Center(
+          return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Svg('back.svg'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+            body: const Center(
               child: AppProgressIndicator(size: 100),
             ),
           );
@@ -136,6 +142,7 @@ class _NewReviewScreenState extends State<_NewReviewScreen> {
                         child: MockableImage(
                           widget.book.coveUrl,
                           height: 200,
+                          type: MockImageType.bookCover,
                         ),
                       ),
                       const SizedBox(width: 20),
@@ -238,6 +245,7 @@ class _NewReviewScreenState extends State<_NewReviewScreen> {
                   RatingBar.builder(
                     unratedColor: context.theme.dividerColor.withOpacity(0.5),
                     glowColor: context.theme.primaryColor.withOpacity(0.3),
+                    initialRating: rate,
                     itemBuilder: (context, index) {
                       return Icon(
                         Icons.star,

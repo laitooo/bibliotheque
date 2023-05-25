@@ -47,16 +47,36 @@ flutter:
   assets:
     - assets/i18n/
     - assets/icons/
-    - assets/mock/
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+    - assets/fonts/
+    - assets/images/
+    - assets/mock/avatar/
+    - assets/mock/covers/
+    - assets/mock/splash/
+    - assets/mock/categories/
+
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Black.ttf
+        - asset: assets/fonts/Roboto/Roboto-BlackItalic.ttf
+        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto/Roboto-BoldItalic.ttf
+        - asset: assets/fonts/Roboto/Roboto-Italic.ttf
+        - asset: assets/fonts/Roboto/Roboto-Light.ttf
+        - asset: assets/fonts/Roboto/Roboto-LightItalic.ttf
+        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto/Roboto-MediumItalic.ttf
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto/Roboto-Thin.ttf
+        - asset: assets/fonts/Roboto/Roboto-ThinItalic.ttf
+
+    - family: Readex_Pro
+      fonts:
+        - asset: assets/fonts/Readex_Pro/ReadexPro-VariableFont_HEXP,wght.ttf
+        - asset: assets/fonts/Readex_Pro/static/ReadexPro-Bold.ttf
+        - asset: assets/fonts/Readex_Pro/static/ReadexPro-ExtraLight.ttf
+        - asset: assets/fonts/Readex_Pro/static/ReadexPro-Light.ttf
+        - asset: assets/fonts/Readex_Pro/static/ReadexPro-Medium.ttf
+        - asset: assets/fonts/Readex_Pro/static/ReadexPro-Regular.ttf
+        - asset: assets/fonts/Readex_Pro/static/ReadexPro-SemiBold.ttf

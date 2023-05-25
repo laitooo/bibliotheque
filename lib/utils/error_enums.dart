@@ -38,7 +38,8 @@ enum ProfileError {
 }
 
 enum NotificationsOptionError {
-  networkError,
+  loadingError,
+  updatingError,
 }
 
 enum FAQError {
@@ -47,13 +48,37 @@ enum FAQError {
 
 enum ReviewsError {
   loadingError,
-  sendingError,
+  submittingError,
   invalidRate,
   fetchingAvatar,
 }
 
 enum SearchError {
   networkError,
+}
+
+enum RegisterError {
+  networkError,
+  emptyCategories,
+  emptyName,
+  emptyCountry,
+  invalidPhoneNumber,
+  uploadAvatarError,
+  emptyBirthDay,
+  emptyUsername,
+  emptyEmail,
+  shortPassword,
+  nonMatchingPasswords,
+}
+
+enum ForgetPasswordError {
+  networkError,
+  invalidEmail,
+  notFoundEmail,
+  invalidOtp,
+  incorrectOtp,
+  shortPassword,
+  notMatchingPasswords,
 }
 
 enum AuthError {
@@ -64,8 +89,16 @@ enum AuthError {
 
 enum EditProfileError {
   networkError,
+  emptyName,
+  emptyCountry,
+  invalidPhoneNumber,
+  uploadAvatarError,
+  emptyBirthDay,
 }
 
 enum SearchHistoryError {
-  networkError,
+  loadingError,
+  addingError,
+  removingError,
+  clearingError,
 }

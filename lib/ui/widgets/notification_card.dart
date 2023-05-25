@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/utils/locale_date_format.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,6 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formatter = LocaleDateFormat();
     bool isArabic = Localizations.localeOf(context).languageCode == "ar";
 
     return InkWell(
@@ -58,10 +58,9 @@ class NotificationCard extends StatelessWidget {
                           fontSize: 14,
                         ),
                       ),
-                      // TODO: date time format for the whole app
                       const SizedBox(height: 8),
                       Text(
-                        formatter.defaultFormat(notification.date),
+                        LocaleDateFormat.defaultFormat(notification.date),
                         maxLines: 1,
                         style: TextStyle(
                           color: context.theme.textColor4,
@@ -83,7 +82,7 @@ class NotificationCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      "New",
+                      t.notifications.newText,
                       style: TextStyle(
                         fontSize: 12,
                         color: context.theme.textColor2,
@@ -118,7 +117,7 @@ class NotificationCard extends StatelessWidget {
       case nt.NotificationType.securityUpdates:
         return "success.svg";
       case nt.NotificationType.multipleCardFeatures:
-        return "grid.svg";
+        return "grid_view.svg";
       case nt.NotificationType.creditCardConnected:
         return "wallet.svg";
       default:

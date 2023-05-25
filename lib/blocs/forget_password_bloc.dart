@@ -20,7 +20,7 @@ class ForgetPasswordState {
   final ForgetPasswordStatus status;
   final ForgetPasswordProcess process;
   final String? email;
-  final AuthError? error;
+  final ForgetPasswordError? error;
 
   ForgetPasswordState(
     this.status,
@@ -33,7 +33,7 @@ class ForgetPasswordState {
           {ForgetPasswordStatus? status,
           ForgetPasswordProcess? process,
           String? email,
-          AuthError? error}) =>
+          ForgetPasswordError? error}) =>
       ForgetPasswordState(
         status ?? this.status,
         process ?? this.process,
@@ -50,6 +50,16 @@ class InputEmail extends BlocEvent<ForgetPasswordState, ForgetPasswordBloc> {
   @override
   Stream<ForgetPasswordState> toState(
       ForgetPasswordState current, ForgetPasswordBloc bloc) async* {
+    if (!RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email)) {
+      yield current.copyWith(
+        status: ForgetPasswordStatus.error,
+        error: ForgetPasswordError.invalidEmail,
+      );
+      return;
+    }
+
     yield current.copyWith(status: ForgetPasswordStatus.loading);
 
     final res = await bloc._repo.forgetPassword(email);
@@ -76,6 +86,14 @@ class InputOtpCode extends BlocEvent<ForgetPasswordState, ForgetPasswordBloc> {
   @override
   Stream<ForgetPasswordState> toState(
       ForgetPasswordState current, ForgetPasswordBloc bloc) async* {
+    if (otp.length != 4) {
+      yield current.copyWith(
+        status: ForgetPasswordStatus.error,
+        error: ForgetPasswordError.invalidOtp,
+      );
+      return;
+    }
+
     yield current.copyWith(status: ForgetPasswordStatus.loading);
 
     final res = await bloc._repo.checkOtpCode(otp, current.email!);
@@ -105,15 +123,21 @@ class InputNewPassword
       ForgetPasswordState current, ForgetPasswordBloc bloc) async* {
     yield current.copyWith(status: ForgetPasswordStatus.loading);
 
-    if (password != confirmPassword) {
+    if (password.length < 8) {
       yield current.copyWith(
         status: ForgetPasswordStatus.error,
-        error: AuthError.passwordsNotMatching,
+        error: ForgetPasswordError.shortPassword,
       );
       return;
     }
 
-    // TODO:: validate password
+    if (password != confirmPassword) {
+      yield current.copyWith(
+        status: ForgetPasswordStatus.error,
+        error: ForgetPasswordError.notMatchingPasswords,
+      );
+      return;
+    }
 
     final res = await bloc._repo.changePassword(current.email!, password);
 

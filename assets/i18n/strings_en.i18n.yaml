@@ -5,6 +5,30 @@ errors:
   networkErrorTryAgain: "Network Error, Try again"
   tryAgain: "Try again"
   invalidRate: "Please enter a valid rate"
+  errorAddingTryAgain: "Error adding, check your internet and try again please"
+  errorRemovingTryAgain: "Error removing, check your internet and try again please"
+  errorUpdaingTryAgain: "Error updating, check your internet and try again please"
+  errorClearingTryAgain: "Error clearing, check your internet and try again please"
+  register:
+    networkError: "Network error occurred, please try again"
+    emptyCategories: "Please select at least one category"
+    emptyName: "Please enter a valid name"
+    emptyCountry: "Please choose your current country of residence"
+    invalidPhoneNumber: "Please enter a valid phone number"
+    uploadAvatarError: "Error uploading avatar, Please check your internet and try again"
+    emptyBirthDay: "Please enter your birthday"
+    emptyUsername: "Please enter a valid username"
+    invalidEmail: "Please enter a valid email"
+    shortPassword: "Please enter a password that's at least 8 characters"
+    nonMatchingPasswords: "Passwords are not matching"
+  forgetPassword:
+    networkError: "Network error occurred, please try again"
+    invalidEmail: "Please enter a valid email"
+    notFoundEmail: "This email does not exist"
+    shortPassword: "Please enter a password that's at least 8 characters"
+    nonMatchingPasswords: "Passwords are not matching"
+    invalidOtp: "Please enter a 4 numbers code"
+    incorrectOtp: "The code you entered does not match the actual otp code"
 
 widgets:
   phoneNumber: "Phone number"
@@ -50,9 +74,12 @@ auth:
     email: "Email"
     continu: "Continue"
     createPassword: "Create new password"
-    enterNewPassword: "Enter your new password. If you forget it, then you have to forget password."
+    youGotAnEmail: "You've got mail"
+    weSentYouOtp: "We have sent the otp code to your email address. Check your email and enter the code below."
     notReceivedEmail: "Didn't receive email?"
     resendIn: "You can resend code in "
+    resendCode: "Resend code"
+    enterNewPassword: "Enter your new password. If you forget it, then you have to forget password."
     confirm: "Confirm"
     password: "Password"
     confirmPassword: "Confirm password"
@@ -61,6 +88,8 @@ auth:
 
 categories:
   exploreByGenre: "Explore by Genre"
+  emptyTitle: "No categories"
+  emptySubtitle: "Categories are not available now"
 
 details:
   releasedOn: "Released on "
@@ -70,6 +99,8 @@ details:
   usd: "USD"
   aboutThisBook: "About this book"
   ratingsAndReviews: "Ratings & Reviews"
+  emptyReviews: "No reviews"
+  emptyReviewsSubText: "Be the first one to write a review"
   language: "Language"
   age: "Age"
   author: "Author"
@@ -80,6 +111,8 @@ details:
   reviews: "reviews"
   rateBook: "Rate this book"
   writeReview: "Write a review"
+  numPages: "Number of pages"
+  numPurchases: "Copies purchased"
 
 home:
   topPopular: "Top popular"
@@ -95,6 +128,7 @@ notifications:
   title: "Notifications"
   empty: "No notifications"
   noNotifications: "You don't have any notifications at this time"
+  newText: "New"
 
 search:
   startSearching: "Start searching"
@@ -111,13 +145,16 @@ search:
   age: "Age"
   apply: "Apply"
   reset: "Reset"
+  searchHistory: "Search history"
+  noBooksTitle: "No books"
+  noBooksSubtitle: "No similar books available at the moment"
 
 account:
   account:
     title: "Account"
     paymentMethod: "Payment methods"
     personalInfo: "Personal Info"
-    notifications: "Notifications"
+    notifications: "Notifications preferences"
     language: "Language"
     nightMode: "Night mode"
     helpCenter: "Help center"
@@ -142,7 +179,7 @@ account:
     areYouSure: "Are you sure you want to log out?"
     cancel: "Cancel"
   notifications:
-    title: "Notifications"
+    title: "Notifications preferences"
     notifyMeWhen: "Notify me when..."
     newRecommendation: "There is a new Recommendation"
     newBookSeries: "There is a new book series"
@@ -164,6 +201,9 @@ account:
     userName: "Username"
     email: "Email"
     phoneNumber: "Phone number"
+    editSuccess: "Updated successfully"
+    submit: "Submit"
+    cancel: "Cancel"
   help:
     title: "Help center"
     faq: "FAQ"
@@ -174,6 +214,8 @@ account:
     facebook: "Facebook"
     twitter: "Twitter"
     instagram: "Instagram"
+    emptyTitle: "No Faq's"
+    emptySubtitle: "Faq's are not available now"
 
 onBoarding:
   welcomeTo: "Welcome to "
@@ -229,3 +271,8 @@ createReview:
   successTitle: "Submitted successfully"
   successContent: "Thank you for providing a rating and a review for the book: "
   ok: "OK"
+
+bookCard:
+  removeFromList: "Remove from wish list"
+  share: "Share"
+  aboutApp: "About the app"

@@ -22,6 +22,8 @@ class LoadUnreadNotifications
   @override
   Stream<UnreadNotificationsState> toState(
       UnreadNotificationsState current, UnreadNotificationsBloc bloc) async* {
+    yield UnreadNotificationsState(UnreadNotificationsStatus.loading);
+
     final res = await bloc._repo.hasNotification("bloc._auth.user!.id");
 
     yield res.incase(

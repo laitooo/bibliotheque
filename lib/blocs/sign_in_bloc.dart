@@ -17,8 +17,6 @@ class SignInState {
   SignInState(this.status, {this.error});
 }
 
-// TODO:: maybe do copy with to all blocs and make the value required always
-
 class SignIn extends BlocEvent<SignInState, SignInBloc> {
   final String usernameEmail;
   final String password;

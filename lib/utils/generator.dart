@@ -109,12 +109,13 @@ class Generator {
   ];
 
   static const _books = [
-    'The house of hades (Heroes of olympics)',
-    'My quiet Blacksmith, Life in Another world',
-    'It starts with us: A novel',
-    'Trapped in a dating Sim: The world',
-    'His dark material: The golden company',
-    'Batman: Arkham Unhinged vol. 1',
+    'Bullshit jobs',
+    'The age of Vikings',
+    'A brief history of humankind Sapiens',
+    'Men are from Mars Women are from Venus',
+    'جمهورية أفلاطون',
+    'Talking to my daughter about the Economy',
+    ' فن الحرب',
   ];
 
   static const _categories = [
@@ -202,8 +203,7 @@ class Generator {
   }
 
   String avatar() {
-    return 'https://images.unsplash.com/photo-1553729784-e91953dec042?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGV'
-        'yc29uJTIwcmVhZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60';
+    return "assets/mock/avatar/" + _oneOf(["male", "female"]) + ".png";
   }
 
   Book book() => Book(
@@ -274,8 +274,9 @@ class Generator {
         title: 'Multiple cards features!',
         body:
             'Update the app now to get access to the latest features for better experience using the app.',
-        titleAr: 'titleAr',
-        bodyAr: 'bodyAr',
+        titleAr: 'ميزة البطاقات المتعددة',
+        bodyAr:
+            'قم بتحديث التطبيق للحصول على آخر الميزات لتجربة أداء أفضل في استخدام التطبيق',
         date: _dateTime(
           before: DateTime(2000),
           after: DateTime.now(),
@@ -287,7 +288,7 @@ class Generator {
         email: _email,
         username: _userName(),
         fullName: _userName(),
-        avatarUrl: avatar(),
+        avatarUrl: "",
         phoneNumber: '+249100640513',
         gender: _oneOf(Gender.values),
         age: _oneOf(Age.values),
@@ -315,8 +316,11 @@ class Generator {
 
   Question faq() => Question(
         id: id(),
-        question: "What is Bibliotheque?",
-        answer:
+        questionAr: "ما هدف تطبيق المكتبة",
+        answerAr: "هدف التطبيق هو تسهيل عملية شراء وتوصيل الكتب الى القراء."
+            "كما يتيح امكانية تصفح التكتب الموجودة ورؤية تقييمات القراء",
+        questionEn: "What is Bibliotheque?",
+        answerEn:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue tempor, a sit accumsan",
         type: _oneOf(QuestionType.values),
       );
@@ -325,7 +329,7 @@ class Generator {
         id: id(),
         userId: id(),
         userName: _userName(),
-        userCover: _cover,
+        userCover: "",
         hasLiked: boolean(),
         numStars: starsNumber ?? _oneOf(StarsNumber.values),
         numLikes: count(10, 1000),

@@ -16,8 +16,10 @@ enum QuestionType {
 class Question with _$Question {
   const factory Question({
     required String id,
-    required String question,
-    required String answer,
+    required String questionAr,
+    required String questionEn,
+    required String answerAr,
+    required String answerEn,
     required QuestionType type,
   }) = _Question;
 

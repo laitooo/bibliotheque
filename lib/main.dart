@@ -1,4 +1,3 @@
-import 'package:bibliotheque/blocs/popular_books_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.g.dart';
 import 'package:bibliotheque/service_locator.dart';
@@ -44,10 +43,7 @@ class _MyAppState extends State<MyApp> {
                 supportedLocales: LocaleSettings.supportedLocales,
                 localizationsDelegates: GlobalMaterialLocalizations.delegates,
                 theme: state.theme.material(context),
-                home: BlocProvider(
-                  create: (_) => PopularBooksBloc()..add(LoadPopularBooks()),
-                  child: const SplashScreen(),
-                ),
+                home: const SplashScreen(),
               );
             },
           );

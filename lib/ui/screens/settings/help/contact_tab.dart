@@ -12,7 +12,6 @@ class ContactTab extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       children: [
         const SizedBox(height: 10),
-        // TODO:: complete this
         _mediaItem(
           context,
           t.account.help.customerService,
@@ -34,7 +33,7 @@ class ContactTab extends StatelessWidget {
         _mediaItem(
           context,
           t.account.help.facebook,
-          'facebook.svg',
+          'facebook2.svg',
           () {},
         ),
         _mediaItem(
@@ -71,8 +70,9 @@ class ContactTab extends StatelessWidget {
           children: [
             Svg(
               svgPath,
-              color: context.theme.primaryColor,
               size: 24,
+              matchTextDirection: false,
+              color: context.theme.primaryColor,
             ),
             const SizedBox(width: 20),
             Text(

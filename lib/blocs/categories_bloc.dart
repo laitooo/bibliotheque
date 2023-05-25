@@ -25,6 +25,8 @@ class LoadCategories extends BlocEvent<CategoriesState, CategoriesBloc> {
   @override
   Stream<CategoriesState> toState(
       CategoriesState current, CategoriesBloc bloc) async* {
+    yield CategoriesState(CategoriesStatus.loading);
+
     final res = allCategories
         ? await bloc._repo.getAllCategories()
         : await bloc._repo.getTopCategories();

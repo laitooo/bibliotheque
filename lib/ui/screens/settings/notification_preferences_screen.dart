@@ -1,6 +1,8 @@
 import 'package:bibliotheque/blocs/notifications_options_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
-import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
+import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
+import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,7 +40,13 @@ class _NotificationPreferencesScreenState
         ),
         centerTitle: false,
       ),
-      body: BlocBuilder<NotificationsOptionsBloc, NotificationsOptionsState>(
+      body: BlocConsumer<NotificationsOptionsBloc, NotificationsOptionsState>(
+        listener: (context, state) {
+          if (state.status == NotificationsOptionsStatus.error &&
+              state.error == NotificationsOptionError.updatingError) {
+            context.showSnackBar(text: t.errors.errorUpdatingTryAgain);
+          }
+        },
         builder: (context, state) {
           if (state.status == NotificationsOptionsStatus.loading) {
             return const Center(
@@ -46,7 +54,8 @@ class _NotificationPreferencesScreenState
             );
           }
 
-          if (state.status == NotificationsOptionsStatus.error) {
+          if (state.status == NotificationsOptionsStatus.error &&
+              state.error == NotificationsOptionError.loadingError) {
             return TryAgainWidget(
               onPressed: () {
                 BlocProvider.of<NotificationsOptionsBloc>(context)

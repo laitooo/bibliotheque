@@ -25,6 +25,7 @@ class _HomeScreen extends StatefulWidget {
     BooksListPage(
       title: t.home.topPopular,
       booksSource: BooksSource.popular,
+      canGoBack: false,
     ),
     const WishListScreen(),
     const AccountSettingsScreen(),

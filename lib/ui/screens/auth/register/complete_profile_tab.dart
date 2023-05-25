@@ -50,10 +50,13 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
           Center(
             child: Stack(
               children: [
-                // TODO:: handle user profile picture
-                const CircleImageWidget(
-                  "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
-                  size: 130,
+                BlocBuilder<RegisterBloc, RegisterState>(
+                  builder: (context, state) {
+                    return CircleImageWidget(
+                      state.profile.avatarUrl,
+                      size: 130,
+                    );
+                  },
                 ),
                 PositionedDirectional(
                   bottom: 10,
@@ -83,13 +86,13 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
           const SizedBox(height: 40),
           AppTextField(
             label: t.auth.register.fullName,
-            initialValue: "Laitooo san",
+            initialValue: "",
             controller: nameController,
           ),
           const SizedBox(height: 20),
           AppTextField(
             label: t.auth.register.phoneNumber,
-            initialValue: "+1-300-555-0399",
+            initialValue: "",
             controller: phoneController,
             inputType: TextInputType.phone,
           ),
@@ -119,13 +122,12 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
             title: t.auth.register.continu,
             removePadding: true,
             onPressed: () {
-              // TODO:: make sure this is not null (validate data)
               BlocProvider.of<RegisterBloc>(context).add(
                 InputProfileInfo(
                   fullName: nameController.text,
                   phoneNumber: phoneController.text,
-                  country: country!.name,
-                  dateOfBirth: birthDate ?? DateTime.now(),
+                  country: country,
+                  dateOfBirth: birthDate,
                 ),
               );
             },

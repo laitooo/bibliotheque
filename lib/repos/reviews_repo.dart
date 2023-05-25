@@ -1,3 +1,4 @@
+import 'package:bibliotheque/features.dart';
 import 'package:bibliotheque/models/review.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:bibliotheque/utils/generator.dart';
@@ -17,9 +18,13 @@ class MockReviewsRepository extends ReviewsRepository {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(ReviewsError.loadingError);
+    }
+
     return Result.value(
       List.generate(
-        5,
+        Features.isEmptyLists ? 0 : 5,
         (index) => generator.review(starsNumber: starsNumber),
       ),
     );
@@ -30,6 +35,10 @@ class MockReviewsRepository extends ReviewsRepository {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(ReviewsError.submittingError);
+    }
 
     return Result.value(null);
   }

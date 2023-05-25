@@ -1,13 +1,16 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/blocs/wish_list_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
-import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
-import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
+import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/search/filter_screen.dart';
+import 'package:bibliotheque/ui/screens/settings/about_app_screen.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
 import 'package:bibliotheque/ui/widgets/search_icon.dart';
+import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -62,29 +65,34 @@ class _WishListScreenState extends State<_WishListScreen> {
           const SearchIcon(),
         ],
       ),
-      body: BlocBuilder<WishListBloc, WishListState>(
+      body: BlocConsumer<WishListBloc, WishListState>(
+        listener: (context, state) {
+          if (state.status == WishListStatus.error &&
+              state.error == WishListError.removingError) {
+            context.showSnackBar(text: t.errors.errorRemovingTryAgain);
+          }
+        },
         builder: (context, state) {
           if (state.status == WishListStatus.loading) {
             return const Center(child: AppProgressIndicator(size: 100));
           }
 
-          if (state.status == WishListStatus.error) {
+          if (state.status == WishListStatus.error &&
+              state.error == WishListError.loadingListError) {
             return TryAgainWidget(
               onPressed: () {
-                BlocProvider.of<WishListBloc>(context).add(LoadWishList(true));
+                BlocProvider.of<WishListBloc>(context).add(
+                  LoadWishList(true),
+                );
               },
             );
           }
 
           if (state.books!.isEmpty) {
-            return NoDataPage(
+            return EmptyListWidget(
               text: t.wishlist.empty,
               subText: t.wishlist.addBooks,
-              icon: Svg(
-                'empty_page.svg',
-                size: 200,
-                color: context.theme.iconColor2,
-              ),
+              isPage: false,
             );
           }
 
@@ -93,10 +101,24 @@ class _WishListScreenState extends State<_WishListScreen> {
                 .map(
                   (book) => WishListCard(
                     book: book,
-                    onRemoveClicked: () {
-                      BlocProvider.of<WishListBloc>(context).add(
-                        RemoveFromWishList(book.id),
-                      );
+                    onItemClicked: (index) {
+                      switch (index) {
+                        case 0:
+                          BlocProvider.of<WishListBloc>(context).add(
+                            RemoveFromWishList(book.id),
+                          );
+                          break;
+                        case 2:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const AboutAppScreen(),
+                            ),
+                          );
+                          break;
+                        case 1:
+                        default:
+                          break;
+                      }
                     },
                   ),
                 )

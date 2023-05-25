@@ -2,6 +2,7 @@ import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/book_details.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
+import 'package:bibliotheque/utils/locale_date_format.dart';
 import 'package:flutter/material.dart';
 
 import '../../../i18n/translations.dart';
@@ -23,7 +24,6 @@ class AboutBookScreen extends StatelessWidget {
       fontWeight: FontWeight.w400,
       color: context.theme.textColor1,
     );
-    // TODO:: complete this screen (links and data)
     final linkStyle = TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w400,
@@ -168,7 +168,7 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  book.publishDate.toString(),
+                  LocaleDateFormat.monthYearFormat(book.publishDate),
                   style: textStyle,
                 ),
               ),
@@ -187,14 +187,14 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  t.details.pages,
+                  t.details.numPages,
                   style: titleStyle,
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Text(
-                  t.details.purchases,
+                  t.details.numPurchases,
                   style: titleStyle,
                 ),
               ),

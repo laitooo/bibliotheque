@@ -1,11 +1,13 @@
 import 'package:bibliotheque/blocs/google_auth_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/auth/login/login_screen.dart';
 import 'package:bibliotheque/ui/screens/auth/register/register_screen.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
+import 'package:bibliotheque/utils/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,8 +37,7 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
   @override
   void initState() {
     super.initState();
-    // TODO:: uncomment when finished
-    // prefs.setIsFirstTimer(false);
+    prefs.setIsFirstTimer(false);
   }
 
   @override
@@ -50,15 +51,8 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
 
           if (state.status == GoogleAuthStatus.error) {
             // TODO:: use real errors instead of always network error
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  t.errors.networkError,
-                  style: const TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-              ),
+            context.showSnackBar(
+              text: t.errors.networkError,
             );
           }
         },
@@ -89,8 +83,10 @@ class _OnBoardingScreenState extends State<_OnBoardingScreen> {
                   (index) => Column(
                     children: [
                       SizedBox(
-                        child: Image.network(
-                          "https://julianstodd.files.wordpress.com/2016/03/img_3419.jpg?w=640&h=853",
+                        child: Image.asset(
+                          "assets/mock/splash/" +
+                              (index + 1).toString() +
+                              ".jpg",
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.5,
                           fit: BoxFit.cover,

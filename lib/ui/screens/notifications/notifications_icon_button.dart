@@ -33,7 +33,7 @@ class NotificationsIconButton extends StatelessWidget {
                         ),
                         BlocProvider.value(value: bloc)
                       ],
-                      child: const NotificationsListPage(),
+                      child: const NotificationsListScreen(),
                     );
                   },
                 ),
@@ -48,16 +48,16 @@ class NotificationsIconButton extends StatelessWidget {
             ),
           ),
           PositionedDirectional(
-            start: 8,
-            top: 8,
+            start: 14,
+            top: 14,
             child:
                 BlocBuilder<UnreadNotificationsBloc, UnreadNotificationsState>(
               builder: (context, state) {
                 if (state.status == UnreadNotificationsStatus.success) {
                   if (state.hasNotification!) {
                     return Container(
-                      width: 8,
-                      height: 8,
+                      width: 10,
+                      height: 10,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: context.theme.primaryColor,

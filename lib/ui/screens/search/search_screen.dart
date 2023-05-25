@@ -3,12 +3,14 @@ import 'package:bibliotheque/blocs/search_bloc.dart';
 import 'package:bibliotheque/blocs/search_history_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
-import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
-import 'package:bibliotheque/ui/common_widgets/no_data_page.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
+import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/search/filter_screen.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
+import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +23,6 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   bool isGrid = true;
-  String query = "";
   final _textFieldFocus = FocusNode();
   final searchController = TextEditingController();
 
@@ -35,47 +36,84 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO:: do on may pop, and if he press back the current query get's
-    // removed and the previous search history will be shown.
-
-    // TODO:: also translate the texts
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: const Svg('back.svg'),
-                ),
-                Flexible(
-                  flex: 1,
-                  child: _searchField(),
-                ),
-                const SizedBox(width: 20),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: BlocBuilder<SearchBloc, SearchState>(
-                builder: (context, state) {
-                  if (state.status == SearchStatus.idle) {
-                    return BlocBuilder<SearchHistoryBloc, SearchHistoryState>(
-                      builder: (_, historyState) {
-                        if (historyState.status ==
-                            SearchHistoryStatus.loading) {
-                          return const Center(
-                            child: AppProgressIndicator(size: 100),
-                          );
-                        }
+      body: WillPopScope(
+        onWillPop: () async {
+          if (searchController.text.isEmpty) {
+            return true;
+          } else {
+            searchController.text = "";
+            BlocProvider.of<SearchBloc>(context).add(
+              ClearSearchResults(),
+            );
+            return false;
+          }
+        },
+        child: SafeArea(
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: const Svg('back.svg'),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: _searchField(),
+                  ),
+                  const SizedBox(width: 20),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: BlocBuilder<SearchBloc, SearchState>(
+                  builder: (context, state) {
+                    if (state.status == SearchStatus.idle) {
+                      return BlocConsumer<SearchHistoryBloc,
+                          SearchHistoryState>(
+                        listener: (_, historyState) {
+                          if (historyState.status ==
+                              SearchHistoryStatus.error) {
+                            if (historyState.error ==
+                                SearchHistoryError.clearingError) {
+                              context.showSnackBar(
+                                text: t.errors.errorClearingTryAgain,
+                              );
+                            }
 
-                        if (historyState.status ==
-                                SearchHistoryStatus.success &&
-                            historyState.list!.isNotEmpty) {
+                            if (historyState.error ==
+                                SearchHistoryError.removingError) {
+                              context.showSnackBar(
+                                text: t.errors.errorRemovingTryAgain,
+                              );
+                            }
+                          }
+                        },
+                        builder: (_, historyState) {
+                          if (historyState.status ==
+                              SearchHistoryStatus.loading) {
+                            return const Center(
+                              child: AppProgressIndicator(size: 100),
+                            );
+                          }
+
+                          if (historyState.status == SearchStatus.error &&
+                              historyState.error ==
+                                  SearchHistoryError.loadingError) {
+                            return Center(
+                              child: Text(
+                                t.search.startSearching,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: context.theme.textColor1,
+                                ),
+                              ),
+                            );
+                          }
                           return ListView(
                             children: [
                               Padding(
@@ -85,13 +123,13 @@ class _SearchScreenState extends State<SearchScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    // TODO: use svg
                                     Text(
-                                      "Previous Search",
+                                      t.search.searchHistory,
                                       style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: context.theme.textColor1),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: context.theme.textColor1,
+                                      ),
                                     ),
                                     IconButton(
                                       onPressed: () {
@@ -99,10 +137,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                                 context)
                                             .add(ClearSearchHistory());
                                       },
-                                      icon: Icon(
-                                        Icons.close,
-                                        size: 24,
-                                        color: context.theme.iconColor1,
+                                      icon: const Svg(
+                                        "close.svg",
                                       ),
                                     ),
                                   ],
@@ -128,126 +164,119 @@ class _SearchScreenState extends State<SearchScreen> {
                                       ),
                                     );
                                   },
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 6),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          historyState.list![index],
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: context.theme.textColor1),
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            BlocProvider.of<SearchHistoryBloc>(
-                                                    context)
-                                                .add(
-                                              RemovePreviousSearch(
-                                                historyState.list![index],
+                                  child: Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20, vertical: 6),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              historyState.list![index],
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                color: context.theme.textColor1,
                                               ),
-                                            );
-                                          },
-                                          icon: Icon(
-                                            Icons.close,
-                                            size: 24,
-                                            color: context.theme.iconColor1,
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                          IconButton(
+                                            onPressed: () {
+                                              BlocProvider.of<
+                                                          SearchHistoryBloc>(
+                                                      context)
+                                                  .add(
+                                                RemovePreviousSearch(
+                                                  historyState.list![index],
+                                                ),
+                                              );
+                                            },
+                                            icon: const Svg(
+                                              "close.svg",
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 );
                               }),
                             ],
                           );
-                        } else {
-                          return Center(
-                            child: Text(
-                              t.search.startSearching,
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: context.theme.textColor1,
-                              ),
+                        },
+                      );
+                    }
+
+                    if (state.status == SearchStatus.loading) {
+                      return const Center(
+                          child: AppProgressIndicator(size: 100));
+                    }
+
+                    if (state.status == SearchStatus.error) {
+                      return TryAgainWidget(
+                        onPressed: () {
+                          BlocProvider.of<SearchBloc>(context).add(
+                            SearchBook(
+                              query: searchController.text,
                             ),
                           );
-                        }
-                      },
-                    );
-                  }
+                        },
+                      );
+                    }
 
-                  if (state.status == SearchStatus.loading) {
-                    return const Center(child: AppProgressIndicator(size: 100));
-                  }
+                    if (state.books!.isEmpty) {
+                      return EmptyListWidget(
+                        text: t.search.empty,
+                        subText: t.search.noResults,
+                        isPage: false,
+                      );
+                    }
 
-                  if (state.status == SearchStatus.error) {
-                    return TryAgainWidget(
-                      onPressed: () {
-                        BlocProvider.of<SearchBloc>(context).add(
-                          SearchBook(
-                            query: query,
+                    if (isGrid) {
+                      return Column(
+                        children: [
+                          showMethod(),
+                          Expanded(
+                            child: GridView.count(
+                              crossAxisCount: 2,
+                              childAspectRatio: 0.55,
+                              mainAxisSpacing: 10,
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              children: state.books!
+                                  .map(
+                                    (book) => Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 7),
+                                      child: BookCard(book: book),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
                           ),
-                        );
-                      },
-                    );
-                  }
-
-                  if (state.books!.isEmpty) {
-                    return NoDataPage(
-                      text: t.search.noResults,
-                      subText: t.search.noResults,
-                      icon: Svg(
-                        "no_notifications.svg",
-                        size: 24,
-                        color: context.theme.iconColor1,
-                      ),
-                    );
-                  }
-
-                  if (isGrid) {
-                    return Column(
-                      children: [
-                        showMethod(),
-                        Expanded(
-                          child: GridView.count(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.55,
-                            mainAxisSpacing: 10,
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            children: state.books!
-                                .map(
-                                  (book) => Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 7),
-                                    child: BookCard(book: book),
-                                  ),
-                                )
-                                .toList(),
-                          ),
-                        ),
-                      ],
-                    );
-                  } else {
-                    return ListView(
-                      children: [
-                        showMethod(),
-                        ...state.books!
-                            .map(
-                              (book) => HorizontalBookCard(
-                                book: book,
-                              ),
-                            )
-                            .toList(),
-                      ],
-                    );
-                  }
-                },
+                        ],
+                      );
+                    } else {
+                      return ListView(
+                        children: [
+                          showMethod(),
+                          ...state.books!
+                              .map(
+                                (book) => HorizontalBookCard(
+                                  book: book,
+                                ),
+                              )
+                              .toList(),
+                        ],
+                      );
+                    }
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -302,11 +331,11 @@ class _SearchScreenState extends State<SearchScreen> {
         focusNode: _textFieldFocus,
         controller: searchController,
         textInputAction: TextInputAction.search,
+        maxLength: 50,
         onSubmitted: (value) {
-          query = value;
-          if (query.isNotEmpty) {
+          if (searchController.text.isNotEmpty) {
             BlocProvider.of<SearchHistoryBloc>(context).add(
-              AddPreviousSearch(query),
+              AddPreviousSearch(searchController.text),
             );
           }
           BlocProvider.of<SearchBloc>(context).add(
@@ -320,6 +349,7 @@ class _SearchScreenState extends State<SearchScreen> {
           color: context.theme.textColor1,
         ),
         decoration: InputDecoration(
+          counter: const SizedBox(),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(

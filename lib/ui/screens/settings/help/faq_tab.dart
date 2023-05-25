@@ -1,7 +1,9 @@
 import 'package:bibliotheque/blocs/faqs_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/question.dart';
-import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
+import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/faq_question_widget.dart';
 import 'package:bibliotheque/ui/widgets/filter_item.dart';
@@ -38,13 +40,23 @@ class _FAQTabState extends State<FAQTab> {
           );
         }
 
+        if (state.faqs!.isEmpty) {
+          return Center(
+            child: EmptyListWidget(
+              text: t.account.help.emptyTitle,
+              subText: t.account.help.emptySubtitle,
+              isPage: false,
+            ),
+          );
+        }
+
         return ListView(
           shrinkWrap: true,
           padding: const EdgeInsets.symmetric(vertical: 10),
           children: [
             const SizedBox(height: 10),
             SizedBox(
-              height: 32,
+              height: 38,
               width: MediaQuery.of(context).size.width,
               child: ListView(
                 shrinkWrap: true,
@@ -75,8 +87,7 @@ class _FAQTabState extends State<FAQTab> {
             ...state.faqs!
                 .map(
                   (faq) => FAQQuestionWidget(
-                    faq.question,
-                    faq.answer,
+                    faq,
                     iconColor: context.theme.activeColor,
                   ),
                 )

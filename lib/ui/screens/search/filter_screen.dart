@@ -5,7 +5,7 @@ import 'package:bibliotheque/entities/filter_options.dart';
 import 'package:bibliotheque/models/book_details.dart';
 import 'package:bibliotheque/models/category.dart';
 import 'package:bibliotheque/repos/search_repo.dart';
-import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
+import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
@@ -17,7 +17,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../i18n/translations.dart';
 
 class FilterScreen extends StatefulWidget {
-  // TODO: handle filter screen for category and wish list screens
   const FilterScreen({Key? key}) : super(key: key);
 
   @override
@@ -279,68 +278,72 @@ class _FilterScreenState extends State<FilterScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 30),
-                Container(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 0.5,
-                      color: context.theme.dividerColor,
+                if (state.categories!.isNotEmpty) ...[
+                  const SizedBox(height: 30),
+                  Container(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 0.5,
+                        color: context.theme.dividerColor,
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                      color:
+                          context.theme.filterCardBackground.withOpacity(0.1),
                     ),
-                    borderRadius: BorderRadius.circular(20),
-                    color: context.theme.filterCardBackground.withOpacity(0.1),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 10),
-                        child: Text(
-                          t.search.genre,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: context.theme.textColor1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 10),
+                          child: Text(
+                            t.search.genre,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: context.theme.textColor1,
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 15),
-                      ...searchCategories.entries
-                          .map(
-                            (entry) => Container(
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  top: BorderSide(
-                                    width: 0.5,
-                                    color: context.theme.dividerColor,
+                        const SizedBox(height: 15),
+                        ...searchCategories.entries
+                            .map(
+                              (entry) => Container(
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    top: BorderSide(
+                                      width: 0.5,
+                                      color: context.theme.dividerColor,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              child: CheckboxListTile(
-                                value: entry.value,
-                                title: Text(
-                                  entry.key.name,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: context.theme.textColor1,
+                                child: CheckboxListTile(
+                                  value: entry.value,
+                                  title: Text(
+                                    entry.key.name,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: context.theme.textColor1,
+                                    ),
                                   ),
+                                  onChanged: (value) {
+                                    if (value == null) return;
+                                    setState(() {
+                                      searchCategories[entry.key] = value;
+                                    });
+                                  },
+                                  contentPadding: EdgeInsets.zero,
                                 ),
-                                onChanged: (value) {
-                                  if (value == null) return;
-                                  setState(() {
-                                    searchCategories[entry.key] = value;
-                                  });
-                                },
-                                contentPadding: EdgeInsets.zero,
                               ),
-                            ),
-                          )
-                          .toList(),
-                    ],
+                            )
+                            .toList(),
+                      ],
+                    ),
                   ),
-                ),
+                ],
                 const SizedBox(height: 30),
                 Container(
                   padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),

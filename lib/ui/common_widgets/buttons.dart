@@ -36,35 +36,36 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height ?? kAppButtonHeight,
-      width: width,
-      padding: removePadding
-          ? EdgeInsets.zero
-          : const EdgeInsets.symmetric(horizontal: 24),
-      child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(onPressed != null
-              ? backgroundColor ?? context.theme.primaryColor
-              : context.theme.textColor3),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+    return isLoading
+        ? const Center(
+            child: AppProgressIndicator(
+              size: 60,
             ),
-          ),
-          shadowColor: showShadow
-              ? MaterialStateProperty.all(
-                  shadowColor ?? context.theme.inActiveColor)
-              : MaterialStateProperty.all(Colors.transparent),
-        ),
-        onPressed: isLoading ? null : onPressed,
-        child: Center(
-          child: isLoading
-              ? AppProgressIndicator(
-                  size: 30,
-                  color: progressIndicatorColor,
-                )
-              : Row(
+          )
+        : Container(
+            height: height ?? kAppButtonHeight,
+            width: width,
+            padding: removePadding
+                ? EdgeInsets.zero
+                : const EdgeInsets.symmetric(horizontal: 24),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(onPressed != null
+                    ? backgroundColor ?? context.theme.primaryColor
+                    : context.theme.textColor3),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                shadowColor: showShadow
+                    ? MaterialStateProperty.all(
+                        shadowColor ?? context.theme.inActiveColor)
+                    : MaterialStateProperty.all(Colors.transparent),
+              ),
+              onPressed: onPressed,
+              child: Center(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     if (icon != null) ...[
@@ -81,9 +82,9 @@ class MainButton extends StatelessWidget {
                     ),
                   ],
                 ),
-        ),
-      ),
-    );
+              ),
+            ),
+          );
   }
 }
 

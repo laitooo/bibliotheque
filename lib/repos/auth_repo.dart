@@ -1,3 +1,4 @@
+import 'package:bibliotheque/features.dart';
 import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/models/user.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
@@ -8,15 +9,17 @@ abstract class AuthRepository {
   User? get user;
   Future<bool> isLoggedIn();
   Future<Result<void, AuthError>> signIn(String usernameEmail, String password);
-  Future<Result<void, AuthError>> signUp(Profile profile, String password);
+  Future<Result<void, RegisterError>> signUp(Profile profile, String password);
   Future<Result<void, AuthError>> googleSignIn();
   Future<Result<void, AuthError>> appleSignIn();
   Future<Result<void, AuthError>> facebookSignIn();
-  Future<Result<void, AuthError>> forgetPassword(String email);
-  Future<Result<void, AuthError>> checkOtpCode(String otp, String email);
-  Future<Result<void, AuthError>> changePassword(
+  Future<Result<void, ForgetPasswordError>> forgetPassword(String email);
+  Future<Result<void, ForgetPasswordError>> checkOtpCode(
+      String otp, String email);
+  Future<Result<void, ForgetPasswordError>> changePassword(
       String email, String newPassword);
   Future<Result<String, AuthError>> uploadProfilePicture();
+  Future<void> signOut();
 }
 
 class MockAuthRepository extends AuthRepository {
@@ -37,15 +40,23 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
+
     return Result.value(null);
   }
 
   @override
-  Future<Result<void, AuthError>> signUp(
+  Future<Result<void, RegisterError>> signUp(
       Profile profile, String password) async {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(RegisterError.networkError);
+    }
 
     return Result.value(null);
   }
@@ -56,6 +67,10 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 3),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
+
     return Result.value(null);
   }
 
@@ -64,6 +79,10 @@ class MockAuthRepository extends AuthRepository {
     await Future.delayed(
       const Duration(seconds: 3),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
 
     return Result.value(null);
   }
@@ -74,33 +93,50 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 3),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
+
     return Result.value(null);
   }
 
   @override
-  Future<Result<void, AuthError>> forgetPassword(String email) async {
+  Future<Result<void, ForgetPasswordError>> forgetPassword(String email) async {
     await Future.delayed(
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(ForgetPasswordError.networkError);
+    }
+
     return Result.value(null);
   }
 
   @override
-  Future<Result<void, AuthError>> changePassword(
+  Future<Result<void, ForgetPasswordError>> changePassword(
       String email, String newPassword) async {
     await Future.delayed(
       const Duration(seconds: 1),
     );
 
+    if (Features.isMockErrors) {
+      return Result.error(ForgetPasswordError.networkError);
+    }
+
     return Result.value(null);
   }
 
   @override
-  Future<Result<void, AuthError>> checkOtpCode(String otp, String email) async {
+  Future<Result<void, ForgetPasswordError>> checkOtpCode(
+      String otp, String email) async {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(ForgetPasswordError.networkError);
+    }
 
     return Result.value(null);
   }
@@ -110,6 +146,10 @@ class MockAuthRepository extends AuthRepository {
     await Future.delayed(
       const Duration(seconds: 1),
     );
+
+    if (Features.isMockErrors) {
+      return Result.error(AuthError.networkError);
+    }
 
     return Result.value(
       generator.avatar(),
@@ -122,6 +162,13 @@ class MockAuthRepository extends AuthRepository {
       const Duration(seconds: 1),
     );
 
-    return true;
+    return generator.boolean();
+  }
+
+  @override
+  Future<void> signOut() async {
+    await Future.delayed(
+      const Duration(seconds: 0),
+    );
   }
 }

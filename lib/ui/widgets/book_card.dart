@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/book.dart';
 import 'package:bibliotheque/ui/common_widgets/mockable_image.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
@@ -16,7 +17,7 @@ class BookCard extends StatelessWidget {
       width: 180,
       padding: const EdgeInsets.fromLTRB(1, 1, 1, 5),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GestureDetector(
             onTap: () {
@@ -32,6 +33,7 @@ class BookCard extends StatelessWidget {
                 book.coveUrl,
                 width: 178,
                 height: 280,
+                type: MockImageType.bookCover,
               ),
             ),
           ),
@@ -121,7 +123,9 @@ class HorizontalBookCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 child: MockableImage(
                   book.coveUrl,
+                  width: 150,
                   height: 200,
+                  type: MockImageType.bookCover,
                 ),
               ),
             ),
@@ -208,12 +212,12 @@ class HorizontalBookCard extends StatelessWidget {
 
 class WishListCard extends StatelessWidget {
   final Book book;
-  final void Function()? onRemoveClicked;
+  final void Function(int index) onItemClicked;
 
   const WishListCard({
     Key? key,
     required this.book,
-    this.onRemoveClicked,
+    required this.onItemClicked,
   }) : super(key: key);
 
   @override
@@ -238,6 +242,7 @@ class WishListCard extends StatelessWidget {
                 child: MockableImage(
                   book.coveUrl,
                   height: 200,
+                  type: MockImageType.bookCover,
                 ),
               ),
             ),
@@ -305,6 +310,7 @@ class WishListCard extends StatelessWidget {
                         'dots_vertical.svg',
                       ),
                       padding: EdgeInsets.zero,
+                      onSelected: onItemClicked,
                       itemBuilder: (_) {
                         return [
                           PopupMenuItem(
@@ -316,7 +322,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
-                                  "Remove from wish list",
+                                  t.bookCard.removeFromList,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: context.theme.textColor1,
@@ -324,7 +330,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onTap: onRemoveClicked,
+                            value: 0,
                           ),
                           PopupMenuItem(
                             child: Row(
@@ -335,7 +341,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
-                                  "Share",
+                                  t.bookCard.share,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: context.theme.textColor1,
@@ -343,7 +349,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onTap: () {},
+                            value: 1,
                           ),
                           PopupMenuItem(
                             child: Row(
@@ -354,7 +360,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
-                                  "About the app",
+                                  t.bookCard.aboutApp,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: context.theme.textColor1,
@@ -362,7 +368,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onTap: () {},
+                            value: 2,
                           ),
                         ];
                       },

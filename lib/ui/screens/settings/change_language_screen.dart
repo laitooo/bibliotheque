@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 import '../../common_widgets/svg.dart';
 
-class ChangeLanguagePage extends StatefulWidget {
-  const ChangeLanguagePage({Key? key}) : super(key: key);
+class ChangeLanguageScreen extends StatefulWidget {
+  const ChangeLanguageScreen({Key? key}) : super(key: key);
 
   @override
-  State<ChangeLanguagePage> createState() => _ChangeLanguagePageState();
+  State<ChangeLanguageScreen> createState() => _ChangeLanguageScreenState();
 }
 
-class _ChangeLanguagePageState extends State<ChangeLanguagePage> {
+class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
   late String current;
 
   @override

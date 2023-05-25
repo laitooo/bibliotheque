@@ -1,13 +1,13 @@
 import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/blocs/register_bloc.dart';
-import 'package:bibliotheque/i18n/translations.dart';
-import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
+import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
 import 'package:bibliotheque/ui/screens/auth/register/age_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/categories_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/complete_profile_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/create_account_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/gender_tab.dart';
-import 'package:bibliotheque/ui/screens/auth/register/register_success_dialog.dart';
+import 'package:bibliotheque/ui/dialogs/register_success_dialog.dart';
+import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,40 +50,18 @@ class _RegisterPageState extends State<_RegisterPage> {
               useRootNavigator: false,
             );
             Navigator.of(context).pop();
-          }
-
-          if (state.status == RegisterStatus.error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  t.errors.networkError,
-                  style: const TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-              ),
+          } else if (state.status == RegisterStatus.error) {
+            context.showSnackBar(
+              text: registerErrorToText(state.error!),
             );
+          } else {
+            setState(() {
+              current = registerProcessToInt(state.process);
+              controller.jumpToPage(current);
+            });
           }
-
-          setState(() {
-            current = registerProcessToInt(state.process);
-            controller.jumpToPage(current);
-          });
         },
         builder: (context, state) {
-          // TODO: maybe handle the auth processes loading ui better
-          // Maybe even use a loading dialog
-          if (state.status == RegisterStatus.loading) {
-            return SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: const Center(
-                child: AppProgressIndicator(
-                  size: 100,
-                ),
-              ),
-            );
-          }
-
           return PageView(
             controller: controller,
             reverse: false,

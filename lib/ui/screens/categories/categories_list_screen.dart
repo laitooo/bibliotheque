@@ -1,7 +1,8 @@
 import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
-import 'package:bibliotheque/ui/common_widgets/bloc_generic_loader.dart';
+import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
+import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/widgets/category_card.dart';
@@ -53,11 +54,21 @@ class CategoriesListScreen extends StatelessWidget {
             );
           }
 
+          if (state.categories!.isEmpty) {
+            return Center(
+              child: EmptyListWidget(
+                text: t.categories.emptyTitle,
+                subText: t.categories.emptySubtitle,
+                isPage: false,
+              ),
+            );
+          }
+
           return GridView.count(
             crossAxisCount: 2,
             childAspectRatio: 2.5,
-            mainAxisSpacing: 10,
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            mainAxisSpacing: 15,
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             children: state.categories!
                 .map(
                   (category) => Padding(

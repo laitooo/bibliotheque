@@ -58,21 +58,45 @@ class AboutAppScreen extends StatelessWidget {
             ),
           ),
           _mediaLink(
-              context, t.account.about.fees, 'https://laitooo.vercel.app'),
+            context,
+            t.account.about.fees,
+            'https://laitooo.vercel.app',
+          ),
           _mediaLink(
-              context, t.account.about.developer, 'https://laitooo.vercel.app'),
+            context,
+            t.account.about.developer,
+            'https://laitooo.vercel.app',
+          ),
           _mediaLink(
-              context, t.account.about.partner, 'https://laitooo.vercel.app'),
-          _mediaLink(context, t.account.about.accessibility,
-              'https://laitooo.vercel.app'),
+            context,
+            t.account.about.partner,
+            'https://laitooo.vercel.app',
+          ),
           _mediaLink(
-              context, t.account.about.feedback, 'https://laitooo.vercel.app'),
+            context,
+            t.account.about.accessibility,
+            'https://laitooo.vercel.app',
+          ),
           _mediaLink(
-              context, t.account.about.rateUs, 'https://laitooo.vercel.app'),
-          _mediaLink(context, t.account.about.visitOurWebsite,
-              'https://laitooo.vercel.app'),
-          _mediaLink(context, t.account.about.followSocialMedia,
-              'https://laitooo.vercel.app'),
+            context,
+            t.account.about.feedback,
+            'https://laitooo.vercel.app',
+          ),
+          _mediaLink(
+            context,
+            t.account.about.rateUs,
+            'https://laitooo.vercel.app',
+          ),
+          _mediaLink(
+            context,
+            t.account.about.visitOurWebsite,
+            'https://laitooo.vercel.app',
+          ),
+          _mediaLink(
+            context,
+            t.account.about.followSocialMedia,
+            'https://laitooo.vercel.app',
+          ),
         ],
       ),
     );
@@ -80,9 +104,7 @@ class AboutAppScreen extends StatelessWidget {
 
   _mediaLink(BuildContext context, String title, String url) {
     return InkWell(
-      onTap: () {
-        // TODO:: goto url in browser
-      },
+      onTap: () {},
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: Row(

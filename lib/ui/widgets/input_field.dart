@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
+import 'package:bibliotheque/utils/locale_date_format.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -98,7 +99,7 @@ class _AppPasswordTextFieldState extends State<AppPasswordTextField> {
   @override
   void initState() {
     super.initState();
-    widget.controller.text = widget.label;
+    widget.controller.text = widget.initialValue;
     focusNode.addListener(() {
       setState(() {});
     });
@@ -120,6 +121,7 @@ class _AppPasswordTextFieldState extends State<AppPasswordTextField> {
           ),
         ),
         TextField(
+          controller: widget.controller,
           focusNode: focusNode,
           obscureText: !isPasswordVisible,
           enableSuggestions: false,
@@ -220,14 +222,15 @@ class _AppDateSelectorState extends State<AppDateSelector> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(
-                (widget.selectedDateTime ?? DateTime(2000)).toString(),
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: context.theme.textColor1,
+              if (widget.selectedDateTime != null)
+                Text(
+                  LocaleDateFormat.defaultFormat(widget.selectedDateTime!),
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: context.theme.textColor1,
+                  ),
                 ),
-              ),
               const Spacer(),
               Svg(
                 "calendar.svg",
@@ -335,7 +338,9 @@ class _AppCountrySelectorState extends State<AppCountrySelector> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                (widget.selectedCountry ?? Country.parse("sd").name).toString(),
+                widget.selectedCountry == null
+                    ? ""
+                    : widget.selectedCountry!.name,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,

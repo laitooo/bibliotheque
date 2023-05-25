@@ -134,9 +134,72 @@ String reviewsErrorToText(ReviewsError error) {
   switch (error) {
     case ReviewsError.fetchingAvatar:
     case ReviewsError.loadingError:
-    case ReviewsError.sendingError:
+    case ReviewsError.submittingError:
       return t.errors.networkErrorTryAgain;
     case ReviewsError.invalidRate:
       return t.errors.invalidRate;
+  }
+}
+
+String registerErrorToText(RegisterError error) {
+  switch (error) {
+    case RegisterError.networkError:
+      return t.errors.register.networkError;
+    case RegisterError.emptyCategories:
+      return t.errors.register.emptyCategories;
+    case RegisterError.emptyName:
+      return t.errors.register.emptyName;
+    case RegisterError.emptyCountry:
+      return t.errors.register.emptyCountry;
+    case RegisterError.invalidPhoneNumber:
+      return t.errors.register.invalidPhoneNumber;
+    case RegisterError.uploadAvatarError:
+      return t.errors.register.uploadAvatarError;
+    case RegisterError.emptyBirthDay:
+      return t.errors.register.emptyBirthDay;
+    case RegisterError.emptyUsername:
+      return t.errors.register.emptyUsername;
+    case RegisterError.emptyEmail:
+      return t.errors.register.invalidEmail;
+    case RegisterError.shortPassword:
+      return t.errors.register.shortPassword;
+    case RegisterError.nonMatchingPasswords:
+      return t.errors.register.nonMatchingPasswords;
+  }
+}
+
+String editProfileErrorToText(EditProfileError error) {
+  switch (error) {
+    case EditProfileError.networkError:
+      return t.errors.register.networkError;
+    case EditProfileError.emptyName:
+      return t.errors.register.emptyName;
+    case EditProfileError.emptyCountry:
+      return t.errors.register.emptyCountry;
+    case EditProfileError.invalidPhoneNumber:
+      return t.errors.register.invalidPhoneNumber;
+    case EditProfileError.uploadAvatarError:
+      return t.errors.register.uploadAvatarError;
+    case EditProfileError.emptyBirthDay:
+      return t.errors.register.emptyBirthDay;
+  }
+}
+
+String forgetPasswordErrorToText(ForgetPasswordError error) {
+  switch (error) {
+    case ForgetPasswordError.networkError:
+      return t.errors.forgetPassword.networkError;
+    case ForgetPasswordError.invalidEmail:
+      return t.errors.forgetPassword.invalidEmail;
+    case ForgetPasswordError.notFoundEmail:
+      return t.errors.forgetPassword.notFoundEmail;
+    case ForgetPasswordError.shortPassword:
+      return t.errors.forgetPassword.shortPassword;
+    case ForgetPasswordError.notMatchingPasswords:
+      return t.errors.forgetPassword.nonMatchingPasswords;
+    case ForgetPasswordError.invalidOtp:
+      return t.errors.forgetPassword.invalidOtp;
+    case ForgetPasswordError.incorrectOtp:
+      return t.errors.forgetPassword.incorrectOtp;
   }
 }

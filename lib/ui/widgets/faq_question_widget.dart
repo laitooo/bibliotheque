@@ -1,14 +1,14 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/models/question.dart';
+import 'package:bibliotheque/utils/locale_based_string_selector.dart';
 import 'package:flutter/material.dart';
 
 class FAQQuestionWidget extends StatefulWidget {
-  final String question;
-  final String answer;
+  final Question question;
   final Color? iconColor;
 
   const FAQQuestionWidget(
-    this.question,
-    this.answer, {
+    this.question, {
     Key? key,
     this.iconColor = Colors.black,
   }) : super(key: key);
@@ -62,7 +62,11 @@ class FAQQuestionWidgetState extends State<FAQQuestionWidget>
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  widget.question,
+                  LocaleBasedStringSelector.select(
+                    context,
+                    widget.question.questionAr,
+                    widget.question.questionEn,
+                  ),
                   style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -89,7 +93,11 @@ class FAQQuestionWidgetState extends State<FAQQuestionWidget>
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  widget.answer,
+                  LocaleBasedStringSelector.select(
+                    context,
+                    widget.question.answerAr,
+                    widget.question.answerEn,
+                  ),
                   style: TextStyle(
                     fontSize: 14,
                     color: context.theme.textColor4,

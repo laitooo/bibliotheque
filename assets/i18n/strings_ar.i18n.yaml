@@ -5,6 +5,30 @@ errors:
   networkErrorTryAgain: "خطأ في الاتصال , الرجاء المحاولة مجددا"
   tryAgain: "حاول مجددا"
   invalidRate: "الرجاء ادخال تقييم"
+  errorAddingTryAgain: "فشلت الإضافة, الرجاء التحقق من الانترنت والمحاولة مجددا"
+  errorRemovingTryAgain: "فشلت الإزالة, الرجاء التحقق من الانترنت والمحاولة مجددا"
+  errorUpdatingTryAgain: "فشل التعديل, الرجاء التحقق من الانترنت والمحاولة مجددا"
+  errorClearingTryAgain: "فشلت الإزالة, الرجاء التحقق من الانترنت والمحاولة مجددا"
+  register:
+    networkError: "حدث خطأ في الاتصال , الرجاء المحاولة مجددا"
+    emptyCategories: "الرجاء اختيار تصنيف واحد على الأقل"
+    emptyName: "الرجاء ادخال اسم"
+    emptyCountry: "الرجاء اختيار الدولة التي تقيم فيها"
+    invalidPhoneNumber: "الرجاء ادخال رقم هاتف صالح"
+    uploadAvatarError: "خطأ أثناء تحميل الصورة الشخصية, الرجاء التحقق من الانترنت والمحاولة مجددا"
+    emptyBirthDay: "الرجاء ادخال تاريخ ميلادك"
+    emptyUsername: "الرجاء ادخال اسم المستخدم"
+    invalidEmail: "الرجاء ادخال بريد الكتروني صالح"
+    shortPassword: "الرجاء ادخال كلمة سر من 8 حروف على الأقل"
+    nonMatchingPasswords: "كلمات السر غير متطابقة"
+  forgetPassword:
+    networkError: "حدث خطأ في الاتصال , الرجاء المحاولة مجددا"
+    invalidEmail: "الرجاء ادخال بريد الكتروني صالح"
+    notFoundEmail: "هذا الإيميل غير موجود في قاعدة البيانات"
+    shortPassword: "الرجاء ادخال كلمة سر من 8 حروف على الأقل"
+    nonMatchingPasswords: "كلمات السر غير متطابقة"
+    invalidOtp: "الرجاء إدخال كود من 4 أرقام"
+    incorrectOtp: "الكود الذي أدخلته لا يطابق الكود الصحيح"
 
 widgets:
   phoneNumber: "رقم الهاتف"
@@ -49,10 +73,13 @@ auth:
     enterEmail: "الرجاء إدخال إيميلك, نحن سنرسل لك كود التأكيد للمتابعة للخطوة التالية"
     email: "الإيميل"
     continu: "المتابعة"
-    createPassword: "إنشاء كلمة مرور جديدة"
-    enterNewPassword: "أدخل كلمة المرور الجديدة . اذا نسيت يمكنك إعادة تعيين كلمة المرور."
+    youGotAnEmail: "لديك بريد"
+    weSentYouOtp: "لقد قمنا بإرسال إيميل الى بريدك الالكتروني. تفقد بريدك وأدخل الكود أدناه."
     notReceivedEmail: "لم يصلك الإيميل؟"
     resendIn: "يمكنك إعادة الإرسال خلال "
+    resendCode: "أعد إرسال الكود"
+    createPassword: "إنشاء كلمة مرور جديدة"
+    enterNewPassword: "أدخل كلمة المرور الجديدة . اذا نسيت يمكنك إعادة تعيين كلمة المرور."
     confirm: "تأكيد"
     password: "كلمة المرور"
     confirmPassword: "تأكيد كلمة المرور"
@@ -61,6 +88,8 @@ auth:
 
 categories:
   exploreByGenre: "التصفح عبر التصنيف"
+  emptyTitle: "لا تصنيفات"
+  emptySubtitle: "التصنيفات غير متاحة حاليا"
 
 details:
   releasedOn: "تم الإطلاق في "
@@ -70,16 +99,20 @@ details:
   usd: "دولار أمريكي"
   aboutThisBook: "حول الكتاب"
   ratingsAndReviews: "التقييمات والتعليقات"
+  emptyReviews: "لا تقييمات"
+  emptyReviewsSubText: "كن أول من يقوم بكتابة تقييم"
   language: "اللغة"
   age: "العمر"
   author: "المؤلف"
   publisher: "الناشر"
   publishedOn: "تم النشر في"
   isbn: "ISBN"
-  all: "الك"
+  all: "الكل"
   reviews: "تعليقا"
   rateBook: "قيم هذا الكتاب"
   writeReview: "اكتب تعليق"
+  numPages: "عدد الصفحات"
+  numPurchases: "عدد المبيعات"
 
 home:
   topPopular: "الأكثر شهرة"
@@ -95,6 +128,7 @@ notifications:
   title: "الإشعارات"
   empty: "لا إشعارات"
   noNotifications: "ليس لديك إشعارات في الوقت الحالي"
+  newText: "جديد"
 
 search:
   startSearching: "ابدأ البحث"
@@ -111,13 +145,16 @@ search:
   age: "العمر"
   apply: "تطبيق"
   reset: "إعادة"
+  searchHistory: "سجل البحث"
+  noBooksTitle: "لا يوجد كتب"
+  noBooksSubtitle: "لا يوجد كتب مشابهة حاليا"
 
 account:
   account:
     title: "الإعدادات"
     paymentMethod: "وسيلة الدفع"
     personalInfo: "المعلومات الشخصية"
-    notifications: "الإشعارات"
+    notifications: "إعدادات الإشعارات"
     language: "اللغة"
     nightMode: "الوضع الليلي"
     helpCenter: "مركز المساعدة"
@@ -142,7 +179,7 @@ account:
     areYouSure: "هل أنت متأكد من أنك تود تسجيل الخروج"
     cancel: "إلغاء"
   notifications:
-    title: "الإشعارات"
+    title: "إعدادات الإشعارات"
     notifyMeWhen: "نبهني حين..."
     newRecommendation: "هنالك مقترح جديد"
     newBookSeries: "هنالك سلسلة كتب جديدة"
@@ -164,6 +201,9 @@ account:
     userName: "إسم المستخدم"
     email: "البريد الإلكتروني"
     phoneNumber: "رقم الهاتف"
+    editSuccess: "تم التعديل بنجاح"
+    submit: "حفظ"
+    cancel: "الغاء"
   help:
     title: "مركز المساعدة"
     faq: "أسئلة متكررة"
@@ -174,6 +214,8 @@ account:
     facebook: "فيسبوك"
     twitter: "تويتر"
     instagram: "انستجرام"
+    emptyTitle: "لا توجد أسئلة"
+    emptySubtitle: "الأسئلة الشائعة غير متاحة حاليا"
 
 onBoarding:
   welcomeTo: "مرحبا بك في "
@@ -229,3 +271,8 @@ createReview:
   successTitle: "تم إرسال التقييم"
   successContent: "شكرا لإرسال تقييم لكتاب : "
   ok: "حسنا"
+
+bookCard:
+  removeFromList: "إزالة من القائمة"
+  share: "مشاركة"
+  aboutApp: "حول التطبيق"

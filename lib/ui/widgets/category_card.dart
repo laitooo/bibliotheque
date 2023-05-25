@@ -26,14 +26,14 @@ class CategoryCard extends StatelessWidget {
             );
           },
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(10),
             child: SizedBox(
               height: 120,
               width: 200,
               child: MockableImage(
                 category.imageUrl,
                 fit: BoxFit.cover,
-                assetPath: 'assets/mock/category.png',
+                type: MockImageType.category,
               ),
             ),
           ),

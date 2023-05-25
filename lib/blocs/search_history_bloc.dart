@@ -22,6 +22,8 @@ class LoadSearchHistory
   @override
   Stream<SearchHistoryState> toState(
       SearchHistoryState current, SearchHistoryBloc bloc) async* {
+    yield SearchHistoryState(SearchHistoryStatus.loading);
+
     final res = await bloc._repo.getSearchHistory();
 
     yield res.incase(
@@ -46,7 +48,7 @@ class ClearSearchHistory
   @override
   Stream<SearchHistoryState> toState(
       SearchHistoryState current, SearchHistoryBloc bloc) async* {
-    final res = await bloc._repo.getSearchHistory();
+    final res = await bloc._repo.clearSearchHistory();
 
     yield res.incase(
       value: (value) {
@@ -58,6 +60,7 @@ class ClearSearchHistory
       error: (error) {
         return SearchHistoryState(
           SearchHistoryStatus.error,
+          list: current.list,
           error: error,
         );
       },
@@ -86,6 +89,7 @@ class RemovePreviousSearch
       error: (error) {
         return SearchHistoryState(
           SearchHistoryStatus.error,
+          list: current.list,
           error: error,
         );
       },
@@ -108,12 +112,13 @@ class AddPreviousSearch
       value: (value) {
         return SearchHistoryState(
           SearchHistoryStatus.success,
-          list: current.list!..add(query),
+          list: [query, ...current.list!],
         );
       },
       error: (error) {
         return SearchHistoryState(
           SearchHistoryStatus.error,
+          list: current.list,
           error: error,
         );
       },

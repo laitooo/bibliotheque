@@ -60,13 +60,13 @@ class _InputPasswordTabState extends State<InputPasswordTab> {
                   const SizedBox(height: 40),
                   AppPasswordTextField(
                     label: t.auth.resetPassword.password,
-                    initialValue: "password",
+                    initialValue: "",
                     controller: passwordController,
                   ),
                   const SizedBox(height: 20),
                   AppPasswordTextField(
                     label: t.auth.resetPassword.confirmPassword,
-                    initialValue: "password",
+                    initialValue: "",
                     controller: confirmPasswordController,
                   ),
                   const SizedBox(height: 20),

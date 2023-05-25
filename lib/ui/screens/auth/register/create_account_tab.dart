@@ -50,26 +50,26 @@ class _CreateAccountTabState extends State<CreateAccountTab> {
           const SizedBox(height: 40),
           AppTextField(
             label: t.auth.register.username,
-            initialValue: "laitooo",
+            initialValue: "",
             controller: usernameController,
           ),
           const SizedBox(height: 20),
           AppTextField(
             label: t.auth.register.email,
-            initialValue: "alziber50@gmail.com",
+            initialValue: "",
             controller: emailController,
             inputType: TextInputType.emailAddress,
           ),
           const SizedBox(height: 20),
           AppPasswordTextField(
             label: t.auth.register.password,
-            initialValue: "password",
+            initialValue: "",
             controller: passwordController,
           ),
           const SizedBox(height: 20),
           AppPasswordTextField(
             label: t.auth.register.confirmPassword,
-            initialValue: "password",
+            initialValue: "",
             controller: passwordConfirmController,
           ),
           const SizedBox(height: 20),
@@ -100,18 +100,23 @@ class _CreateAccountTabState extends State<CreateAccountTab> {
           ),
           const SizedBox(height: 20),
           const Spacer(),
-          MainButton(
-            title: t.auth.register.signUp,
-            removePadding: true,
-            onPressed: () {
-              BlocProvider.of<RegisterBloc>(context).add(
-                SignUp(
-                  email: emailController.text,
-                  password: passwordController.text,
-                  passwordConfirm: passwordConfirmController.text,
-                  username: usernameController.text,
-                  rememberMe: rememberMe,
-                ),
+          BlocBuilder<RegisterBloc, RegisterState>(
+            builder: (context, state) {
+              return MainButton(
+                title: t.auth.register.signUp,
+                removePadding: true,
+                isLoading: state.status == RegisterStatus.loading,
+                onPressed: () {
+                  BlocProvider.of<RegisterBloc>(context).add(
+                    SignUp(
+                      email: emailController.text,
+                      password: passwordController.text,
+                      passwordConfirm: passwordConfirmController.text,
+                      username: usernameController.text,
+                      rememberMe: rememberMe,
+                    ),
+                  );
+                },
               );
             },
           ),

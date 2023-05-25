@@ -1,3 +1,4 @@
+import 'package:bibliotheque/features.dart';
 import 'package:bibliotheque/models/profile.dart';
 import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:bibliotheque/utils/generator.dart';
@@ -19,6 +20,10 @@ class MockProfileRepository extends ProfileRepository {
   Future<Result<Profile, ProfileError>> loadProfile(String userId) async {
     await Future.delayed(const Duration(seconds: 1));
 
+    if (Features.isMockErrors) {
+      return Result.error(ProfileError.networkError);
+    }
+
     return Result.value(generator.profile());
   }
 
@@ -31,6 +36,10 @@ class MockProfileRepository extends ProfileRepository {
     DateTime birthDate,
   ) async {
     await Future.delayed(const Duration(seconds: 1));
+
+    if (Features.isMockErrors) {
+      return Result.error(EditProfileError.networkError);
+    }
 
     return Result.value(
       generator.profile().copyWith(

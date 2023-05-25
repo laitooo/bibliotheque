@@ -25,6 +25,8 @@ class LoadBookDetails extends BlocEvent<BookDetailsState, BookDetailsBloc> {
   @override
   Stream<BookDetailsState> toState(
       BookDetailsState current, BookDetailsBloc bloc) async* {
+    yield BookDetailsState(BookDetailsStatus.loading);
+
     final res = await bloc._repo.getBookDetails(bookId);
 
     yield res.incase(
