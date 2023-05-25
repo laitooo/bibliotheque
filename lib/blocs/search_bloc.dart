@@ -70,6 +70,18 @@ class SearchBook extends BlocEvent<SearchState, SearchBloc> {
   }
 }
 
+class ClearSearchResults extends BlocEvent<SearchState, SearchBloc> {
+  @override
+  Stream<SearchState> toState(SearchState current, SearchBloc bloc) async* {
+    yield SearchState(
+      SearchStatus.idle,
+      query: "",
+      filterOptions: current.filterOptions,
+      books: [],
+    );
+  }
+}
+
 class SearchBloc extends BaseBloc<SearchState> {
   final _repo = serviceLocator.get<SearchRepository>();
 

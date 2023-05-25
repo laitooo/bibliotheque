@@ -1,4 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/book.dart';
 import 'package:bibliotheque/ui/common_widgets/mockable_image.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
@@ -225,7 +226,6 @@ class WishListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO:: translate this page
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 0, 10),
       child: SizedBox(
@@ -325,7 +325,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
-                                  "Remove from wish list",
+                                  t.bookCard.removeFromList,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: context.theme.textColor1,
@@ -344,7 +344,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
-                                  "Share",
+                                  t.bookCard.share,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: context.theme.textColor1,
@@ -363,7 +363,7 @@ class WishListCard extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
-                                  "About the app",
+                                  t.bookCard.aboutApp,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: context.theme.textColor1,

@@ -55,11 +55,10 @@ class CategoriesListScreen extends StatelessWidget {
           }
 
           if (state.categories!.isEmpty) {
-            // TODO:: translate this
-            return const Center(
+            return Center(
               child: EmptyListWidget(
-                text: "empty",
-                subText: "content",
+                text: t.categories.emptyTitle,
+                subText: t.categories.emptySubtitle,
                 isPage: false,
               ),
             );

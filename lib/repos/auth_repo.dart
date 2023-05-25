@@ -19,6 +19,7 @@ abstract class AuthRepository {
   Future<Result<void, ForgetPasswordError>> changePassword(
       String email, String newPassword);
   Future<Result<String, AuthError>> uploadProfilePicture();
+  Future<void> signOut();
 }
 
 class MockAuthRepository extends AuthRepository {
@@ -162,5 +163,12 @@ class MockAuthRepository extends AuthRepository {
     );
 
     return true;
+  }
+
+  @override
+  Future<void> signOut() async {
+    await Future.delayed(
+      const Duration(seconds: 0),
+    );
   }
 }

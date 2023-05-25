@@ -110,11 +110,10 @@ class _BooksListPageState extends State<_BooksListPage> {
           }
 
           if (state.books!.isEmpty) {
-            // TODO:: translate this
-            return const Center(
+            return Center(
               child: EmptyListWidget(
-                text: "empty",
-                subText: "content",
+                text: t.search.noBooksTitle,
+                subText: t.search.noBooksSubtitle,
                 isPage: false,
               ),
             );

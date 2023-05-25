@@ -1,5 +1,7 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/i18n/translations.dart';
+import 'package:bibliotheque/repos/auth_repo.dart';
+import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/screens/splash/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
@@ -59,9 +61,8 @@ class LogoutBottomSheet extends StatelessWidget {
                   backgroundColor: context.theme.buttonColor1,
                   removePadding: true,
                   onPressed: () async {
-                    // TODO:: complete this
-                    // final auth = serviceLocator<AuthRepository>();
-                    // await auth.signOut();
+                    final auth = serviceLocator<AuthRepository>();
+                    await auth.signOut();
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
                         builder: (_) => const OnBoardingScreen(),

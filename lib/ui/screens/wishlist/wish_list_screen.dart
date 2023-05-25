@@ -70,7 +70,6 @@ class _WishListScreenState extends State<_WishListScreen> {
         listener: (context, state) {
           if (state.status == WishListStatus.error &&
               state.error == WishListError.removingError) {
-            // TODO:: translate this
             context.showSnackBar(text: t.errors.errorRemovingTryAgain);
           }
         },

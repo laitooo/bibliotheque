@@ -1,5 +1,6 @@
 import 'package:bibliotheque/blocs/faqs_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
+import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/models/question.dart';
 import 'package:bibliotheque/ui/common_widgets/empty_list_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
@@ -40,11 +41,10 @@ class _FAQTabState extends State<FAQTab> {
         }
 
         if (state.faqs!.isEmpty) {
-          // TODO:: translate this
-          return const Center(
+          return Center(
             child: EmptyListWidget(
-              text: "empty",
-              subText: "content",
+              text: t.account.help.emptyTitle,
+              subText: t.account.help.emptySubtitle,
               isPage: false,
             ),
           );

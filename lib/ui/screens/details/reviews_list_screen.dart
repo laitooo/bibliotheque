@@ -162,12 +162,11 @@ class _ReviewsListScreenState extends State<ReviewsListScreen> {
               }
 
               if (state.reviews!.isEmpty) {
-                // TODO:: translate this
-                return const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 50),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 50),
                   child: EmptyListWidget(
-                    text: "empty",
-                    subText: "no result",
+                    text: t.details.emptyReviews,
+                    subText: t.details.emptyReviewsSubText,
                     isPage: false,
                   ),
                 );

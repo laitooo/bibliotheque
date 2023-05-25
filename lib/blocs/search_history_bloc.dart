@@ -112,7 +112,7 @@ class AddPreviousSearch
       value: (value) {
         return SearchHistoryState(
           SearchHistoryStatus.success,
-          list: current.list!..add(query),
+          list: [query, ...current.list!],
         );
       },
       error: (error) {

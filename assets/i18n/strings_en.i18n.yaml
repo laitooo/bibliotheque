@@ -88,6 +88,8 @@ auth:
 
 categories:
   exploreByGenre: "Explore by Genre"
+  emptyTitle: "No categories"
+  emptySubtitle: "Categories are not available now"
 
 details:
   releasedOn: "Released on "
@@ -97,6 +99,8 @@ details:
   usd: "USD"
   aboutThisBook: "About this book"
   ratingsAndReviews: "Ratings & Reviews"
+  emptyReviews: "No reviews"
+  emptyReviewsSubText: "Be the first one to write a review"
   language: "Language"
   age: "Age"
   author: "Author"
@@ -139,6 +143,9 @@ search:
   age: "Age"
   apply: "Apply"
   reset: "Reset"
+  searchHistory: "Search history"
+  noBooksTitle: "No books"
+  noBooksSubtitle: "No similar books available at the moment"
 
 account:
   account:
@@ -192,6 +199,9 @@ account:
     userName: "Username"
     email: "Email"
     phoneNumber: "Phone number"
+    editSuccess: "Updated successfully"
+    submit: "Submit"
+    cancel: "Cancel"
   help:
     title: "Help center"
     faq: "FAQ"
@@ -202,6 +212,8 @@ account:
     facebook: "Facebook"
     twitter: "Twitter"
     instagram: "Instagram"
+    emptyTitle: "No Faq's"
+    emptySubtitle: "Faq's are not available now"
 
 onBoarding:
   welcomeTo: "Welcome to "
@@ -257,3 +269,8 @@ createReview:
   successTitle: "Submitted successfully"
   successContent: "Thank you for providing a rating and a review for the book: "
   ok: "OK"
+
+bookCard:
+  removeFromList: "Remove from wish list"
+  share: "Share"
+  aboutApp: "About the app"

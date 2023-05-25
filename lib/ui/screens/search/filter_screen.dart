@@ -17,7 +17,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../i18n/translations.dart';
 
 class FilterScreen extends StatefulWidget {
-  // TODO: handle filter screen for category and wish list screens
   const FilterScreen({Key? key}) : super(key: key);
 
   @override

@@ -12,7 +12,6 @@ class ContactTab extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       children: [
         const SizedBox(height: 10),
-        // TODO:: complete this
         _mediaItem(
           context,
           t.account.help.customerService,

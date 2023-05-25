@@ -88,6 +88,8 @@ auth:
 
 categories:
   exploreByGenre: "التصفح عبر التصنيف"
+  emptyTitle: "لا تصنيفات"
+  emptySubtitle: "التصنيفات غير متاحة حاليا"
 
 details:
   releasedOn: "تم الإطلاق في "
@@ -97,6 +99,8 @@ details:
   usd: "دولار أمريكي"
   aboutThisBook: "حول الكتاب"
   ratingsAndReviews: "التقييمات والتعليقات"
+  emptyReviews: "لا تقييمات"
+  emptyReviewsSubText: "كن أول من يقوم بكتابة تقييم"
   language: "اللغة"
   age: "العمر"
   author: "المؤلف"
@@ -139,6 +143,9 @@ search:
   age: "العمر"
   apply: "تطبيق"
   reset: "إعادة"
+  searchHistory: "سجل البحث"
+  noBooksTitle: "لا يوجد كتب"
+  noBooksSubtitle: "لا يوجد كتب مشابهة حاليا"
 
 account:
   account:
@@ -192,6 +199,9 @@ account:
     userName: "إسم المستخدم"
     email: "البريد الإلكتروني"
     phoneNumber: "رقم الهاتف"
+    editSuccess: "تم التعديل بنجاح"
+    submit: "حفظ"
+    cancel: "الغاء"
   help:
     title: "مركز المساعدة"
     faq: "أسئلة متكررة"
@@ -202,6 +212,8 @@ account:
     facebook: "فيسبوك"
     twitter: "تويتر"
     instagram: "انستجرام"
+    emptyTitle: "لا توجد أسئلة"
+    emptySubtitle: "الأسئلة الشائعة غير متاحة حاليا"
 
 onBoarding:
   welcomeTo: "مرحبا بك في "
@@ -257,3 +269,8 @@ createReview:
   successTitle: "تم إرسال التقييم"
   successContent: "شكرا لإرسال تقييم لكتاب : "
   ok: "حسنا"
+
+bookCard:
+  removeFromList: "إزالة من القائمة"
+  share: "مشاركة"
+  aboutApp: "حول التطبيق"
