@@ -1,4 +1,5 @@
 import 'package:bibliotheque/models/notifications_option.dart';
+import 'package:bibliotheque/repos/auth_repo.dart';
 import 'package:bibliotheque/repos/notificatios_repo.dart';
 import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/utils/bloc.dart';
@@ -26,8 +27,7 @@ class LoadNotificationsOptions
       NotificationsOptionsState current, NotificationsOptionsBloc bloc) async* {
     yield NotificationsOptionsState(NotificationsOptionsStatus.loading);
 
-    // TODO: add user id
-    final res = await bloc._repo.getNotificationOptions('bloc._auth.user!.id');
+    final res = await bloc._repo.getNotificationOptions(bloc._auth.user!.id);
 
     yield res.incase(
       value: (value) {
@@ -103,6 +103,8 @@ class UpdateNotificationsOptions
 
 class NotificationsOptionsBloc extends BaseBloc<NotificationsOptionsState> {
   final _repo = serviceLocator<NotificationsRepository>();
+  final _auth = serviceLocator<AuthRepository>();
+
   NotificationsOptionsBloc()
       : super(NotificationsOptionsState(NotificationsOptionsStatus.loading));
 }

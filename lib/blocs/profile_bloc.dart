@@ -1,4 +1,5 @@
 import 'package:bibliotheque/models/profile.dart';
+import 'package:bibliotheque/repos/auth_repo.dart';
 import 'package:bibliotheque/repos/profile_repo.dart';
 import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/utils/bloc.dart';
@@ -23,8 +24,7 @@ class LoadProfile extends BlocEvent<ProfileState, ProfileBloc> {
   Stream<ProfileState> toState(ProfileState current, ProfileBloc bloc) async* {
     yield ProfileState(ProfileStatus.loading);
 
-    // TODO: add user id
-    final res = await bloc._repo.loadProfile('bloc._auth.user!.id');
+    final res = await bloc._repo.loadProfile(bloc._auth.user!.id);
 
     yield res.incase(
       value: (value) {
@@ -61,5 +61,7 @@ class UpdateProfile extends BlocEvent<ProfileState, ProfileBloc> {
 
 class ProfileBloc extends BaseBloc<ProfileState> {
   final _repo = serviceLocator<ProfileRepository>();
+  final _auth = serviceLocator<AuthRepository>();
+
   ProfileBloc() : super(ProfileState(ProfileStatus.loading));
 }

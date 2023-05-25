@@ -24,7 +24,6 @@ class AboutBookScreen extends StatelessWidget {
       fontWeight: FontWeight.w400,
       color: context.theme.textColor1,
     );
-    // TODO:: complete this screen (links and data)
     final linkStyle = TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w400,
@@ -188,14 +187,14 @@ class AboutBookScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  t.details.pages,
+                  t.details.numPages,
                   style: titleStyle,
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Text(
-                  t.details.purchases,
+                  t.details.numPurchases,
                   style: titleStyle,
                 ),
               ),

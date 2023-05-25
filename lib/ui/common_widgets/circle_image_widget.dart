@@ -11,7 +11,6 @@ class CircleImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO:// handle no avatar url
     return SizedBox(
       width: size,
       height: size,
@@ -25,7 +24,7 @@ class CircleImageWidget extends StatelessWidget {
   }
 
   ImageProvider<Object>? getImageProvider(String image) {
-    if (Features.isMockImages) {
+    if (Features.isMockImages || image.isEmpty) {
       return AssetImage(generator.avatar());
     } else {
       return NetworkImage(image);

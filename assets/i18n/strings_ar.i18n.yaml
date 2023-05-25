@@ -111,6 +111,8 @@ details:
   reviews: "تعليقا"
   rateBook: "قيم هذا الكتاب"
   writeReview: "اكتب تعليق"
+  numPages: "عدد الصفحات"
+  numPurchases: "عدد المبيعات"
 
 home:
   topPopular: "الأكثر شهرة"

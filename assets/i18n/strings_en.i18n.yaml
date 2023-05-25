@@ -111,6 +111,8 @@ details:
   reviews: "reviews"
   rateBook: "Rate this book"
   writeReview: "Write a review"
+  numPages: "Number of pages"
+  numPurchases: "Copies purchased"
 
 home:
   topPopular: "Top popular"

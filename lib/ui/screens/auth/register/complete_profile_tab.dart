@@ -50,10 +50,13 @@ class _CompleteProfileTabState extends State<CompleteProfileTab> {
           Center(
             child: Stack(
               children: [
-                // TODO:: handle user profile picture
-                const CircleImageWidget(
-                  "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
-                  size: 130,
+                BlocBuilder<RegisterBloc, RegisterState>(
+                  builder: (context, state) {
+                    return CircleImageWidget(
+                      state.profile.avatarUrl,
+                      size: 130,
+                    );
+                  },
                 ),
                 PositionedDirectional(
                   bottom: 10,

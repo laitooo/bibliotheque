@@ -1,4 +1,5 @@
 import 'package:bibliotheque/models/notification.dart';
+import 'package:bibliotheque/repos/auth_repo.dart';
 import 'package:bibliotheque/repos/notificatios_repo.dart';
 import 'package:bibliotheque/service_locator.dart';
 import 'package:bibliotheque/utils/bloc.dart';
@@ -25,10 +26,9 @@ class LoadNotificationsList
       NotificationsListState current, NotificationsListBloc bloc) async* {
     yield NotificationsListState(NotificationsListStatus.loading);
 
-    // TODO: add user id
     // Here after loading the new notification, it should update the unread
     // notification data.
-    final res = await bloc._repo.listNotifications('bloc._auth.user!.id');
+    final res = await bloc._repo.listNotifications(bloc._auth.user!.id);
 
     yield res.incase(
       value: (value) {
@@ -49,6 +49,8 @@ class LoadNotificationsList
 
 class NotificationsListBloc extends BaseBloc<NotificationsListState> {
   final _repo = serviceLocator<NotificationsRepository>();
+  final _auth = serviceLocator<AuthRepository>();
+
   NotificationsListBloc()
       : super(NotificationsListState(NotificationsListStatus.loading));
 }
