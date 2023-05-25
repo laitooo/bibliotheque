@@ -39,7 +39,7 @@ class EmptyListWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Svg(
-                'empty_page.svg',
+                'empty_list.svg',
                 size: 200,
                 color: context.theme.iconColor2,
               ),
@@ -92,7 +92,7 @@ class EmptyListWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Svg(
-            'empty_page.svg',
+            'empty_list.svg',
             size: 200,
             color: context.theme.iconColor2,
           ),
