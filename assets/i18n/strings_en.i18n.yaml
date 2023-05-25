@@ -21,6 +21,14 @@ errors:
     invalidEmail: "Please enter a valid email"
     shortPassword: "Please enter a password that's at least 8 characters"
     nonMatchingPasswords: "Passwords are not matching"
+  forgetPassword:
+    networkError: "Network error occurred, please try again"
+    invalidEmail: "Please enter a valid email"
+    notFoundEmail: "This email does not exist"
+    shortPassword: "Please enter a password that's at least 8 characters"
+    nonMatchingPasswords: "Passwords are not matching"
+    invalidOtp: "Please enter a 4 numbers code"
+    incorrectOtp: "The code you entered does not match the actual otp code"
 
 widgets:
   phoneNumber: "Phone number"
@@ -66,9 +74,12 @@ auth:
     email: "Email"
     continu: "Continue"
     createPassword: "Create new password"
-    enterNewPassword: "Enter your new password. If you forget it, then you have to forget password."
+    youGotAnEmail: "You've got mail"
+    weSentYouOtp: "We have sent the otp code to your email address. Check your email and enter the code below."
     notReceivedEmail: "Didn't receive email?"
     resendIn: "You can resend code in "
+    resendCode: "Resend code"
+    enterNewPassword: "Enter your new password. If you forget it, then you have to forget password."
     confirm: "Confirm"
     password: "Password"
     confirmPassword: "Confirm password"

@@ -71,6 +71,16 @@ enum RegisterError {
   nonMatchingPasswords,
 }
 
+enum ForgetPasswordError {
+  networkError,
+  invalidEmail,
+  notFoundEmail,
+  invalidOtp,
+  incorrectOtp,
+  shortPassword,
+  notMatchingPasswords,
+}
+
 enum AuthError {
   networkError,
   uploadProfileError,

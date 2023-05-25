@@ -1,13 +1,13 @@
 import 'package:bibliotheque/blocs/forget_password_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/input_email_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/input_otp_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/input_password_tab.dart';
 import 'package:bibliotheque/ui/dialogs/reset_password_success_dialog.dart';
+import 'package:bibliotheque/utils/enum_to_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../i18n/translations.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({Key? key}) : super(key: key);
@@ -37,6 +37,12 @@ class _ResetPasswordScreenState extends State<_ResetPasswordScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Container(),
+        leading: IconButton(
+          icon: const Svg('back.svg'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
       ),
       body: BlocConsumer<ForgetPasswordBloc, ForgetPasswordState>(
         listener: (context, state) async {
@@ -51,7 +57,7 @@ class _ResetPasswordScreenState extends State<_ResetPasswordScreen> {
 
           if (state.status == ForgetPasswordStatus.error) {
             context.showSnackBar(
-              text: t.errors.networkError,
+              text: forgetPasswordErrorToText(state.error!),
             );
           }
 

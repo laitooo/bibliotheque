@@ -13,9 +13,10 @@ abstract class AuthRepository {
   Future<Result<void, AuthError>> googleSignIn();
   Future<Result<void, AuthError>> appleSignIn();
   Future<Result<void, AuthError>> facebookSignIn();
-  Future<Result<void, AuthError>> forgetPassword(String email);
-  Future<Result<void, AuthError>> checkOtpCode(String otp, String email);
-  Future<Result<void, AuthError>> changePassword(
+  Future<Result<void, ForgetPasswordError>> forgetPassword(String email);
+  Future<Result<void, ForgetPasswordError>> checkOtpCode(
+      String otp, String email);
+  Future<Result<void, ForgetPasswordError>> changePassword(
       String email, String newPassword);
   Future<Result<String, AuthError>> uploadProfilePicture();
 }
@@ -99,40 +100,41 @@ class MockAuthRepository extends AuthRepository {
   }
 
   @override
-  Future<Result<void, AuthError>> forgetPassword(String email) async {
+  Future<Result<void, ForgetPasswordError>> forgetPassword(String email) async {
     await Future.delayed(
       const Duration(seconds: 1),
     );
 
     if (Features.isMockErrors) {
-      return Result.error(AuthError.networkError);
+      return Result.error(ForgetPasswordError.networkError);
     }
 
     return Result.value(null);
   }
 
   @override
-  Future<Result<void, AuthError>> changePassword(
+  Future<Result<void, ForgetPasswordError>> changePassword(
       String email, String newPassword) async {
     await Future.delayed(
       const Duration(seconds: 1),
     );
 
     if (Features.isMockErrors) {
-      return Result.error(AuthError.networkError);
+      return Result.error(ForgetPasswordError.networkError);
     }
 
     return Result.value(null);
   }
 
   @override
-  Future<Result<void, AuthError>> checkOtpCode(String otp, String email) async {
+  Future<Result<void, ForgetPasswordError>> checkOtpCode(
+      String otp, String email) async {
     await Future.delayed(
       const Duration(seconds: 1),
     );
 
     if (Features.isMockErrors) {
-      return Result.error(AuthError.networkError);
+      return Result.error(ForgetPasswordError.networkError);
     }
 
     return Result.value(null);

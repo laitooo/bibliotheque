@@ -184,3 +184,22 @@ String editProfileErrorToText(EditProfileError error) {
       return t.errors.register.emptyBirthDay;
   }
 }
+
+String forgetPasswordErrorToText(ForgetPasswordError error) {
+  switch (error) {
+    case ForgetPasswordError.networkError:
+      return t.errors.forgetPassword.networkError;
+    case ForgetPasswordError.invalidEmail:
+      return t.errors.forgetPassword.invalidEmail;
+    case ForgetPasswordError.notFoundEmail:
+      return t.errors.forgetPassword.notFoundEmail;
+    case ForgetPasswordError.shortPassword:
+      return t.errors.forgetPassword.shortPassword;
+    case ForgetPasswordError.notMatchingPasswords:
+      return t.errors.forgetPassword.nonMatchingPasswords;
+    case ForgetPasswordError.invalidOtp:
+      return t.errors.forgetPassword.invalidOtp;
+    case ForgetPasswordError.incorrectOtp:
+      return t.errors.forgetPassword.incorrectOtp;
+  }
+}

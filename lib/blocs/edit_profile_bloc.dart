@@ -125,8 +125,6 @@ class SubmitProfileEdits extends BlocEvent<EditProfileState, EditProfileBloc> {
       dateOfBirth!,
     );
 
-    // TODO:: validate all data in all blocs
-
     yield res.incase(value: (value) {
       return EditProfileState(
         EditProfileStatus.success,
