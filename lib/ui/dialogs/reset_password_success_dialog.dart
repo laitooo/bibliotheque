@@ -46,7 +46,7 @@ class _ResetPasswordSuccessDialogState
               horizontal: 60,
             ),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.theme.backgroundColor,
               borderRadius: BorderRadius.circular(38.0),
             ),
             child: Column(
@@ -62,23 +62,27 @@ class _ResetPasswordSuccessDialogState
                   child: Svg(
                     "success.svg",
                     size: 40,
-                    color: context.theme.iconColor3,
+                    matchTextDirection: false,
+                    color: context.theme.backgroundColor,
                   ),
                 ),
                 const SizedBox(height: 40),
                 Text(
                   t.auth.resetPassword.resetPasswordSuccessTitle,
                   style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: context.theme.textColor3),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color: context.theme.textColor1,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 Text(
                   t.auth.resetPassword.resetPasswordSuccessSubtitle,
                   textAlign: TextAlign.center,
-                  style:
-                      TextStyle(fontSize: 14, color: context.theme.textColor5),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: context.theme.textColor5,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 const AppProgressIndicator(size: 90),
