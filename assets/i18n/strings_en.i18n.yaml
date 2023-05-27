@@ -259,8 +259,8 @@ enums:
     spanish: "Spanish"
     all: "All"
   gender:
-    male: "I am male"
-    female: "I am female"
+    male: "I am a male"
+    female: "I am a female"
     preferNotSay: "Prefer not to say"
 
 createReview:
@@ -269,7 +269,7 @@ createReview:
   submit: "Submit"
   cancel: "Cancel"
   successTitle: "Submitted successfully"
-  successContent: "Thank you for providing a rating and a review"
+  successContent: "Thank you for providing a review"
   ok: "OK"
 
 bookCard:

@@ -39,7 +39,7 @@ class _LoginScreenState extends State<_LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         leading: IconButton(
           icon: const svg.Svg('back.svg'),
@@ -75,8 +75,7 @@ class _LoginScreenState extends State<_LoginScreen> {
           return SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: ListView(
                 children: [
                   Text(
                     t.auth.login.helloThere,
@@ -237,6 +236,7 @@ class _LoginScreenState extends State<_LoginScreen> {
                               "assets/icons/apple.svg",
                               width: 28,
                               height: 28,
+                              color: context.theme.appleIconColor,
                               matchTextDirection: false,
                             ),
                           ),

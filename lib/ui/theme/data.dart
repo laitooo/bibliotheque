@@ -69,6 +69,7 @@ abstract class AppThemeData {
   Color get flatButtonTextColor;
   Color get flatButtonBackgroundColor;
   Color get newReviewColor;
+  Color get appleIconColor;
 }
 
 class _InputThemeData extends _ChildThemeData {
@@ -145,6 +146,7 @@ class LightThemeData extends AppThemeData {
   Color get flatButtonTextColor => primaryColor;
   Color get flatButtonBackgroundColor => const Color(0x33FF9800);
   Color get newReviewColor => const Color(0xFF424242);
+  Color get appleIconColor => Colors.black;
 }
 
 class DarkThemeData extends AppThemeData {
@@ -197,4 +199,5 @@ class DarkThemeData extends AppThemeData {
   Color get flatButtonTextColor => Colors.white;
   Color get flatButtonBackgroundColor => Colors.grey.withOpacity(0.7);
   Color get newReviewColor => Colors.white;
+  Color get appleIconColor => Colors.white;
 }
