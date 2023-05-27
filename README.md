@@ -11,7 +11,7 @@ A book shop mobile app built in Flutter.
 
 ## Credit
 
-The UI Design was designed by [Sobakhul Munir Siroj](https://www.figma.com/@MunirSr)
+The amazing UI Design was designed by [Sobakhul Munir Siroj](https://www.figma.com/@MunirSr)
 
 The figma resource can be found [here](https://www.figma.com/file/vGfOR47PbSRsQBwn8dell7/Erabook---Ebook-Store-%26-Ebook-Reader-App-UI-Kit-(Community)?type=design&node-id=0-1)
 
@@ -72,7 +72,10 @@ Search screen              | Filter screen - 1         | Filter screen - 2      
 
 About book screen          | Book reviews              | Craete review screen      | Light mode
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![](https://github.com/laitooo/bibliotheque/blob/master/screenshots/33.jpg)|![](https://github.com/laitooo/bibliotheque/blob/master/screenshots/34.jpg)|![](https://github.com/laitooo/bibliotheque/raw/master/screenshots/33.jpg)|![](https://github.com/laitooo/bibliotheque/raw/master/screenshots/34.jpg)|
+![](https://github.com/laitooo/bibliotheque/blob/master/screenshots/33.jpg)|![](https://github.com/laitooo/bibliotheque/blob/master/screenshots/34.jpg)|![](https://github.com/laitooo/bibliotheque/raw/master/screenshots/35.jpg)|![](https://github.com/laitooo/bibliotheque/raw/master/screenshots/36.jpg)|
+
+
+
 
 
 
