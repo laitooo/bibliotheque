@@ -224,8 +224,8 @@ class Generator {
 
   Category category({String? index}) => Category(
         id: index ?? id(),
-        name: _category(),
-        nameAr: _category(),
+        nameAr: _categoriesAr[_rand.nextInt(_categoriesAr.length)],
+        nameEn: _categories[_rand.nextInt(_categories.length)],
         imageUrl: _categoryCover,
       );
 

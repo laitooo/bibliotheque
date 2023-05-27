@@ -18,7 +18,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
   @override
   void initState() {
     super.initState();
-    current = prefs.getPreferredLanguage() ?? 'ar';
+    current = prefs.getPreferredLanguage() ?? 'en';
   }
 
   @override

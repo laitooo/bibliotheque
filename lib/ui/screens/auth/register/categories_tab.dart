@@ -6,6 +6,7 @@ import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/buttons.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/widgets/filter_item.dart';
+import 'package:bibliotheque/utils/locale_based_string_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -69,7 +70,11 @@ class _CategoriesTabState extends State<CategoriesTab> {
                           List.generate(state.categories!.length, (index) {
                         final category = state.categories![index];
                         return FilterItem(
-                          name: category.name,
+                          name: LocaleBasedStringSelector.select(
+                            context,
+                            category.nameAr,
+                            category.nameEn,
+                          ),
                           isSelected: selectedCategories.contains(category.id),
                           onClick: () {
                             setState(() {

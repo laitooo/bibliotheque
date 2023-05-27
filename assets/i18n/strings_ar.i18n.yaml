@@ -269,7 +269,7 @@ createReview:
   submit: "إرسال"
   cancel: "إلغاء"
   successTitle: "تم إرسال التقييم"
-  successContent: "شكرا لإرسال تقييم لكتاب : "
+  successContent: "شكرا لقيامك بتقييم الكتاب"
   ok: "حسنا"
 
 bookCard:

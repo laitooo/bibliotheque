@@ -35,10 +35,11 @@ class _AccountSettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context).account.account;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          t.account.account.title,
+          t.title,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -139,7 +140,7 @@ class _AccountSettingsScreen extends StatelessWidget {
           ),
           _settingsItem(
             context,
-            t.account.account.paymentMethod,
+            t.paymentMethod,
             "wallet.svg",
             Colors.green,
             newScreen: const PaymentMethodScreen(),
@@ -152,7 +153,7 @@ class _AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 15),
           _settingsItem(
             context,
-            t.account.account.personalInfo,
+            t.personalInfo,
             "account_created.svg",
             Colors.lightBlue,
             newScreen: MultiBlocProvider(
@@ -168,7 +169,7 @@ class _AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            t.account.account.notifications,
+            t.notifications,
             "notifications_settings.svg",
             Colors.pinkAccent,
             newScreen: BlocProvider(
@@ -180,7 +181,7 @@ class _AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            t.account.account.language,
+            t.language,
             "grid_view.svg",
             Colors.orangeAccent,
             newScreen: const ChangeLanguageScreen(),
@@ -205,7 +206,7 @@ class _AccountSettingsScreen extends StatelessWidget {
                 const SizedBox(width: 20),
                 Center(
                   child: Text(
-                    t.account.account.nightMode,
+                    t.nightMode,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -232,7 +233,7 @@ class _AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 15),
           _settingsItem(
             context,
-            t.account.account.helpCenter,
+            t.helpCenter,
             "wishlist_active.svg",
             Colors.green,
             newScreen: const HelpCenterScreen(),
@@ -240,7 +241,7 @@ class _AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            t.account.account.aboutApp,
+            t.aboutApp,
             "about.svg",
             Colors.orange,
             newScreen: const AboutAppScreen(),
@@ -248,7 +249,7 @@ class _AccountSettingsScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _settingsItem(
             context,
-            t.account.account.logout,
+            t.logout,
             'logout.svg',
             Colors.redAccent,
             onClick: () {

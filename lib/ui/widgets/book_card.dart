@@ -225,7 +225,7 @@ class WishListCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 0, 10),
       child: SizedBox(
-        height: 180,
+        height: 210,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -241,6 +241,7 @@ class WishListCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 child: MockableImage(
                   book.coveUrl,
+                  width: 150,
                   height: 200,
                   type: MockImageType.bookCover,
                 ),

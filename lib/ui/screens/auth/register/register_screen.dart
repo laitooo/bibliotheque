@@ -1,6 +1,7 @@
 import 'package:bibliotheque/blocs/categories_bloc.dart';
 import 'package:bibliotheque/blocs/register_bloc.dart';
 import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/screens/auth/register/age_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/categories_tab.dart';
 import 'package:bibliotheque/ui/screens/auth/register/complete_profile_tab.dart';
@@ -40,6 +41,12 @@ class _RegisterPageState extends State<_RegisterPage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Container(),
+        leading: IconButton(
+          icon: const Svg('back.svg'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
       ),
       body: BlocConsumer<RegisterBloc, RegisterState>(
         listener: (context, state) async {

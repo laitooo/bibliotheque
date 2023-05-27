@@ -269,7 +269,7 @@ createReview:
   submit: "Submit"
   cancel: "Cancel"
   successTitle: "Submitted successfully"
-  successContent: "Thank you for providing a rating and a review for the book: "
+  successContent: "Thank you for providing a rating and a review"
   ok: "OK"
 
 bookCard:

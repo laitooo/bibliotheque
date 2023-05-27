@@ -3,6 +3,7 @@ import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/models/category.dart';
 import 'package:bibliotheque/ui/common_widgets/mockable_image.dart';
 import 'package:bibliotheque/ui/widgets/books_list_page.dart';
+import 'package:bibliotheque/utils/locale_based_string_selector.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -18,7 +19,11 @@ class CategoryCard extends StatelessWidget {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (_) => BooksListPage(
-                  title: category.name,
+                  title: LocaleBasedStringSelector.select(
+                    context,
+                    category.nameAr,
+                    category.nameEn,
+                  ),
                   categoryId: category.id,
                   booksSource: BooksSource.category,
                 ),
@@ -42,7 +47,11 @@ class CategoryCard extends StatelessWidget {
           bottom: 6,
           start: 10,
           child: Text(
-            category.name,
+            LocaleBasedStringSelector.select(
+              context,
+              category.nameAr,
+              category.nameEn,
+            ),
             maxLines: 2,
             textAlign: TextAlign.start,
             overflow: TextOverflow.ellipsis,
