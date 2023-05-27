@@ -11,6 +11,7 @@ import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/common_widgets/svg.dart';
 import 'package:bibliotheque/ui/widgets/range_selector.dart';
 import 'package:bibliotheque/utils/enum_to_text.dart';
+import 'package:bibliotheque/utils/locale_based_string_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -322,7 +323,11 @@ class _FilterScreenState extends State<FilterScreen> {
                                 child: CheckboxListTile(
                                   value: entry.value,
                                   title: Text(
-                                    entry.key.name,
+                                    LocaleBasedStringSelector.select(
+                                      context,
+                                      entry.key.nameAr,
+                                      entry.key.nameEn,
+                                    ),
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,

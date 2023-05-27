@@ -27,8 +27,7 @@ class _CreateAccountTabState extends State<CreateAccountTab> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           Text(
             t.auth.register.createAccount,

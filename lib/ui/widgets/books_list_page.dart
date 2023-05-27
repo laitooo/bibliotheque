@@ -126,7 +126,7 @@ class _BooksListPageState extends State<_BooksListPage> {
                 Expanded(
                   child: GridView.count(
                     crossAxisCount: 2,
-                    childAspectRatio: 0.55,
+                    childAspectRatio: 180 / 350,
                     mainAxisSpacing: 10,
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     children: state.books!

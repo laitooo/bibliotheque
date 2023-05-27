@@ -31,7 +31,9 @@ class MockNotificationsRepository extends NotificationsRepository {
       List.generate(
         Features.isEmptyLists ? 0 : 10,
         (index) => generator.notification(),
-      ),
+      )..sort(
+          (a, b) => a.date.compareTo(b.date),
+        ),
     );
   }
 

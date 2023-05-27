@@ -35,6 +35,7 @@ class _ResetPasswordScreenState extends State<_ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Container(),
         leading: IconButton(

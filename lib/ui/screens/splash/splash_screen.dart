@@ -59,12 +59,12 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(seconds: 3),
       () async {
-        final isLoggedIn = await serviceLocator.get<AuthRepository>().isLoggedIn();
+        final isLoggedIn =
+            await serviceLocator.get<AuthRepository>().isLoggedIn();
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (_) => isLoggedIn
-                ? const HomeScreen()
-                : const OnBoardingScreen(),
+            builder: (_) =>
+                isLoggedIn ? const HomeScreen() : const OnBoardingScreen(),
           ),
         );
       },

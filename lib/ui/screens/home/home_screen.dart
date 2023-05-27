@@ -41,6 +41,7 @@ class HomeScreenState extends State<_HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context).home;
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.orange,
@@ -50,22 +51,22 @@ class HomeScreenState extends State<_HomeScreen> {
         showUnselectedLabels: true,
         items: [
           _getBottomTabBarItem(
-            title: t.home.home,
+            title: t.home,
             iconPath: 'home',
             index: 0,
           ),
           _getBottomTabBarItem(
-            title: t.home.discover,
+            title: t.discover,
             iconPath: 'discover',
             index: 1,
           ),
           _getBottomTabBarItem(
-            title: t.home.wishlist,
+            title: t.wishlist,
             iconPath: 'wishlist',
             index: 2,
           ),
           _getBottomTabBarItem(
-            title: t.home.account,
+            title: t.account,
             iconPath: 'profile',
             index: 3,
           ),

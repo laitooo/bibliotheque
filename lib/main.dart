@@ -39,6 +39,7 @@ class _MyAppState extends State<MyApp> {
             builder: (context, state) {
               return MaterialApp(
                 title: 'Soqia Donor',
+                debugShowCheckedModeBanner: false,
                 locale: TranslationProvider.of(context).flutterLocale,
                 supportedLocales: LocaleSettings.supportedLocales,
                 localizationsDelegates: GlobalMaterialLocalizations.delegates,

@@ -57,7 +57,7 @@ class _InputEmailTabState extends State<InputEmailTab> {
               const SizedBox(height: 40),
               AppTextField(
                 label: t.auth.resetPassword.email,
-                initialValue: "andrew.ainsley@yourdomain.com",
+                initialValue: "",
                 controller: emailController,
               ),
               const SizedBox(height: 20),

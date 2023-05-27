@@ -7,6 +7,7 @@ import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
 import 'package:bibliotheque/ui/screens/auth/reset_password/reset_password_screen.dart';
 import 'package:bibliotheque/ui/screens/home/home_screen.dart';
 import 'package:bibliotheque/ui/widgets/input_field.dart';
+import 'package:bibliotheque/ui/common_widgets/svg.dart' as svg;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,7 +39,15 @@ class _LoginScreenState extends State<_LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      resizeToAvoidBottomInset: true,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const svg.Svg('back.svg'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
       body: BlocConsumer<SignInBloc, SignInState>(
         listener: (context, state) async {
           if (state.status == SignInStatus.success) {
@@ -66,8 +75,7 @@ class _LoginScreenState extends State<_LoginScreen> {
           return SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: ListView(
                 children: [
                   Text(
                     t.auth.login.helloThere,
@@ -228,6 +236,7 @@ class _LoginScreenState extends State<_LoginScreen> {
                               "assets/icons/apple.svg",
                               width: 28,
                               height: 28,
+                              color: context.theme.appleIconColor,
                               matchTextDirection: false,
                             ),
                           ),

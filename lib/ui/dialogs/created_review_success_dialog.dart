@@ -29,7 +29,7 @@ class _CreatedReviewSuccessDialogState
               horizontal: 40.0,
             ),
             margin: const EdgeInsets.symmetric(
-              horizontal: 60,
+              horizontal: 40,
             ),
             decoration: BoxDecoration(
               color: context.theme.backgroundColor,
@@ -54,12 +54,14 @@ class _CreatedReviewSuccessDialogState
                 const SizedBox(height: 40),
                 Text(
                   t.createReview.successTitle,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: context.theme.textColor3),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: context.theme.textColor3,
+                  ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 Text(
                   t.createReview.successContent,
                   textAlign: TextAlign.center,
@@ -68,7 +70,7 @@ class _CreatedReviewSuccessDialogState
                     color: context.theme.textColor4,
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 MainButton(
                   title: t.createReview.ok,
                   textColor: context.theme.textColor2,
