@@ -3,7 +3,7 @@ import 'package:bibliotheque/blocs/popular_books_bloc.dart';
 import 'package:bibliotheque/blocs/recommended_books_bloc.dart';
 import 'package:bibliotheque/blocs/theme_bloc.dart';
 import 'package:bibliotheque/blocs/unread_notifications_bloc.dart';
-import 'package:bibliotheque/blocs/wish_list_bloc.dart';
+import 'package:bibliotheque/cubits/wish_list_cubit.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
 import 'package:bibliotheque/ui/common_widgets/progress_indicator.dart';
@@ -73,7 +73,7 @@ class HomeTab extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           BlocProvider(
-            create: (_) => WishListBloc()..add(LoadWishList(false)),
+            create: (_) => WishListCubit()..loadWishList(false),
             child: _WishListContainer(
               onWishListClicked: () {
                 if (globalHomeScreenKey.currentState != null) {
@@ -339,23 +339,23 @@ class _WishListContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WishListBloc, WishListState>(
+    return BlocBuilder<WishListCubit, WishListState>(
       builder: (context, state) {
-        if (state.status == WishListStatus.loading) {
+        if (state is WishListLoading) {
           return const Center(
             child: AppProgressIndicator(size: 100),
           );
         }
 
-        if (state.status == WishListStatus.error) {
+        if (state is WishListError) {
           return TryAgainWidget(
             onPressed: () {
-              BlocProvider.of<WishListBloc>(context).add(LoadWishList(false));
+              BlocProvider.of<WishListCubit>(context).loadWishList(false);
             },
           );
         }
 
-        if (state.books!.isEmpty) {
+        if ((state as WishListLoaded).books.isEmpty) {
           return const SizedBox();
         }
 
@@ -388,13 +388,13 @@ class _WishListContainer extends StatelessWidget {
             SizedBox(
               height: 370,
               child: ListView.builder(
-                itemCount: state.books!.length,
+                itemCount: (state).books.length,
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 7),
-                    child: BookCard(book: state.books![index]),
+                    child: BookCard(book: state.books[index]),
                   );
                 },
               ),

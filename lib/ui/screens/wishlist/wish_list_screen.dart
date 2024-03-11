@@ -1,5 +1,5 @@
 import 'package:bibliotheque/blocs/theme_bloc.dart';
-import 'package:bibliotheque/blocs/wish_list_bloc.dart';
+import 'package:bibliotheque/cubits/wish_list_cubit.dart';
 import 'package:bibliotheque/i18n/translations.dart';
 import 'package:bibliotheque/ui/common_widgets/app_snackbar.dart';
 import 'package:bibliotheque/ui/common_widgets/try_again_widget.dart';
@@ -10,7 +10,6 @@ import 'package:bibliotheque/ui/screens/search/filter_screen.dart';
 import 'package:bibliotheque/ui/screens/settings/about_app_screen.dart';
 import 'package:bibliotheque/ui/widgets/book_card.dart';
 import 'package:bibliotheque/ui/widgets/search_icon.dart';
-import 'package:bibliotheque/utils/error_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,7 +21,7 @@ class WishListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => WishListBloc()..add(LoadWishList(true)),
+      create: (_) => WishListCubit()..loadWishList(true),
       child: const _WishListScreen(),
     );
   }
@@ -65,30 +64,26 @@ class _WishListScreenState extends State<_WishListScreen> {
           const SearchIcon(),
         ],
       ),
-      body: BlocConsumer<WishListBloc, WishListState>(
+      body: BlocConsumer<WishListCubit, WishListState>(
         listener: (context, state) {
-          if (state.status == WishListStatus.error &&
-              state.error == WishListError.removingError) {
+          if (state is WishListError) {
             context.showSnackBar(text: t.errors.errorRemovingTryAgain);
           }
         },
         builder: (context, state) {
-          if (state.status == WishListStatus.loading) {
+          if (state is WishListLoading) {
             return const Center(child: AppProgressIndicator(size: 100));
           }
 
-          if (state.status == WishListStatus.error &&
-              state.error == WishListError.loadingListError) {
+          if (state is WishListError) {
             return TryAgainWidget(
               onPressed: () {
-                BlocProvider.of<WishListBloc>(context).add(
-                  LoadWishList(true),
-                );
+                BlocProvider.of<WishListCubit>(context).loadWishList(true);
               },
             );
           }
 
-          if (state.books!.isEmpty) {
+          if ((state as WishListLoaded).books.isEmpty) {
             return EmptyListWidget(
               text: t.wishlist.empty,
               subText: t.wishlist.addBooks,
@@ -97,16 +92,15 @@ class _WishListScreenState extends State<_WishListScreen> {
           }
 
           return ListView(
-            children: state.books!
+            children: state.books
                 .map(
                   (book) => WishListCard(
                     book: book,
                     onItemClicked: (index) {
                       switch (index) {
                         case 0:
-                          BlocProvider.of<WishListBloc>(context).add(
-                            RemoveFromWishList(book.id),
-                          );
+                          BlocProvider.of<WishListCubit>(context)
+                              .removeFromWishList(book.id);
                           break;
                         case 2:
                           Navigator.of(context).push(
